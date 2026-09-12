@@ -1,5 +1,12 @@
 # MVP design review — 2026-09-12
 
+**Follow-up studies:** [nose comparison](NOSE_STUDY.md) identifies a lighter 50 mm cone for fit checking;
+[print-orientation analysis](PRINT_ORIENTATION.md) corrects the earlier fin collar and sled layouts.
+
+**Mount revision:** the original narrow-contact lug sleeves below have been superseded for printing by
+[V2 curved saddles](LUG_SADDLES.md), with new CAD and mass/CG rechecks. The table below retains the historical shortlist
+results; do not mistake those historical CAD files for the revised mounts.
+
 Three provisional designs meet the nominal simulation criteria on the specific Estes C5-3 curve. The larger-recovery
 candidate is the most useful starting point for **review**, because its 18-inch chute also meets the tested descent
 stress cases. It is not cleared for fabrication with arbitrary electronics or for flight. The user explicitly chose a

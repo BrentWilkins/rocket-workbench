@@ -52,7 +52,7 @@ def generate(config: Config, parts: dict, loading: str, out: Path):
     front = [parts[k] for k in ['nose-bay', 'bay-bulkhead', 'payload-sled']]
     nose_mass, nose_cg = mass_cg([(p['mass_g'], p['cg_x_mm']) for p in front])
     component(subs, 'nosecone', 'Printed nose and bay assembly', nose_mass, nose_cg,
-              shape='conical', length=n/1000, aftradius=mm('body_od')/2000,
+              shape=config.nose_shape, shapeparameter=1.0, length=n/1000, aftradius=mm('body_od')/2000,
               thickness=mm('wall')/1000, aftshoulderradius=(mm('body_id')/2-mm('clearance'))/1000,
               aftshoulderlength=mm('bay_length')/1000, aftshoulderthickness=mm('wall')/1000)
     # Tube ends at collar start in exterior model, but full purchased tube mass
@@ -107,8 +107,10 @@ def generate(config: Config, parts: dict, loading: str, out: Path):
             element(obj, 'position', (item.x.value-n)/1000, type='top')
             element(obj, 'overridecg', 0)
     # Native lug exterior represents sleeve + inserted paper lug. Internal glue
-    # gap is irrelevant to exterior aero; printed sleeve mass is counted here,
+    # gap is irrelevant to exterior aero; printed sleeve AND saddle mass is counted here,
     # purchased paper/adhesive mass remains in the purchased ledger exactly once.
+    # The saddle's noncylindrical aerodynamic contribution is NOT resolved by
+    # this native lug surrogate. New runs must not imply drag validation.
     guide = launch_guide(config)
     for index, x in enumerate(guide['starts']):
         part = parts[f'lug-sleeve-{index+1}']

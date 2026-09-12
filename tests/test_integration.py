@@ -64,7 +64,50 @@ def test_cad_meshes_and_assembly_clearances(tmp_path):
         assert mesh_volume(tmp_path/f'{name}.stl') == pytest.approx(record['volume_mm3'], rel=.003)
         reloaded = cq.importers.importStep(str(tmp_path/f'{name}.step')).val()
         assert reloaded.Volume() == pytest.approx(record['volume_mm3'], rel=1e-6)
+        if name in {'fin-collar', 'payload-sled'}:
+            from rocket_workbench.orientation import place
+            orientation = 'aft-down' if name == 'fin-collar' else 'side-y-plus'
+            expected_z = place(parts[name], orientation).val().Center().z
+            data = (tmp_path/f'{name}.stl').read_bytes()
+            weighted_z = volume = 0.0
+            for i in range(struct.unpack_from('<I', data, 80)[0]):
+                row = struct.unpack_from('<12fH', data, 84+i*50)
+                tri = np.array(row[3:12]).reshape(3, 3)
+                v = np.dot(tri[0], np.cross(tri[1], tri[2]))/6
+                volume += v
+                weighted_z += v*tri[:, 2].sum()/4
+            assert weighted_z/volume == pytest.approx(expected_z, abs=.02)
+    # STL orientation regression: fin aft end starts with the full collar wall;
+    # sled starts with its broad back. Check mesh slice bounds near Z=0.
+    from rocket_workbench.orientation import measure, place
+    assert measure(place(parts['fin-collar'], 'aft-down'))['first_layer_average_area_mm2'] > 150
+    assert measure(place(parts['payload-sled'], 'side-y-plus'))['first_layer_average_area_mm2'] > 1500
     assert parts['nose-bay'].val().BoundingBox().xlen == pytest.approx(config.geometry.body_od.value)
+
+
+def test_saddles_have_broad_concave_bonds_and_clear_bores():
+    import cadquery as cq
+    for filename in ['baseline.yaml', 'candidate-recovery.yaml']:
+        config = load_config(ROOT/'examples'/filename)
+        guide = launch_guide(config)
+        parts = shapes(config)
+        angle = math.radians(guide['angle_deg'])
+        for index, z in enumerate(guide['starts']):
+            part = parts[f'lug-sleeve-{index+1}']
+            assert len(part.solids().vals()) == 1
+            assert part.val().isValid()
+            inner = guide['saddle_inner_radius']
+            clearance = cq.Workplane('XY', origin=(0, 0, z)).circle(inner-1e-5).extrude(guide['length'])
+            assert part.intersect(clearance).val().Volume() < 1e-5
+            contact_shell = (cq.Workplane('XY', origin=(0, 0, z)).circle(inner+.01)
+                             .circle(inner).extrude(guide['length']))
+            # Thin-shell volume / thickness approximates the concave contact area.
+            area = part.intersect(contact_shell).val().Volume()/.01
+            assert area == pytest.approx(guide['saddle_bond_area_mm2'], rel=.005)
+            assert area > 300
+            center = (guide['center_radius']*math.cos(angle), guide['center_radius']*math.sin(angle), z)
+            bore = cq.Workplane('XY', origin=center).circle(guide['sleeve_inner_radius']-1e-5).extrude(guide['length'])
+            assert part.intersect(bore).val().Volume() < 1e-5
 
 
 def test_changed_geometry_mass_and_reload(engine, tmp_path):
@@ -94,6 +137,29 @@ def test_changed_geometry_mass_and_reload(engine, tmp_path):
             reloaded, warnings = engine.load(out/f'{loading}-saved.ork')
             assert not warnings
             assert engine.mass(reloaded.getSimulation(0))['dry_mass_g'] == pytest.approx(expected['dry_mass_g'], abs=.05)
+
+
+@pytest.mark.parametrize('shape', ['conical', 'ogive', 'ellipsoid'])
+def test_nose_profile_survives_engine_reload(engine, tmp_path, shape):
+    from rocket_workbench.nose import radius_at
+    from rocket_workbench.config import Config
+    data = load_config(ROOT/'examples/candidate-recovery.yaml').model_dump()
+    data['nose_shape'] = shape
+    config = Config.model_validate(data)
+    parts = build(config, tmp_path/'cad')
+    path = tmp_path/'nose.ork'
+    ledger = generate(config, parts, 'actual', path)
+    doc, warnings = engine.load(path)
+    assert not warnings
+    sim = engine.new_simulation(doc)
+    engine.save(doc, tmp_path/'saved.ork')
+    doc, warnings = engine.load(tmp_path/'saved.ork')
+    assert not warnings
+    nose = engine.helper.get_component_named(doc.getRocket(), 'Printed nose and bay assembly')
+    assert str(nose.getShapeType().name()).lower() == shape
+    for x in [0, .01, 1, 10, 35, 69, 70]:
+        assert nose.getRadius(x/1000)*1000 == pytest.approx(radius_at(shape, x, 70, 20.8), abs=1e-6)
+    assert engine.mass(doc.getSimulation(0))['dry_mass_g'] == pytest.approx(ledger['dry_mass_g'], abs=.05)
 
 
 def test_reference_metrics_repeatability_and_errors(engine):

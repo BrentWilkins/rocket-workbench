@@ -41,11 +41,13 @@ override; paper lugs/adhesive remain in the purchased ledger. Motor mass comes f
 part of dry mass. Every generated loading is checked against an independent mass/CG sum before simulation, tolerance
 0.05 g / 0.05 mm.
 
-Native components model the conical nose, tube, tapered collar, three flat fins and cylindrical lug sleeves.
-`cad/interfaces.json` records the shared guide dimensions. Paper lugs sit inside printed sleeves at 60 degrees between
-fins; the sleeve raises the rod clear of the collar. OpenRocket sees the combined outer sleeve and inner lug bore; the
-small internal adhesive gap is not an aerodynamic feature. Sleeve-to-body adhesive fillets and the thin collar-fairing
-lip are not resolved aerodynamic surfaces. Attachment strength is unverified.
+Native components model the conical nose, tube, tapered collar, three flat fins and cylindrical lug sleeves. V2 lug
+saddles add a curved bonding pad to the CAD: their mass/CG is included, but their noncylindrical drag is not resolved by
+the native cylindrical lug component. See [saddle revision](LUG_SADDLES.md). `cad/interfaces.json` records the shared
+guide dimensions. Paper lugs sit inside printed sleeves at 60 degrees between fins; the sleeve raises the rod clear of
+the collar. OpenRocket sees the combined outer sleeve and inner lug bore; the small internal adhesive gap is not an
+aerodynamic feature. Sleeve-to-body adhesive fillets and the thin collar-fairing lip are not resolved aerodynamic
+surfaces. Attachment strength is unverified.
 
 The payload is an internal mass with provisional combined electronics/battery/ wiring dimensions and CG. Dummy and
 actual cases deliberately match mass and CG; they are not independent measurements. Empty retains the bay and hardware.

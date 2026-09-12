@@ -1,0 +1,133 @@
+{
+  "slicer": "Bambu Studio 02.08.02.61",
+  "purpose": "Local slice comparison; not physical validation",
+  "cases": [
+    {
+      "name": "orientation-fin-forward",
+      "return_code": 0,
+      "total_filament_g": 34.04887390136719,
+      "predicted_seconds": 4281.0595703125,
+      "feature_type_times": {
+        "Custom": 428.8075256347656,
+        "Flush": 29.0,
+        "Gap infill": 363.6162414550781,
+        "Inner wall": 622.8363647460938,
+        "Outer wall": 1341.650146484375,
+        "Overhang wall": 45.939964294433594,
+        "Support": 626.1414794921875,
+        "Support interface": 147.1255340576172,
+        "Support transition": 38.68992233276367,
+        "Top surface": 26.568359375,
+        "Travel": 626.174072265625,
+        "Undefined": 610.8339233398438
+      },
+      "warning_message": "",
+      "result_sha256": "a8ef2c04af8c0c8380f1c569946f11abf38f45f819d8930213e293cd62090a4c",
+      "project_sha256": "828c9cdf23af2ed7bc118c70069a2184dd07ba5479059fcae2f6bb8c7a7786b6"
+    },
+    {
+      "name": "orientation-fin-aft",
+      "return_code": 0,
+      "total_filament_g": 30.34166717529297,
+      "predicted_seconds": 3937.937744140625,
+      "feature_type_times": {
+        "Brim": 30.725566864013672,
+        "Custom": 428.7914123535156,
+        "Flush": 29.0,
+        "Gap infill": 411.558837890625,
+        "Inner wall": 659.7520751953125,
+        "Outer wall": 1566.2427978515625,
+        "Overhang wall": 53.6163444519043,
+        "Support": 261.17059326171875,
+        "Support interface": 90.30115509033203,
+        "Support transition": 34.64385986328125,
+        "Travel": 387.6056213378906,
+        "Undefined": 372.2814636230469
+      },
+      "warning_message": "",
+      "result_sha256": "50db772b68a7c14632936e17e0367fedbea1777cf1ff165c4f3619f97918ba2d",
+      "project_sha256": "0a5d5adeeb49dc7c08e1cfba95fbfeb13b897f46939b268512ce9f5755caaccf"
+    },
+    {
+      "name": "orientation-sled-old",
+      "return_code": 0,
+      "total_filament_g": 7.946150779724121,
+      "predicted_seconds": 1398.7652587890625,
+      "feature_type_times": {
+        "Bottom surface": 3.736820697784424,
+        "Bridge": 71.01101684570312,
+        "Brim": 8.71856689453125,
+        "Custom": 428.7029724121094,
+        "Flush": 29.0,
+        "Gap infill": 0.23816397786140442,
+        "Inner wall": 78.15663146972656,
+        "Internal solid infill": 170.71102905273438,
+        "Outer wall": 51.21174621582031,
+        "Overhang wall": 56.43081283569336,
+        "Sparse infill": 106.05643463134766,
+        "Support": 210.49923706054688,
+        "Support interface": 53.62065887451172,
+        "Support transition": 44.708065032958984,
+        "Top surface": 42.56050109863281,
+        "Travel": 58.67203903198242,
+        "Undefined": 43.43370819091797
+      },
+      "warning_message": "",
+      "result_sha256": "acc640359c2e1e2b57ea4e51009460a9aa8c4c0165f50cb773d355c378db48ac",
+      "project_sha256": "6713b056b1c87f0bd81109f7e3e5e276ef5d3e0b1cca42e2cb6e781b34c4df44"
+    },
+    {
+      "name": "orientation-sled-flat",
+      "return_code": 0,
+      "total_filament_g": 5.294811725616455,
+      "predicted_seconds": 1155.4326171875,
+      "feature_type_times": {
+        "Bottom surface": 53.10816955566406,
+        "Bridge": 0.7259735465049744,
+        "Brim": 38.78285217285156,
+        "Custom": 428.8609313964844,
+        "Flush": 29.0,
+        "Gap infill": 1.3558027744293213,
+        "Inner wall": 132.7251739501953,
+        "Internal solid infill": 183.51797485351562,
+        "Outer wall": 82.46341705322266,
+        "Overhang wall": 0.10895829647779465,
+        "Sparse infill": 119.9190902709961,
+        "Top surface": 44.307334899902344,
+        "Travel": 56.00312805175781,
+        "Undefined": 40.57512664794922
+      },
+      "warning_message": "",
+      "result_sha256": "d8416138da7fcd391e20465e6d84c9da16eee3b0cb9f79b264ab874cb3e684ef",
+      "project_sha256": "8d940b912772ba87950e497dd50ae401d60140ea263698c4aa7d006590b87355"
+    },
+    {
+      "name": "x1c-pla-orientation-v3",
+      "return_code": 0,
+      "total_filament_g": 65.6957015991211,
+      "predicted_seconds": 8669.404296875,
+      "feature_type_times": {
+        "Bottom surface": 96.1161880493164,
+        "Bridge": 0.7243052124977112,
+        "Brim": 123.25636291503906,
+        "Custom": 428.53985595703125,
+        "Flush": 29.0,
+        "Gap infill": 1134.8526611328125,
+        "Inner wall": 842.08740234375,
+        "Internal solid infill": 293.31817626953125,
+        "Outer wall": 2928.296142578125,
+        "Overhang wall": 66.85420989990234,
+        "Sparse infill": 236.42987060546875,
+        "Support": 1080.1397705078125,
+        "Support interface": 106.92955017089844,
+        "Support transition": 46.35073471069336,
+        "Top surface": 83.84739685058594,
+        "Travel": 1186.9034423828125,
+        "Undefined": 1171.6925048828125
+      },
+      "warning_message": "",
+      "result_sha256": "ce120005d944d42c83e5198c00b1847da7e9b107e17d4ae51e09da3a0d8bff43",
+      "project_sha256": "59e628bbc5b7ab1a879e23543033dd3a94ed607525a144d81ffbb1817bfde296"
+    }
+  ]
+}

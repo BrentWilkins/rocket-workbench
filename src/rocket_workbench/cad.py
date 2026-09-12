@@ -15,8 +15,13 @@ def shapes(config: Config):
     g = config.geometry
     n, b, w = g.mm('nose_length'), g.mm('bay_length'), g.mm('wall')
     r, ri = g.mm('body_od') / 2, g.mm('body_id') / 2 - g.mm('clearance')
-    nose = cq.Workplane(obj=cq.Solid.makeCone(0.01, r, n))
-    inner = cq.Solid.makeCone(0.01, r - w, n - 2 * w, cq.Vector(0, 0, 2 * w))
+    if config.nose_shape == 'conical':
+        nose = cq.Workplane(obj=cq.Solid.makeCone(0.01, r, n))
+        inner = cq.Solid.makeCone(0.01, r - w, n - 2 * w, cq.Vector(0, 0, 2 * w))
+    else:
+        from .nose import solid
+        nose = solid(config.nose_shape, n, r)
+        inner = solid(config.nose_shape, n-2*w, r-w).translate((0, 0, 2*w))
     nose = nose.cut(inner)
     sleeve = cq.Workplane('XY', origin=(0, 0, n)).circle(ri).circle(ri - w).extrude(b - 3)
     nose = nose.union(sleeve)
@@ -63,9 +68,23 @@ def shapes(config: Config):
     guide = launch_guide(config)
     angle = math.radians(guide['angle_deg'])
     for index, z in enumerate(guide['starts']):
-        center = (guide['center_radius']*math.cos(angle), guide['center_radius']*math.sin(angle), z)
-        parts[f'lug-sleeve-{index+1}'] = (cq.Workplane('XY', origin=center)
+        # Build along +X, then rotate the complete mount. A concave pad replaces
+        # the old tangential cylinder-to-paper joint without changing the rod axis.
+        center = (guide['center_radius'], 0, z)
+        sleeve = (cq.Workplane('XY', origin=center)
             .circle(guide['sleeve_outer_radius']).circle(guide['sleeve_inner_radius']).extrude(guide['length']))
+        inner = guide['saddle_inner_radius']
+        outer = inner + guide['saddle_thickness']
+        pad = (cq.Workplane('XY', origin=(0, 0, z)).circle(outer).circle(inner).extrude(guide['length'])
+               .intersect(cq.Workplane('XY', origin=(outer/2, 0, z+guide['length']/2))
+                          .box(outer, guide['saddle_width'], guide['length'])))
+        # Clear the bore again after union; changes to dimensions must not seal it.
+        mount = sleeve.union(pad).cut(cq.Workplane('XY', origin=center)
+                                      .circle(guide['sleeve_inner_radius']).extrude(guide['length']))
+        # Trim every solid at the saddle radius, including the sleeve's former
+        # tangent tip, for a continuous glue gap and no point contact with paper.
+        mount = mount.cut(cq.Workplane('XY', origin=(0, 0, z)).circle(inner).extrude(guide['length']))
+        parts[f'lug-sleeve-{index+1}'] = mount.rotate((0, 0, 0), (0, 0, 1), guide['angle_deg'])
     return parts
 
 
@@ -93,10 +112,10 @@ def build(config: Config, out: Path) -> dict:
         cq.exporters.export(part, str(out / f'{name}.step'))
         # STLs laid on their minimum Z; assembly coordinates retained in STEP.
         printable = part
-        if name == 'nose-bay':
+        if name in {'nose-bay', 'fin-collar'}:
             printable = part.rotate((0, 0, 0), (1, 0, 0), 180)
         elif name == 'payload-sled':
-            printable = part.rotate((0, 0, 0), (1, 0, 0), -90)
+            printable = part.rotate((0, 0, 0), (1, 0, 0), 90)
         pbb = printable.val().BoundingBox()
         cq.exporters.export(printable.translate((0, 0, -pbb.zmin)), str(out / f'{name}.stl'), tolerance=0.05, angularTolerance=0.1)
         assembly.add(part, name=name, color=cq.Color(color))
@@ -128,15 +147,19 @@ def build(config: Config, out: Path) -> dict:
 
 
 def preview(config: Config, path: Path):
+    from .nose import radius_at
     g = config.geometry
     n, length, r = g.mm('nose_length'), g.mm('body_length'), g.mm('body_od')/2
     end = n+length
     start = end-g.mm('collar_length')
     span = g.mm('fin_span')
+    top = [(n*i/100, -radius_at(config.nose_shape, n*i/100, n, r)) for i in range(101)]
+    outline = top + [(x, -y) for x, y in reversed(top)]
+    nose_outline = 'M' + ' L'.join(f'{x:g} {y:g}' for x, y in outline) + ' Z'
     path.write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -100 {end+90} 240">
 <style>text{{font:9px sans-serif}} .label{{fill:#152238}}</style>
 <rect x="-30" y="-100" width="{end+90}" height="240" fill="#f5f7fa"/>
-<path d="M0 0 L{n} {-r} L{n} {r} Z" fill="#ed9b40" stroke="#333"/>
+<path d="{nose_outline}" fill="#ed9b40" stroke="#333"/>
 <rect x="{n}" y="{-r}" width="{length}" height="{2*r}" fill="#d4bd95" fill-opacity="0.35" stroke="#333"/>
 <rect x="{n}" y="{-r+2}" width="{g.mm('bay_length')}" height="{2*r-4}" fill="#4c9ad455" stroke="#4c9ad4"/>
 <rect x="{n+g.mm('bay_length')+10}" y="-15" width="{g.mm('chute_packed_length')}" height="30" fill="#83b86c"/>

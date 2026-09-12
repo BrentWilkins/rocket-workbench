@@ -29,14 +29,16 @@ PLA is the demonstration material at 1.24 g/cm³. PETG is supported by selecting
 appropriate density; rerun mass and flight checks. Neither material name establishes strength or thermal suitability.
 
 For an X1 Carbon, provisional starting settings are 0.4 mm nozzle, 0.2 mm layers, three walls for the 1.2 mm shell, and
-solid thin fins/bosses/cap. Slice and inspect every layer; thin features may need adjusted line widths. No printer
-profile or G-code is supplied or validated. CAD volume × density assumes solid modeled material, not sparse infill.
-Record the slicer estimate and actual printed mass.
+solid thin fins/bosses/cap. Slice and inspect every layer; thin features may need adjusted line widths. A local unsliced
+fit-check Bambu Studio project can be generated with `scripts/package_bambu.py`; no G-code is validated. CAD volume ×
+density assumes solid modeled material, not sparse infill. Record the slicer estimate and actual printed mass.
 
-STLs place the nose shoulder-down, cap flat, sled tray flat, collar aft-down and lug sleeves vertically. Use a brim as
-needed. Inspect shoulder-to-nose bridging, boss support, the sled foot and fin leading edges; supports, if required,
-must be fully removable without gouging critical fits. The nose screws load printed bosses and layer bonds; the collar
-fins can fail at their roots. Layer orientation is not a substitute for pull/bend/separation tests.
+Current STLs place the nose shoulder-down, cap flat, sled broad-back-down, collar aft-down and lug sleeves vertically.
+Earlier exports incorrectly left the collar forward-down and the sled on its small foot; use regenerated files. See
+[print-orientation analysis](PRINT_ORIENTATION.md). Use a brim as needed. Inspect shoulder-to-nose bridging, boss
+support, the sled foot and fin leading edges; supports, if required, must be fully removable without gouging critical
+fits. The nose screws load printed bosses and layer bonds; the collar fins can fail at their roots. Layer orientation is
+not a substitute for pull/bend/separation tests.
 
 ## Dry fit and assembly order
 
@@ -56,9 +58,12 @@ fins can fail at their roots. Layer orientation is not a substitute for pull/ben
    the leader; account for any necessary small routing relief in the actual assembly. This attachment is a design
    proposal requiring a pull test, not a certified load rating.
 5. Bond paper-to-paper joints with suitable wood glue and the collar/lug sleeve joints with a verified plastic-to-paper
-   adhesive. Printed sleeves contact the round body tangentially: add small side fillets and verify bond strength on
-   coupons. Do not use friction alone for the collar or lug sleeves. These joints are the unavoidable glue-dependent
-   portions; replacing the collar may damage the paper tube. The nose/cap/sled remain mechanically serviceable.
+   adhesive. V2 sleeves have 12 mm-wide, 25 mm-long curved saddles with a provisional 0.15 mm radial adhesive gap,
+   replacing the old tangent-contact cylinders. Match the saddle curvature to the measured tube OD; do not clamp hard
+   enough to crush the paper or squeeze the joint dry. Add small side fillets and verify bond strength on representative
+   tube/printed-saddle coupons. Inspect for paper-surface peeling as well as adhesive failure. Do not use friction alone
+   for the collar or lug sleeves. These joints are the unavoidable glue-dependent portions; replacing the collar may
+   damage the paper tube. The nose/cap/sled remain mechanically serviceable.
 6. Trim two paper lugs to 25 mm, insert them in the sleeves, and align both on a straight rod while bonding, without
    bonding to the rod. Positions are nose-length + 0.30 and 0.65 times body length. The sleeves raise the rod clear of
    the wider collar. Test sliding the **whole rocket** along the actual guide, checking fins, hook, fillets and the pad

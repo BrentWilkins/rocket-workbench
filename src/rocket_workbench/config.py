@@ -131,6 +131,7 @@ class Config(Model):
     mode: Literal['reference', 'baseline']
     reference_file: str | None = None
     geometry: Geometry
+    nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
     material: Literal['PLA', 'PETG']
     density: Quantity
     purchased_masses: list[MassItem]
@@ -231,6 +232,8 @@ class Config(Model):
             if item.mass.provenance != 'measured':
                 out.append(f'Measured mass and balance: {item.name}')
         out.append('Assembled mass/CG, print fit, attachment strength and recovery separation checks')
+        if self.mode == 'baseline':
+            out.append('V2 saddle bond strength and adhesive mass require physical checks; saddle-specific aerodynamic drag is unresolved')
         return out
 
 
