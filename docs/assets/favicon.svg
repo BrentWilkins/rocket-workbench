@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <title>Rocket Workbench</title>
-  <rect width="64" height="64" rx="14" fill="#142638"/>
-  <path d="M26 45h12l-6 14z" fill="#E69F00"/>
-  <path d="M24 31 14 46l12-3zm16 0 10 15-12-3z" fill="#56B4E9"/>
-  <path d="M32 6c-8 8-12 18-12 29l6 11h12l6-11C44 24 40 14 32 6z" fill="#FFFFFF"/>
-  <circle cx="32" cy="26" r="6" fill="#142638"/>
+  <rect width="64" height="64" rx="12" fill="#142638"/>
+  <g transform="translate(32 32) rotate(45)">
+    <path d="M-6 19H6L0 39z" fill="#E69F00"/>
+    <path d="M-9-1-22 17-9 13zm18 0L22 17 9 13z" fill="#56B4E9"/>
+    <path d="M0-39C-9-29-12-16-12-4L-9 19H9L12-4C12-16 9-29 0-39z" fill="#fff"/>
+  </g>
 </svg>
