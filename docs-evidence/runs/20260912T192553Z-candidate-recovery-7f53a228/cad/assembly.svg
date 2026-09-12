@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-30 -100 540.0 240">
+<style>text{font:9px sans-serif} .label{fill:#152238}</style>
+<rect x="-30" y="-100" width="540.0" height="240" fill="#f5f7fa"/>
+<path d="M0 0 L70.0 -20.8 L70.0 20.8 Z" fill="#ed9b40" stroke="#333"/>
+<rect x="70.0" y="-20.8" width="380.0" height="41.6" fill="#d4bd95" fill-opacity="0.35" stroke="#333"/>
+<rect x="70.0" y="-18.8" width="65.0" height="37.6" fill="#4c9ad455" stroke="#4c9ad4"/>
+<rect x="145.0" y="-15" width="145.93050255307713" height="30" fill="#83b86c"/>
+<rect x="376.95" y="-9.35" width="69.85" height="18.7" fill="#888"/>
+<path d="M385.0 -20.8 L410.0 -75.8 L438.0 -75.8 L450.0 -20.8 Z" fill="#ce6258" stroke="#333"/>
+<text x="0" y="-78">PROVISIONAL — axial dimensions in mm; not a fabrication approval</text>
+<text x="5" y="48">Printed nose</text><text x="70.0" y="65">Sealed removable bay / sled</text>
+<text x="150.0" y="48">Chute + harness</text><text x="375.0" y="-68">Printed fin collar</text>
+<text x="360.0" y="65">Purchased motor mount</text>
+<text x="0" y="105">Nose tip x=0 → aft x=450; body OD 41.6; length 380</text></svg>

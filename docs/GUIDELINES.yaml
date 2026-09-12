@@ -1,0 +1,114 @@
+schema_version: 1
+reviewed_on: '2026-09-12'
+note: Numeric flight thresholds live in configuration criteria, not in this catalog or simulator code. No absent warning establishes physical validity.
+rules:
+  - id: STABILITY_ASCENT
+    rationale: Passive restoring behavior requires appropriate CP/CG ordering; examine the whole relevant ascent and low-speed limitations.
+    source_url: https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/rocket-stability/
+    source_section: De-Stabilizing Force
+    applicability: Conventional passive single-stage rocket, every loading and wind case
+    units: cal
+    severity: reject_nominal_candidate
+    kind: engineering heuristic
+    automatic_check: criteria.minimum_ascent_stability_cal
+    manual_inspection: true
+    exception: NASA explains the principle, not the project's numeric 1-caliber threshold. Inspect angle/speed at the minimum.
+  - id: GUIDE_DEPARTURE
+    rationale: The rocket must develop useful aerodynamic restoring forces when guide constraint ends; motor letter or static thrust ratio alone is insufficient.
+    source_url: https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/rocket-stability/
+    source_section: Rocket Stability
+    applicability: Every motor, loading, wind and measured usable guide
+    units: m/s
+    severity: reject_nominal_candidate
+    kind: engineering heuristic
+    automatic_check: criteria.guide_departure_m_s
+    manual_inspection: true
+    exception: Numeric 12 m/s is a project assumption, not a NASA requirement. Rod binding/flex and actual usable length require checks.
+  - id: DEPLOYMENT_SPEED
+    rationale: Avoid accepting high-speed recovery events or deployment after ground impact; attachment loads need separate evidence.
+    source_url: https://www.nar.org/ModelRocketSafetyCode
+    source_section: Recovery System
+    applicability: Motor-ejection passive parachute recovery
+    units: m/s
+    severity: reject_nominal_candidate
+    kind: engineering heuristic
+    automatic_check: criteria.deployment_speed_m_s and deployment_before_ground
+    manual_inspection: true
+    exception: The 10 m/s cap is a project assumption, not an NAR numeric requirement or a validated hardware load limit.
+  - id: DESCENT_SPEED
+    rationale: Compare vertical descent using complete descending mass and uncertain parachute drag; do not substitute total windy velocity.
+    source_url: https://estesrockets.com/products/18-inch-printed-parachute
+    source_section: Details and Features
+    applicability: Selected parachute, every loading and wind scenario
+    units: m/s
+    severity: reject_nominal_candidate
+    kind: engineering heuristic
+    automatic_check: criteria.landing_descent_m_s
+    manual_inspection: true
+    exception: Manufacturer specifies the chute, not Cd or a 6 m/s impact qualification. Verify deployment, descent and damage physically.
+  - id: MOTOR_FIT_AND_LIMIT
+    rationale: Use an unmodified certified commercial motor that fits the mount and remains within its manufacturer's liftoff-mass recommendation.
+    source_url: https://estesrockets.com/products/c5-3-engines
+    source_section: Technical Specifications
+    applicability: Exact selected motor and delay; other cases carry their own manufacturer sources
+    units: mm and g
+    severity: reject_nominal_candidate
+    kind: enforceable requirement
+    automatic_check: mount dimensions, curve digest, supported delay and motor.max_liftoff_mass
+    manual_inspection: true
+    exception: Nominal diameter/length checks do not prove actual kit retention or thrust-block seating.
+  - id: MASS_ACCOUNTING
+    rationale: Count every component once and distinguish dry assembly from motor-loaded mass; overrides must not double-count fins or payload.
+    source_url: https://openrocket.info/features.html
+    source_section: Design — mass and CG overrides
+    applicability: CAD/native model mapping and every payload loading
+    units: g and mm
+    severity: execution_error
+    kind: enforceable requirement
+    automatic_check: independent ledger versus engine dry mass/CG
+    manual_inspection: true
+    exception: The 0.05 g/mm software comparison tolerance is not measurement precision or a physical acceptance tolerance.
+  - id: RECOVERY_PACKING_AND_ATTACHMENTS
+    rationale: Recovery must deploy without binding and every joint must carry the load; a geometric envelope alone proves neither.
+    source_url: https://www.nar.org/ModelRocketSafetyCode
+    source_section: Recovery System
+    applicability: Chute, harness, cap, printed bosses, motor-ring anchor and separation interface
+    units: mm and g; attachment proof load not yet established
+    severity: block_physical_flight
+    kind: enforceable requirement
+    automatic_check: approximate packing envelope only
+    manual_inspection: true
+    exception: Physical packing, attachment strength and ejection/separation evidence remain missing.
+  - id: THERMAL_PROTECTION
+    rationale: Commercial flame-resistant protection shields the recovery system; printed plastic alone is not a demonstrated heat barrier.
+    source_url: https://estesrockets.com/products/recovery-wadding
+    source_section: Product description and package instructions
+    applicability: Every motor-ejection flight, including empty/dummy bay
+    units: package-prescribed quantity; measured g
+    severity: block_physical_flight
+    kind: enforceable requirement
+    automatic_check: none
+    manual_inspection: true
+    exception: Wadding is not gas-tight; bay seam/penetration isolation and thermal exposure need physical checks.
+  - id: MATERIALS_AND_FIELD_PRACTICE
+    rationale: Use appropriate lightweight construction, commercial motors, recovery and supervised launch procedures; site rules are separate.
+    source_url: https://www.nar.org/ModelRocketSafetyCode
+    source_section: Materials, Motors, Launch Safety, Launch Site and Recovery System
+    applicability: Physical fabrication and every outing
+    units: per current safety code and applicable local rules
+    severity: block_physical_flight
+    kind: enforceable requirement
+    automatic_check: none
+    manual_inspection: true
+    exception: This catalog neither interprets jurisdiction-specific law nor approves a launch site.
+  - id: SERVICEABILITY
+    rationale: Prefer removable nose/cap/sled and replaceable parts while acknowledging glued collar/lug joints.
+    source_url: ../ROCKET_PROJECT_BRIEF.md
+    source_section: ROCKET_PROJECT_BRIEF.md sections 2 and FR-2; project preference, no external authority claimed
+    applicability: Assembly and future revisions
+    units: not applicable
+    severity: review_note
+    kind: project preference
+    automatic_check: none
+    manual_inspection: true
+    exception: Replacing a bonded fin collar may require replacing the paper tube; low fumes does not mean zero exposure.

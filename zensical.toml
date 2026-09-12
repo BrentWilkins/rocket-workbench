@@ -1,0 +1,23 @@
+[project]
+site_name = "Rocket Workbench"
+site_url = "https://brentwilkins.github.io/rocket-workbench/"
+repo_url = "https://github.com/brentwilkins/rocket-workbench"
+docs_dir = "_site_docs"
+site_dir = "site"
+nav = [
+  { "Home" = "index.md" },
+  { "Review" = "docs/REVIEW.md" },
+  { "Plots" = "docs/PLOTS.md" },
+  { "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/AVIONICS.md", "docs/MEASUREMENTS.md"] },
+  { "Engineering" = ["docs/MODELING.md", "docs/ARCHITECTURE.md", "ROCKET_PROJECT_BRIEF.md"] },
+  { "Project" = ["README.md", "docs/DOCUMENTATION.md", "docs/PROGRESS.md", "docs/THIRD_PARTY.md"] },
+]
+
+[project.theme]
+font = false
+features = ["navigation.sections", "navigation.top", "content.code.copy"]
+
+[project.markdown_extensions]
+pymdownx.superfences.custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]

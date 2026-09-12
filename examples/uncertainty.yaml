@@ -1,0 +1,7 @@
+schema_version: 1
+print_mass_factors: [1.0, 1.2]
+payload_cg_offsets_mm: [-5, 5]
+chute_cd: [0.6, 0.9]
+wind_m_s: [0, 2, 4]
+max_cases: 72
+source: "Engineering stress envelope, not measured distributions: print mass +0/+20%, payload CG +/-5 mm, chute Cd 0.6/0.9, uniform wind 0/2/4 m/s"

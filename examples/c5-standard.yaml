@@ -1,0 +1,456 @@
+{
+  "schema_version": 1,
+  "name": "c5-standard-study",
+  "mode": "baseline",
+  "reference_file": null,
+  "geometry": {
+    "body_od": {
+      "value": 41.6,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "body_id": {
+      "value": 40.5,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "body_length": {
+      "value": 300.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "nose_length": {
+      "value": 70.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "wall": {
+      "value": 1.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "clearance": {
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "bay_length": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_root": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_tip": {
+      "value": 28.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_span": {
+      "value": 35.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_sweep": {
+      "value": 25.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_thickness": {
+      "value": 1.6,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "collar_length": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fairing_length": {
+      "value": 8.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "motor_mount_id": {
+      "value": 18.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "motor_mount_length": {
+      "value": 75.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "motor_mount_od": {
+      "value": 19.8,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "motor_overhang": {
+      "value": 3.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "chute_diameter": {
+      "value": 305.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "chute_packed_length": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "chute_packed_diameter": {
+      "value": 30.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    }
+  },
+  "material": "PLA",
+  "density": {
+    "value": 1.24,
+    "unit": "g/cm3",
+    "provenance": "demonstration assumption",
+    "source": "Full solid volume density assumption; replace with slicer and measured mass"
+  },
+  "purchased_masses": [
+    {
+      "role": "body",
+      "name": "BT-60 cardboard airframe",
+      "mass": {
+        "value": 15.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 220.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "mount",
+      "name": "18 mm motor mount tube, thrust ring, hook, two centering rings and adhesive",
+      "mass": {
+        "value": 8.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 332.5,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "chute",
+      "name": "Estes 12 inch parachute and lines",
+      "mass": {
+        "value": 6.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 180.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "harness",
+      "name": "Kevlar leader, elastic harness, swivel and knots",
+      "mass": {
+        "value": 5.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 165.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "wadding",
+      "name": "Recovery wadding",
+      "mass": {
+        "value": 2.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 240.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "lugs",
+      "name": "Two paper launch lugs and adhesive",
+      "mass": {
+        "value": 1.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 215.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "bay_hardware",
+      "name": "Bulkhead eye bolt, washers, nuts, sled screws and cable ties",
+      "mass": {
+        "value": 5.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 130.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "collar_adhesive",
+      "name": "Fin collar adhesive and tapered lip fillet",
+      "mass": {
+        "value": 1.5,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 337.5,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    },
+    {
+      "role": "thermal",
+      "name": "Flame-resistant bay shield and perimeter seal allowance",
+      "mass": {
+        "value": 2.0,
+        "unit": "g",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      "x": {
+        "value": 136.0,
+        "unit": "mm",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    }
+  ],
+  "payload": {
+    "identity": null,
+    "battery_identity": null,
+    "length": {
+      "value": 45.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "width": {
+      "value": 25.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "height": {
+      "value": 16.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "mass": {
+      "value": 18.0,
+      "unit": "g",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "cg_x": {
+      "value": 103.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "external_protrusions": false
+  },
+  "launch": {
+    "elevation": {
+      "value": 1600.0,
+      "unit": "m",
+      "provenance": "demonstration assumption",
+      "source": "Demonstration altitude, not an identified launch site"
+    },
+    "latitude": {
+      "value": 40.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "longitude": {
+      "value": -105.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_length": {
+      "value": 0.9144,
+      "unit": "m",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_angle": {
+      "value": 0.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_direction": {
+      "value": 0.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "wind_direction": {
+      "value": 90.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "wind_speeds": [
+      {
+        "value": 0.0,
+        "unit": "m/s",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      },
+      {
+        "value": 2.0,
+        "unit": "m/s",
+        "provenance": "demonstration assumption",
+        "source": "Provisional design choice; must be checked against selected parts"
+      }
+    ],
+    "seed": 42,
+    "atmosphere": "ISA",
+    "time_step": {
+      "value": 0.01,
+      "unit": "s",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "max_time": {
+      "value": 300.0,
+      "unit": "s",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    }
+  },
+  "motors": [
+    {
+      "designation": "C5",
+      "delay_s": 3,
+      "digest": "73a9ed8bd883e2de7c1684f76fb54ab3",
+      "max_liftoff_mass": {
+        "value": 226,
+        "unit": "g",
+        "provenance": "manufacturer specification",
+        "source": "https://estesrockets.com/products/c5-3-engines ; Technical Specifications, checked 2026-09-12"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "metric": "apogee_m",
+      "minimum": 30.0,
+      "maximum": 120.0,
+      "unit": "m",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "guide_departure_m_s",
+      "minimum": 12.0,
+      "maximum": null,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "minimum_ascent_stability_cal",
+      "minimum": 1.0,
+      "maximum": null,
+      "unit": "cal",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "deployment_speed_m_s",
+      "minimum": null,
+      "maximum": 10.0,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "landing_descent_m_s",
+      "minimum": null,
+      "maximum": 6.0,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    }
+  ],
+  "chute_cd": {
+    "value": 0.75,
+    "unit": "1",
+    "provenance": "demonstration assumption",
+    "source": "Engineering estimate for flat plastic chute; no measured Cd"
+  },
+  "printed_measurements": {}
+}

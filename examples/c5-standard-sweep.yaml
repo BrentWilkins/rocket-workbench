@@ -1,0 +1,7 @@
+schema_version: 1
+axes:
+  body_length: [300, 340, 380]
+  fin_span: [45, 55]
+  chute_diameter: [381]
+max_designs: 6
+source: "Follow-up: commercial 18 mm C5-3 with original 1.2 mm shell / 1.6 mm fins; keep stronger-print candidate dimensions while assessing low-altitude and payload tradeoffs. Strength remains unverified."

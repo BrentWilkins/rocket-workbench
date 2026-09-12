@@ -1,0 +1,12 @@
+{
+  "id": "design-005",
+  "parameters": {
+    "body_length": 260.0,
+    "fin_span": 45.0,
+    "chute_diameter": 457.0
+  },
+  "eligible": false,
+  "rank": null,
+  "status": "rejected inputs",
+  "error": "1 validation error for Config\n  Value error, Aft launch-lug sleeve overlaps collar fairing; increase body length [type=value_error, input_value={'schema_version': 1, 'na...inted_measurements': {}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+}

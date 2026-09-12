@@ -1,0 +1,9 @@
+schema_version: 1
+# Fixed grid, 27 designs × 24 scenarios, before packing rejections.
+# Bounds are design-search assumptions; wall thickness is held fixed.
+axes:
+  body_length: [260, 300, 340]
+  fin_span: [35, 45, 55]
+  chute_diameter: [305, 381, 457]
+max_designs: 27
+source: "Initial bounded engineering exploration; paper tube length, fin span, commercial nominal chute sizes in mm"
