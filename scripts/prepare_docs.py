@@ -28,6 +28,7 @@ def prepare(snapshot=False):
     evidence = ROOT / "docs-evidence"
     sources = list((ROOT / "docs").rglob("*.md"))
     sources += list((ROOT / "docs").glob("*.yaml"))
+    sources += [path for path in (ROOT / "docs" / "assets").rglob("*") if path.is_file()]
     sources += list((ROOT / "plots").glob("*.svg"))
     sources += [ROOT / "README.md", ROOT / "ROCKET_PROJECT_BRIEF.md"]
     pending = sources[:]

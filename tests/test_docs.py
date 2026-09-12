@@ -11,6 +11,8 @@ def test_prepare_uses_snapshot_and_preserves_relative_links(tmp_path):
     spec.loader.exec_module(module)
     module.ROOT = tmp_path
     (tmp_path / "docs").mkdir()
+    (tmp_path / "docs/assets").mkdir()
+    (tmp_path / "docs/assets/favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
     (tmp_path / "plots").mkdir()
     (tmp_path / "README.md").write_text("# Readme")
     (tmp_path / "ROCKET_PROJECT_BRIEF.md").write_text("# Brief")
@@ -24,3 +26,4 @@ def test_prepare_uses_snapshot_and_preserves_relative_links(tmp_path):
     assert not (tmp_path / "runs").exists()
     assert (tmp_path / "_site_docs/runs/example/results.csv").read_text() == "apogee_m\n123\n"
     assert (tmp_path / "_site_docs/index.md").read_text() == "# Home"
+    assert (tmp_path / "_site_docs/docs/assets/favicon.svg").is_file()
