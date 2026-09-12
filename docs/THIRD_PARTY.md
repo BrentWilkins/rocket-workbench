@@ -1,8 +1,7 @@
 # Third-party sources and licenses
 
-Inventory checked 2026-09-12 against installed package metadata and upstream
-sources. This is an attribution/dependency inventory, not legal advice or a
-redistribution clearance. No binaries are published by this task. Retain bundled
+Inventory checked 2026-09-12 against installed package metadata and upstream sources. This is an attribution/dependency
+inventory, not legal advice or a redistribution clearance. No binaries are published by this task. Retain bundled
 notices and review their full terms before distributing software or artifacts.
 
 | Component    | Tested identity                                                          | Source / license information                                                                                                                                                                            |
@@ -20,14 +19,11 @@ notices and review their full terms before distributing software or artifacts.
 | PyYAML       | 6.0.3                                                                    | [Source](https://github.com/yaml/pyyaml), MIT                                                                                                                                                           |
 | pytest       | 9.1.1                                                                    | [Source](https://github.com/pytest-dev/pytest), MIT                                                                                                                                                     |
 
-`uv.lock` records all transitive packages and hashes; this table is not a full
-transitive-license audit. The JAR checksum is
-`4959b72f52f5f607941e9722abbb7b7f0c4a38ebbbf84204a329db9f31c4f897`.
+`uv.lock` records all transitive packages and hashes; this table is not a full transitive-license audit. The JAR
+checksum is `4959b72f52f5f607941e9722abbb7b7f0c4a38ebbbf84204a329db9f31c4f897`.
 
-The unchanged `examples/upstream-simple.ork` is the reference from the pinned
-orhelper examples, attributed in the file to Sampo Niskanen. It is not our
-original rocket design. Its SHA256 is
-`f5f4de21acd2279895dfb7376c3353fd4e643b85adbcd034808b1af48f439c21`.
-Motor curves are the data bundled with the pinned OpenRocket engine; exact
-curve identity, attribution/description and sampled data are retained in the
-results. Manufacturer retail specifications are separately linked from inputs.
+The unchanged `examples/upstream-simple.ork` is the reference from the pinned orhelper examples, attributed in the file
+to Sampo Niskanen. It is not our original rocket design. Its SHA256 is
+`f5f4de21acd2279895dfb7376c3353fd4e643b85adbcd034808b1af48f439c21`. Motor curves are the data bundled with the pinned
+OpenRocket engine; exact curve identity, attribution/description and sampled data are retained in the results.
+Manufacturer retail specifications are separately linked from inputs.

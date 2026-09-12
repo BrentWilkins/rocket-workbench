@@ -1,8 +1,7 @@
 # Build and first-outing shopping guide
 
-Planning date: 2026-09-12. USD advertised prices/allowances, before tax/shipping;
-stock and local prices may differ. Nothing has been purchased. Hardware fit,
-strength and final motor selection remain unverified. The generic avionics bay
+Planning date: 2026-09-12. USD advertised prices/allowances, before tax/shipping; stock and local prices may differ.
+Nothing has been purchased. Hardware fit, strength and final motor selection remain unverified. The generic avionics bay
 does not require buying a battery or electronics now; see [AVIONICS](AVIONICS.md).
 
 ## Rocket parts
@@ -22,20 +21,20 @@ Quantities below build one rocket; package quantities often leave spares.
 | PVA wood glue for paper-to-paper joints; compatible two-part epoxy for plastic/paper joints | Small bottles/pack, mixing sticks and gloves                              | $12 allowance | Follow the chosen adhesive manufacturer's material and ventilation instructions; bond coupons before committing                                                                                                                                      |
 | Thin polyimide tape for removable cap seam sealing                                          | One small roll                                                            |  $6 allowance | Not a substitute for flame-resistant wadding or a thermal qualification                                                                                                                                                                              |
 
-Rocket-related packages total **$76.75**, including allowances and spares, before
-filament. Estimated consumed filament is roughly $2 at a planning rate of $25/kg;
+Rocket-related packages total
+**$76.75**, including allowances and spares, before
+filament. Estimated consumed filament is roughly $2 at a planning
+rate of $25/kg;
 use the actual slicer mass. Budget **about $80** for this package basket, or about
-**$101.75** if a new $25 filament spool is needed. This is not the per-rocket consumed
-material cost; tube/cord/lug packs and adhesives leave inventory for later builds.
+**$101.75** if a new $25 filament spool is needed. This is not the per-rocket consumed material cost; tube/cord/lug
+packs and adhesives leave inventory for later builds.
 
-Bay hardware design allowance: three M2 × 8 mm thread-forming screws for the
-cap, two M2 × 6 mm thread-forming screws for the sled foot, one M3 closed-eye
-bolt with approximately 10 mm threaded shank, two M3 washers (8–10 mm OD), one
-M3 locking nut, two 2.5 mm cable ties and a thin nonconductive cushioning pad.
-The CAD has 1.6 mm screw pilots, 2.2 mm clearance holes, and a 3.2 mm eye-bolt
-hole. Verify the particular screws' pilot requirements and eye-bolt projection;
-do not assume all M2 screws are interchangeable. Recovery load passes through
-printed bosses and must be tested. No battery is specified or included.
+Bay hardware design allowance: three M2 × 8 mm thread-forming screws for the cap, two M2 × 6 mm thread-forming screws
+for the sled foot, one M3 closed-eye bolt with approximately 10 mm threaded shank, two M3 washers (8–10 mm OD), one M3
+locking nut, two 2.5 mm cable ties and a thin nonconductive cushioning pad. The CAD has 1.6 mm screw pilots, 2.2 mm
+clearance holes, and a 3.2 mm eye-bolt hole. Verify the particular screws' pilot requirements and eye-bolt projection;
+do not assume all M2 screws are interchangeable. Recovery load passes through printed bosses and must be tested. No
+battery is specified or included.
 
 ## Reusable launch equipment and three-flight consumables
 
@@ -47,29 +46,27 @@ printed bosses and must be tested. No battery is specified or included.
 | Estes flame-resistant recovery wadding #2274        | One package, enough for three preparations with spares |        $5.99 | [Manufacturer](https://estesrockets.com/products/recovery-wadding); follow the package's tube-size packing instructions; includes extra layers shielding the bay cap                                                    |
 
 Launch equipment plus the eight-cell allowance: **$45.99**. Initial consumable
-packages: **$20.98**. Combined planning basket is **$143.72 plus filament**, or
-about **$170 with a new $25 spool**, excluding tools, tax and shipping. A three-
+packages: **$20.98**. Combined planning
+basket is **$143.72 plus filament**, or
+about **$170 with a new
+$25 spool**, excluding tools, tax and shipping. A three-
 flight plan is not permission to fly three times regardless of inspection.
-Nominal recurring cost is roughly $5 per motor plus wadding; replace damaged
-cords/chutes/parts rather than treating them as unlimited-life consumables.
+Nominal recurring cost is roughly $5
+per motor plus wadding; replace damaged cords/chutes/parts rather than treating them as unlimited-life consumables.
 
-Also needed if not already owned: calipers, a 0.1 g scale, ruler, cutting mat,
-fine saw/knife, deburring tools, small drivers, eye protection, suitable gloves,
-and field fire-safety supplies. Allow $40–80 for basic measuring/build tools;
-this is an unresearched planning allowance, not included above. Adult handling
-of cutting, hot printing, adhesives and launch preparation is assumed.
+Also needed if not already owned: calipers, a 0.1 g scale, ruler, cutting mat, fine saw/knife, deburring tools, small
+drivers, eye protection, suitable gloves, and field fire-safety supplies. Allow $40–80 for basic measuring/build tools;
+this is an unresearched planning allowance, not included above. Adult handling of cutting, hot printing, adhesives and
+launch preparation is assumed.
 
 ## Purchase gates
 
-BT-60 tubes (uncut), commercial recovery wadding, the shock-cord pack and reusable
-launch equipment are broadly reusable. The correct 18 mm-to-BT-60 mount and
-either listed chute are sensible provisional supplies, but keep packaging and
-measure them before fabrication. Do not buy 24 mm mounts or substitute a motor
-based only on its letter. Delay and thrust-curve identity matter.
+BT-60 tubes (uncut), commercial recovery wadding, the shock-cord pack and reusable launch equipment are broadly
+reusable. The correct 18 mm-to-BT-60 mount and either listed chute are sensible provisional supplies, but keep packaging
+and measure them before fabrication. Do not buy 24 mm mounts or substitute a motor based only on its letter. Delay and
+thrust-curve identity matter.
 
-Hold the final motor/delay, battery, sensor stack and bay fasteners until their
-respective mass/fit checks. The nominal C5-3 choice is a simulation result, not
-a physical launch approval. Consult the current [NAR Model Rocket Safety
-Code](https://www.nar.org/ModelRocketSafetyCode), component instructions, local
-rules, landowner permission and a local club/range officer. The workbench does
-not determine site legality or suitability.
+Hold the final motor/delay, battery, sensor stack and bay fasteners until their respective mass/fit checks. The nominal
+C5-3 choice is a simulation result, not a physical launch approval. Consult the current
+[NAR Model Rocket Safety Code](https://www.nar.org/ModelRocketSafetyCode), component instructions, local rules,
+landowner permission and a local club/range officer. The workbench does not determine site legality or suitability.

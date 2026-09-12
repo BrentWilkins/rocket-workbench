@@ -1,12 +1,10 @@
 # Adapter and artifact contracts
 
-The implemented domain is `Config` (Pydantic, schema version 1), not an OpenRocket
-or CadQuery object. `cad.build(Config, output)` returns plain part mass/CG records;
-`flight_model.generate(Config, parts, loading, path)` exports native XML and an
-independent dry ledger. `Engine` owns Java objects internally and returns plain
-JSON-compatible simulation records. `report.evaluate(result, Config)` separates
-execution, numeric criteria and missing physical checks. No OpenFOAM/control
-packages or placeholder physics are required.
+The implemented domain is `Config` (Pydantic, schema version 1), not an OpenRocket or CadQuery object.
+`cad.build(Config, output)` returns plain part mass/CG records; `flight_model.generate(Config, parts, loading, path)`
+exports native XML and an independent dry ledger. `Engine` owns Java objects internally and returns plain
+JSON-compatible simulation records. `report.evaluate(result, Config)` separates execution, numeric criteria and missing
+physical checks. No OpenFOAM/control packages or placeholder physics are required.
 
 Concrete existing boundary examples:
 
@@ -30,19 +28,16 @@ Concrete existing boundary examples:
 }
 ```
 
-These fragments illustrate types, not measured or simulated values. Actual full
-schemas/records are in the example configurations and retained results. A case
-ID is unique within its timestamp/UUID run; configuration/content hashes connect
-a printed revision to its assumptions. Future observations should reference run
-ID, configuration SHA256, part hashes, as-built measurements and case ID, with
-their own timestamps/sensor calibration and coordinate conventions. Missing
-outputs remain null. Do not serialize Java instances into domain artifacts.
+These fragments illustrate types, not measured or simulated values. Actual full schemas/records are in the example
+configurations and retained results. A case ID is unique within its timestamp/UUID run; configuration/content hashes
+connect a printed revision to its assumptions. Future observations should reference run ID, configuration SHA256, part
+hashes, as-built measurements and case ID, with their own timestamps/sensor calibration and coordinate conventions.
+Missing outputs remain null. Do not serialize Java instances into domain artifacts.
 
-Current recovery contract is a parachute with diameter, packing envelope, Cd and
-motor-ejection delay. Environment carries explicit ISA/site/guide/wind/seed.
-Neither is silently upgraded into a canopy/control or wind-profile simulation.
-Unsupported external protrusions and unknown configuration fields are errors.
-Schema migration must be explicit; old development runs remain preserved.
+Current recovery contract is a parachute with diameter, packing envelope, Cd and motor-ejection delay. Environment
+carries explicit ISA/site/guide/wind/seed. Neither is silently upgraded into a canopy/control or wind-profile
+simulation. Unsupported external protrusions and unknown configuration fields are errors. Schema migration must be
+explicit; old development runs remain preserved.
 
 ## Future aerodynamic dataset contract (not implemented)
 
@@ -63,17 +58,13 @@ provenance: required solver/version/mesh/boundaries/convergence/benchmark
 out_of_range: error
 ```
 
-The area is an illustrative circular body reference; a future importer must
-verify conventions and units, not accept this fragment as usable data. Specify
-whether moments are about the nose, CG or another point and transform them
-explicitly. Preserve native results alongside any externally supplied data.
-Lookup/override support in the pinned engine must be investigated before an
-importer is implemented; no coefficient importer exists in this MVP.
+The area is an illustrative circular body reference; a future importer must verify conventions and units, not accept
+this fragment as usable data. Specify whether moments are about the nose, CG or another point and transform them
+explicitly. Preserve native results alongside any externally supplied data. Lookup/override support in the pinned engine
+must be investigated before an importer is implemented; no coefficient importer exists in this MVP.
 
-A future CFD adapter would export a selected case and return a traceable dataset,
-not run on every CAD change. Require a named question, benchmark and mesh/time-
-step convergence. Flexible parachutes and precision recovery need separately
-scoped models and measured behavior, including sensing, actuation, delay and
-failure modes. A native Python engine port is also a separate parity project,
-not a replacement justified by a few matching trajectories. Preserve upstream
+A future CFD adapter would export a selected case and return a traceable dataset, not run on every CAD change. Require a
+named question, benchmark and mesh/time- step convergence. Flexible parachutes and precision recovery need separately
+scoped models and measured behavior, including sensing, actuation, delay and failure modes. A native Python engine port
+is also a separate parity project, not a replacement justified by a few matching trajectories. Preserve upstream
 licenses for any translated code.

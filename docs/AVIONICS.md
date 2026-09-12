@@ -1,55 +1,43 @@
 # Generic avionics provision
 
-User decision, 2026-09-12: keep the bay generic. Several XIAO boards are owned,
-but no variant is selected and no battery is owned/selected. Reserve configurable
-capacity for future altitude, IMU and possibly GPS logging. Exact hardware
-selection is not a blocker to the provisional software review package.
+User decision, 2026-09-12: keep the bay generic. Several XIAO boards are owned, but no variant is selected and no
+battery is owned/selected. Reserve configurable capacity for future altitude, IMU and possibly GPS logging. Exact
+hardware selection is not a blocker to the provisional software review package.
 
-The current combined payload target is 45 × 25 × 16 mm and 18 g, including any
-board, battery, sensors, insulation, wiring and connectors. This is **not** a
-claim that all those components fit simultaneously. Configuration validation,
-actual envelope measurements and a revised mass/CG model are required when
-hardware is selected. The generic sled uses tie slots rather than a particular
-XIAO hole pattern. Its own mounting holes are fixed v1 interfaces, not XIAO pins.
+The current combined payload target is 45 × 25 × 16 mm and 18 g, including any board, battery, sensors, insulation,
+wiring and connectors. This is **not** a claim that all those components fit simultaneously. Configuration validation,
+actual envelope measurements and a revised mass/CG model are required when hardware is selected. The generic sled uses
+tie slots rather than a particular XIAO hole pattern. Its own mounting holes are fixed v1 interfaces, not XIAO pins.
 
-Empty and secured dummy-load flights remain supported without powered avionics.
-The case called `actual` in the CLI is currently a provisional combined payload,
-not the user's measured electronics. Do not purchase a battery on the assumption
-that this envelope or an arbitrary XIAO charging circuit makes it compatible.
+Empty and secured dummy-load flights remain supported without powered avionics. The case called `actual` in the CLI is
+currently a provisional combined payload, not the user's measured electronics. Do not purchase a battery on the
+assumption that this envelope or an arbitrary XIAO charging circuit makes it compatible.
 
 ## Expansion options, researched 2026-09-12
 
-XIAO add-ons are generally called expansion boards or sensor breakouts, rather
-than Raspberry Pi HATs. Examples (not an approved shopping list):
+XIAO add-ons are generally called expansion boards or sensor breakouts, rather than Raspberry Pi HATs. Examples (not an
+approved shopping list):
 
-- [XIAO expansion base](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/)
-  provides a convenient development platform. Do not assume the whole base fits
-  this slender flight bay; small wired modules can be more space-efficient.
-- [Grove SPA06-003 barometer](https://wiki.seeedstudio.com/grove_barometer_sensor_spa06_003/)
-  is a 3.3 V I2C/SPI pressure sensor module. Pressure data can support relative
-  altitude logging. Published board dimensions are 40 × 20 × 6.5 mm, before
-  connector/wire routing; a full stack still needs layout and mass verification.
-- [Grove BMI088 IMU](https://wiki.seeedstudio.com/Grove-6-Axis_Accelerometer%26Gyroscope_BMI088/)
-  combines accelerometer and gyroscope, with selectable acceleration range up to
-  ±24 g. Range, sampling rate, vibration, mounting and clipping must be evaluated
-  against the actual flight; it is not a certified rocket flight computer.
-- [L76-L GNSS for XIAO](https://wiki.seeedstudio.com/gnss_for_xiao/)
-  is a XIAO-specific satellite-positioning expansion. Check exact board revision,
-  pin conflicts, antenna placement and power before choosing it. GPS reception
-  alone does not provide a way to find the rocket remotely: telemetry or a
-  postflight readout is a separate system.
+- [XIAO expansion base](https://wiki.seeedstudio.com/Seeeduino-XIAO-Expansion-Board/) provides a convenient development
+  platform. Do not assume the whole base fits this slender flight bay; small wired modules can be more space-efficient.
+- [Grove SPA06-003 barometer](https://wiki.seeedstudio.com/grove_barometer_sensor_spa06_003/) is a 3.3 V I2C/SPI
+  pressure sensor module. Pressure data can support relative altitude logging. Published board dimensions are 40 × 20 ×
+  6.5 mm, before connector/wire routing; a full stack still needs layout and mass verification.
+- [Grove BMI088 IMU](https://wiki.seeedstudio.com/Grove-6-Axis_Accelerometer%26Gyroscope_BMI088/) combines accelerometer
+  and gyroscope, with selectable acceleration range up to ±24 g. Range, sampling rate, vibration, mounting and clipping
+  must be evaluated against the actual flight; it is not a certified rocket flight computer.
+- [L76-L GNSS for XIAO](https://wiki.seeedstudio.com/gnss_for_xiao/) is a XIAO-specific satellite-positioning expansion.
+  Check exact board revision, pin conflicts, antenna placement and power before choosing it. GPS reception alone does
+  not provide a way to find the rocket remotely: telemetry or a postflight readout is a separate system.
 
-Suggested later sequence: barometric altitude logging, then IMU logging, then
-GPS if location data justifies its extra packaging and power. No firmware,
-telemetry, active guidance or deployment electronics are included in this MVP.
+Suggested later sequence: barometric altitude logging, then IMU logging, then GPS if location data justifies its extra
+packaging and power. No firmware, telemetry, active guidance or deployment electronics are included in this MVP.
 
 ## Pressure sensing changes the bay requirements
 
-The current protective bay is not a validated barometric sampling chamber.
-A future pressure sensor needs a deliberately designed ambient static-pressure
-vent path, while remaining isolated from the motor ejection-gas volume. A fully
-sealed bay cannot simply be assumed to report outside pressure. Vent placement,
-dynamic-pressure error, pressure lag and ejection transients need separate design
-and testing before interpreting its data. No vent holes are silently added to
-the current CAD. The first version can carry an unpowered surrogate without
-claiming that barometric electronics are ready.
+The current protective bay is not a validated barometric sampling chamber. A future pressure sensor needs a deliberately
+designed ambient static-pressure vent path, while remaining isolated from the motor ejection-gas volume. A fully sealed
+bay cannot simply be assumed to report outside pressure. Vent placement, dynamic-pressure error, pressure lag and
+ejection transients need separate design and testing before interpreting its data. No vent holes are silently added to
+the current CAD. The first version can carry an unpowered surrogate without claiming that barometric electronics are
+ready.
