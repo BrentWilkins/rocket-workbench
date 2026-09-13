@@ -1,10 +1,13 @@
 # Generic avionics provision
 
+**New component-level variant:** [real-part avionics specification and CAD](AVIONICS_DESIGN.md). The generic 18 g
+placeholder below is historical; it remains available for comparisons and does not describe the new hardware package.
+
 User decision, 2026-09-12: keep the bay generic. Several XIAO boards are owned, but no variant is selected and no
 battery is owned/selected. Reserve configurable capacity for future altitude, IMU and possibly GPS logging. Exact
 hardware selection is not a blocker to the provisional software review package.
 
-The current combined payload target is 45 × 25 × 16 mm and 18 g, including any board, battery, sensors, insulation,
+The historical generic payload target was 45 × 25 × 16 mm and 18 g, including any board, battery, sensors, insulation,
 wiring and connectors. This is **not** a claim that all those components fit simultaneously. Configuration validation,
 actual envelope measurements and a revised mass/CG model are required when hardware is selected. The generic sled uses
 tie slots rather than a particular XIAO hole pattern. Its own mounting holes are fixed v1 interfaces, not XIAO pins.
@@ -34,6 +37,18 @@ Suggested later sequence: barometric altitude logging, then IMU logging, then GP
 packaging and power. No firmware, telemetry, active guidance or deployment electronics are included in this MVP.
 
 ## Pressure sensing changes the bay requirements
+
+Required when adding a pressure sensor: include static-pressure breathing holes in the CAD, not just the electronics
+model. Size their total area against the actual free chamber volume and required pressure response; choose placement
+away from nose/shoulder disturbances and verify the assembled airflow path. Keep the sensing chamber isolated from
+ejection gases. Record hole count, diameter, wall thickness and location, and verify the printed holes are clear.
+Dimensions remain pending the sensor/chamber layout; the current sealed CAD is not a barometer-ready design.
+
+A forward-facing opening tends to collect ram pressure and bias the inferred altitude low. A flush side opening samples
+local surface pressure, which is not inherently below ambient: its bias depends on placement, angle of attack and
+surrounding geometry. Use an appropriate straight-body static-port region away from shoulders, lugs and fins; multiple
+circumferential ports reduce directional effects but do not cancel all aerodynamic bias. Do not put arbitrary holes
+through the cone. See [altimeter installation guidance](https://www.apogeerockets.com/Peak-of-Flight/Newsletter543).
 
 The current protective bay is not a validated barometric sampling chamber. A future pressure sensor needs a deliberately
 designed ambient static-pressure vent path, while remaining isolated from the motor ejection-gas volume. A fully sealed

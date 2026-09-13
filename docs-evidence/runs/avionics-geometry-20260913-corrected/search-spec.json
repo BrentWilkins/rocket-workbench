@@ -1,0 +1,30 @@
+{
+  "nose_shapes": [
+    "conical",
+    "ogive",
+    "ellipsoid"
+  ],
+  "nose_lengths_mm": [
+    50,
+    70,
+    90
+  ],
+  "body_lengths_mm": [
+    410,
+    440
+  ],
+  "fin_spans_mm": [
+    45,
+    50,
+    55
+  ],
+  "maximum_designs": 54,
+  "payload_budget_g": 20.65,
+  "bay_length_mm": 145,
+  "objectives": [
+    "maximize worst-wind loaded apogee",
+    "maximize worst-wind loaded powered speed"
+  ],
+  "constraints": "All six nominal load/wind cases for a motor must meet existing gates; no physical eligibility",
+  "limitations": "Fixed tube, wall, fin chord/thickness, chute and sealed avionics layout; not global optimization. Ogive drag has an unresolved upstream modeling caveat."
+}

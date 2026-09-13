@@ -1,0 +1,13 @@
+[
+  {
+    "design": "conical-n50-b410-f45",
+    "motor": "C5-3",
+    "nominal_feasible": true,
+    "apogee_m": 57.620309734365485,
+    "speed_m_s": 22.949080695152468,
+    "stability_cal": 1.68448004914887,
+    "completed": 6,
+    "cases": 6,
+    "packaging_fit": true
+  }
+]

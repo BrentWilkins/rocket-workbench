@@ -179,6 +179,18 @@ def test_reference_metrics_repeatability_and_errors(engine):
             assert result['metrics'][metric] == pytest.approx(result['engine_summary'][metric], abs=1e-6)
         assert result['metrics']['landing_total_speed_m_s'] == pytest.approx(result['engine_summary']['landing_total_speed_m_s'], abs=1e-6)
         assert result['metrics']['landing_descent_m_s'] <= result['metrics']['landing_total_speed_m_s']+.05
+        metrics = result['metrics']
+        assert metrics['powered_data_complete']
+        assert metrics['powered_samples'] > 5
+        ts = result['timeseries']
+        lift = next(e['time_s'] for e in result['events'] if e['type'] == 'LIFTOFF')
+        burnout = next(e['time_s'] for e in result['events'] if e['type'] == 'BURNOUT')
+        samples = [i for i, t in enumerate(ts['time_s']) if lift <= t < burnout and ts['thrust_n'][i] > 0]
+        assert metrics['peak_powered_acceleration_g'] == pytest.approx(max(ts['acceleration_m_s2'][i] for i in samples)/9.80665)
+        assert metrics['peak_powered_specific_force_estimate_g'] == pytest.approx(max(
+            (ts['acceleration_xy_m_s2'][i]**2 + (ts['acceleration_z_m_s2'][i]+ts['gravity_m_s2'][i])**2)**.5
+            for i in samples)/9.80665)
+        assert lift <= metrics['peak_powered_specific_force_estimate_g_time_s'] < burnout
         records.append(result)
     assert records[0]['timeseries'] == records[2]['timeseries']
     bad_motor = config.motors[0].model_copy(update={'digest':'0'*32})

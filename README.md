@@ -5,9 +5,10 @@ or LLM is needed inside the workflow. This is a **provisional review package**, 
 
 For the local Zensical site and GitHub Pages setup, see [documentation](docs/DOCUMENTATION.md).
 
-Start with [review findings](docs/REVIEW.md), [build instructions](docs/BUILD.md), [shopping guide](docs/SHOPPING.md),
-and [generic avionics scope](docs/AVIONICS.md). `docs/PROGRESS.md` distinguishes software evidence from pending physical
-work.
+Start with [current designs, simulations and downloads](docs/CURRENT_DESIGN.md), [build instructions](docs/BUILD.md),
+[shopping guide](docs/SHOPPING.md), and [component-level avionics](docs/AVIONICS_DESIGN.md). The
+[original MVP review](docs/REVIEW.md) is historical; all physical fit, strength, pressure and flight checks remain
+pending.
 
 ## Setup
 

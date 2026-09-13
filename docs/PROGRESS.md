@@ -2,7 +2,18 @@
 
 Implementation started 2026-09-12 from ROCKET_PROJECT_BRIEF.md.
 
-## Evidence-backed status
+## Current avionics milestone
+
+See [current designs](CURRENT_DESIGN.md) for the corrected 54-geometry search (1,620 flights), three-option uncertainty
+comparison (432 flights), and full nominal/upper performance-option comparison (60 flights). The recovery-wadding CG
+error is corrected and guarded by validation. Component-level mass, detailed/keepout CAD, renders, fresh
+print-orientation analysis and the native six-part V5 project are supplied. No candidate clears the complete stress
+envelope.
+
+## Historical MVP evidence
+
+This table records the first MVP milestone, not the current avionics configuration or current test count. See the
+[component-level hardware work](AVIONICS_DESIGN.md) for the later mass, CAD and simulation revisions.
 
 | Requirement                                               | Status / evidence                                                                                                                                                                                            |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

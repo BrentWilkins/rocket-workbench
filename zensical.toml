@@ -6,10 +6,11 @@ docs_dir = "_site_docs"
 site_dir = "site"
 nav = [
   { "Home" = "index.md" },
-  { "Review" = "docs/REVIEW.md" },
+  { "Current designs" = "docs/CURRENT_DESIGN.md" },
+  { "Historical MVP review" = "docs/REVIEW.md" },
   { "Plots" = "docs/PLOTS.md" },
-  { "Build & hardware" = ["docs/BUILD.md", "docs/LUG_SADDLES.md", "docs/SHOPPING.md", "docs/AVIONICS.md", "docs/MEASUREMENTS.md"] },
-  { "Engineering" = ["docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/MODELING.md", "docs/ARCHITECTURE.md", "ROCKET_PROJECT_BRIEF.md"] },
+  { "Build & hardware" = ["docs/BUILD.md", "docs/LUG_SADDLES.md", "docs/SHOPPING.md", "docs/AVIONICS.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
+  { "Engineering" = ["docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/MODELING.md", "docs/ARCHITECTURE.md", "ROCKET_PROJECT_BRIEF.md"] },
   { "Project" = ["README.md", "docs/DOCUMENTATION.md", "docs/PROGRESS.md", "docs/THIRD_PARTY.md"] },
 ]
 

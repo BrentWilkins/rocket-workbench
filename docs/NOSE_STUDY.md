@@ -1,5 +1,9 @@
 # Bounded nose comparison
 
+> **Historical study — generic 18 g payload and 65 mm bay.** These rankings and downloads do not describe the
+> [current component-level avionics comparison](CURRENT_DESIGN.md). The nose/geometry search has been repeated with that
+> hardware; do not apply the old stress pass counts to the heavier, longer-bay rocket.
+
 The best fit-check candidate from this search is the **50 mm cone**, not a claim of globally optimal aerodynamics. It
 removes 20 mm and approximately 1.26 g from the 70 mm cone while preserving the 65 mm internal bay. The existing body,
 fins, revised lug saddles, and 18-inch parachute remain unchanged.

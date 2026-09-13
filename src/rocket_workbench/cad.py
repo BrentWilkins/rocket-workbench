@@ -28,16 +28,19 @@ def shapes(config: Config):
     boss_points = []
     for deg in [30, 150, 270]:
         a = math.radians(deg)
-        x, y = (ri - 2.2) * math.cos(a), (ri - 2.2) * math.sin(a)
+        boss_offset = 1.7 if config.avionics_profile else 2.2
+        x, y = (ri - boss_offset) * math.cos(a), (ri - boss_offset) * math.sin(a)
         boss_points.append((x, y))
-        boss = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(2.8).extrude(8)
+        boss = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(2.2 if config.avionics_profile else 2.8).extrude(8)
+        if config.avionics_profile:
+            boss = boss.intersect(cq.Workplane('XY', origin=(0,0,n+b-11)).circle(ri).extrude(8))
         pilot = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(0.8).extrude(8)
         nose = nose.union(boss).cut(pilot)
     cap = cq.Workplane('XY', origin=(0, 0, n + b - 3)).circle(ri).extrude(3)
     for x, y in boss_points + [(0, 0), (-10, -8), (10, -8)]:
         radius = 1.6 if (x, y) == (0, 0) else 1.1
         cap = cap.cut(cq.Workplane('XY', origin=(x, y, n+b-3)).circle(radius).extrude(3))
-    width = config.payload.width.value + 4
+    width = 28 if config.avionics_profile else config.payload.width.value + 4
     sled = cq.Workplane('XY', origin=(0, -11, n+5)).rect(width, 2).extrude(b-8)
     foot = cq.Workplane('XY', origin=(0, -8, n+b-7)).rect(width, 8).extrude(4)
     sled = sled.union(foot)
@@ -46,6 +49,35 @@ def shapes(config: Config):
     for z in [n+12, n+b-17]:
         for x in [-width/2+3, width/2-3]:
             sled = sled.cut(cq.Workplane('XY', origin=(x, -11, z)).box(3, 4, 3))
+    if config.avionics_profile:
+        from .avionics import cut_ports, vent_interface
+        nose = cut_ports(nose, config)
+        for station in vent_interface(config)['seal_stations_mm']:
+            groove = cq.Workplane('XY', origin=(0, 0, station-.65)).circle(ri+.1).circle(ri-.5).extrude(1.3)
+            nose = nose.cut(groove)
+        # Lift the sled's forward end clear of the antenna. The transverse shelf
+        # supports a separately tied patch antenna, not its fragile coax connector.
+        sled = sled.cut(cq.Workplane('XY', origin=(0, 0, n)).box(60, 60, 34))
+        shelf = cq.Workplane('XY', origin=(0, 0, n+18)).box(26, 26, 2)
+        sled = sled.union(shelf)
+        # Padded, separately strapped pockets. Rails carry side loads instead of
+        # relying on soldered pins, the battery lead or antenna coax as restraints.
+        for x in [-10.5, 10.5]:
+            sled = sled.union(cq.Workplane('XY', origin=(x,-2.1,n+39)).box(1.6,16.2,26))
+        for x in [-11.8, 11.8]:
+            sled = sled.union(cq.Workplane('XY', origin=(x,-6.1,n+73)).box(2,8.2,32))
+        for z in [n+56.5, n+89.5]:
+            sled = sled.union(cq.Workplane('XY', origin=(0,-6.1,z)).box(25.6,8.2,1.6))
+        for x in [-11, 11]:
+            for z in [n+31, n+47, n+63, n+83]:
+                sled = sled.cut(cq.Workplane('XY', origin=(x, -11, z)).box(3, 4, 3))
+        for x in [-9, 9]:
+            shelf_slot = cq.Workplane('XY', origin=(x, 0, n+18)).box(2, 6, 4)
+            sled = sled.cut(shelf_slot)
+        # Close aft ends of the two sled screw holes. Remaining cap/eye-bolt
+        # penetrations need the specified sealing washers and perimeter seal.
+        for x in [-10, 10]:
+            cap = cap.union(cq.Workplane('XY', origin=(x, -8, n+b-1.2)).circle(1.1).extrude(1.2))
     collar_start = n + g.mm('body_length') - g.mm('collar_length')
     collar_inner = r + g.mm('clearance')
     collar_outer = collar_inner + w
@@ -121,6 +153,37 @@ def build(config: Config, out: Path) -> dict:
         assembly.add(part, name=name, color=cq.Color(color))
     g = config.geometry
     tube = cq.Workplane('XY', origin=(0, 0, g.mm('nose_length'))).circle(g.mm('body_od')/2).circle(g.mm('body_id')/2).extrude(g.mm('body_length'))
+    if config.avionics_profile:
+        from .avionics import cut_ports, keepouts, components, vent_interface, pressure_screen
+        tube = cut_ports(tube, config)
+        hardware = cq.Assembly(name='avionics-keepouts-not-for-printing')
+        for name, envelope in keepouts(config).items():
+            hardware.add(envelope, name=name, color=cq.Color(0.2, 0.65, 0.6, 0.5))
+        hardware.export(str(out/'avionics-keepouts.step'))
+        assembly.add(hardware, name='avionics-not-for-printing')
+        from .avionics import detail_models, stack_pins, fit_report, layout_svg
+        detailed = cq.Assembly(name='engineering-avionics-approximation')
+        for name, model in detail_models(config).items():
+            detailed.add(model, name=name)
+        detailed.add(stack_pins(config), name='stack-pins')
+        detailed.export(str(out/'avionics-detailed.step'))
+        installed = cq.Assembly(name='avionics-installed-section')
+        installed.add(detailed, name='electronics-approximations')
+        for name in ['nose-bay','payload-sled','bay-bulkhead']:
+            installed.add(parts[name], name=name, color=cq.Color(.65,.7,.75,.25))
+        installed.export(str(out/'avionics-installed.step'))
+        checked_fit = fit_report(config, parts)
+        if not checked_fit['passed']:
+            raise ValueError(f'Avionics installed/insertion fit failed: {checked_fit}')
+        (out/'avionics-fit.json').write_text(json.dumps(checked_fit, indent=2)+'\n')
+        layout_svg(config, out/'avionics-layout.svg')
+        for index, station in enumerate(vent_interface(config)['seal_stations_mm']):
+            # Compressed rectangular seal envelope, not an elastomer manufacturing model.
+            seal = cq.Workplane('XY', origin=(0, 0, station-.65)).circle(g.mm('body_id')/2).circle(
+                g.mm('body_id')/2-g.mm('clearance')-.5).extrude(1.3)
+            assembly.add(seal, name=f'purchased-seal-envelope-{index}', color=cq.Color('black'))
+        (out/'avionics.json').write_text(json.dumps(dict(components=components(),
+            static_ports=vent_interface(config), pressure_screen=pressure_screen(config)), indent=2)+'\n')
     assembly.add(tube, name='purchased-BT60', color=cq.Color(0.65, 0.55, 0.35, 0.3))
     end = g.mm('nose_length')+g.mm('body_length')
     mount_start = end-g.mm('motor_mount_length')-g.mm('motor_overhang')
@@ -140,7 +203,11 @@ def build(config: Config, out: Path) -> dict:
                .circle(guide['lug_inner_radius']).extrude(guide['length']))
         assembly.add(lug, name=f'purchased-paper-lug-{index+1}', color=cq.Color('brown'))
     assembly.export(str(out / 'assembly.step'))
-    (out / 'interfaces.json').write_text(json.dumps({'launch_guide': guide}, indent=2)+'\n')
+    interfaces = {'launch_guide': guide}
+    if config.avionics_profile:
+        from .avionics import vent_interface
+        interfaces['static_ports'] = vent_interface(config)
+    (out / 'interfaces.json').write_text(json.dumps(interfaces, indent=2)+'\n')
     (out / 'mass-properties.json').write_text(json.dumps(records, indent=2)+'\n')
     preview(config, out / 'assembly.svg')
     return records
@@ -167,6 +234,8 @@ def preview(config: Config, path: Path):
 <path d="M{start} {-r} L{start+g.mm('fin_sweep')} {-r-span} L{start+g.mm('fin_sweep')+g.mm('fin_tip')} {-r-span} L{end} {-r} Z" fill="#ce6258" stroke="#333"/>
 <text x="0" y="-78">PROVISIONAL — axial dimensions in mm; not a fabrication approval</text>
 <text x="5" y="48">Printed nose</text><text x="{n}" y="65">Sealed removable bay / sled</text>
-<text x="{n+80}" y="48">Chute + harness</text><text x="{start-10}" y="-68">Printed fin collar</text>
+<text x="{n+80}" y="48">Chute + harness</text>
+<path d="M{start-12} -53 H{start-28} V{-r-8} H{start+8}" fill="none" stroke="#526070" stroke-width="0.7"/>
+<text x="{start-32}" y="-50" text-anchor="end">Printed fin collar</text>
 <text x="{end-90}" y="65">Purchased motor mount</text>
 <text x="0" y="105">Nose tip x=0 → aft x={end:g}; body OD {2*r:g}; length {length:g}</text></svg>''')

@@ -1,8 +1,10 @@
 # Build and first-outing shopping guide
 
 Planning date: 2026-09-12. USD advertised prices/allowances, before tax/shipping; stock and local prices may differ.
-Nothing has been purchased. Hardware fit, strength and final motor selection remain unverified. The generic avionics bay
-does not require buying a battery or electronics now; see [AVIONICS](AVIONICS.md).
+Nothing has been purchased. Hardware fit, strength and final motor selection remain unverified. The basket below is the
+original rocket-hardware budget, not a complete bill of materials for the newer
+[XIAO/GNSS/barometer/battery specification](AVIONICS_DESIGN.md). Electronics, extra retention and bay seals are
+additional.
 
 ## Rocket parts
 
@@ -10,7 +12,7 @@ Quantities below build one rocket; package quantities often leave spares.
 
 | Item                                                                                        | Buy / use                                                                 |  Package cost | Source and qualification                                                                                                                                                                                                                             |
 | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Estes BT-60 paper airframe #3089                                                            | One 3-tube pack / one tube                                                |        $11.29 | [Manufacturer](https://estesrockets.com/products/bt-60-body-tube); leave uncut until selecting 340 or 380 mm candidate and measuring ID/OD                                                                                                           |
+| Estes BT-60 paper airframe #3089                                                            | One 3-tube pack / one tube                                                |        $11.29 | [Manufacturer](https://estesrockets.com/products/bt-60-body-tube); leave uncut until selecting the current candidate and measuring ID/OD                                                                                                             |
 | Estes regular 18 mm mount #3158                                                             | One kit / BT-60 ring pair, one mount tube, block, hook and hold-down ring |         $7.99 | [Kit listing](https://www.erockets.biz/estes-flying-model-rocket-part-engine-mount-standard-18mm-to-bt-50-55-60-est-3158/); three mount sets but only one BT-60 ring pair; nominal tube length 2.75 in                                               |
 | Estes 15-inch chute #2265 **or** 18-inch LDPE chute #2267                                   | One preassembled chute with lines                                         |         $6.49 | [15 inch](https://estesrockets.com/products/15-inch-printed-parachute), [18 inch](https://estesrockets.com/products/18-inch-printed-parachute); 18 inch is the larger-recovery alternative, not an automatic substitution in a 15-inch configuration |
 | Estes Shock Cords & Mount Pack #2278                                                        | One pack / its 1/4 × 36 inch rubber cord                                  |         $6.99 | [Manufacturer](https://estesrockets.com/products/shock-cords-mount-pack); also contains two shorter cords and paper mounts                                                                                                                           |
@@ -34,7 +36,8 @@ for the sled foot, one M3 closed-eye bolt with approximately 10 mm threaded shan
 locking nut, two 2.5 mm cable ties and a thin nonconductive cushioning pad. The CAD has 1.6 mm screw pilots, 2.2 mm
 clearance holes, and a 3.2 mm eye-bolt hole. Verify the particular screws' pilot requirements and eye-bolt projection;
 do not assume all M2 screws are interchangeable. Recovery load passes through printed bosses and must be tested. No
-battery is specified or included.
+battery is included in this historical basket; the separate avionics specification identifies a provisional 150 mAh
+cell.
 
 ## Reusable launch equipment and three-flight consumables
 

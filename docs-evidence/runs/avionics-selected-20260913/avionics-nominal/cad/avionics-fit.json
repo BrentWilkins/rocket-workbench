@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "components": [
+    {
+      "component": "xiao-sense",
+      "radial_clearance_mm": 7.1346254861400205,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "l76k",
+      "radial_clearance_mm": 8.302488445135507,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "antenna",
+      "radial_clearance_mm": 0.46522368914976653,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "battery",
+      "radial_clearance_mm": 5.809653953978064,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "barometer",
+      "radial_clearance_mm": 8.39619208135141,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "battery-connector",
+      "radial_clearance_mm": 13.850000000000001,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "harness",
+      "radial_clearance_mm": 1.129954853330652,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    },
+    {
+      "component": "retention",
+      "radial_clearance_mm": 1.129954853330652,
+      "installed_intersection_mm3": 0.0,
+      "insertion_intersection_mm3": 0.0
+    }
+  ],
+  "sleeve_tube_intersection_mm3": 0.0,
+  "sled_insertion_intersection_mm3": 0.0,
+  "sled_outside_sweep_mm3": 0.0,
+  "minimum_component_radial_clearance_mm": 0.46522368914976653,
+  "assumptions": "Nominal solid geometry; compressed seals and flexible ties excluded from insertion sweep. Verify real friction and clearances."
+}

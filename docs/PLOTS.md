@@ -1,5 +1,10 @@
 # Flight plots
 
+> **Historical generic-payload plots.** These three designs predate the component-level avionics and longer bay. Their
+> altitude curves are not predictions for the current hardware configuration.
+
+See [current avionics performance and downloads](CURRENT_DESIGN.md) for the updated geometry comparison.
+
 These SVGs are drawn by our Python reporting code from saved OpenRocket results, not exported by OpenRocket's GUI. They
 show the actual loading at zero wind; consult the review reports for the full case matrix.
 

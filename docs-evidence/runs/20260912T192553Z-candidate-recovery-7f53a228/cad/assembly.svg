@@ -9,6 +9,8 @@
 <path d="M385.0 -20.8 L410.0 -75.8 L438.0 -75.8 L450.0 -20.8 Z" fill="#ce6258" stroke="#333"/>
 <text x="0" y="-78">PROVISIONAL — axial dimensions in mm; not a fabrication approval</text>
 <text x="5" y="48">Printed nose</text><text x="70.0" y="65">Sealed removable bay / sled</text>
-<text x="150.0" y="48">Chute + harness</text><text x="375.0" y="-68">Printed fin collar</text>
+<text x="150.0" y="48">Chute + harness</text>
+<path d="M373 -53 H357 V-28.8 H393" fill="none" stroke="#526070" stroke-width="0.7"/>
+<text x="353" y="-50" text-anchor="end">Printed fin collar</text>
 <text x="360.0" y="65">Purchased motor mount</text>
 <text x="0" y="105">Nose tip x=0 → aft x=450; body OD 41.6; length 380</text></svg>

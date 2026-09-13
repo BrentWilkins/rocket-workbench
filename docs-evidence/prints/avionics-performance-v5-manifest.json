@@ -1,0 +1,13 @@
+{
+  "source_run": "avionics-geometry-20260913-corrected/conical-n50-b410-f45",
+  "purpose": "Unsliced fit-check project; not flight-qualified",
+  "parts": {
+    "nose-bay.stl": "f3ea19d0c1ab59d919445d188ce76dd14cfb03b78d4139832fa024d653a1d5f5",
+    "bay-bulkhead.stl": "7f13cee702036c99446de1276a5033cfae219394b5c639eac39df6b1475c2268",
+    "payload-sled.stl": "b160dc129a2507b64457d71434d619a3b73e5b3ce6acde77097356e05334bf97",
+    "fin-collar.stl": "1977d77c3c110fe8e253a54565fcf5730296bd4ba2eacf84bf4b0fb69237d9ba",
+    "lug-sleeve-1.stl": "36ef857b4e7173ffad93b934d727ee00c0d90314842cf93a94bb824fe923e48a",
+    "lug-sleeve-2.stl": "36ef857b4e7173ffad93b934d727ee00c0d90314842cf93a94bb824fe923e48a"
+  },
+  "project_sha256": "6835890b964869e570b2bda21474bfede01473887737b179742394a27be5a0f6"
+}

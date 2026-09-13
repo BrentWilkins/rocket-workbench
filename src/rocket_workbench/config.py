@@ -132,6 +132,7 @@ class Config(Model):
     reference_file: str | None = None
     geometry: Geometry
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
+    avionics_profile: Literal['xiao-gnss-baro-v1'] | None = None
     material: Literal['PLA', 'PETG']
     density: Quantity
     purchased_masses: list[MassItem]
@@ -173,13 +174,30 @@ class Config(Model):
         w, h = p.width.require('mm', True), p.height.require('mm', True)
         inner = bore - 2 * g.mm('clearance') - 2 * wall
         # Sled thickness 2 mm and 2 mm installation clearance per side.
-        if math.hypot(w + 4, h + 6) > inner:
+        if not self.avionics_profile and math.hypot(w + 4, h + 6) > inner:
             raise ValueError('Avionics cross-section plus sled/service clearance exceeds bay bore')
-        if w < 20 or math.hypot((w+4)/2, 12) > inner/2:
+        if not self.avionics_profile and (w < 20 or math.hypot((w+4)/2, 12) > inner/2):
             raise ValueError('V1 sled must cover its two mounting holes and fit at its actual offset in the bay')
+        if self.avionics_profile:
+            from .avionics import components
+            for part in components():
+                x, y, z = part['center_mm']
+                dx, dy, dz = part['dimensions_mm']
+                if math.hypot(abs(x)+dx/2, abs(y)+dy/2) >= inner/2:
+                    raise ValueError('Avionics component keepout exceeds actual bay bore')
+                if 2*abs(x)+dx > w or 2*abs(y)+dy > h or z+dz/2 > p.length.require('mm', True):
+                    raise ValueError('Payload declared envelope omits component/routing space')
         if p.length.require('mm', True) + 15 > g.mm('bay_length'):
             raise ValueError('Avionics axial envelope plus service clearance exceeds bay length')
         p.mass.require('g', True)
+        if self.avionics_profile and (g.mm('bay_length') < 145 or g.mm('body_length') < 410):
+            raise ValueError('V1 static-port avionics requires bay >=145 mm and body >=410 mm')
+        if self.avionics_profile:
+            chute_end = self.mass_item('chute').x.value + g.mm('chute_packed_length')/2
+            mount_start = g.mm('nose_length')+g.mm('body_length')-g.mm('motor_mount_length')-g.mm('motor_overhang')
+            wadding = self.mass_item('wadding').x.value
+            if not chute_end+5 <= wadding <= mount_start-5:
+                raise ValueError('Avionics recovery wadding 10 mm allowance must lie between packed chute and motor mount')
         if not g.mm('nose_length')+5 <= p.cg_x.require('mm') <= g.mm('nose_length') + g.mm('bay_length')-10:
             raise ValueError('Payload CG must be within the nose/bay region')
         if p.external_protrusions:
@@ -234,6 +252,9 @@ class Config(Model):
         out.append('Assembled mass/CG, print fit, attachment strength and recovery separation checks')
         if self.mode == 'baseline':
             out.append('V2 saddle bond strength and adhesive mass require physical checks; saddle-specific aerodynamic drag is unresolved')
+        if self.avionics_profile:
+            out.append('Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is not physical validation')
+            out.append('Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require bench/flight validation')
         return out
 
 

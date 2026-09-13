@@ -160,7 +160,9 @@ class Engine:
                      speed_m_s='TYPE_VELOCITY_TOTAL', east_m='TYPE_POSITION_X', north_m='TYPE_POSITION_Y',
                      cg_x_m='TYPE_CG_LOCATION', cp_x_m='TYPE_CP_LOCATION', reference_length_m='TYPE_REFERENCE_LENGTH',
                      mass_kg='TYPE_MASS', mach='TYPE_MACH_NUMBER', sound_speed_m_s='TYPE_SPEED_OF_SOUND',
-                     angle_of_attack_rad='TYPE_AOA')
+                     angle_of_attack_rad='TYPE_AOA', acceleration_m_s2='TYPE_ACCELERATION_TOTAL',
+                     acceleration_z_m_s2='TYPE_ACCELERATION_Z', acceleration_xy_m_s2='TYPE_ACCELERATION_XY',
+                     gravity_m_s2='TYPE_GRAVITY', thrust_n='TYPE_THRUST_FORCE')
         raw = self.helper.get_timeseries(sim, names.values())
         time = np.asarray(raw['TYPE_TIME'], dtype=float)
         if time.ndim != 1 or not len(time):
@@ -233,4 +235,49 @@ def summarize(arrays, event_records):
         result['stability_minimum_speed_m_s'] = finite(arrays['speed_m_s'][worst])
         if 'angle_of_attack_rad' in arrays:
             result['stability_minimum_aoa_deg'] = finite(np.degrees(arrays['angle_of_attack_rad'][worst]))
+    result.update(powered_metrics(arrays, event_records))
+    return result
+
+
+def powered_metrics(arrays, event_records):
+    """Sampled single-stage powered-flight peaks, never deployment/impact peaks.
+
+    Load estimate restores local gravity to the world-coordinate acceleration.
+    It neglects Coriolis and sensor-offset rotational terms; it is not an IMU
+    axis prediction or a board shock-survival assessment.
+    """
+    keys = ['acceleration_m_s2', 'acceleration_z_m_s2', 'acceleration_xy_m_s2',
+            'gravity_m_s2', 'thrust_n']
+    result = dict(powered_samples=0, powered_data_complete=False)
+    for name in ['acceleration_g', 'specific_force_estimate_g', 'speed_m_s']:
+        result[f'peak_powered_{name}'] = None
+        result[f'peak_powered_{name}_time_s'] = None
+    if any(k not in arrays for k in keys):
+        return result
+    events = {}
+    for event in event_records:
+        events.setdefault(event['type'], event['time_s'])
+    start, stop = events.get('LIFTOFF'), events.get('BURNOUT')
+    if start is None or stop is None or stop <= start:
+        return result
+    t = arrays['time_s']
+    stop = min([stop] + [events[k] for k in ['GROUND_HIT', 'RECOVERY_DEVICE_DEPLOYMENT', 'SIM_ABORT'] if k in events])
+    window = (t >= start) & (t < stop)
+    powered = window & (arrays['thrust_n'] > 0)
+    result['powered_samples'] = int(powered.sum())
+    result['powered_data_complete'] = bool(powered.any() and
+        np.isfinite(arrays['thrust_n'][window]).all() and
+        all(np.isfinite(arrays[k][powered]).all() for k in keys + ['speed_m_s']))
+    values = dict(acceleration_g=arrays['acceleration_m_s2']/9.80665,
+                  specific_force_estimate_g=np.hypot(arrays['acceleration_xy_m_s2'],
+                      arrays['acceleration_z_m_s2'] + arrays['gravity_m_s2'])/9.80665,
+                  speed_m_s=arrays['speed_m_s'])
+    for name, value in values.items():
+        # Do not label a partial finite subset as a complete peak.
+        if not powered.any() or not np.isfinite(arrays['thrust_n'][window]).all() or not np.isfinite(value[powered]).all():
+            continue
+        indices = np.flatnonzero(powered)
+        index = indices[np.argmax(value[powered])]
+        result[f'peak_powered_{name}'] = float(value[index])
+        result[f'peak_powered_{name}_time_s'] = float(t[index])
     return result

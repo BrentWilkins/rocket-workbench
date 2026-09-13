@@ -1,7 +1,15 @@
 # MVP design review — 2026-09-12
 
+> **Historical MVP shortlist.** The tables, geometry grids and recovery stress counts below describe the earlier generic
+> 18 g payload, not the [current designs and uncertainty comparison](CURRENT_DESIGN.md). These old pass counts do not
+> establish current flight margins.
+
 **Follow-up studies:** [nose comparison](NOSE_STUDY.md) identifies a lighter 50 mm cone for fit checking;
-[print-orientation analysis](PRINT_ORIENTATION.md) corrects the earlier fin collar and sled layouts.
+[print-orientation analysis](PRINT_ORIENTATION.md) corrects the earlier fin collar and sled layouts. The
+[powered-flight study](POWERED_FLIGHT.md) adds acceleration, estimated electronics load and powered speed for all
+motor/loading/wind cases on that revised geometry. The [component-level avionics variant](AVIONICS_DESIGN.md) adds a
+specified stack, battery allowance, vented longer bay and fresh nominal/upper-mass checks; it is not yet the final
+performance-optimized design.
 
 **Mount revision:** the original narrow-contact lug sleeves below have been superseded for printing by
 [V2 curved saddles](LUG_SADDLES.md), with new CAD and mass/CG rechecks. The table below retains the historical shortlist
@@ -10,7 +18,7 @@ results; do not mistake those historical CAD files for the revised mounts.
 Three provisional designs meet the nominal simulation criteria on the specific Estes C5-3 curve. The larger-recovery
 candidate is the most useful starting point for **review**, because its 18-inch chute also meets the tested descent
 stress cases. It is not cleared for fabrication with arbitrary electronics or for flight. The user explicitly chose a
-generic bay and has not selected a battery.
+generic bay at the time of this study; the subsequent avionics specification now includes a provisional battery.
 
 ## Shortlist and tradeoffs
 

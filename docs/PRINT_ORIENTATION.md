@@ -1,5 +1,11 @@
 # Print-orientation analysis
 
+> **Historical part comparison.** The fin-orientation findings remain relevant, but the sled numbers and V3 project
+> below predate the [longer component-level avionics bay and V4 fit-check parts](AVIONICS_DESIGN.md). V3 is not the
+> current avionics assembly; do not use its sled/bay as a substitute.
+
+The [current comparison](CURRENT_DESIGN.md) links the fresh orientation study and six-part V5 project.
+
 The workbench now compares six fixed orientations for each of the six printed parts. This screen exposed two incorrect
 export orientations: the fin collar rested on its tapered forward edge, and the sled rested on its small foot. Current
 exports turn the collar aft-down and place the sled's broad back against the plate.
@@ -48,7 +54,7 @@ message is empty for these checks, but that is not a physical printability guara
 Local projects, G-code, logs, settings, and result JSON are preserved under `deliverables/orientation-fin-forward/`,
 `orientation-fin-aft/`, `orientation-sled-old/`, and `orientation-sled-flat/`. No G-code was sent to a printer.
 
-## Use the revised project
+## Historical V3 project
 
 [Download the unsliced V3 Bambu Studio project](../docs-evidence/prints/rocket-fit-check-v3.3mf).
 

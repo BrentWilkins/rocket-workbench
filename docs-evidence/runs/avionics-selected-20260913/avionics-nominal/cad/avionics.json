@@ -1,0 +1,176 @@
+{
+  "components": [
+    {
+      "id": "xiao-sense",
+      "identity": "Seeed XIAO nRF52840 Sense (not Plus)",
+      "dimensions_mm": [
+        18,
+        5,
+        24.5
+      ],
+      "center_mm": [
+        0,
+        -5,
+        38.25
+      ],
+      "mass_g": 2.5,
+      "upper_mass_g": 3.2,
+      "source": "https://wiki.seeedstudio.com/XIAO_BLE/",
+      "provenance": "Keepout includes USB overhang; board datum at shoulder+39 mm aligns GNSS header rows; mass estimated"
+    },
+    {
+      "id": "l76k",
+      "identity": "Seeed L76K XIAO GNSS SKU 109100021",
+      "dimensions_mm": [
+        18,
+        5,
+        21
+      ],
+      "center_mm": [
+        0,
+        3,
+        39
+      ],
+      "mass_g": 3.0,
+      "upper_mass_g": 4.0,
+      "source": "https://wiki.seeedstudio.com/get_start_l76k_gnss/",
+      "provenance": "Published PCB 18 x 21; 5 mm height and mass estimated; soldered interboard spacing must be measured"
+    },
+    {
+      "id": "antenna",
+      "identity": "Included L76K active antenna, exact delivered variant unverified",
+      "dimensions_mm": [
+        26,
+        26,
+        8
+      ],
+      "center_mm": [
+        0,
+        0,
+        12
+      ],
+      "mass_g": 5.0,
+      "upper_mass_g": 8.0,
+      "source": "https://wiki.seeedstudio.com/get_start_l76k_gnss/",
+      "provenance": "Conservative supported antenna envelope, not a vendor dimension; 100 mm supplied coax routed separately; measure delivered antenna"
+    },
+    {
+      "id": "battery",
+      "identity": "Adafruit 1317 protected 150 mAh 1S LiPo",
+      "dimensions_mm": [
+        20.75,
+        5.8,
+        28.02
+      ],
+      "center_mm": [
+        0,
+        -5,
+        73
+      ],
+      "mass_g": 4.65,
+      "upper_mass_g": 5.5,
+      "source": "https://www.adafruit.com/product/1317",
+      "provenance": "Published 19.75 x 26.02 x 3.8 mm, 4.65 g; keepout adds packaging clearance, not certified swelling allowance"
+    },
+    {
+      "id": "barometer",
+      "identity": "Adafruit BMP581 breakout 6407 rev B",
+      "dimensions_mm": [
+        17.78,
+        5,
+        25.4
+      ],
+      "center_mm": [
+        0,
+        3,
+        73
+      ],
+      "mass_g": 1.5,
+      "upper_mass_g": 2.0,
+      "source": "https://github.com/adafruit/Adafruit-BMP5xx-Temperature-and-Pressure-Sensor-PCB",
+      "provenance": "PCB outline from official Eagle board: 25.4 x 17.78; populated height and mass estimated"
+    },
+    {
+      "id": "battery-connector",
+      "identity": "Mated JST-PH 2-pin battery connector, provisional envelope",
+      "dimensions_mm": [
+        8,
+        6,
+        10
+      ],
+      "center_mm": [
+        0,
+        0,
+        99
+      ],
+      "mass_g": 0.7,
+      "upper_mass_g": 1.0,
+      "source": "https://www.adafruit.com/product/1317",
+      "provenance": "Explicit disconnect/service envelope; verify chosen receptacle and latch access"
+    },
+    {
+      "id": "harness",
+      "identity": "Soldered headers, short signal wires and antenna coax routing",
+      "dimensions_mm": [
+        4,
+        10,
+        90
+      ],
+      "center_mm": [
+        15,
+        0,
+        65
+      ],
+      "mass_g": 1.8,
+      "upper_mass_g": 3.0,
+      "source": "Engineering allowance",
+      "provenance": "Routing reserve includes battery lead/service loop; connector mass accounted separately"
+    },
+    {
+      "id": "retention",
+      "identity": "Insulating pads, ties, strain relief and sealing consumables",
+      "dimensions_mm": [
+        4,
+        10,
+        60
+      ],
+      "center_mm": [
+        -15,
+        0,
+        52
+      ],
+      "mass_g": 1.5,
+      "upper_mass_g": 2.5,
+      "source": "Engineering allowance",
+      "provenance": "Allowance; printed sled accounted separately; no potting over pressure sensor"
+    }
+  ],
+  "static_ports": {
+    "count": 3,
+    "diameter_mm": 1.0,
+    "angles_deg": [
+      0,
+      120,
+      240
+    ],
+    "shoulder_offset_mm": 125.0,
+    "station_mm": 175.0,
+    "shoulder_distance_cal": 3.004807692307692,
+    "seal_stations_mm": [
+      56.0,
+      182.0
+    ],
+    "seal_groove_depth_mm": 0.5,
+    "seal_groove_width_mm": 1.3,
+    "source": "Provisional three-port straight-body layout; bench lag/leak and aerodynamic bias tests required",
+    "sealing": "Align paper and sleeve holes. Two circumferential seals close the sleeve-to-paper annulus; also seal bulkhead perimeter and fasteners. Seal sizing/friction must be measured."
+  },
+  "pressure_screen": {
+    "empty_volume_cm3": 181.00946174633992,
+    "speed_m_s": 50,
+    "port_area_mm2": 2.356194490192345,
+    "pressure_lag_screen_pa": 0.8144742836274629,
+    "altitude_lag_screen_m": 0.06779858220967408,
+    "assumptions": "Sea-level ISA, isothermal, Cd=0.6, smooth unobstructed ports; leakage and aerodynamic bias excluded"
+  }
+}

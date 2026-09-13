@@ -1,0 +1,602 @@
+[
+  {
+    "case": "empty-A8-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 6.670559717750727,
+      "half_step": 6.670559568864573,
+      "absolute_change": 1.4888615407215866e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 7.669552863184476,
+      "half_step": 7.66955271429669,
+      "absolute_change": 1.4888778654409407e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 11.343015154113811,
+      "half_step": 11.343689096697473,
+      "absolute_change": 0.000673942583661713
+    }
+  },
+  {
+    "case": "empty-A8-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 6.664506633538873,
+      "half_step": 6.664506393769309,
+      "absolute_change": 2.3976956420312945e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 7.663499778982879,
+      "half_step": 7.663499539211669,
+      "absolute_change": 2.3977120999774115e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 11.288732687608638,
+      "half_step": 11.289025719289171,
+      "absolute_change": 0.00029303168053296247
+    }
+  },
+  {
+    "case": "empty-B4-4-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.84026625524788,
+      "half_step": 8.840266284622338,
+      "absolute_change": 2.9374458421216332e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.839259445913907,
+      "half_step": 9.839259475288618,
+      "absolute_change": 2.9374710663887527e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 22.273652138877623,
+      "half_step": 22.27328158150344,
+      "absolute_change": 0.0003705573741825674
+    }
+  },
+  {
+    "case": "empty-B4-4-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.836286058997539,
+      "half_step": 8.836286104190389,
+      "absolute_change": 4.5192850350872504e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.83527924966523,
+      "half_step": 9.835279294858342,
+      "absolute_change": 4.5193111475327896e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 22.064958628569833,
+      "half_step": 22.064847840749177,
+      "absolute_change": 0.00011078782065609971
+    }
+  },
+  {
+    "case": "empty-C6-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 9.56161664173226,
+      "half_step": 9.561616530162585,
+      "absolute_change": 1.1156967438807897e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 10.560609769568906,
+      "half_step": 10.56060965799827,
+      "absolute_change": 1.1157063539712908e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 43.172604882972045,
+      "half_step": 43.175683757604794,
+      "absolute_change": 0.003078874632748807
+    }
+  },
+  {
+    "case": "empty-C6-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 9.553444941677334,
+      "half_step": 9.55344420896874,
+      "absolute_change": 7.327085942421263e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 10.552438069530508,
+      "half_step": 10.552437336820931,
+      "absolute_change": 7.327095765674585e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 42.97926259254373,
+      "half_step": 42.98198356870866,
+      "absolute_change": 0.0027209761649231723
+    }
+  },
+  {
+    "case": "empty-C6-5-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 9.56161664173226,
+      "half_step": 9.561616530162585,
+      "absolute_change": 1.1156967438807897e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 10.560609769568906,
+      "half_step": 10.56060965799827,
+      "absolute_change": 1.1157063539712908e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 43.172604882972045,
+      "half_step": 43.175683757604794,
+      "absolute_change": 0.003078874632748807
+    }
+  },
+  {
+    "case": "empty-C6-5-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 9.553444941677334,
+      "half_step": 9.55344420896874,
+      "absolute_change": 7.327085942421263e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 10.552438069530508,
+      "half_step": 10.552437336820931,
+      "absolute_change": 7.327095765674585e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 42.97926259254373,
+      "half_step": 42.98198356870866,
+      "absolute_change": 0.0027209761649231723
+    }
+  },
+  {
+    "case": "empty-C5-3-wind0",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 14.352083133425765,
+      "half_step": 14.352082940727538,
+      "absolute_change": 1.9269822715273222e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 15.351076077008413,
+      "half_step": 15.351075884310102,
+      "absolute_change": 1.9269831064150367e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 33.8632886940307,
+      "half_step": 33.86554786200008,
+      "absolute_change": 0.002259167969377529
+    }
+  },
+  {
+    "case": "empty-C5-3-wind2",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 14.341094637043689,
+      "half_step": 14.341093169688445,
+      "absolute_change": 1.4673552435340298e-06
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 15.339972785761512,
+      "half_step": 15.339971297799302,
+      "absolute_change": 1.4879622103336487e-06
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 33.68646565439144,
+      "half_step": 33.69037429763719,
+      "absolute_change": 0.003908643245750909
+    }
+  },
+  {
+    "case": "dummy-A8-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 5.735589329971952,
+      "half_step": 5.735589369650927,
+      "absolute_change": 3.967897477252791e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 6.734582491006309,
+      "half_step": 6.734582530685839,
+      "absolute_change": 3.967952988404022e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 9.263151643619121,
+      "half_step": 9.262876753769417,
+      "absolute_change": 0.0002748898497042518
+    }
+  },
+  {
+    "case": "dummy-A8-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 5.731602987060642,
+      "half_step": 5.731603054808772,
+      "absolute_change": 6.774813066101615e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 6.730596148099796,
+      "half_step": 6.73059621584845,
+      "absolute_change": 6.774865379810535e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 9.224080810596051,
+      "half_step": 9.223363192267938,
+      "absolute_change": 0.0007176183281139004
+    }
+  },
+  {
+    "case": "dummy-B4-4-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 7.661677325824714,
+      "half_step": 7.66167725919524,
+      "absolute_change": 6.662947438229594e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 8.660670523457757,
+      "half_step": 8.660670456827464,
+      "absolute_change": 6.663029239462048e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 18.64469136371166,
+      "half_step": 18.64459886648295,
+      "absolute_change": 9.249722871018662e-05
+    }
+  },
+  {
+    "case": "dummy-B4-4-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 7.659129328164021,
+      "half_step": 7.659129123487003,
+      "absolute_change": 2.0467701844495423e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 8.658122525796385,
+      "half_step": 8.658122321117784,
+      "absolute_change": 2.0467860117889813e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 18.414167028067233,
+      "half_step": 18.413970447813867,
+      "absolute_change": 0.00019658025336610763
+    }
+  },
+  {
+    "case": "dummy-C6-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.33010425613109,
+      "half_step": 8.330104330072462,
+      "absolute_change": 7.394137213623253e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.32909740044389,
+      "half_step": 9.329097474386073,
+      "absolute_change": 7.39421821549513e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.22225564926047,
+      "half_step": 37.22314731870983,
+      "absolute_change": 0.0008916694493592559
+    }
+  },
+  {
+    "case": "dummy-C6-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.324220916885476,
+      "half_step": 8.324220837970334,
+      "absolute_change": 7.89151428648438e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.323214061207858,
+      "half_step": 9.323213982293524,
+      "absolute_change": 7.891433462248187e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.05278126797126,
+      "half_step": 37.05376246314894,
+      "absolute_change": 0.0009811951776796946
+    }
+  },
+  {
+    "case": "dummy-C6-5-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.33010425613109,
+      "half_step": 8.330104330072462,
+      "absolute_change": 7.394137213623253e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.32909740044389,
+      "half_step": 9.329097474386073,
+      "absolute_change": 7.39421821549513e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.22225564926047,
+      "half_step": 37.22314731870983,
+      "absolute_change": 0.0008916694493592559
+    }
+  },
+  {
+    "case": "dummy-C6-5-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.324220916885476,
+      "half_step": 8.324220837970334,
+      "absolute_change": 7.89151428648438e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.323214061207858,
+      "half_step": 9.323213982293524,
+      "absolute_change": 7.891433462248187e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.05278126797126,
+      "half_step": 37.05376246314894,
+      "absolute_change": 0.0009811951776796946
+    }
+  },
+  {
+    "case": "dummy-C5-3-wind0",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 12.560696888654764,
+      "half_step": 12.56069662663418,
+      "absolute_change": 2.620205847847501e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 13.559689873858778,
+      "half_step": 13.559689611837104,
+      "absolute_change": 2.6202167369149265e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 28.82321522669816,
+      "half_step": 28.825583259448162,
+      "absolute_change": 0.0023680327500024134
+    }
+  },
+  {
+    "case": "dummy-C5-3-wind2",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 12.550033079115725,
+      "half_step": 12.550031511200132,
+      "absolute_change": 1.5679155929149147e-06
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 13.549026064396784,
+      "half_step": 13.549024496480913,
+      "absolute_change": 1.5679158718029385e-06
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 28.644901354284297,
+      "half_step": 28.647161873250486,
+      "absolute_change": 0.0022605189661888403
+    }
+  },
+  {
+    "case": "actual-A8-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 5.735589329971952,
+      "half_step": 5.735589369650927,
+      "absolute_change": 3.967897477252791e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 6.734582491006309,
+      "half_step": 6.734582530685839,
+      "absolute_change": 3.967952988404022e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 9.263151643619121,
+      "half_step": 9.262876753769417,
+      "absolute_change": 0.0002748898497042518
+    }
+  },
+  {
+    "case": "actual-A8-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 5.731602987060642,
+      "half_step": 5.731603054808772,
+      "absolute_change": 6.774813066101615e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 6.730596148099796,
+      "half_step": 6.73059621584845,
+      "absolute_change": 6.774865379810535e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 9.224080810596051,
+      "half_step": 9.223363192267938,
+      "absolute_change": 0.0007176183281139004
+    }
+  },
+  {
+    "case": "actual-B4-4-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 7.661677325824714,
+      "half_step": 7.66167725919524,
+      "absolute_change": 6.662947438229594e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 8.660670523457757,
+      "half_step": 8.660670456827464,
+      "absolute_change": 6.663029239462048e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 18.64469136371166,
+      "half_step": 18.64459886648295,
+      "absolute_change": 9.249722871018662e-05
+    }
+  },
+  {
+    "case": "actual-B4-4-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 7.659129328164021,
+      "half_step": 7.659129123487003,
+      "absolute_change": 2.0467701844495423e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 8.658122525796385,
+      "half_step": 8.658122321117784,
+      "absolute_change": 2.0467860117889813e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 18.414167028067233,
+      "half_step": 18.413970447813867,
+      "absolute_change": 0.00019658025336610763
+    }
+  },
+  {
+    "case": "actual-C6-3-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.33010425613109,
+      "half_step": 8.330104330072462,
+      "absolute_change": 7.394137213623253e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.32909740044389,
+      "half_step": 9.329097474386073,
+      "absolute_change": 7.39421821549513e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.22225564926047,
+      "half_step": 37.22314731870983,
+      "absolute_change": 0.0008916694493592559
+    }
+  },
+  {
+    "case": "actual-C6-3-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.324220916885476,
+      "half_step": 8.324220837970334,
+      "absolute_change": 7.89151428648438e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.323214061207858,
+      "half_step": 9.323213982293524,
+      "absolute_change": 7.891433462248187e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.052781267971234,
+      "half_step": 37.05376246314894,
+      "absolute_change": 0.0009811951777081163
+    }
+  },
+  {
+    "case": "actual-C6-5-wind0",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.33010425613109,
+      "half_step": 8.330104330072462,
+      "absolute_change": 7.394137213623253e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.32909740044389,
+      "half_step": 9.329097474386073,
+      "absolute_change": 7.39421821549513e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.22225564926047,
+      "half_step": 37.22314731870983,
+      "absolute_change": 0.0008916694493592559
+    }
+  },
+  {
+    "case": "actual-C6-5-wind2",
+    "execution": "completed",
+    "evaluation": "outside configured limits",
+    "peak_powered_acceleration_g": {
+      "nominal": 8.324220916885476,
+      "half_step": 8.324220837970334,
+      "absolute_change": 7.89151428648438e-08
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 9.323214061207858,
+      "half_step": 9.323213982293524,
+      "absolute_change": 7.891433462248187e-08
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 37.052781267971234,
+      "half_step": 37.05376246314894,
+      "absolute_change": 0.0009811951777081163
+    }
+  },
+  {
+    "case": "actual-C5-3-wind0",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 12.560696888654764,
+      "half_step": 12.56069662663418,
+      "absolute_change": 2.620205847847501e-07
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 13.559689873858778,
+      "half_step": 13.559689611837104,
+      "absolute_change": 2.6202167369149265e-07
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 28.82321522669816,
+      "half_step": 28.825583259448162,
+      "absolute_change": 0.0023680327500024134
+    }
+  },
+  {
+    "case": "actual-C5-3-wind2",
+    "execution": "completed",
+    "evaluation": "meets configured simulation criteria",
+    "peak_powered_acceleration_g": {
+      "nominal": 12.550033079115725,
+      "half_step": 12.550031511200132,
+      "absolute_change": 1.5679155929149147e-06
+    },
+    "peak_powered_specific_force_estimate_g": {
+      "nominal": 13.549026064396784,
+      "half_step": 13.549024496480913,
+      "absolute_change": 1.5679158718029385e-06
+    },
+    "peak_powered_speed_m_s": {
+      "nominal": 28.644901354284364,
+      "half_step": 28.647161873250496,
+      "absolute_change": 0.002260518966131997
+    }
+  }
+]

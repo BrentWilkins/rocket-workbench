@@ -4,7 +4,8 @@ Reproducible model-rocket geometry, CAD exports, OpenRocket simulations, and des
 
 **Simulation evidence only: provisional hardware inputs, no physical validation or flight approval.**
 
-Use the navigation to read the review, inspect plots, or follow the build and measurement guides.
+Start with [current avionics designs and downloads](CURRENT_DESIGN.md): corrected hardware-specific simulations,
+performance tradeoffs, stress limits, CAD and the V5 X1C project. The [original MVP review](REVIEW.md) is historical.
 
 ```mermaid
 flowchart TD

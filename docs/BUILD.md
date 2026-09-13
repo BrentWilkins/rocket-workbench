@@ -1,12 +1,13 @@
 # Provisional print and build guide
 
 This is a reviewable design and assembly plan, not a tested kit. Start with fit coupons and a dry mock-up. Do not load a
-motor or powered battery during fabrication/fit work. The user has chosen a generic bay for now; the electronics
-envelope is a capacity target, not an identified and fitted XIAO stack.
+motor or powered battery during fabrication/fit work. The [avionics specification](AVIONICS_DESIGN.md) now identifies a
+provisional XIAO/GNSS/barometer stack and battery. Its detailed models remain approximations until hardware is measured.
 
 Use one complete candidate's resolved inputs and CAD/ORK files together. Never mix the 15-inch and 18-inch chute
 configurations. Dimensions below are the v1 interfaces; the chosen run's files are authoritative for candidate
-dimensions.
+dimensions. The avionics variant adds locating rails, an antenna shelf, pressure ports and sealing interfaces; follow
+its dedicated specification rather than the older generic-tray dimensions below.
 
 ## Parts and interfaces
 

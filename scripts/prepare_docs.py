@@ -1,6 +1,7 @@
 """Stage documentation and its explicitly linked evidence; never rerun physics."""
 
 import argparse
+import posixpath
 import re
 import shutil
 from pathlib import Path
@@ -8,6 +9,16 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 LINK = re.compile(r"\]\(([^\s)]+)\)")
+
+
+def home_at_site_root(content):
+    """HOME lives in docs/ but is also rendered as the site-root index."""
+    def rebase(match):
+        url = urlsplit(match[1])
+        if url.scheme or url.netloc or not url.path or url.path.startswith('/'):
+            return match[0]
+        return '](' + url._replace(path=posixpath.normpath('docs/'+url.path)).geturl() + ')'
+    return LINK.sub(rebase, content)
 
 
 def linked_files(path):
@@ -54,7 +65,7 @@ def prepare(snapshot=False):
         if source.suffix == ".md":
             for linked in linked_files(target):
                 pending.append(ROOT / linked.relative_to(stage))
-    shutil.copy2(stage / "docs" / "HOME.md", stage / "index.md")
+    (stage / 'index.md').write_text(home_at_site_root((stage / 'docs' / 'HOME.md').read_text()))
     print(f"Staged {len(seen)} files in {stage}")
 
 
