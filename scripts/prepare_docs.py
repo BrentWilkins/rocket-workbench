@@ -12,6 +12,7 @@ LINK = re.compile(r"\]\(([^\s)]+)\)")
 
 # Explicit release inventory: future studies must be promoted deliberately.
 CURRENT_RUNS = {
+    "cfd-corrected-surface-audit-20260913",
     "cfd-three-grid-20260913",
     "insert-wide-summary-20260913",
     "recovery-wide-summary-20260913",

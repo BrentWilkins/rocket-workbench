@@ -5,14 +5,19 @@ body / provisional 22-inch chute or a 500 mm body / literature-characterized Apo
 planned dummy/logger cases** in the completed expanded recovery study (Cd 0.53–1.04, including an upper chute-mass
 allowance). This is a bounded comparison, not physical validation or a global optimum.
 
-| Recovery / body          | Loaded altitude m | Powered speed m/s | Descent m/s | Landing displacement m |
-| ------------------------ | ----------------- | ----------------- | ----------- | ---------------------- |
-| Generic 22 inch / 460 mm | 145.12–187.64     | 50.40–60.36       | 3.76–5.72   | 0.04–145.07            |
-| Sourced 24 inch / 500 mm | 146.40–187.74     | 50.78–60.61       | 3.44–5.22   | 0.04–165.24            |
+| Recovery / body                        | Loaded altitude m | Powered speed m/s | Descent m/s | Landing displacement m |
+| -------------------------------------- | ----------------- | ----------------- | ----------- | ---------------------- |
+| Generic 22 inch / 460 mm               | 145.12–187.64     | 50.40–60.36       | 3.76–5.72   | 0.04–145.07            |
+| Sourced 24 inch / 500 mm               | 146.40–187.74     | 50.78–60.61       | 3.44–5.22   | 0.04–165.24            |
+| Sourced 24 inch / 500 mm, insert joint | 144.64–186.62     | 50.33–60.29       | 3.45–5.24   | 0.04–163.02            |
 
 The 24-inch option offers more modeled descent margin and a specific sourced canopy, with more drift and a longer body.
 The small speed/altitude differences do not establish a decisive aerodynamic advantage. Its nominal mass is from a
-published specimen, not our delivered hardware; packing is still provisional. Final selection awaits integration.
+published specimen, not our delivered hardware; packing is still provisional. The third row is the integrated review
+candidate, including the revised printed bosses and provisional insert-joint mass. It also passes 192/192 planned cases.
+Relative to the same canopy/body with printed pilots, its worst-case loaded altitude is 1.76 m lower and its worst-case
+descent speed 0.02 m/s higher. This small modeled penalty buys a candidate serviceable joint, not proven strength. The
+22-inch option has not received this insert integration, so do not interpret all differences as canopy effects alone.
 
 The earlier 20-inch/430 mm leader passes only **156/192** expanded cases, with 36 descent-speed failures. Its historical
 192/192 result applies only to the narrower Cd 0.6–0.9 study.
@@ -24,7 +29,12 @@ strength still requires physical checks. The separate D12 review project is desc
 **New comparison:** [24 mm motors in BT-60](MOTOR24.md) provides substantially more predicted altitude and payload
 margin. Earlier 18 mm downloads are now confined to the archived review linked at the end of this page.
 
-## Local D12 inspection project
+## D12 review files
+
+[Download the integrated D12 review files](assets/d12-insert-review-20260913.zip) (about 2.5 MB): matching six-part X1C
+project, CAD STEP/STL, OpenRocket files, configuration, nominal results, mass ledger and CAD renders. The archive has a
+per-file hash manifest and does not contain a flight-clearance claim. Its SHA256 is
+`529311affebab0e997b92dac64bc360a5256d2e01cc4d93533e5d7788530a77a`.
 
 The newer insert-bay review project is `deliverables/d12-bt60-insert-review-20260913/D12-BT60-insert-X1C-review.3mf`. It
 uses the corrected explicit insert configuration, enlarged relocated bosses and matching wire-routing envelopes. Its

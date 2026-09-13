@@ -42,6 +42,8 @@ def package(out):
         raise FileExistsError('Preserve previous packages; choose a fresh output path')
     studies = [SCREEN, STRESS, SUMMARY]
     checks = [verify(ROOT/'runs'/name) for name in studies]
+    if not (ROOT/'site/index.html').is_file():
+        raise ValueError('Build the documentation site before packaging')
     print_source = ROOT/'deliverables'/PRINT
     verify_print_sources(print_source, ROOT/'runs'/SCREEN/DESIGN/'cad', f'{SCREEN}/{DESIGN}')
     placement = inspect(print_source/PROJECT)
@@ -49,6 +51,7 @@ def package(out):
     for name in studies:
         shutil.copytree(ROOT/'runs'/name, out/'runs'/name)
     shutil.copytree(print_source, out/'print-review')
+    shutil.copytree(ROOT/'site', out/'documentation-site')
     # Include exact local implementation, but no dependency binaries or cached Python bytecode.
     for name in ['src', 'scripts', 'tests', 'examples']:
         shutil.copytree(ROOT/name, out/name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
@@ -59,6 +62,11 @@ def package(out):
     (out/'README.md').write_text(f'''# D12 / BT-60 insert-bay review
 
 Review candidate, not flight clearance or a globally optimal design. Hardware inputs remain provisional.
+
+The built documentation is included. From this extracted package directory, run
+`python3 -m http.server 8000 --bind 127.0.0.1 --directory documentation-site`, then open
+`http://127.0.0.1:8000/`. This local server needs no account or internet access. External supplier links still require
+internet. The archive section deliberately retains older studies; start at Current designs and Build & hardware.
 
 - [Open the X1C / 0.4 mm / Textured PEI / PLA project](print-review/{PROJECT})
 - [Full assembly STEP](runs/{SCREEN}/{DESIGN}/cad/assembly.step)

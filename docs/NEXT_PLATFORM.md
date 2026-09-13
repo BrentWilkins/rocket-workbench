@@ -3,17 +3,17 @@
 Decision note, 2026-09-13. **The first [24 mm / BT-60 comparison](MOTOR24.md) is now available: 405 completed flights.**
 The reasoning and dated prices below explain that study's scope, not purchase approval.
 
-## Where we are
+## Historical starting point: why we compared 24 mm motors
 
-The current loaded performance cone predicts **57.62–59.50 m** on C5-3 at nominal avionics mass and 0/2 m/s wind. At the
-upper avionics allowance it predicts **51.89–53.85 m**; the loaded wind-2 case fails deployment speed. Other motors and
-heavier stress cases can be lower. None of the three current candidates clears the full stress grid. See
-[retained results](CURRENT_DESIGN.md). Low altitude alone is not proof of a reliable flight.
+The earlier 18 mm loaded performance cone predicted **57.62–59.50 m** on C5-3 at nominal avionics mass and 0/2 m/s wind.
+At the upper avionics allowance it predicts **51.89–53.85 m**; the loaded wind-2 case fails deployment speed. Other
+motors and heavier stress cases could be lower. None of those three 18 mm candidates cleared its full stress grid. See
+[archived results](REVIEW_18MM.md). Low altitude alone is not proof of a reliable flight. The subsequent
+[D12 shortlist](CURRENT_DESIGN.md) now has completed broader comparisons and substantially greater modeled altitude.
 
-The retained studies use a **30–120 m demonstration screening gate**. This was an engineering assumption, not a physical
-limit, legal/site limit, or user-requested ceiling. The current leader is not reaching that upper gate. The
-higher/faster objective should be evaluated in a new study with explicit performance objectives and a real site's
-constraints; do not silently change the criteria and relabel old passes. Current evidence stays reproducible.
+Those older studies used a **30–120 m demonstration screening gate**. It was an engineering assumption, not a physical
+limit, legal/site limit, or user-requested ceiling. It is not the current D12 performance target. Historical criteria
+and results remain unchanged for reproducibility; use current results for the present development decision.
 
 ## Separate motor diameter from body diameter
 

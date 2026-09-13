@@ -1,8 +1,10 @@
-# Fin-shape study — in progress
+# Fin-shape, recovery and performance comparison
 
 The first D12-5 / BT-60 screen completed **144 of 144 flights across 16 designs**. Thirteen designs meet the configured
-numeric criteria in all six nominal dummy/logger cases. This is not a final optimized design or physical flight
-approval. Broader uncertainty and the CFD cross-check are in progress. Print-orientation screening is complete.
+numeric criteria in all six nominal dummy/logger cases. Subsequent uncertainty, recovery and insert-integration studies
+are complete and summarized below. The [current shortlist](CURRENT_DESIGN.md) is the review starting point; the initial
+144-case screen is not the final hardware configuration. CFD remains unaccepted, and no result establishes physical
+flight approval or a global optimum.
 
 ![Equal-area fin performance and stability](../plots/fin-shapes.svg)
 
@@ -45,9 +47,9 @@ stability failures. No candidate is selected solely by altitude.
 
 Each local design directory also contains its resolved inputs, CAD STL/STEP assembly, native flight models, individual
 time histories, mass ledger, dummy mass/CG targets and hashed manifest. These outputs remain provisional, not printing
-or launch approval. The current X1C project has not been replaced by this study.
+or launch approval. A separate integrated D12 X1C review project is linked from the current-design page.
 
-## Still required before choosing
+## Recovery integration and printability
 
 The [recovery-anchor integration decision](RECOVERY_ANCHOR.md) records the planned attachment path and the separate
 Estes/custom-anchor options. No unmeasured anchor has silently replaced the current harness allowance.
@@ -168,9 +170,18 @@ benchmark checks remain outstanding. [Three-grid diagnostic comparison](../runs/
 
 The clipped-delta/ring comparison exposed a separate surface-preparation defect: relative-tolerance tessellation left 22
 open edges at the collar junction. Explicit absolute-tolerance meshing now produces closed matched planar and 5/10 mm
-ring surfaces, with regression tests. The corrected planar baseline is now running; ring cases remain prepared, not
-solved or accepted. These inputs do not replace the retained baseline grid-study surfaces. See the
+ring surfaces, with regression tests. The corrected planar baseline completed 600 iterations and settled, but still
+fails symmetry: Cd 0.593827, Cs 0.022699 and yaw-moment coefficient 0.102051. Surface closure alone did not resolve the
+aerodynamic diagnostic. These inputs do not replace the retained baseline grid-study surfaces. See the
+[corrected-surface audit](../runs/cfd-corrected-surface-audit-20260913/report.md) and
 [CFD workflow and limitations](../cfd/README.md).
+
+**Disposition for this review:** retain the clipped-delta OpenRocket candidate as the best-supported tested option, not
+a global optimum. Do not run a nominal ring-tail ranking on an unaccepted baseline or insert its coefficients into
+flight predictions. The 5/10 mm ring inputs remain reproducible but unsolved, with demonstrated CAD mass penalties of
+3.55/7.10 g and no demonstrated aerodynamic benefit. Further CFD work needs wall-resolution/domain checks, a benchmark
+and an explanation of the zero-angle forces before a shape comparison is useful. This is an unresolved aerodynamic model
+limitation, not evidence that ring tails perform poorly in flight.
 
 Compare mass/CG, recovery-drag and build-mass uncertainty; check print contact and overhangs; assess plausible nonplanar
 alternatives with CFD. Retain the conventional baseline for comparison. The Docker OpenFOAM environment is built, but no
