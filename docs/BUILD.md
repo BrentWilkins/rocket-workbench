@@ -1,123 +1,74 @@
-# Provisional print and build guide
+# D12 / BT-60 provisional build guide
 
-**Scope:** the assembly dimensions below belong to the existing 18 mm review package. The newer
-[D12-5 fin/recovery study](FIN_SHAPES.md) has different tube, mount, fins and recovery choices; do not use these cut
-lengths or mount dimensions for that candidate. Its final build instructions await hardware reconciliation and study
-completion.
+This guide describes the **500 mm body, 24-inch recovery, insert-bay review candidate**, not a flight-qualified kit. Use
+its matching configuration, CAD and print project from [current designs](CURRENT_DESIGN.md). The 460 mm / 22-inch
+alternative is separate. Earlier 18 mm cut lengths are in the [archived build guide](BUILD_18MM.md).
 
-This is a reviewable design and assembly plan, not a tested kit. Start with fit coupons and a dry mock-up. Do not load a
-motor or powered battery during fabrication/fit work. The [avionics specification](AVIONICS_DESIGN.md) now identifies a
-provisional XIAO/GNSS/barometer stack and battery. Its detailed models remain approximations until hardware is measured.
+## Configuration and parts
 
-Use the [current performance candidate and V5 project](CURRENT_DESIGN.md) with its matching CAD/ORK files. It uses a 410
-mm BT-60 body, 50 mm cone, 145 mm avionics bay, 45 mm fin span and 18-inch chute. The 55 mm-fin baseline also uses a 410
-mm body; the comparison ogive uses 440 mm. Do not mix their files or substitute the owned 15-inch chute without
-rerunning recovery checks. The avionics specification controls rails, antenna shelf, pressure ports and seals.
+| Item                    | Current modeled value                         | Required check                                       |
+| ----------------------- | --------------------------------------------- | ---------------------------------------------------- |
+| BT-60 body              | 500 mm long, OD 41.6 / ID 40.5 mm             | Delivered dimensions; keep uncut until dry fit       |
+| Nose / internal bay     | 50 / 145 mm                                   | Sliding fit, antenna clearance, seals and extraction |
+| Clipped-delta collar    | 65 mm root/collar, 53.65 mm span, 1.6 mm fins | Printed root strength and bond                       |
+| Commercial motor mount  | 24 mm, provisional 95 mm length               | Actual rings, hook, block, spacer, installed mass    |
+| Recovery                | Apogee 29093 24-inch canopy                   | Actual mass, packing and deployment                  |
+| Canopy packing envelope | 32 mm diameter × 228.22 mm long               | Not proof of actual packing                          |
+| Bay cap                 | 3 mm, three relocated M2 insert bosses        | Installation, engagement, mass and strength          |
 
-## Parts and interfaces
+Print six parts: nose-bay, bay-bulkhead, payload-sled, fin-collar and two lug sleeves. Electronics, paper tube, mount
+and recovery envelopes in the assembly STEP are **not printable parts**. The X1C project uses a 0.4 mm nozzle, Textured
+PEI and provisional PLA. CAD mass assumes solid material; slicer support/brim waste is not installed flight mass. Local
+slicing and placement checks passed, but inspect toolpaths and removable supports before printing.
 
-| Generated part                         | Quantity | Function / interface                                                                                           |
-| -------------------------------------- | -------: | -------------------------------------------------------------------------------------------------------------- |
-| `nose-bay.stl`                         |        1 | Conical nose with integral internal bay sleeve; slides into measured BT-60 ID with configured radial clearance |
-| `bay-bulkhead.stl`                     |        1 | 3 mm removable aft cap; three M2 clearance holes to nose bosses, central M3 recovery eye hole                  |
-| `payload-sled.stl`                     |        1 | Component-specific carrier with rails, antenna shelf, tie slots and foot; two M2 screws attach it to the cap   |
-| `fin-collar.stl`                       |        1 | Three fins and external tube sleeve; 8 mm tapered leading fairing, bonded to paper airframe                    |
-| `lug-sleeve-1.stl`, `lug-sleeve-2.stl` |   1 each | Raised sleeves holding purchased paper lugs; align at 60° between fins, not at a fin's azimuth                 |
+## Dry assembly sequence
 
-The complete STEP includes purchased tube, motor-mount and ring envelopes, chute packing envelope and paper lugs. These
-colored envelopes are **not** additional printable parts. `assembly.svg` is a labeled schematic, not a dimensioned
-fabrication drawing. `interfaces.json` specifies guide geometry. The open aft end accepts the commercial motor; its
-mount block resists thrust and its hook retains the motor. Do not substitute a printed motor tube/block.
+1. Work without a motor or powered battery. Measure purchased parts, update inputs and rerun when they differ. Start
+   with fit samples; reject cracked or delaminated prints.
+2. Dry-fit the complete bay, recovery bundle, mount and leader before cutting the body. The modeled 500 mm length does
+   not override interference found with delivered hardware.
+3. Follow the commercial 24 mm mount instructions, including the appropriate D-length spacer. Do not print substitutes
+   for the motor tube, thrust block or retention hardware. Reconcile actual hook access, ring positions and the modeled
+   3.2 mm overhang before bonding; do not force the kit to match an assumed mount length.
+4. Fit the proposed motor-ring-captured Kevlar leader before installing the mount. Keep it clear of seating surfaces,
+   sharp edges and the motor path. Check the [whole recovery load path](RECOVERY_ANCHOR.md), not just the cord rating.
+5. Bond collar and curved lug saddles using an adhesive checked on representative plastic/paper coupons. Do not rely on
+   friction or crush the tube. Fit purchased paper lugs and align the whole rocket on the actual guide, checking fins,
+   collar, hook and fillets. Use this configuration's CAD `interfaces.json`, not shorter-airframe positions.
+6. The insert trial uses TC-M2x3.0 receiving geometry at 10/170/270 degrees. Test installation in a representative spare
+   boss first. The printed-pilot cap is a different configuration, not a drop-in insert part. Screw length must account
+   for the real cap, washer, insert seating and engagement; see [fastener sourcing](RECOVERY_ANCHOR.md).
+7. Attach the sled foot with its two M2 fasteners. Install the central recovery eye with washers and locking nut,
+   checking real shank length and clearance. Exact hardware remains provisional. Secure the unpowered logger or
+   mass/CG-matched dummy with insulation and independent retention.
+8. Follow the revised wire-routing envelopes when inserting the sled; arbitrary cable loops can invalidate the clearance
+   check. Verify bend radius, tool access and repeated removal with real connectors. Close without forcing or
+   overtightening the joint.
+9. Keep recovery lines aft of the cap and out of the sliding nose interface. Join the short internal Kevlar leader to
+   replaceable elastic, with the transition below the tube lip as described in the sourced harness guide. Final lengths
+   and complete harness mass are not established by the current 5 g allowance.
 
-## Printing assumptions
+## Pressure, recovery and inspection gates
 
-PLA is the demonstration material at 1.24 g/cm³. PETG is supported by selecting `material: PETG` and an explicit
-appropriate density; rerun mass and flight checks. Neither material name establishes strength or thermal suitability.
+The printed sleeve ports also require matching holes in the paper airframe: three 1.0 mm holes, 120° apart, 125 mm aft
+of the shoulder (175 mm from this nose tip). Mark their alignment during dry fit and remove electronics before drilling.
+Deburr and verify both layers remain aligned in the assembled position. Otherwise the paper tube can block an apparently
+open printed port. Check sleeve-annulus seals as well as the cap seam and fastener penetrations; the seal grooves are
+not proof that a purchased seal will fit or permit free nose separation.
 
-For an X1 Carbon, provisional starting settings are 0.4 mm nozzle, 0.2 mm layers, three walls for the 1.2 mm shell, and
-solid thin fins/bosses/cap. Slice and inspect every layer; thin features may need adjusted line widths. A local unsliced
-fit-check Bambu Studio project can be generated with `scripts/package_bambu.py`; no G-code is validated. CAD volume ×
-density assumes solid modeled material, not sparse infill. Record the slicer estimate and actual printed mass.
+Preserve the three modeled static ports and isolated sensing region; do not seal the ports with paint, tape or glue.
+Seal unintended paths from the recovery space into electronics. Port presence does not prove dynamic pressure accuracy.
+See [avionics details](AVIONICS_DESIGN.md).
 
-Current STLs place the nose shoulder-down, cap flat, sled broad-back-down, collar aft-down and lug sleeves vertically.
-Earlier exports incorrectly left the collar forward-down and the sled on its small foot; use regenerated files. See
-[current print-orientation analysis](../runs/avionics-orientation-20260913/report.md). Use a brim as needed. Inspect
-shoulder-to-nose bridging, boss support, the sled foot and fin leading edges; supports, if required, must be fully
-removable without gouging critical fits. The nose screws load printed bosses and layer bonds; the collar fins can fail
-at their roots. Layer orientation is not a substitute for pull/bend/separation tests.
+Use commercial flame-resistant recovery protection and manufacturer packing instructions. PLA and seam tape are not
+qualified ejection-heat barriers. Ledger thermal/wadding masses are estimates, not prescribed gram quantities. Check
+repeated hand extraction of the packed nose/chute/cord without a motor or powered battery; modeled clearance does not
+prove deployment.
 
-## Dry fit and assembly order
+Before flight consideration, measure complete empty, dummy and logger mass/CG, verify representative retention/bond
+strength, pressure response and recovery separation, then rerun measured inputs. Inspect after recovery. Follow
+commercial instructions and obtain an experienced club/range review; simulations do not determine site legality, weather
+suitability or launch clearance. No active-control system is included.
 
-1. Measure the tube, mount, lugs, recovery hardware and selected payload or dummy. Update inputs before printing. Print
-   a short fit sample or spare sleeve/cap first. Deburr without enlarging holes indiscriminately. Reject cracked, porous
-   or delaminated pieces. The nose must slide freely without a forced fit.
-2. After confirming hardware and the chosen configuration, cut the BT-60 square: 410 mm for either current cone or 440
-   mm for the comparison ogive. Test fit the external collar and mark its axial position. The fairing starts 8 mm ahead
-   of the collar. Fill the tiny clearance-created leading lip with a smooth adhesive fillet; OpenRocket approximates it
-   as a continuous taper.
-3. Assemble the commercial 18 mm mount following the kit instructions, selecting the BT-60 centering rings. Locate it
-   from the chosen configuration; nominal review dimensions are 69.85 mm mount length with 3.2 mm motor overhang beyond
-   the mount, and the motor aft end at the airframe aft end. Kit hook access and actual thrust-block location take
-   precedence: if they require a different position, update the model and rerun rather than forcing the kit to match.
-4. Before bonding the mount into the airframe, attach the Kevlar leader around the mount tube immediately ahead of its
-   forward centering ring, with the ring capturing the loop. Route it along the outer edge into the recovery space,
-   clear of the motor exhaust/ejection opening and hook. Check that the ring can seat fully without cutting or pinching
-   the leader; account for any necessary small routing relief in the actual assembly. This attachment is a design
-   proposal requiring a pull test, not a certified load rating.
-5. Bond paper-to-paper joints with suitable wood glue and the collar/lug sleeve joints with a verified plastic-to-paper
-   adhesive. V2 sleeves have 12 mm-wide, 25 mm-long curved saddles with a provisional 0.15 mm radial adhesive gap,
-   replacing the old tangent-contact cylinders. Match the saddle curvature to the measured tube OD; do not clamp hard
-   enough to crush the paper or squeeze the joint dry. Add small side fillets and verify bond strength on representative
-   tube/printed-saddle coupons. Inspect for paper-surface peeling as well as adhesive failure. Do not use friction alone
-   for the collar or lug sleeves. These joints are the unavoidable glue-dependent portions; replacing the collar may
-   damage the paper tube. The nose/cap/sled remain mechanically serviceable.
-6. Trim two paper lugs to 25 mm, insert them in the sleeves, and align both on a straight rod while bonding, without
-   bonding to the rod. Positions are nose-length + 0.30 and 0.65 times body length. The sleeves raise the rod clear of
-   the wider collar. Test sliding the **whole rocket** along the actual guide, checking fins, hook, fillets and the pad
-   blast-deflector arrangement too.
-7. Fasten the sled foot to the cap with its two M2 screws. Fit the M3 recovery eye with a washer on each side and
-   locking nut. Keep the eye aft and the short shank/nut inside the bay. Verify clearance to the tray, board and wiring.
-   Tie the unpowered payload/dummy to the tray over a nonconductive pad; no loose battery or ballast. Match both dummy
-   mass and CG. Installing a real battery later requires compatible protection/charging and independent retention.
-8. Slide the sled into the nose bay, close the cap using three M2 screws into the pilots, and check access/removal. Do
-   not overtighten into plastic. Apply a removable thin tape seal over the cap perimeter and seal any unused openings;
-   verify that screw/eye penetrations do not leak directly onto electronics. The seal is not a thermal barrier or a
-   pressure-sensor vent system.
-9. Join the Kevlar leader to the 36-inch elastic shock cord using secure inspected loops/knots. Arrange the
-   Kevlar-to-elastic junction to reach outside the mouth when extended, reducing the chance of a narrow Kevlar line
-   cutting the rim. Tie the elastic to the bulkhead eye; connect the chute's line bundle through the locking swivel near
-   the nose end. Confirm the swivel closes securely and cannot snag the cap. The load path is mount/ring → leader →
-   elastic → eye/ washers → cap → three screws/bosses → nose. Every link needs inspection.
-
-## Packing, separation and thermal protection
-
-Use the selected Estes chute and its factory shroud lines. Follow the component packing instructions; keep lines
-orderly, not wrapped tightly enough to bind. Place commercial
-[flame-resistant recovery wadding](https://estesrockets.com/products/recovery-wadding) between the motor's ejection-gas
-path and the chute/harness, following its tube-size instructions. Add replaceable wadding layers shielding the cap's hot
-face and hardware; the separate 2 g thermal allowance includes this shield and seam tape, while the 2 g wadding item
-accounts for the main recovery barrier. These are mass allowances, not instructions to use exactly that weight if the
-manufacturer's required packing differs. Weigh and update the actual total.
-
-Do not use ordinary tissue or assume the printed cap alone withstands ejection heat. Wadding is not gas-tight; the cap
-seam/penetrations and layer integrity must also be checked. No custom ejection charge or motor modification is proposed.
-The existing motor provides deployment; simulated deployment proves neither real separation nor electronics protection.
-A club-supervised recovery check using appropriate commercial procedures is required before flight.
-
-The current modeled 18-inch chute bundle is a 30 mm diameter cylinder, about 146 mm long. It begins 10 mm aft of the
-bay. The airframe leaves additional aft space and an annulus for loose cord, but these geometric envelopes do not prove
-a real chute/cord/wadding bundle fits. Perform repeated hand extraction and repacking checks without motors or powered
-batteries. Do not force the nose home against a compressed bundle. Keep all recovery lines aft of the sealed cap, out of
-the nose sliding interface.
-
-The intended separation is the nose shoulder sliding out of the paper tube; the fin collar and motor mount remain fixed.
-After any added tape, seal or paint, recheck separation and guide sliding. Record actual mass/CG in empty, secured dummy
-and installed configurations and rerun before motor/delay selection.
-
-## Before a field outing
-
-Use [SHOPPING](SHOPPING.md) and [MEASUREMENTS](MEASUREMENTS.md). Have an experienced club/range officer review the
-unfamiliar printed structure and recovery joints. Follow commercial motor/controller instructions and the current
-[NAR safety code](https://www.nar.org/ModelRocketSafetyCode); this document does not approve a launch site. Stop for any
-binding, damage, loose hardware, overheated parts or uncertainty about retention. Inspect after each recovery; three
-planned flights do not override the inspection gate.
+Use [shopping/sourcing](SHOPPING.md) and the [measurement checklist](MEASUREMENTS.md). Substituting the owned 15-inch
+chute or a different motor/delay requires another comparison. No printer commands or purchases have been made.

@@ -12,7 +12,7 @@ BARO = 'https://github.com/adafruit/Adafruit-BMP5xx-Temperature-and-Pressure-Sen
 BATTERY = 'https://www.adafruit.com/product/1317'
 
 
-def components():
+def components(config=None):
     # dims = transverse X, stack Y, rocket-axis Z; z offsets from nose shoulder.
     rows = [
         ('xiao-sense', 'Seeed XIAO nRF52840 Sense (not Plus)', [18, 5, 24.5], [0, -5, 38.25], 2.5, 3.2, XIAO,
@@ -32,9 +32,16 @@ def components():
         ('retention', 'Insulating pads, ties, strain relief and sealing consumables', [4, 10, 60], [-15, 0, 52], 1.5, 2.5, 'Engineering allowance',
          'Allowance; printed sled accounted separately; no potting over pressure sensor'),
     ]
-    return [dict(id=i, identity=name, dimensions_mm=d, center_mm=c, mass_g=m,
-                 upper_mass_g=upper, source=source, provenance=note)
-            for i, name, d, c, m, upper, source, note in rows]
+    result = [dict(id=i, identity=name, dimensions_mm=d, center_mm=c, mass_g=m,
+                   upper_mass_g=upper, source=source, provenance=note)
+              for i, name, d, c, m, upper, source, note in rows]
+    if config is not None and config.bay_retention == 'm2-insert-trial-v1':
+        for part in result:
+            if part['id'] in ('harness', 'retention'):
+                part['dimensions_mm'] = [10, 4, part['dimensions_mm'][2]]
+                part['center_mm'] = [6 if part['id']=='harness' else -6, 10, part['center_mm'][2]]
+                part['provenance'] += '; equal-volume routing trial for insert bosses; verify bends and service access'
+    return result
 
 
 def payload_budget(nose_length, upper=False):
@@ -71,7 +78,7 @@ def keepouts(config):
     import cadquery as cq
     return {p['id']: cq.Workplane('XY').box(*p['dimensions_mm']).translate(
         (p['center_mm'][0], p['center_mm'][1], config.geometry.mm('nose_length')+p['center_mm'][2]))
-            for p in components()}
+            for p in components(config)}
 
 
 def detail_models(config):
@@ -171,7 +178,7 @@ def fit_report(config, printed, *, hardware=None):
 def layout_svg(config, path):
     """Dimensioned two-view packaging diagram, generated from the tested keepouts."""
     colors = ['#0072b2','#e69f00','#009e73','#cc79a7','#56b4e9','#d55e00','#666666','#333333']
-    rows = components()
+    rows = components(config)
     items = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 430">',
              '<rect width="1050" height="430" fill="#ffffff"/>',
              '<style>text{font:14px sans-serif;fill:#152238} .small{font-size:12px}</style>',

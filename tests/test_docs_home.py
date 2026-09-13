@@ -55,7 +55,11 @@ def test_current_build_uses_current_body_lengths():
     text = (root / 'docs/BUILD.md').read_text()
     assert '340 mm' not in text
     assert '380 mm' not in text
-    assert '410 mm' in text and '440 mm' in text
+    assert '410 mm' not in text and '440 mm' not in text
+    assert '500 mm' in text and '24 mm' in text and 'insert' in text
+    assert 'BUILD_18MM.md' in text
+    archived = (root / 'docs/BUILD_18MM.md').read_text()
+    assert '410 mm' in archived and '440 mm' in archived
 
 
 def test_staging_removes_unlinked_stale_pages(tmp_path, monkeypatch):

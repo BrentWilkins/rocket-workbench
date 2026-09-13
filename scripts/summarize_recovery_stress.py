@@ -7,7 +7,7 @@ from rocket_workbench.cli import save_json
 from rocket_workbench.provenance import seal_run
 
 
-def summarize(studies):
+def summarize(studies, expected_designs=None):
     profiles={}
     for study in studies:
         for row in json.loads((study/'comparison.json').read_text()):
@@ -16,7 +16,9 @@ def summarize(studies):
                 raise ValueError('Overlapping uncertainty batches; do not double-count')
             profiles[key]=dict(row,source_study=str(study))
     designs=sorted({key[0] for key in profiles})
-    if len(designs)!=3:
+    if expected_designs is not None and set(designs) != set(expected_designs):
+        raise ValueError('Designs do not match the declared study inventory')
+    if expected_designs is None and len(designs)!=3:
         raise ValueError('Expected three recovery designs')
     rows=[]
     for design in designs:

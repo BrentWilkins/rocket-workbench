@@ -8,6 +8,17 @@ from study_fin_shapes import variant
 from stress_fin_shapes import configuration
 
 
+def test_upper_insert_joint_mass_and_moment():
+    from study_sourced_chute import configuration as sourced
+    base = sourced(False, .53, True)
+    upper = configuration(base, True, 1)
+    before, after = base.mass_item('bay_hardware'), upper.mass_item('bay_hardware')
+    assert after.mass.value == pytest.approx(before.mass.value + .7)
+    assert after.mass.value * after.x.value == pytest.approx(
+        before.mass.value * before.x.value + .7 * 190)
+    assert configuration(base, False, 1).mass_item('bay_hardware') == before
+
+
 @pytest.mark.parametrize('upper,mount',[(False,1),(False,1.5),(True,1),(True,1.5)])
 def test_stress_mass_accounting_keeps_geometry_and_motor(upper,mount):
     base=variant('clipped-delta',45,430)

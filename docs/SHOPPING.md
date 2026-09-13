@@ -14,8 +14,9 @@ older 18 mm review package. Neither is a launch-approved kit. The old package ba
   the leading recovery recommendation.
 - The [anchor decision](RECOVERY_ANCHOR.md) keeps the motor-ring-captured leader and through-bolted bulkhead eye as the
   provisional load path. Estes 003052 is an alternative, not a mandatory additional purchase.
-- Production cap attachment remains three M2 screws into printed pilots. Insert CAD trials exist but are not selected.
-  Verify the full recovery load path; a successful flight simulation does not establish joint strength.
+- Default cap attachment remains three M2 screws into printed pilots. The separate integrated review uses the explicit
+  insert-trial configuration and includes provisional joint mass in its completed uncertainty study. See the
+  [sourced fastener stack and remaining checks](RECOVERY_ANCHOR.md); a simulation does not establish joint strength.
 
 The Apogee chute's **16.9 g** nominal mass comes from a published test specimen, not a delivered part weighed for this
 project. The comparison uses a 20% upper mass allowance and Cd 0.53–1.04 with the source's circular-area convention.
@@ -50,18 +51,11 @@ These newly sourced items belong to the D12 development work, not the older pack
 tax; no purchase has been made. The current 5 g harness estimate must be replaced or bounded using the complete selected
 leader, elastic, swivel, knots and attachment hardware before final release.
 
-## What the existing 18 mm review package uses
+## Earlier 18 mm purchases
 
-- BT-60 paper tube: 410 mm for either current cone, 440 mm for the comparison ogive. Keep tubes uncut until selection
-  and dimensional checks.
-- Commercial 18 mm mount with BT-60 rings, block and motor retention; C5-3 is the nominal simulation choice only.
-- **18-inch chute** with factory lines, recovery wadding, shock cord, leader and swivel. The owned 15-inch chute is not
-  the chute in these results.
-- Six V5 printed parts, provisional PLA, X1C / 0.4 mm / Textured PEI; see [matching files](CURRENT_DESIGN.md).
-- [Component-level avionics](AVIONICS_DESIGN.md): provisional XIAO Sense, L76K plus antenna, BMP581, protected 150 mAh
-  cell, connectors, headers, retention and insulation. Confirm the owned XIAO variant before ordering.
-- Bay fasteners, recovery eye hardware and seals require fit/retention checks. Do not infer an exact seal purchase from
-  the CAD groove dimensions alone.
+The old tube lengths, C5-3 basket and V5 files are in the [archived review](REVIEW_18MM.md) and
+[old shopping list](SHOPPING_LEGACY.md), not the D12 bill of materials. The component-level
+[avionics specification](AVIONICS_DESIGN.md) remains relevant; confirm the owned XIAO variant before ordering.
 
 Use the [build guide](BUILD.md) and [measurement checklist](MEASUREMENTS.md). No motor/delay is cleared for physical
 flight by these simulations. No servo system or upgraded power supply is included.

@@ -12,6 +12,8 @@ LINK = re.compile(r"\]\(([^\s)]+)\)")
 
 # Explicit release inventory: future studies must be promoted deliberately.
 CURRENT_RUNS = {
+    "cfd-three-grid-20260913",
+    "insert-wide-summary-20260913",
     "recovery-wide-summary-20260913",
     "ring-tail-geometry-step-20260913",
     "sourced-chute-corrected-20260913",
@@ -30,6 +32,8 @@ CURRENT_RUNS = {
     "avionics-orientation-20260913",
 }
 ARCHIVE_PAGES = {
+    "docs/BUILD_18MM.md",
+    "docs/REVIEW_18MM.md",
     "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md",
     "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md",
     "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md",

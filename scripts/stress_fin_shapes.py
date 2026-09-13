@@ -24,6 +24,16 @@ def configuration(base, upper, mount_factor):
     mount = next(i for i in data['purchased_masses'] if i['role']=='mount')
     mount['mass'].update(value=mount['mass']['value']*mount_factor,provenance='estimate',
                          source='Mount assembly mass sensitivity, unchanged axial CG')
+    if upper and base.bay_retention == 'm2-insert-trial-v1':
+        hardware = next(i for i in data['purchased_masses'] if i['role']=='bay_hardware')
+        # Input is the nominal insert configuration; increase its 0.7 g allowance to 1.4 g.
+        extra = .7
+        mass = hardware['mass']['value']
+        station = base.geometry.mm('nose_length') + base.geometry.mm('bay_length') - 5
+        hardware['x'].update(value=(mass*hardware['x']['value']+extra*station)/(mass+extra),
+                             provenance='estimate', source='Upper insert-joint allowance at aft bay')
+        hardware['mass'].update(value=mass+extra, provenance='estimate',
+                                source='Nominal insert configuration plus 0.7 g upper joint allowance; unmeasured')
     return Config.model_validate(data)
 
 
@@ -43,6 +53,8 @@ def main():
     save_json(args.output/'search-spec.json',dict(designs=designs,flights=288*len(designs),
         upper_avionics=[False,True],mount_mass_factors=[1,1.5],
         inner_spec=str(args.uncertainty), upper_chute_factor=args.upper_chute_factor,
+        insert_joint_upper_additional_g=.7,
+        input_basis='Nominal mass configuration; insert trials already include nominal 0.7 g joint allowance',
         selection=('Explicit user/workflow-selected design directories' if args.design else
                    'Nominal feasible conventional reference; best feasible ellipse; small delta at both lengths; small swept. '
                    'Keep two delta lengths to compare recovery space and stability against performance.'),

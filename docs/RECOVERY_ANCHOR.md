@@ -36,6 +36,24 @@ not establish fit around our long avionics sleeve or the strength of this comple
 
 ## Bay-cap fastener sourcing — checked 2026-09-13
 
+### Cap screw stack: provisional, not a released fastener kit
+
+Accu lists an M2 × 6 mm full-thread A2 cap screw, **SSCF-M2-6-A2-R360**, with 0.4 mm pitch, 3.8 mm head diameter, 2 mm
+head height, 1.5 mm hex drive and 22 g per 100 screws (0.22 g each). This is a dimensional sourcing reference; stock,
+delivered price and its thread-locking coating's suitability for this joint are unconfirmed.
+[Supplier specification](https://www.accu.co.uk/metric-cap-head-screws/250399-SSCF-M2-6-A2-R360)
+
+For a flush 3 mm insert behind a 3 mm cap, a nominal 6 mm screw reaches 3 mm past the cap without a washer. Adding a 0.5
+mm washer reduces that to 2.5 mm; a 7 mm screw with the same washer reaches 3.5 mm. These are geometric calculations,
+not recommended engagement limits. Actual cap thickness, insert seating, thread lead-in and clearance behind the insert
+must be checked. Do not substitute a longer screw merely to compensate for a loose joint, and do not assume the sled's
+two printed-pilot screws need the same length. The current clearance analysis does not model every fastener head, washer
+and driver envelope. Complete joint mass and tool access remain release checks.
+
+The insert manufacturer also has a
+[US product listing](https://cnckitchenus.store/products/heat-set-insert-m2-x-3-100-pieces). Verify delivered price and
+stock there before ordering; nothing has been purchased.
+
 A local 10-degree placement screen found 21 three-boss patterns clearing the existing conservative sled insertion
 projection by at least 0.2 mm, with the recovery eye inside the support triangle. The subsequent full CAD check rejected
 all three tested layouts with the original wire/strain-relief routing: clearing the sled alone was insufficient.
@@ -48,7 +66,27 @@ valid single CAD solids. Routing bend radius, tool access and physical retention
 
 These are experimental CAD exports, not production selections. Evidence is retained in `runs/cap-boss-screen-20260913`,
 `runs/cap-insert-fit-20260913` and `runs/cap-insert-rerouted-fit-20260913`. The production geometry, avionics layout and
-sealed flight studies remain unchanged; adopting a trial requires explicit integration of its hardware and mass/CG.
+sealed flight studies remain unchanged. A separate configured integration is now available for evaluation, below.
+
+### Configured insert integration — local, pending review
+
+The explicit `m2-insert-trial-v1` configuration selects the 10/170/270-degree bosses and matching rerouted wiring
+envelopes. Default configurations still use printed pilots. The corrected integration screen in
+`runs/sourced24-insert-corrected-20260913` completed all 36 flights, with all 24 planned dummy/logger cases meeting the
+configured criteria. Loaded apogee spans approximately 145–187 m across the screened mass and canopy-drag bounds.
+
+The ledger adds an unmeasured 0.7 g nominal / 1.4 g upper insert-joint allowance in addition to the CAD-derived printed
+mass change and existing cap hardware. This is an allowance, not a measured bill of materials. The broader uncertainty
+rerun in `runs/insert-recovery-wide-20260913` completed 288 flights: all 192 planned dummy/logger cases pass, with 96
+empty diagnostic cases retained separately. Loaded altitude spans 144.64–186.62 m, powered speed 50.33–60.29 m/s,
+descent 3.45–5.24 m/s and landing displacement 0.04–163.02 m. Upper avionics, chute and joint mass are paired; scenario
+counts are not reliability probabilities. See the
+[integrated uncertainty report](../runs/insert-wide-summary-20260913/report.md).
+
+The earlier `runs/sourced24-insert-integration-20260913` is retained but not a release source: its CAD used the revised
+routing while exported component metadata still described the old routing. The fresh corrected run exports the
+configured component layout, with a regression test checking metadata against that layout. Physical fit, installation,
+thread engagement, service access and recovery-load strength remain unverified.
 
 The current CAD uses three M2 screws in 1.6 mm printed pilots, not threaded inserts. The cap is 3 mm thick; the
 avionics-profile bosses are 8 mm long with nominal 4.4 mm diameter, clipped at the sleeve boundary. These joints carry

@@ -162,14 +162,15 @@ comparison are resolved. [CFD pilot audit](../runs/cfd-pilot-audit-20260913/repo
 [diagnostic data and actual solver axes](../runs/cfd-pilot-audit-20260913/audit.json).
 
 The 20 mm background-grid refinement also reaches 600 iterations and settles, but still fails symmetry. Cd changes from
-0.597994 to 0.583297 (−2.46%); similar drag alone is not acceptance. The third, 15 mm background grid has passed mesh
-checks and is solving. Wall, domain and benchmark checks remain outstanding.
-[Two-grid diagnostic comparison](../runs/cfd-grid-comparison-20260913/report.md).
+0.597994 to 0.583297 (−2.46%). The third, 15 mm background grid also completes 600 iterations and settles but fails
+symmetry, with Cd 0.539508, another −7.51% change. Refinement has not demonstrated convergence. Wall, domain and
+benchmark checks remain outstanding. [Three-grid diagnostic comparison](../runs/cfd-three-grid-20260913/report.md).
 
-The clipped-delta/ring comparison exposed a separate surface-preparation defect: relative-tolerance tessellation left
-22 open edges at the collar junction. Explicit absolute-tolerance meshing now produces closed matched planar and
-5/10 mm ring surfaces, with regression tests. These inputs are prepared, not solved or accepted; they do not replace
-the retained baseline grid-study surfaces. See the [CFD workflow and limitations](../cfd/README.md).
+The clipped-delta/ring comparison exposed a separate surface-preparation defect: relative-tolerance tessellation left 22
+open edges at the collar junction. Explicit absolute-tolerance meshing now produces closed matched planar and 5/10 mm
+ring surfaces, with regression tests. The corrected planar baseline is now running; ring cases remain prepared, not
+solved or accepted. These inputs do not replace the retained baseline grid-study surfaces. See the
+[CFD workflow and limitations](../cfd/README.md).
 
 Compare mass/CG, recovery-drag and build-mass uncertainty; check print contact and overhangs; assess plausible nonplanar
 alternatives with CFD. Retain the conventional baseline for comparison. The Docker OpenFOAM environment is built, but no

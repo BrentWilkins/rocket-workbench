@@ -32,7 +32,8 @@ def main():
     parser.add_argument('--study', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
-    rows = summarize([args.study])
+    spec = json.loads((args.study/'search-spec.json').read_text())
+    rows = summarize([args.study], expected_designs=spec['designs'])
     for row in rows:
         if row['planned']['completed'] != 192 or row['diagnostic_empty']['completed'] != 96:
             raise ValueError('All flight cases must finish before publishing complete comparison')
@@ -40,7 +41,7 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
     save_json(args.output/'comparison.json', rows)
     lines = ['# Expanded recovery uncertainty comparison', '',
-             '864 deterministic flights; 192 planned dummy/logger and 96 empty diagnostics per design. '
+             f'{288*len(rows)} deterministic flights; 192 planned dummy/logger and 96 empty diagnostics per design. '
              'Scenario counts are not reliability probabilities.', '',
              'Bounds: print mass ×1/1.2, payload CG ±5 mm, wind 0/2/4 m/s, chute Cd 0.53/1.04, '
              'mount mass ×1/1.5. Upper avionics and +20% chute mass are paired, not independently varied. '
@@ -55,6 +56,10 @@ def main():
         lines.append(f"| {row['design']} | {row['planned']['passed']} | "+' | '.join(cells)+' |')
     lines += ['', 'Drift is horizontal landing displacement from the pad under the modeled uniform winds. '
               'It is not a landing-zone guarantee. CFD, final retention hardware and physical validation remain separate.']
+    if any('insert-trial' in row['design'] for row in rows):
+        lines += ['', f"Insert-trial upper profiles add {spec['insert_joint_upper_additional_g']:g} g "
+                  'to the nominal joint allowance, paired with upper avionics/chute mass. '
+                  'These are unmeasured engineering allowances, not tested joint strength.']
     (args.output/'report.md').write_text('\n'.join(lines)+'\n')
     seal_run(args.output)
 

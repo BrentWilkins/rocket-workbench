@@ -23,6 +23,20 @@ def test_missing_profiles_rejected(tmp_path):
         summarize([tmp_path])
 
 
+def test_declared_design_inventory_rejected_when_missing(tmp_path):
+    (tmp_path/'comparison.json').write_text(json.dumps([
+        dict(design='a', upper=False, mount_factor=1)]))
+    with pytest.raises(ValueError, match='declared study inventory'):
+        summarize([tmp_path], expected_designs=['a', 'b'])
+
+
+def test_single_declared_design_still_requires_all_profiles(tmp_path):
+    (tmp_path/'comparison.json').write_text(json.dumps([
+        dict(design='a', upper=False, mount_factor=1)]))
+    with pytest.raises(ValueError, match='Incomplete uncertainty profiles'):
+        summarize([tmp_path], expected_designs=['a'])
+
+
 def test_drift_requires_complete_logger_evidence(tmp_path):
     (tmp_path/'results.json').write_text(json.dumps({'cases': []}))
     row = {'profiles': [dict(source_study=str(tmp_path), report='report.md')]}

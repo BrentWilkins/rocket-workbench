@@ -7,8 +7,8 @@ from .avionics import components, payload_budget
 PLANNED_LOADINGS = ('dummy', 'actual')
 
 
-def dummy_targets(nose_length, sled):
-    rows = components()
+def dummy_targets(nose_length, sled, config=None):
+    rows = components(config)
     payload_mass, payload_cg = payload_budget(nose_length)
     total = payload_mass + sled['mass_g']
     cg = (payload_mass*payload_cg + sled['mass_g']*sled['cg_x_mm'])/total

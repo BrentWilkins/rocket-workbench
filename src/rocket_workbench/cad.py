@@ -17,6 +17,8 @@ def shapes(config: Config, *, cap_insert_angles=None):
     """
     import cadquery as cq
 
+    if cap_insert_angles is None and config.bay_retention == 'm2-insert-trial-v1':
+        cap_insert_angles = [10, 170, 270]
     if cap_insert_angles is not None:
         if (not config.avionics_profile or len(cap_insert_angles) != 3
                 or len(set(cap_insert_angles)) != 3
@@ -202,7 +204,7 @@ def build(config: Config, out: Path) -> dict:
             seal = cq.Workplane('XY', origin=(0, 0, station-.65)).circle(g.mm('body_id')/2).circle(
                 g.mm('body_id')/2-g.mm('clearance')-.5).extrude(1.3)
             assembly.add(seal, name=f'purchased-seal-envelope-{index}', color=cq.Color('black'))
-        (out/'avionics.json').write_text(json.dumps(dict(components=components(),
+        (out/'avionics.json').write_text(json.dumps(dict(components=components(config),
             static_ports=vent_interface(config), pressure_screen=pressure_screen(config)), indent=2)+'\n')
     assembly.add(tube, name='purchased-BT60', color=cq.Color(0.65, 0.55, 0.35, 0.3))
     end = g.mm('nose_length')+g.mm('body_length')

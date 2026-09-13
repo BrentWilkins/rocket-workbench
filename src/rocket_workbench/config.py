@@ -144,6 +144,7 @@ class Config(Model):
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
     fin_shape: Literal['trapezoidal', 'elliptical', 'clipped-delta', 'swept'] = 'trapezoidal'
     avionics_profile: Literal['xiao-gnss-baro-v1'] | None = None
+    bay_retention: Literal['printed-pilots', 'm2-insert-trial-v1'] = 'printed-pilots'
     material: Literal['PLA', 'PETG']
     density: Quantity
     purchased_masses: list[MassItem]
@@ -156,6 +157,8 @@ class Config(Model):
 
     @model_validator(mode='after')
     def feasible(self):
+        if self.bay_retention != 'printed-pilots' and not self.avionics_profile:
+            raise ValueError('Insert trial requires the specified avionics layout')
         g = self.geometry
         for name in Geometry.model_fields:
             g.mm(name)
@@ -193,7 +196,7 @@ class Config(Model):
             raise ValueError('V1 sled must cover its two mounting holes and fit at its actual offset in the bay')
         if self.avionics_profile:
             from .avionics import components
-            for part in components():
+            for part in components(self):
                 x, y, z = part['center_mm']
                 dx, dy, dz = part['dimensions_mm']
                 if math.hypot(abs(x)+dx/2, abs(y)+dy/2) >= inner/2:

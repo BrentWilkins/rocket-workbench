@@ -13,7 +13,7 @@ nav = [
   { "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
   { "Engineering" = ["docs/MODELING.md", "docs/ARCHITECTURE.md"] },
   { "Project" = ["README.md", "docs/DOCUMENTATION.md", "docs/PROGRESS.md", "docs/THIRD_PARTY.md"] },
-  { "Archive — old news, not current designs" = ["docs/ARCHIVE.md", "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md", "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md", "ROCKET_PROJECT_BRIEF.md"] },
+  { "Archive — old news, not current designs" = ["docs/ARCHIVE.md", "docs/REVIEW_18MM.md", "docs/BUILD_18MM.md", "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md", "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md", "ROCKET_PROJECT_BRIEF.md"] },
 ]
 
 [project.theme]

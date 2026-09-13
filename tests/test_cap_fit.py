@@ -34,3 +34,26 @@ def test_default_geometry_retains_pilot_mass():
     explicit = shapes(config, cap_insert_angles=None)
     assert {key: p.val().Volume() for key,p in default.items()} == pytest.approx(
         {key: p.val().Volume() for key,p in explicit.items()})
+
+
+def test_configured_insert_trial_uses_matching_routing():
+    from study_sourced_chute import configuration as sourced
+    config = sourced(False,.53,True)
+    assert config.bay_retention == 'm2-insert-trial-v1'
+    assert fit_report(config, shapes(config))['passed']
+    baseline = sourced(False,.53)
+    assert config.mass_item('bay_hardware').mass.value-baseline.mass_item('bay_hardware').mass.value == pytest.approx(.7)
+
+
+def test_exported_metadata_matches_configured_keepouts(tmp_path):
+    import json
+    from study_sourced_chute import configuration as sourced
+    from rocket_workbench.avionics import components
+    from rocket_workbench.cad import build
+    config = sourced(False,.53,True)
+    build(config,tmp_path)
+    exported = json.loads((tmp_path/'avionics.json').read_text())['components']
+    assert exported == components(config)
+    harness = next(p for p in exported if p['id']=='harness')
+    assert harness['center_mm'] == [6,10,65]
+    assert harness['dimensions_mm'] == [10,4,90]

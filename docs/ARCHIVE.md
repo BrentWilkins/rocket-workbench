@@ -15,6 +15,8 @@ the [next-platform decision](NEXT_PLATFORM.md) instead.
 | Earlier material                                     | Why it is archived                                                       |
 | ---------------------------------------------------- | ------------------------------------------------------------------------ |
 | [Original MVP review](REVIEW.md)                     | Generic payload, earlier geometry and recovery pass counts               |
+| [18 mm avionics review](REVIEW_18MM.md)              | C5-3 geometry, historical altitude gates and V5 downloads                |
+| [18 mm build guide](BUILD_18MM.md)                   | Old tube cut lengths, 18 mm mount and recovery instructions              |
 | [Old flight plots](PLOTS.md)                         | Earlier shortlist, not component-level avionics                          |
 | [Original nose comparison](NOSE_STUDY.md)            | Short bay and generic payload; superseded by corrected 54-geometry study |
 | [Old print-orientation study](PRINT_ORIENTATION.md)  | Earlier sled and V3 project                                              |

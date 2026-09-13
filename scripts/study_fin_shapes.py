@@ -70,7 +70,7 @@ def main():
             workflow(Namespace(command='simulate', strict=False), config, path, folder, digest, engine)
             cases = json.loads((folder/'results.json').read_text())['cases']
             parts = json.loads((folder/'cad/mass-properties.json').read_text())
-            save_json(folder/'dummy-targets.json', dummy_targets(config.geometry.mm('nose_length'), parts['payload-sled']))
+            save_json(folder/'dummy-targets.json', dummy_targets(config.geometry.mm('nose_length'), parts['payload-sled'], config))
             row = dict(design=config.name, shape=shape, area_mm2=area_mm2(outline(config)),
                        span_mm=config.geometry.mm('fin_span'), summary=summarize_cases(cases))
             loaded = [c for c in cases if c['loading']=='actual']
