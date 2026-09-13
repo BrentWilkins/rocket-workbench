@@ -12,6 +12,13 @@ LINK = re.compile(r"\]\(([^\s)]+)\)")
 
 # Explicit release inventory: future studies must be promoted deliberately.
 CURRENT_RUNS = {
+    "fin-shapes-20260913",
+    "fin-orientation-20260913",
+    "fin-stress-20260913",
+    "fin-recovery-20260913",
+    "cfd-pilot-audit-20260913",
+    "fin-recovery-stress-summary-20260913",
+    "motor24-bt60-20260913",
     "avionics-geometry-20260913-corrected",
     "avionics-finalist-stress-20260913",
     "avionics-baseline-stress-20260913",
@@ -72,7 +79,7 @@ def linked_files(path):
         yield target
 
 
-def prepare(snapshot=False):
+def prepare(snapshot=False, snapshot_runs=()):
     stage = ROOT / "_site_docs"
     # This fixed generated directory is disposable; stale pages must not leak into releases.
     if stage.is_symlink():
@@ -95,10 +102,11 @@ def prepare(snapshot=False):
         seen.add(logical)
         relative = logical.relative_to(ROOT)
         is_run = relative.parts[0] == "runs"
-        source = logical if not is_run or snapshot else evidence / relative
+        refresh_run = is_run and (snapshot or relative.parts[1] in snapshot_runs)
+        source = logical if not is_run or refresh_run else evidence / relative
         if not source.is_file():
             raise FileNotFoundError(f"Missing documentation input: {source}")
-        if is_run and snapshot:
+        if refresh_run:
             destination = evidence / relative
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source, destination)
@@ -117,4 +125,7 @@ def prepare(snapshot=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--snapshot", action="store_true", help="Refresh linked evidence from local runs")
-    prepare(parser.parse_args().snapshot)
+    parser.add_argument("--snapshot-run", action="append", default=[],
+                        help="Refresh only linked evidence in this named run; leave historical snapshots unchanged")
+    args = parser.parse_args()
+    prepare(args.snapshot, args.snapshot_run)

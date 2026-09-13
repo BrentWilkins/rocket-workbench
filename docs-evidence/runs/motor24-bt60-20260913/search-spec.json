@@ -1,0 +1,68 @@
+{
+  "platforms": [
+    "18-c5",
+    "24-cd",
+    "24-e"
+  ],
+  "mass_scenarios": {
+    "nominal": {
+      "upper": false,
+      "printed_factor": 1.0,
+      "mount_factor": 1.0,
+      "extra_g": 0
+    },
+    "upper-avionics": {
+      "upper": true,
+      "printed_factor": 1.0,
+      "mount_factor": 1.0,
+      "extra_g": 0
+    },
+    "heavy-build": {
+      "upper": true,
+      "printed_factor": 1.2,
+      "mount_factor": 1.5,
+      "extra_g": 0
+    },
+    "inert-plus20": {
+      "upper": false,
+      "printed_factor": 1.0,
+      "mount_factor": 1.0,
+      "extra_g": 20
+    },
+    "inert-plus40": {
+      "upper": false,
+      "printed_factor": 1.0,
+      "mount_factor": 1.0,
+      "extra_g": 40
+    }
+  },
+  "manufacturer_limits_g": {
+    "C11": {
+      "3": 170,
+      "5": 142
+    },
+    "D12": {
+      "3": 396,
+      "5": 283,
+      "7": 226
+    },
+    "E12": {
+      "4": 482,
+      "6": 397,
+      "8": 340
+    }
+  },
+  "curve_digests": {
+    "C11": "4f0059c416964ba2528c83551e6a6839",
+    "D12": "ec683e131a2b32950561abfe011b0afc",
+    "E12": "27575268e95ac6983801956efb389764"
+  },
+  "winds_m_s": [
+    0,
+    2,
+    4
+  ],
+  "expected_flights": 405,
+  "inherited_apogee_maximum_removed": true,
+  "scope": "Passive commercial single-stage comparison; no control hardware or physical validation"
+}

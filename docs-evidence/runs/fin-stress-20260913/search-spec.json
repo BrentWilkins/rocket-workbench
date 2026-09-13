@@ -1,0 +1,21 @@
+{
+  "designs": [
+    "trapezoidal-a45-b430",
+    "elliptical-a55-b410",
+    "clipped-delta-a45-b410",
+    "clipped-delta-a45-b430",
+    "swept-a45-b410"
+  ],
+  "flights": 1440,
+  "upper_avionics": [
+    false,
+    true
+  ],
+  "mount_mass_factors": [
+    1,
+    1.5
+  ],
+  "inner_spec": "examples/uncertainty.yaml",
+  "selection": "Nominal feasible conventional reference; best feasible ellipse; small delta at both lengths; small swept. Keep two delta lengths to compare recovery space and stability against performance.",
+  "interpretation": "Deterministic corners, not reliability probabilities or physical clearance"
+}

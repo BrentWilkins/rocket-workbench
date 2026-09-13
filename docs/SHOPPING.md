@@ -1,9 +1,28 @@
 # Current hardware and purchase decisions
 
-Updated 2026-09-13. This page describes the current passive flight-logger candidate, not a launch-approved kit. The old
-package basket and its totals are in the [archive](SHOPPING_LEGACY.md); they are not a current complete quote.
+Updated 2026-09-13. The current development leader is the [D12-5 clipped-delta BT-60 candidate](FIN_SHAPES.md), not the
+older 18 mm review package. Neither is a launch-approved kit. The old package basket and totals are in the
+[archive](SHOPPING_LEGACY.md); they are not a current complete quote.
 
-## What the existing model actually uses
+## Current D12 study: purchase-relevant limits
+
+- BT-60 with a provisional 430 mm body and a commercial 24 mm D/E-length motor-mount assembly. Keep the tube uncut until
+  the selected mount, recovery bundle and avionics sleeve are dry-fitted.
+- D12-5 is the simulated motor/delay. Use the exact commercial motor; no motor modification is part of this project.
+- The leading study uses a **20-inch canopy envelope**, not an identified, measured parachute. Its mass and packed
+  volume are scaled estimates. The 22-/24-inch options trade some altitude and speed for slower descent.
+- The [anchor decision](RECOVERY_ANCHOR.md) keeps the motor-ring-captured leader and through-bolted bulkhead eye as the
+  provisional load path. Estes 003052 is an alternative, not a mandatory additional purchase.
+- Printed cap attachment remains three M2 screws into printed pilots. Inserts/captive nuts are not modeled. Verify the
+  full recovery load path; a successful flight simulation does not establish joint strength.
+
+A commercially available 20-inch option is the Fruity Chutes TARC-20-S-SM, listed at **$61.20** and **0.8 oz (22.7 g)**
+on 2026-09-13. That mass is higher than the study's area-scaled allowance, and its six-gore/spill-hole design is not
+proven equivalent to the generic canopy model. This is a sourcing example, **not a purchase recommendation or a drop-in
+match**. It needs its own mass, packing and drag inputs before adoption.
+[Manufacturer specifications](https://shop.fruitychutes.com/products/20-low-and-mid-power-chute-1-5lbs-20fps)
+
+## What the existing 18 mm review package uses
 
 - BT-60 paper tube: 410 mm for either current cone, 440 mm for the comparison ogive. Keep tubes uncut until selection
   and dimensional checks.

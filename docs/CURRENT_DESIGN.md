@@ -1,12 +1,23 @@
 # Current avionics designs and comparison
 
-**Updated after the component-level avionics and recovery-wadding CG correction.** This is a bounded performance
-comparison, not physical validation or a globally optimized rocket. No candidate clears the entire stress envelope.
+**Current development leader:** D12-5 in BT-60, 430 mm body, 50 mm conical nose, small clipped-delta fins and a
+provisional 20-inch parachute envelope. All 192 planned dummy/logger uncertainty cases pass the configured numeric
+gates, with loaded altitude 154.32–193.99 m across that envelope. This is not physical validation or a global optimum.
 
-**Reading the heights:** the loaded leader is about 58–60 m nominally, or 52–54 m at the upper avionics mass allowance.
-The retained studies still used a 30–120 m demonstration screening gate; 120 m is neither a physical ceiling nor your
-performance target. It is not what limits the leader's altitude. See [next platform and motor choices](NEXT_PLATFORM.md)
-for the proposed higher-performance comparison. Historical gates/results are preserved, not retroactively relabeled.
+See the [fin, recovery and uncertainty comparison](FIN_SHAPES.md) for the 22-/24-inch recovery tradeoffs, failed designs
+and actual study bounds. CFD has not been accepted, hardware mass/packing remain provisional, and recovery attachment
+strength still requires physical checks. The printable review project below has **not** been replaced by the D12 study.
+
+**New comparison:** [24 mm motors in BT-60](MOTOR24.md) provides substantially more predicted altitude and payload
+margin. The 18 mm downloads below remain the existing review package, not a newly selected 24 mm design.
+
+## Existing 18 mm review package
+
+**Reading the older package's heights:** its loaded leader is about 58–60 m nominally, or 52–54 m at the upper avionics
+mass allowance. The retained studies still used a 30–120 m demonstration screening gate; 120 m is neither a physical
+ceiling nor your performance target. It is not what limits the leader's altitude. See
+[next platform and motor choices](NEXT_PLATFORM.md) for the proposed higher-performance comparison. Historical
+gates/results are preserved, not retroactively relabeled.
 
 ## What to inspect
 

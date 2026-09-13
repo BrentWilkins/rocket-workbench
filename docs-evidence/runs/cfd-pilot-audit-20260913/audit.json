@@ -1,0 +1,82 @@
+{
+  "design": "trapezoidal-a45-b430",
+  "solver_completed": true,
+  "requested_iterations_completed": true,
+  "last_iteration": 600.0,
+  "tail_samples": 100,
+  "coefficient_statistics": {
+    "Cd": {
+      "mean": 0.59799352245,
+      "peak_to_peak": 1.201999999977943e-06
+    },
+    "Cd(f)": {
+      "mean": 0.43597229583,
+      "peak_to_peak": 3.0480000000054908e-06
+    },
+    "Cd(r)": {
+      "mean": 0.16202122658999996,
+      "peak_to_peak": 3.225999999995066e-06
+    },
+    "Cl": {
+      "mean": 0.14615345248,
+      "peak_to_peak": 1.0169000000004313e-05
+    },
+    "Cl(f)": {
+      "mean": -0.6905635392999998,
+      "peak_to_peak": 4.528700000006047e-05
+    },
+    "Cl(r)": {
+      "mean": 0.8367169917799999,
+      "peak_to_peak": 5.5456000000009276e-05
+    },
+    "CmPitch": {
+      "mean": -0.7636402655900001,
+      "peak_to_peak": 5.0372000000020734e-05
+    },
+    "CmRoll": {
+      "mean": 0.13697553458999998,
+      "peak_to_peak": 3.0619999999981218e-06
+    },
+    "CmYaw": {
+      "mean": 0.27055366208000003,
+      "peak_to_peak": 3.0660000000015675e-05
+    },
+    "Cs": {
+      "mean": 0.049553814675,
+      "peak_to_peak": 6.365899999999369e-06
+    },
+    "Cs(f)": {
+      "mean": 0.29533056946,
+      "peak_to_peak": 3.3843000000033374e-05
+    },
+    "Cs(r)": {
+      "mean": -0.24577675474,
+      "peak_to_peak": 2.7476999999997975e-05
+    }
+  },
+  "tail_settled_screen": true,
+  "zero_angle_symmetry_screen": false,
+  "reported_axes": {
+    "dragDir": "(1.00000000e+00 0.00000000e+00 0.00000000e+00)",
+    "sideDir": "(0.00000000e+00 0.00000000e+00 -1.00000000e+00)",
+    "liftDir": "(0.00000000e+00 1.00000000e+00 0.00000000e+00)",
+    "rollAxis": "(1.00000000e+00 0.00000000e+00 0.00000000e+00)",
+    "pitchAxis": "(0.00000000e+00 0.00000000e+00 -1.00000000e+00)",
+    "yawAxis": "(0.00000000e+00 1.00000000e+00 0.00000000e+00)",
+    "magUInf": "4.00000000e+01",
+    "lRef": "4.16000000e-02",
+    "Aref": "1.35917865e-03",
+    "CofR": "(2.42213263e-01 0.00000000e+00 0.00000000e+00)"
+  },
+  "thresholds": "Tail peak-to-peak <= max(0.001, 1% of mean); zero-angle lateral/moment magnitudes <=0.01. Provisional diagnostic thresholds, not uncertainty bounds or certification.",
+  "accepted_for_design": false,
+  "remaining": [
+    "Grid convergence",
+    "Domain and wall-resolution sensitivity",
+    "Benchmark comparison",
+    "Resolve zero-angle asymmetry when flagged",
+    "Angle-of-attack/speed coverage",
+    "Physical validation remains separate"
+  ],
+  "source_case": "runs/cfd-rocket-pilot-v2512-clean-20260913"
+}

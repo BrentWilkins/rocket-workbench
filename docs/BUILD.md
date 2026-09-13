@@ -1,5 +1,10 @@
 # Provisional print and build guide
 
+**Scope:** the assembly dimensions below belong to the existing 18 mm review package. The newer
+[D12-5 fin/recovery study](FIN_SHAPES.md) has different tube, mount, fins and recovery choices; do not use these cut
+lengths or mount dimensions for that candidate. Its final build instructions await hardware reconciliation and study
+completion.
+
 This is a reviewable design and assembly plan, not a tested kit. Start with fit coupons and a dry mock-up. Do not load a
 motor or powered battery during fabrication/fit work. The [avionics specification](AVIONICS_DESIGN.md) now identifies a
 provisional XIAO/GNSS/barometer stack and battery. Its detailed models remain approximations until hardware is measured.

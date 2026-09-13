@@ -1,0 +1,32 @@
+{
+  "shapes": [
+    "trapezoidal",
+    "elliptical",
+    "clipped-delta",
+    "swept"
+  ],
+  "area_reference_spans_mm": [
+    45,
+    55
+  ],
+  "body_lengths_mm": [
+    410,
+    430
+  ],
+  "designs": 16,
+  "flights": 144,
+  "motor": "D12-5",
+  "winds_m_s": [
+    0,
+    2,
+    4
+  ],
+  "planned": [
+    "dummy",
+    "actual"
+  ],
+  "diagnostic": [
+    "empty"
+  ],
+  "limits": "Nominal mass screen only; not global optimization, CFD, strength validation or flight clearance. Curved outline is a shared 64-segment CAD/flight polygon. Flat square-section fins, no fillets."
+}

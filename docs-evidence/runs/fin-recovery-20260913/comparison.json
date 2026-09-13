@@ -1,0 +1,318 @@
+[
+  {
+    "design": "delta-chute20-body430-nominal",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 2,
+        "failures": {
+          "minimum_ascent_stability_cal": 1
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      186.68343568933884,
+      193.99332307031193
+    ],
+    "peak_powered_speed_m_s": [
+      61.4602468075008,
+      62.00226501559909
+    ],
+    "landing_descent_m_s": [
+      4.807238326334884,
+      4.807348007773209
+    ],
+    "landing_displacement_m": [
+      0.09347128316229353,
+      107.70091223917785
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3968141834994277,
+      2.018354130998851
+    ],
+    "guide_departure_m_s": [
+      12.95499268242831,
+      12.962419841002893
+    ],
+    "deployment_speed_m_s": [
+      0.7833764148107144,
+      6.157692027611007
+    ]
+  },
+  {
+    "design": "delta-chute20-body430-heavy",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 1,
+        "failures": {
+          "minimum_ascent_stability_cal": 2
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      154.3235853591224,
+      162.02528671730244
+    ],
+    "peak_powered_speed_m_s": [
+      52.71851074611398,
+      53.27313761345257
+    ],
+    "landing_descent_m_s": [
+      5.796866542603524,
+      5.796998721268353
+    ],
+    "landing_displacement_m": [
+      0.06094337117718855,
+      54.57138059498058
+    ],
+    "minimum_ascent_stability_cal": [
+      1.428777327120701,
+      1.7408791328212834
+    ],
+    "guide_departure_m_s": [
+      12.556859003991624,
+      12.563262141263829
+    ],
+    "deployment_speed_m_s": [
+      4.388190137507277,
+      8.788744506844083
+    ]
+  },
+  {
+    "design": "delta-chute22-body460-nominal",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      180.4060261999134,
+      187.63863986581435
+    ],
+    "peak_powered_speed_m_s": [
+      59.81019547272894,
+      60.36023825760575
+    ],
+    "landing_descent_m_s": [
+      4.427902628482825,
+      4.428003622944076
+    ],
+    "landing_displacement_m": [
+      0.08718823689140154,
+      115.79052716348423
+    ],
+    "minimum_ascent_stability_cal": [
+      1.5214960964253523,
+      1.926307202123689
+    ],
+    "guide_departure_m_s": [
+      12.842033280933693,
+      12.849327951306927
+    ],
+    "deployment_speed_m_s": [
+      1.5153947269729326,
+      6.430120445766479
+    ]
+  },
+  {
+    "design": "delta-chute22-body460-heavy",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      148.9964483323745,
+      156.58300533527597
+    ],
+    "peak_powered_speed_m_s": [
+      51.38447648771101,
+      51.95162331879928
+    ],
+    "landing_descent_m_s": [
+      5.329705128097372,
+      5.32982673111632
+    ],
+    "landing_displacement_m": [
+      0.050384352037345904,
+      60.344088171904374
+    ],
+    "minimum_ascent_stability_cal": [
+      1.648103300422541,
+      1.8636259058245448
+    ],
+    "guide_departure_m_s": [
+      12.476165396482166,
+      12.482499277537356
+    ],
+    "deployment_speed_m_s": [
+      5.150621054541545,
+      9.276612228643579
+    ]
+  },
+  {
+    "design": "delta-chute24-body500-nominal",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      173.30866594940366,
+      180.3603984673477
+    ],
+    "peak_powered_speed_m_s": [
+      57.973180410138816,
+      58.51300928992207
+    ],
+    "landing_descent_m_s": [
+      4.119760967845864,
+      4.11985495595653
+    ],
+    "landing_displacement_m": [
+      0.08287015940364867,
+      121.82878400503978
+    ],
+    "minimum_ascent_stability_cal": [
+      1.701299416864767,
+      2.1493281353462077
+    ],
+    "guide_departure_m_s": [
+      12.919534454842584,
+      12.926984715218671
+    ],
+    "deployment_speed_m_s": [
+      2.3955036309638915,
+      6.769706536916128
+    ]
+  },
+  {
+    "design": "delta-chute24-body500-heavy",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      142.97472379122513,
+      150.4045592993889
+    ],
+    "peak_powered_speed_m_s": [
+      49.888639650519906,
+      50.46100636638748
+    ],
+    "landing_descent_m_s": [
+      4.948802569330447,
+      4.948915487880853
+    ],
+    "landing_displacement_m": [
+      0.0359421870312664,
+      64.41303003742726
+    ],
+    "minimum_ascent_stability_cal": [
+      1.8203435672098114,
+      2.659285577314051
+    ],
+    "guide_departure_m_s": [
+      12.295297630507669,
+      12.299754788261547
+    ],
+    "deployment_speed_m_s": [
+      6.045560559253714,
+      9.872034796707734
+    ]
+  }
+]

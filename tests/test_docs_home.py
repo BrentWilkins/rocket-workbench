@@ -71,3 +71,20 @@ def test_staging_removes_unlinked_stale_pages(tmp_path, monkeypatch):
     prepare_docs.prepare()
     assert not (tmp_path / '_site_docs/stale.md').exists()
     assert (tmp_path / '_site_docs/index.md').read_text() == '# Current home\n'
+
+
+def test_selective_snapshot_preserves_historical_evidence(tmp_path, monkeypatch):
+    import prepare_docs
+    monkeypatch.setattr(prepare_docs, 'ROOT', tmp_path)
+    (tmp_path/'docs').mkdir()
+    (tmp_path/'docs/HOME.md').write_text('[Old](../runs/old/data.json) [New](../runs/new/data.json)')
+    (tmp_path/'README.md').write_text('# Readme')
+    (tmp_path/'ROCKET_PROJECT_BRIEF.md').write_text('# Brief')
+    for run in ['old', 'new']:
+        (tmp_path/'runs'/run).mkdir(parents=True)
+        (tmp_path/'runs'/run/'data.json').write_text('local')
+    (tmp_path/'docs-evidence/runs/old').mkdir(parents=True)
+    (tmp_path/'docs-evidence/runs/old/data.json').write_text('sealed historical')
+    prepare_docs.prepare(snapshot_runs=['new'])
+    assert (tmp_path/'docs-evidence/runs/old/data.json').read_text() == 'sealed historical'
+    assert (tmp_path/'docs-evidence/runs/new/data.json').read_text() == 'local'

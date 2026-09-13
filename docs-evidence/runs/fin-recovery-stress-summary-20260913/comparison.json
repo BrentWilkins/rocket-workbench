@@ -1,0 +1,777 @@
+[
+  {
+    "design": "delta-chute20-body430-nominal",
+    "planned": {
+      "cases": 192,
+      "completed": 192,
+      "passed": 192
+    },
+    "diagnostic_empty": {
+      "cases": 96,
+      "completed": 96,
+      "passed": 56
+    },
+    "all_planned_numeric_gates_pass": true,
+    "physical_clearance": false,
+    "profiles": [
+      {
+        "design": "delta-chute20-body430-nominal",
+        "upper": false,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute20-body430-nominal-upper0-mount1/stress-20260913T162140Z-e8586e9c/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 20,
+            "failures": {
+              "minimum_ascent_stability_cal": 4
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          169.72273161882572,
+          193.99332304090697
+        ],
+        "peak_powered_speed_m_s": [
+          56.778217842295035,
+          62.00226501758619
+        ],
+        "minimum_ascent_stability_cal": [
+          1.3847029610950863,
+          2.086134298005301
+        ],
+        "guide_departure_m_s": [
+          12.832854364883119,
+          12.962419841002893
+        ],
+        "deployment_speed_m_s": [
+          0.7833775384837313,
+          7.3604025205637305
+        ],
+        "landing_descent_m_s": [
+          4.388346066706897,
+          5.5937772168629705
+        ],
+        "source_study": "runs/fin-recovery-stress-20260913"
+      },
+      {
+        "design": "delta-chute20-body430-nominal",
+        "upper": false,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute20-body430-nominal-upper0-mount1.5/stress-20260913T162208Z-de66a3fb/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 8,
+            "failures": {
+              "minimum_ascent_stability_cal": 16
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          163.11183029652236,
+          186.94188857130223
+        ],
+        "peak_powered_speed_m_s": [
+          54.98079453523579,
+          59.99782711222576
+        ],
+        "minimum_ascent_stability_cal": [
+          1.2813906384839453,
+          1.9716119439202657
+        ],
+        "guide_departure_m_s": [
+          12.638419228643496,
+          12.987933021400382
+        ],
+        "deployment_speed_m_s": [
+          1.4966178239106345,
+          7.831259774653962
+        ],
+        "landing_descent_m_s": [
+          4.463628441954011,
+          5.6824384390206255
+        ],
+        "source_study": "runs/fin-recovery-stress-20260913"
+      },
+      {
+        "design": "delta-chute20-body430-nominal",
+        "upper": true,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute20-body430-nominal-upper1-mount1/stress-20260913T162231Z-5bac6354/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 20,
+            "failures": {
+              "minimum_ascent_stability_cal": 4
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          160.66436480588794,
+          184.7438126514469
+        ],
+        "peak_powered_speed_m_s": [
+          54.41992480573019,
+          59.38380010356428
+        ],
+        "minimum_ascent_stability_cal": [
+          1.5611774998179457,
+          1.916632116674954
+        ],
+        "guide_departure_m_s": [
+          12.506581375575424,
+          12.84342091100724
+        ],
+        "deployment_speed_m_s": [
+          1.728653506361664,
+          8.272166390390893
+        ],
+        "landing_descent_m_s": [
+          4.487109458388939,
+          5.710115501169299
+        ],
+        "source_study": "runs/fin-recovery-stress-20260913"
+      },
+      {
+        "design": "delta-chute20-body430-nominal",
+        "upper": true,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute20-body430-nominal-upper1-mount1.5/stress-20260913T162258Z-95e8b7ff/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 8,
+            "failures": {
+              "minimum_ascent_stability_cal": 16
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          154.31694129045835,
+          177.86834804383042
+        ],
+        "peak_powered_speed_m_s": [
+          52.71734402171031,
+          57.492345249565076
+        ],
+        "minimum_ascent_stability_cal": [
+          1.4287773271206996,
+          1.9298733357795983
+        ],
+        "guide_departure_m_s": [
+          12.556859003991624,
+          12.639395937107203
+        ],
+        "deployment_speed_m_s": [
+          2.4836615762948253,
+          8.790582943209241
+        ],
+        "landing_descent_m_s": [
+          4.560762494578488,
+          5.7969987212691265
+        ],
+        "source_study": "runs/fin-recovery-stress-20260913"
+      }
+    ],
+    "apogee_m": [
+      154.31694129045835,
+      193.99332304090697
+    ],
+    "peak_powered_speed_m_s": [
+      52.71734402171031,
+      62.00226501758619
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2813906384839453,
+      2.086134298005301
+    ],
+    "guide_departure_m_s": [
+      12.506581375575424,
+      12.987933021400382
+    ],
+    "deployment_speed_m_s": [
+      0.7833775384837313,
+      8.790582943209241
+    ],
+    "landing_descent_m_s": [
+      4.388346066706897,
+      5.7969987212691265
+    ]
+  },
+  {
+    "design": "delta-chute22-body460-nominal",
+    "planned": {
+      "cases": 192,
+      "completed": 192,
+      "passed": 192
+    },
+    "diagnostic_empty": {
+      "cases": 96,
+      "completed": 96,
+      "passed": 80
+    },
+    "all_planned_numeric_gates_pass": true,
+    "physical_clearance": false,
+    "profiles": [
+      {
+        "design": "delta-chute22-body460-nominal",
+        "upper": false,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute22-body460-nominal-upper0-mount1/stress-20260913T170234Z-57cd2998/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 24,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          163.95566328858052,
+          187.63863992450672
+        ],
+        "peak_powered_speed_m_s": [
+          55.31665866814146,
+          60.360238257361594
+        ],
+        "minimum_ascent_stability_cal": [
+          1.5096692609177162,
+          1.9415233726215937
+        ],
+        "guide_departure_m_s": [
+          12.736337404282908,
+          12.849327951306927
+        ],
+        "deployment_speed_m_s": [
+          1.5153936468888907,
+          7.733130766060502
+        ],
+        "landing_descent_m_s": [
+          4.042070753239167,
+          5.147236886407421
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute22-body460-nominal",
+        "upper": false,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute22-body460-nominal-upper0-mount1.5/stress-20260913T170303Z-c9cf9319/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 16,
+            "failures": {
+              "minimum_ascent_stability_cal": 8
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          157.50436263383193,
+          180.76506159987798
+        ],
+        "peak_powered_speed_m_s": [
+          53.57336457976725,
+          58.43091822206113
+        ],
+        "minimum_ascent_stability_cal": [
+          1.2478216202019812,
+          1.6705078010140675
+        ],
+        "guide_departure_m_s": [
+          12.550114558068785,
+          12.880815207054646
+        ],
+        "deployment_speed_m_s": [
+          2.2424923584895025,
+          8.276887947648111
+        ],
+        "landing_descent_m_s": [
+          4.109630313311352,
+          5.226878377359251
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute22-body460-nominal",
+        "upper": true,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute22-body460-nominal-upper1-mount1/stress-20260913T170327Z-82f71ecf/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 24,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          155.1602038884047,
+          178.62564255715935
+        ],
+        "peak_powered_speed_m_s": [
+          53.03621259177941,
+          57.83976393567086
+        ],
+        "minimum_ascent_stability_cal": [
+          1.696181909539878,
+          2.2710820028703553
+        ],
+        "guide_departure_m_s": [
+          12.421699011085,
+          12.740462495460012
+        ],
+        "deployment_speed_m_s": [
+          2.4780394371568555,
+          8.705209608441013
+        ],
+        "landing_descent_m_s": [
+          4.1307084322910015,
+          5.251745798475248
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute22-body460-nominal",
+        "upper": true,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute22-body460-nominal-upper1-mount1.5/stress-20260913T170351Z-22a51230/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 16,
+            "failures": {
+              "minimum_ascent_stability_cal": 8
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          148.9889503263493,
+          171.94150775239953
+        ],
+        "peak_powered_speed_m_s": [
+          51.38447648771088,
+          56.018158371095936
+        ],
+        "minimum_ascent_stability_cal": [
+          1.5725606303122646,
+          2.2460009621990933
+        ],
+        "guide_departure_m_s": [
+          12.476165396482168,
+          12.545199120443698
+        ],
+        "deployment_speed_m_s": [
+          3.241261958439342,
+          9.279333774221506
+        ],
+        "landing_descent_m_s": [
+          4.196841817910373,
+          5.329826731116334
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      }
+    ],
+    "apogee_m": [
+      148.9889503263493,
+      187.63863992450672
+    ],
+    "peak_powered_speed_m_s": [
+      51.38447648771088,
+      60.360238257361594
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2478216202019812,
+      2.2710820028703553
+    ],
+    "guide_departure_m_s": [
+      12.421699011085,
+      12.880815207054646
+    ],
+    "deployment_speed_m_s": [
+      1.5153936468888907,
+      9.279333774221506
+    ],
+    "landing_descent_m_s": [
+      4.042070753239167,
+      5.329826731116334
+    ]
+  },
+  {
+    "design": "delta-chute24-body500-nominal",
+    "planned": {
+      "cases": 192,
+      "completed": 192,
+      "passed": 192
+    },
+    "diagnostic_empty": {
+      "cases": 96,
+      "completed": 96,
+      "passed": 88
+    },
+    "all_planned_numeric_gates_pass": true,
+    "physical_clearance": false,
+    "profiles": [
+      {
+        "design": "delta-chute24-body500-nominal",
+        "upper": false,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute24-body500-nominal-upper0-mount1/stress-20260913T170415Z-9faf1c18/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 24,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          157.3615311283508,
+          180.36039847912699
+        ],
+        "peak_powered_speed_m_s": [
+          53.65682768732033,
+          58.51300929198036
+        ],
+        "minimum_ascent_stability_cal": [
+          1.6897849431296108,
+          2.5694786192764987
+        ],
+        "guide_departure_m_s": [
+          12.592196229531627,
+          12.926984715218671
+        ],
+        "deployment_speed_m_s": [
+          2.3955036252235744,
+          8.252844693276225
+        ],
+        "landing_descent_m_s": [
+          3.7607835742844853,
+          4.783760907095032
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute24-body500-nominal",
+        "upper": false,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute24-body500-nominal-upper0-mount1.5/stress-20260913T170439Z-18399461/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 20,
+            "failures": {
+              "minimum_ascent_stability_cal": 4
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          151.15946242223075,
+          173.7092097034315
+        ],
+        "peak_powered_speed_m_s": [
+          51.98179428023444,
+          56.667761087515004
+        ],
+        "minimum_ascent_stability_cal": [
+          1.5547020239577305,
+          2.404895286693445
+        ],
+        "guide_departure_m_s": [
+          12.415630315306343,
+          12.724185943808774
+        ],
+        "deployment_speed_m_s": [
+          3.1334503264324254,
+          8.833743328691249
+        ],
+        "landing_descent_m_s": [
+          3.821811731241169,
+          4.855778986470851
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute24-body500-nominal",
+        "upper": true,
+        "mount_factor": 1.0,
+        "returncode": 0,
+        "report": "delta-chute24-body500-nominal-upper1-mount1/stress-20260913T170501Z-54b7e6af/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 24,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          148.88849755825368,
+          171.6417477355365
+        ],
+        "peak_powered_speed_m_s": [
+          51.468716204325965,
+          56.10212741717895
+        ],
+        "minimum_ascent_stability_cal": [
+          1.8762827640834752,
+          2.3972084401637193
+        ],
+        "guide_departure_m_s": [
+          12.29137190315045,
+          12.588726718604184
+        ],
+        "deployment_speed_m_s": [
+          3.371403016983097,
+          9.276284758227542
+        ],
+        "landing_descent_m_s": [
+          3.840858015689607,
+          4.878271923135246
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      },
+      {
+        "design": "delta-chute24-body500-nominal",
+        "upper": true,
+        "mount_factor": 1.5,
+        "returncode": 0,
+        "report": "delta-chute24-body500-nominal-upper1-mount1.5/stress-20260913T170525Z-59b3af01/report.md",
+        "summary": {
+          "planned_loadings": [
+            "dummy",
+            "actual"
+          ],
+          "planned": {
+            "cases": 48,
+            "completed": 48,
+            "passed": 48,
+            "failures": {},
+            "warning_cases": 0
+          },
+          "diagnostic_empty": {
+            "cases": 24,
+            "completed": 24,
+            "passed": 20,
+            "failures": {
+              "minimum_ascent_stability_cal": 4
+            },
+            "warning_cases": 0
+          },
+          "flight_cleared": false
+        },
+        "apogee_m": [
+          142.97472379122377,
+          165.19167533830284
+        ],
+        "peak_powered_speed_m_s": [
+          49.88836259944132,
+          54.358652190651256
+        ],
+        "minimum_ascent_stability_cal": [
+          1.7536882082204308,
+          2.689464959023124
+        ],
+        "guide_departure_m_s": [
+          12.295297630507669,
+          12.63482785074457
+        ],
+        "deployment_speed_m_s": [
+          4.139637213542512,
+          9.87203479670901
+        ],
+        "landing_descent_m_s": [
+          3.9006339303393442,
+          4.948915487880926
+        ],
+        "source_study": "runs/fin-recovery-stress-remaining-20260913"
+      }
+    ],
+    "apogee_m": [
+      142.97472379122377,
+      180.36039847912699
+    ],
+    "peak_powered_speed_m_s": [
+      49.88836259944132,
+      58.51300929198036
+    ],
+    "minimum_ascent_stability_cal": [
+      1.5547020239577305,
+      2.689464959023124
+    ],
+    "guide_departure_m_s": [
+      12.29137190315045,
+      12.926984715218671
+    ],
+    "deployment_speed_m_s": [
+      2.3955036252235744,
+      9.87203479670901
+    ],
+    "landing_descent_m_s": [
+      3.7607835742844853,
+      4.948915487880926
+    ]
+  }
+]

@@ -1,0 +1,1123 @@
+[
+  {
+    "design": "trapezoidal-a45-b430",
+    "upper": false,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "trapezoidal-a45-b430-upper0-mount1/stress-20260913T160857Z-1c177246/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 36,
+        "failures": {
+          "landing_descent_m_s": 12
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      172.6109875483596,
+      196.06587882129105
+    ],
+    "peak_powered_speed_m_s": [
+      57.597514453952144,
+      62.87632441959449
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0746124452264498,
+      1.4909991154843947
+    ],
+    "guide_departure_m_s": [
+      12.811403606232224,
+      13.200313980187063
+    ],
+    "deployment_speed_m_s": [
+      0.7287855193513477,
+      6.691605691913092
+    ],
+    "landing_descent_m_s": [
+      4.836304488928357,
+      6.168830771845715
+    ]
+  },
+  {
+    "design": "trapezoidal-a45-b430",
+    "upper": false,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "trapezoidal-a45-b430-upper0-mount1.5/stress-20260913T160922Z-8180d281/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 20,
+        "failures": {
+          "landing_descent_m_s": 24,
+          "minimum_ascent_stability_cal": 8
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      165.99526851483694,
+      189.08095314380415
+    ],
+    "peak_powered_speed_m_s": [
+      55.753680866149544,
+      60.84097110657687
+    ],
+    "minimum_ascent_stability_cal": [
+      0.9589409117814218,
+      1.4815918762048352
+    ],
+    "guide_departure_m_s": [
+      12.613387636299866,
+      12.971005573098473
+    ],
+    "deployment_speed_m_s": [
+      1.4063219922575694,
+      7.162061209201392
+    ],
+    "landing_descent_m_s": [
+      4.920702065234661,
+      6.268166797059213
+    ]
+  },
+  {
+    "design": "trapezoidal-a45-b430",
+    "upper": true,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "trapezoidal-a45-b430-upper1-mount1/stress-20260913T160944Z-6b664524/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      163.5335038726601,
+      186.89963606500407
+    ],
+    "peak_powered_speed_m_s": [
+      55.18899252350389,
+      60.217323912728574
+    ],
+    "minimum_ascent_stability_cal": [
+      1.24322690513778,
+      1.5418815729234991
+    ],
+    "guide_departure_m_s": [
+      12.713806691595321,
+      12.824630652600007
+    ],
+    "deployment_speed_m_s": [
+      1.6278506127059424,
+      7.627199766397368
+    ],
+    "landing_descent_m_s": [
+      4.9470212743539035,
+      6.2991709908536775
+    ]
+  },
+  {
+    "design": "trapezoidal-a45-b430",
+    "upper": true,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "trapezoidal-a45-b430-upper1-mount1.5/stress-20260913T161008Z-c6a25181/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      157.14002199647706,
+      180.0650960439876
+    ],
+    "peak_powered_speed_m_s": [
+      53.4479813132122,
+      58.295864766999216
+    ],
+    "minimum_ascent_stability_cal": [
+      1.1365520909847588,
+      1.7649541620617324
+    ],
+    "guide_departure_m_s": [
+      12.528477087009868,
+      12.856755272408783
+    ],
+    "deployment_speed_m_s": [
+      2.3518733492427333,
+      8.160075730140141
+    ],
+    "landing_descent_m_s": [
+      5.029562207819505,
+      6.396484651135525
+    ]
+  },
+  {
+    "design": "elliptical-a55-b410",
+    "upper": false,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "elliptical-a55-b410-upper0-mount1/stress-20260913T161038Z-3ba5412f/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 36,
+        "failures": {
+          "landing_descent_m_s": 12
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      168.78890013561153,
+      192.9603050295382
+    ],
+    "peak_powered_speed_m_s": [
+      56.81172088040051,
+      62.18333353627274
+    ],
+    "minimum_ascent_stability_cal": [
+      1.1278792742042132,
+      1.5852264263998839
+    ],
+    "guide_departure_m_s": [
+      12.651154369394854,
+      13.06525898235665
+    ],
+    "deployment_speed_m_s": [
+      1.1418441729470599,
+      7.290847113776897
+    ],
+    "landing_descent_m_s": [
+      4.859829363678874,
+      6.205090323430179
+    ]
+  },
+  {
+    "design": "elliptical-a55-b410",
+    "upper": false,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "elliptical-a55-b410-upper0-mount1.5/stress-20260913T161105Z-b08634cd/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      162.37758706460465,
+      186.1012431916172
+    ],
+    "peak_powered_speed_m_s": [
+      55.02141563247689,
+      60.18334166977296
+    ],
+    "minimum_ascent_stability_cal": [
+      1.023233043238314,
+      1.6264660377597393
+    ],
+    "guide_departure_m_s": [
+      12.693016186294017,
+      12.841950556461873
+    ],
+    "deployment_speed_m_s": [
+      1.8160934128065183,
+      7.743428412479379
+    ],
+    "landing_descent_m_s": [
+      4.943825515023373,
+      6.303855418803358
+    ]
+  },
+  {
+    "design": "elliptical-a55-b410",
+    "upper": true,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "elliptical-a55-b410-upper1-mount1/stress-20260913T161140Z-ebfc4f2c/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      159.93670352394375,
+      183.95988182594823
+    ],
+    "peak_powered_speed_m_s": [
+      54.46210010749449,
+      59.57037791801908
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2980331288546771,
+      1.6437323610057097
+    ],
+    "guide_departure_m_s": [
+      12.560228023446175,
+      12.941535170953655
+    ],
+    "deployment_speed_m_s": [
+      2.0362873553492657,
+      8.212850226062626
+    ],
+    "landing_descent_m_s": [
+      4.970022330756691,
+      6.334685225661175
+    ]
+  },
+  {
+    "design": "elliptical-a55-b410",
+    "upper": true,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "elliptical-a55-b410-upper1-mount1.5/stress-20260913T161203Z-02ca7021/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      153.68001557648248,
+      177.25142995053693
+    ],
+    "peak_powered_speed_m_s": [
+      52.76079262529719,
+      57.68138836188711
+    ],
+    "minimum_ascent_stability_cal": [
+      1.1924338335172648,
+      1.741051306919056
+    ],
+    "guide_departure_m_s": [
+      12.38081660772179,
+      12.733417615555853
+    ],
+    "deployment_speed_m_s": [
+      2.7552302740985715,
+      8.766054146890543
+    ],
+    "landing_descent_m_s": [
+      5.052187656055241,
+      6.431461967187587
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b410",
+    "upper": false,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b410-upper0-mount1/stress-20260913T161230Z-215af76f/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 36,
+        "failures": {
+          "landing_descent_m_s": 12
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 16,
+        "failures": {
+          "minimum_ascent_stability_cal": 8
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      174.6180259253761,
+      199.29128294958605
+    ],
+    "peak_powered_speed_m_s": [
+      58.0331314939991,
+      63.40929748412376
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2877763196934844,
+      1.8554273537413146
+    ],
+    "guide_departure_m_s": [
+      12.878232955988326,
+      13.02101262395081
+    ],
+    "deployment_speed_m_s": [
+      0.20725981601699367,
+      7.05891515377491
+    ],
+    "landing_descent_m_s": [
+      4.823620296837805,
+      6.154014452020241
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b410",
+    "upper": false,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b410-upper0-mount1.5/stress-20260913T161255Z-e73950df/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      167.84880605604548,
+      192.10887469195762
+    ],
+    "peak_powered_speed_m_s": [
+      56.181787899812164,
+      61.34053233870106
+    ],
+    "minimum_ascent_stability_cal": [
+      1.1898269961581747,
+      1.6902668826721006
+    ],
+    "guide_departure_m_s": [
+      12.677495581572362,
+      13.041661920071569
+    ],
+    "deployment_speed_m_s": [
+      0.9040506292565555,
+      7.488830733557494
+    ],
+    "landing_descent_m_s": [
+      4.908235819677745,
+      6.253585548285305
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b410",
+    "upper": true,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b410-upper1-mount1/stress-20260913T161319Z-885b2120/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 16,
+        "failures": {
+          "minimum_ascent_stability_cal": 8
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      165.3266410512194,
+      189.86696851158328
+    ],
+    "peak_powered_speed_m_s": [
+      55.594312137865295,
+      60.70692650926882
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4582932608027492,
+      2.0097971143040656
+    ],
+    "guide_departure_m_s": [
+      12.542960334645523,
+      12.893918509798123
+    ],
+    "deployment_speed_m_s": [
+      1.1318713459781797,
+      7.932601351819791
+    ],
+    "landing_descent_m_s": [
+      4.934621509258281,
+      6.284661778218818
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b410",
+    "upper": true,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b410-upper1-mount1.5/stress-20260913T161342Z-355af603/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      158.83943083443583,
+      182.84567099148074
+    ],
+    "peak_powered_speed_m_s": [
+      53.85161626360683,
+      58.75552176226628
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3592763324644703,
+      1.9127825988006164
+    ],
+    "guide_departure_m_s": [
+      12.589996133773715,
+      12.924244894280173
+    ],
+    "deployment_speed_m_s": [
+      1.8759918835503302,
+      8.40023116080913
+    ],
+    "landing_descent_m_s": [
+      5.0173662620972195,
+      6.38219640284986
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b430",
+    "upper": false,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b430-upper0-mount1/stress-20260913T161404Z-97cb0a8c/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 36,
+        "failures": {
+          "landing_descent_m_s": 12
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 20,
+        "failures": {
+          "minimum_ascent_stability_cal": 4
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      173.06942031461284,
+      197.47704137800903
+    ],
+    "peak_powered_speed_m_s": [
+      57.686439579690926,
+      63.01390628874627
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4058960021381521,
+      2.0218511184555887
+    ],
+    "guide_departure_m_s": [
+      12.809247444863617,
+      13.198254865162145
+    ],
+    "deployment_speed_m_s": [
+      0.44894207671556347,
+      7.1066773806314325
+    ],
+    "landing_descent_m_s": [
+      4.836734336692008,
+      6.16943754027183
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b430",
+    "upper": false,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b430-upper0-mount1.5/stress-20260913T161428Z-2a7e5a03/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      166.37886840722334,
+      190.37069517558564
+    ],
+    "peak_powered_speed_m_s": [
+      55.85131397531113,
+      60.965654065719875
+    ],
+    "minimum_ascent_stability_cal": [
+      1.289772174531417,
+      1.9569281526527755
+    ],
+    "guide_departure_m_s": [
+      12.611312155441942,
+      12.969032608441408
+    ],
+    "deployment_speed_m_s": [
+      1.1438012753226152,
+      7.54811825783047
+    ],
+    "landing_descent_m_s": [
+      4.921124553923021,
+      6.268763800778726
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b430",
+    "upper": true,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b430-upper1-mount1/stress-20260913T161452Z-0759a5cc/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 20,
+        "failures": {
+          "minimum_ascent_stability_cal": 4
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      163.93130595547296,
+      188.15293065002106
+    ],
+    "peak_powered_speed_m_s": [
+      55.27572195410076,
+      60.33823192557434
+    ],
+    "minimum_ascent_stability_cal": [
+      1.5735798400949415,
+      2.2529400846555876
+    ],
+    "guide_departure_m_s": [
+      12.711741005914233,
+      12.822691066437157
+    ],
+    "deployment_speed_m_s": [
+      1.3707269749570503,
+      7.964039112761604
+    ],
+    "landing_descent_m_s": [
+      4.947441523562677,
+      6.299765234690612
+    ]
+  },
+  {
+    "design": "clipped-delta-a45-b430",
+    "upper": true,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "clipped-delta-a45-b430-upper1-mount1.5/stress-20260913T161519Z-eef21873/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      157.46590243296887,
+      181.20742759898647
+    ],
+    "peak_powered_speed_m_s": [
+      53.54207012303019,
+      58.40564564982903
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4673562428224463,
+      1.7912506264376884
+    ],
+    "guide_departure_m_s": [
+      12.52648764193271,
+      12.854871401311557
+    ],
+    "deployment_speed_m_s": [
+      2.1114977293720947,
+      8.480064823644858
+    ],
+    "landing_descent_m_s": [
+      5.029975488253734,
+      6.397069900835422
+    ]
+  },
+  {
+    "design": "swept-a45-b410",
+    "upper": false,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "swept-a45-b410-upper0-mount1/stress-20260913T161546Z-51bf399e/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 36,
+        "failures": {
+          "landing_descent_m_s": 12
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      174.79821405539062,
+      199.18888375482518
+    ],
+    "peak_powered_speed_m_s": [
+      58.03571277752763,
+      63.398978721357764
+    ],
+    "minimum_ascent_stability_cal": [
+      1.1635823515264205,
+      1.8348983278667106
+    ],
+    "guide_departure_m_s": [
+      12.878193845558151,
+      13.02098453486033
+    ],
+    "deployment_speed_m_s": [
+      0.2271482801300167,
+      6.8740212246139185
+    ],
+    "landing_descent_m_s": [
+      4.823620296310609,
+      6.154014456666661
+    ]
+  },
+  {
+    "design": "swept-a45-b410",
+    "upper": false,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "swept-a45-b410-upper0-mount1.5/stress-20260913T161616Z-b25ae19c/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      168.0419652944735,
+      192.01500393673777
+    ],
+    "peak_powered_speed_m_s": [
+      56.18199143185549,
+      61.33113193011561
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0282394014821277,
+      1.4554391840177343
+    ],
+    "guide_departure_m_s": [
+      12.677458579873756,
+      13.041634189555154
+    ],
+    "deployment_speed_m_s": [
+      0.9228268790205104,
+      7.299689442734705
+    ],
+    "landing_descent_m_s": [
+      4.9082358192613045,
+      6.253585551891013
+    ]
+  },
+  {
+    "design": "swept-a45-b410",
+    "upper": true,
+    "mount_factor": 1.0,
+    "returncode": 0,
+    "report": "swept-a45-b410-upper1-mount1/stress-20260913T161640Z-08345981/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 8,
+        "failures": {
+          "minimum_ascent_stability_cal": 16
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      165.50389859732508,
+      189.77576239885823
+    ],
+    "peak_powered_speed_m_s": [
+      55.60208449268048,
+      60.69779569562145
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3341132323732467,
+      1.7889492296240426
+    ],
+    "guide_departure_m_s": [
+      12.54292446331141,
+      12.893891698710323
+    ],
+    "deployment_speed_m_s": [
+      1.150274159665618,
+      7.761340729631431
+    ],
+    "landing_descent_m_s": [
+      4.934621510933442,
+      6.284661780742542
+    ]
+  },
+  {
+    "design": "swept-a45-b410",
+    "upper": true,
+    "mount_factor": 1.5,
+    "returncode": 0,
+    "report": "swept-a45-b410-upper1-mount1.5/stress-20260913T161708Z-79132db7/report.md",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 48,
+        "completed": 48,
+        "passed": 24,
+        "failures": {
+          "landing_descent_m_s": 24
+        },
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 24,
+        "completed": 24,
+        "passed": 4,
+        "failures": {
+          "minimum_ascent_stability_cal": 20
+        },
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      159.00680308683917,
+      182.76223503584924
+    ],
+    "peak_powered_speed_m_s": [
+      53.844371389842266,
+      58.74718800906749
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2349840387591635,
+      1.6983691690588216
+    ],
+    "guide_departure_m_s": [
+      12.589960490896672,
+      12.924218354351071
+    ],
+    "deployment_speed_m_s": [
+      1.8932432958004728,
+      8.243658886847955
+    ],
+    "landing_descent_m_s": [
+      5.0173662679649444,
+      6.382196412337268
+    ]
+  }
+]

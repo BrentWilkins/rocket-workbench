@@ -32,6 +32,7 @@ downloads are unchanged; the notices apply only to the rendered documentation.
 
 `CURRENT_RUNS` and `ARCHIVE_PAGES` in `scripts/prepare_docs.py` are the explicit publication inventory. Promote new
 studies deliberately when updating the current comparison. Do not silently rewrite historical criteria or pass counts.
+Use `--snapshot-run RUN_NAME` to refresh only one study's linked artifacts without replacing historical snapshots.
 
 ## GitHub Pages
 

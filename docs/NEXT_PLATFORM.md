@@ -1,6 +1,7 @@
 # Next platform: more altitude and payload margin
 
-Decision note, 2026-09-13. **Recommendation for the next study, not a simulated new design or purchase approval.**
+Decision note, 2026-09-13. **The first [24 mm / BT-60 comparison](MOTOR24.md) is now available: 405 completed flights.**
+The reasoning and dated prices below explain that study's scope, not purchase approval.
 
 ## Where we are
 
@@ -61,7 +62,8 @@ For scale only, a [FEETECH FS90 micro servo](https://www.pololu.com/product/2818
 devices alone total 18–36 g; wiring, mounts, mechanisms and a suitable power system add more. Doubling the
 electronics/accessory allowance is therefore plausible, but it is **not** doubling the whole rocket's mass, nor is it a
 complete actuator-system budget. The existing logger battery/current allowances do not cover servos. No servo count,
-load requirement, mechanism, battery, active controller or new flight performance has been specified.
+load requirement, mechanism, battery or active controller has been specified. The new study includes mass-only +20/+40 g
+sensitivity, not actuator-system flight predictions.
 
 Active control is a separate development scope, not an automatic next step or a remedy for a marginal passive design.
 First establish passive stability, reliable commercial recovery and useful logger data. Extra capacity can initially be

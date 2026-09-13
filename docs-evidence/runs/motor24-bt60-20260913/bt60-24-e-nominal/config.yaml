@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "name": "bt60-24-e-nominal",
+  "mode": "baseline",
+  "reference_file": null,
+  "geometry": {
+    "body_od": {
+      "value": 41.6,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "body_id": {
+      "value": 40.5,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "body_length": {
+      "value": 410.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Bounded current-avionics geometry study"
+    },
+    "nose_length": {
+      "value": 50.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Bounded nose study: 50/70/90 mm; no measured fit"
+    },
+    "wall": {
+      "value": 1.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "clearance": {
+      "value": 0.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "bay_length": {
+      "value": 145.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+    },
+    "fin_root": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_tip": {
+      "value": 28.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_span": {
+      "value": 45.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Bounded current-avionics geometry study"
+    },
+    "fin_sweep": {
+      "value": 25.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fin_thickness": {
+      "value": 1.6,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "collar_length": {
+      "value": 65.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "fairing_length": {
+      "value": 8.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "motor_mount_id": {
+      "value": 24.1,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+    },
+    "motor_mount_length": {
+      "value": 95.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+    },
+    "motor_mount_od": {
+      "value": 24.8,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+    },
+    "motor_overhang": {
+      "value": 3.2,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "chute_diameter": {
+      "value": 457.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Review shortlist selected from bounded C5 comparison; no physical validation"
+    },
+    "chute_packed_length": {
+      "value": 145.93050255307713,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Area-scaled provisional packing estimate; physical pack test required"
+    },
+    "chute_packed_diameter": {
+      "value": 30.0,
+      "unit": "mm",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    }
+  },
+  "nose_shape": "conical",
+  "avionics_profile": "xiao-gnss-baro-v1",
+  "material": "PLA",
+  "density": {
+    "value": 1.24,
+    "unit": "g/cm3",
+    "provenance": "demonstration assumption",
+    "source": "Full solid volume density assumption; replace with slicer and measured mass"
+  },
+  "purchased_masses": [
+    {
+      "role": "body",
+      "name": "BT-60 cardboard airframe",
+      "mass": {
+        "value": 20.5,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      },
+      "x": {
+        "value": 255.0,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "mount",
+      "name": "Provisional commercial 24 mm mount assembly",
+      "mass": {
+        "value": 12.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+      },
+      "x": {
+        "value": 409.3,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+      }
+    },
+    {
+      "role": "chute",
+      "name": "Nominal 457 mm parachute and lines",
+      "mass": {
+        "value": 13.470507927976351,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 277.96525127653854,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "harness",
+      "name": "Kevlar leader, elastic harness, swivel and knots",
+      "mass": {
+        "value": 5.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 225.0,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "wadding",
+      "name": "Recovery wadding",
+      "mass": {
+        "value": 2.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 356.3652512765385,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional 10 mm axial wadding allowance between recovery pack and motor mount; verify physical packing"
+      }
+    },
+    {
+      "role": "lugs",
+      "name": "Two paper launch lugs and adhesive",
+      "mass": {
+        "value": 1.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 257.25,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "bay_hardware",
+      "name": "Bulkhead eye bolt, washers, nuts, sled screws and cable ties",
+      "mass": {
+        "value": 5.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 190.0,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "collar_adhesive",
+      "name": "Fin collar adhesive and tapered lip fillet",
+      "mass": {
+        "value": 1.5,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 427.5,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    },
+    {
+      "role": "thermal",
+      "name": "Flame-resistant bay shield and perimeter seal allowance",
+      "mass": {
+        "value": 2.0,
+        "unit": "g",
+        "provenance": "estimate",
+        "source": "Baseline component estimate, tube length/chute area scaling applied where relevant"
+      },
+      "x": {
+        "value": 196.0,
+        "unit": "mm",
+        "provenance": "estimate",
+        "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+      }
+    }
+  ],
+  "payload": {
+    "identity": "XIAO nRF52840 Sense + L76K + BMP581; provisional component budget",
+    "battery_identity": "Adafruit 1317 150 mAh 1S LiPo; not yet purchased or measured",
+    "length": {
+      "value": 110.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+    },
+    "width": {
+      "value": 34.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+    },
+    "height": {
+      "value": 26.0,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response"
+    },
+    "mass": {
+      "value": 20.65,
+      "unit": "g",
+      "provenance": "estimate",
+      "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+    },
+    "cg_x": {
+      "value": 97.74213075060533,
+      "unit": "mm",
+      "provenance": "estimate",
+      "source": "24 mm BT-60 comparison: provisional estimate, not measured commercial assembly"
+    },
+    "external_protrusions": false
+  },
+  "launch": {
+    "elevation": {
+      "value": 1600.0,
+      "unit": "m",
+      "provenance": "demonstration assumption",
+      "source": "Demonstration altitude, not an identified launch site"
+    },
+    "latitude": {
+      "value": 40.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "longitude": {
+      "value": -105.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_length": {
+      "value": 0.9144,
+      "unit": "m",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_angle": {
+      "value": 0.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "guide_direction": {
+      "value": 0.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "wind_direction": {
+      "value": 90.0,
+      "unit": "deg",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "wind_speeds": [
+      {
+        "value": 0.0,
+        "unit": "m/s",
+        "provenance": "estimate",
+        "source": "Bounded constant-wind comparison; not a forecast"
+      },
+      {
+        "value": 2.0,
+        "unit": "m/s",
+        "provenance": "estimate",
+        "source": "Bounded constant-wind comparison; not a forecast"
+      },
+      {
+        "value": 4.0,
+        "unit": "m/s",
+        "provenance": "estimate",
+        "source": "Bounded constant-wind comparison; not a forecast"
+      }
+    ],
+    "seed": 42,
+    "atmosphere": "ISA",
+    "time_step": {
+      "value": 0.01,
+      "unit": "s",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    },
+    "max_time": {
+      "value": 300.0,
+      "unit": "s",
+      "provenance": "demonstration assumption",
+      "source": "Provisional design choice; must be checked against selected parts"
+    }
+  },
+  "motors": [
+    {
+      "designation": "E12",
+      "delay_s": 4.0,
+      "digest": "27575268e95ac6983801956efb389764",
+      "max_liftoff_mass": {
+        "value": 482.0,
+        "unit": "g",
+        "provenance": "manufacturer specification",
+        "source": "https://estesrockets.com/products/e12-4-engines ; checked 2026-09-13"
+      }
+    },
+    {
+      "designation": "E12",
+      "delay_s": 6.0,
+      "digest": "27575268e95ac6983801956efb389764",
+      "max_liftoff_mass": {
+        "value": 397.0,
+        "unit": "g",
+        "provenance": "manufacturer specification",
+        "source": "https://estesrockets.com/products/e12-6-engines ; checked 2026-09-13"
+      }
+    },
+    {
+      "designation": "E12",
+      "delay_s": 8.0,
+      "digest": "27575268e95ac6983801956efb389764",
+      "max_liftoff_mass": {
+        "value": 340.0,
+        "unit": "g",
+        "provenance": "manufacturer specification",
+        "source": "https://estesrockets.com/products/e12-8-engines ; checked 2026-09-13"
+      }
+    }
+  ],
+  "criteria": [
+    {
+      "metric": "apogee_m",
+      "minimum": 30.0,
+      "maximum": null,
+      "unit": "m",
+      "source": "New motor comparison: report altitude without inherited 120 m ceiling; retain 30 m minimum. Site altitude clearance is unassessed.",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "guide_departure_m_s",
+      "minimum": 12.0,
+      "maximum": null,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "minimum_ascent_stability_cal",
+      "minimum": 1.0,
+      "maximum": null,
+      "unit": "cal",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "deployment_speed_m_s",
+      "minimum": null,
+      "maximum": 10.0,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    },
+    {
+      "metric": "landing_descent_m_s",
+      "minimum": null,
+      "maximum": 6.0,
+      "unit": "m/s",
+      "source": "Project engineering assumption for demonstration screening; not a launch clearance",
+      "kind": "engineering assumption"
+    }
+  ],
+  "chute_cd": {
+    "value": 0.75,
+    "unit": "1",
+    "provenance": "demonstration assumption",
+    "source": "Engineering estimate for flat plastic chute; no measured Cd"
+  },
+  "printed_measurements": {}
+}

@@ -1,0 +1,2170 @@
+[
+  {
+    "platform": "18-c5",
+    "profile": "nominal",
+    "motor": "C5-3",
+    "report": "bt60-18-c5-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 6,
+    "pass_0_2_4": 6,
+    "failures": {
+      "minimum_ascent_stability_cal": 1,
+      "deployment_speed_m_s": 2
+    },
+    "loaded_dry_mass_g": 157.1487754861409,
+    "loaded_launch_mass_g": 180.9487754861409,
+    "apogee_m": [
+      57.62030973436562,
+      59.49825716713795
+    ],
+    "peak_powered_speed_m_s": [
+      22.949080695152468,
+      23.100946669204532
+    ],
+    "guide_departure_m_s": [
+      12.513869938633041,
+      12.520111627954684
+    ],
+    "minimum_ascent_stability_cal": [
+      1.6844800491488714,
+      1.9704081602114445
+    ],
+    "deployment_speed_m_s": [
+      7.432039103937342,
+      8.61605220401883
+    ],
+    "landing_descent_m_s": [
+      5.082737202005816,
+      5.082795153667977
+    ],
+    "landing_displacement_m": [
+      0.06161777740781607,
+      2.9307117020593507
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      11.65845729366783,
+      11.666504308967212
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "nominal",
+    "motor": "C11-3",
+    "report": "bt60-24-cd-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 162.1487754861409,
+    "loaded_launch_mass_g": 197.4487754861409,
+    "apogee_m": [
+      74.01928546892013,
+      74.73934544025272
+    ],
+    "peak_powered_speed_m_s": [
+      37.08165520332021,
+      37.20935039270219
+    ],
+    "guide_departure_m_s": [
+      12.071506956505464,
+      12.077346922378911
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3519193856569505,
+      1.794750138696961
+    ],
+    "deployment_speed_m_s": [
+      3.7714227077194193,
+      3.884805648312923
+    ],
+    "landing_descent_m_s": [
+      5.309494435631656,
+      5.309554954397882
+    ],
+    "landing_displacement_m": [
+      0.02011707177713845,
+      20.905436094255478
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      11.425653404714568,
+      11.433238403384795
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "nominal",
+    "motor": "C11-5",
+    "report": "bt60-24-cd-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 162.1487754861409,
+    "loaded_launch_mass_g": 197.4487754861409,
+    "apogee_m": [
+      74.22471530866608,
+      74.91198551963483
+    ],
+    "peak_powered_speed_m_s": [
+      37.08165520332021,
+      37.20935039270219
+    ],
+    "guide_departure_m_s": [
+      12.071506956505464,
+      12.077346922378911
+    ],
+    "minimum_ascent_stability_cal": [
+      0.9060608864843197,
+      1.6786805142460894
+    ],
+    "deployment_speed_m_s": [
+      11.768502984968842,
+      12.635447277098265
+    ],
+    "landing_descent_m_s": [
+      5.309494326911845,
+      5.30955496593676
+    ],
+    "landing_displacement_m": [
+      1.009844199510905,
+      14.341881143085981
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      11.425653404714568,
+      11.433238403384795
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "nominal",
+    "motor": "D12-3",
+    "report": "bt60-24-cd-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 4
+    },
+    "loaded_dry_mass_g": 162.1487754861409,
+    "loaded_launch_mass_g": 204.7487754861409,
+    "apogee_m": [
+      181.14182826991993,
+      182.52527348382011
+    ],
+    "peak_powered_speed_m_s": [
+      63.12373261713272,
+      63.26924755188188
+    ],
+    "guide_departure_m_s": [
+      13.017577204263132,
+      13.0230616013495
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2394923892014909,
+      1.6571899235337488
+    ],
+    "deployment_speed_m_s": [
+      19.742251013623868,
+      19.780004827916475
+    ],
+    "landing_descent_m_s": [
+      5.283660479845367,
+      5.283720743218805
+    ],
+    "landing_displacement_m": [
+      0.048933434319598026,
+      52.333328688614
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.077485946407217,
+      15.085187017196153
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "nominal",
+    "motor": "D12-5",
+    "report": "bt60-24-cd-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 5,
+    "pass_0_2_4": 5,
+    "failures": {
+      "minimum_ascent_stability_cal": 4
+    },
+    "loaded_dry_mass_g": 162.1487754861409,
+    "loaded_launch_mass_g": 204.7487754861409,
+    "apogee_m": [
+      196.07112079631054,
+      197.84682845022266
+    ],
+    "peak_powered_speed_m_s": [
+      63.12373261713272,
+      63.26924755188188
+    ],
+    "guide_departure_m_s": [
+      13.017577204263132,
+      13.0230616013495
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0798573164774727,
+      1.546435104891895
+    ],
+    "deployment_speed_m_s": [
+      0.4918745363809636,
+      2.7458316146638704
+    ],
+    "landing_descent_m_s": [
+      5.283660518697129,
+      5.283720751121924
+    ],
+    "landing_displacement_m": [
+      0.09067114234939426,
+      50.341300153967616
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.077485946407217,
+      15.085187017196153
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "nominal",
+    "motor": "D12-7",
+    "report": "bt60-24-cd-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 162.1487754861409,
+    "loaded_launch_mass_g": 204.7487754861409,
+    "apogee_m": [
+      196.07112079631054,
+      197.84682845022266
+    ],
+    "peak_powered_speed_m_s": [
+      63.12373261713272,
+      63.26924755188188
+    ],
+    "guide_departure_m_s": [
+      13.017577204263132,
+      13.0230616013495
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0798573164774727,
+      1.546435104891895
+    ],
+    "deployment_speed_m_s": [
+      13.252638499612482,
+      18.04051891492022
+    ],
+    "landing_descent_m_s": [
+      5.283660521907863,
+      5.283720752239619
+    ],
+    "landing_displacement_m": [
+      0.9129644879517903,
+      38.58451786868734
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.077485946407217,
+      15.085187017196153
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "nominal",
+    "motor": "E12-4",
+    "report": "bt60-24-e-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 161.1487754861409,
+    "loaded_launch_mass_g": 221.0487754861409,
+    "apogee_m": [
+      324.5172412757032,
+      326.77409510022
+    ],
+    "peak_powered_speed_m_s": [
+      87.79861214334804,
+      87.93528166866595
+    ],
+    "guide_departure_m_s": [
+      13.318526421508675,
+      13.323652821847073
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0514568828487674,
+      1.4618044609721208
+    ],
+    "deployment_speed_m_s": [
+      19.74133289854762,
+      19.751699282831098
+    ],
+    "landing_descent_m_s": [
+      5.3051975150054105,
+      5.305257971524006
+    ],
+    "landing_displacement_m": [
+      0.12910299766722141,
+      91.75915080305836
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.566380811940949,
+      15.573448323509272
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "nominal",
+    "motor": "E12-6",
+    "report": "bt60-24-e-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 4,
+    "failures": {
+      "minimum_ascent_stability_cal": 5
+    },
+    "loaded_dry_mass_g": 161.1487754861409,
+    "loaded_launch_mass_g": 221.0487754861409,
+    "apogee_m": [
+      339.29687444555526,
+      341.99547124818537
+    ],
+    "peak_powered_speed_m_s": [
+      87.79861214334804,
+      87.93528166866595
+    ],
+    "guide_departure_m_s": [
+      13.318526421508675,
+      13.323652821847073
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0514568828487674,
+      1.2793762064901613
+    ],
+    "deployment_speed_m_s": [
+      0.5124216358127937,
+      3.228983705921857
+    ],
+    "landing_descent_m_s": [
+      5.305197482108477,
+      5.305258010025981
+    ],
+    "landing_displacement_m": [
+      0.19704612660067433,
+      88.68089127563222
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.566380811940949,
+      15.573448323509272
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "nominal",
+    "motor": "E12-8",
+    "report": "bt60-24-e-nominal/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 161.1487754861409,
+    "loaded_launch_mass_g": 221.0487754861409,
+    "apogee_m": [
+      339.29687444555526,
+      341.99547124818537
+    ],
+    "peak_powered_speed_m_s": [
+      87.79861214334804,
+      87.93528166866595
+    ],
+    "guide_departure_m_s": [
+      13.318526421508675,
+      13.323652821847073
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0514568828487674,
+      1.2793762064901613
+    ],
+    "deployment_speed_m_s": [
+      13.305801489563413,
+      18.768734364666585
+    ],
+    "landing_descent_m_s": [
+      5.305197439281055,
+      5.305257993614269
+    ],
+    "landing_displacement_m": [
+      0.7949524282549165,
+      75.98082151305019
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      15.566380811940949,
+      15.573448323509272
+    ]
+  },
+  {
+    "platform": "18-c5",
+    "profile": "upper-avionics",
+    "motor": "C5-3",
+    "report": "bt60-18-c5-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 4,
+    "failures": {
+      "minimum_ascent_stability_cal": 1,
+      "deployment_speed_m_s": 4
+    },
+    "loaded_dry_mass_g": 165.6987754861409,
+    "loaded_launch_mass_g": 189.49877548614091,
+    "apogee_m": [
+      51.889412922867606,
+      53.854598816387224
+    ],
+    "peak_powered_speed_m_s": [
+      21.23483509084586,
+      21.372352203328255
+    ],
+    "guide_departure_m_s": [
+      12.170268864442166,
+      12.176156484253662
+    ],
+    "minimum_ascent_stability_cal": [
+      1.8550437118853738,
+      2.175707298603396
+    ],
+    "deployment_speed_m_s": [
+      8.813099934962946,
+      10.10122296451561
+    ],
+    "landing_descent_m_s": [
+      5.209039640327405,
+      5.209099017513141
+    ],
+    "landing_displacement_m": [
+      0.13583348882009347,
+      1.0953794993530952
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      11.126885580017067,
+      11.134330290521829
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "upper-avionics",
+    "motor": "C11-3",
+    "report": "bt60-24-cd-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 2,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 170.6987754861409,
+    "loaded_launch_mass_g": 205.99877548614091,
+    "apogee_m": [
+      68.85404802451087,
+      69.55752526697697
+    ],
+    "peak_powered_speed_m_s": [
+      35.27373685979531,
+      35.40440726290127
+    ],
+    "guide_departure_m_s": [
+      11.845441181702606,
+      11.851016279918268
+    ],
+    "minimum_ascent_stability_cal": [
+      1.483143860191058,
+      1.9740178974091165
+    ],
+    "deployment_speed_m_s": [
+      2.572980164840138,
+      2.8262627175621033
+    ],
+    "landing_descent_m_s": [
+      5.43052829065093,
+      5.430590165393822
+    ],
+    "landing_displacement_m": [
+      0.019069097139722324,
+      18.169672477051385
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.94581709409601,
+      10.953011145345048
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "upper-avionics",
+    "motor": "C11-5",
+    "report": "bt60-24-cd-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 170.6987754861409,
+    "loaded_launch_mass_g": 205.99877548614091,
+    "apogee_m": [
+      68.92160690762775,
+      69.60426458635114
+    ],
+    "peak_powered_speed_m_s": [
+      35.27373685979531,
+      35.40440726290127
+    ],
+    "guide_departure_m_s": [
+      11.845441181702606,
+      11.851016279918268
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0812807212789188,
+      1.7986551474203047
+    ],
+    "deployment_speed_m_s": [
+      12.99409864656935,
+      14.443933282600847
+    ],
+    "landing_descent_m_s": [
+      5.430528271555755,
+      5.430590256281779
+    ],
+    "landing_displacement_m": [
+      0.8544823521491491,
+      10.010270180868583
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.94581709409601,
+      10.953011145345048
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "upper-avionics",
+    "motor": "D12-3",
+    "report": "bt60-24-cd-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 170.6987754861409,
+    "loaded_launch_mass_g": 213.2987754861409,
+    "apogee_m": [
+      173.54297078013423,
+      175.02129553277405
+    ],
+    "peak_powered_speed_m_s": [
+      60.43698108304153,
+      60.58391457789011
+    ],
+    "guide_departure_m_s": [
+      12.890575660589711,
+      12.895874946192363
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4152824391766345,
+      1.8362246078141504
+    ],
+    "deployment_speed_m_s": [
+      18.744959765626767,
+      18.758213043792935
+    ],
+    "landing_descent_m_s": [
+      5.4052725942455195,
+      5.405334239489549
+    ],
+    "landing_displacement_m": [
+      0.04992888252440438,
+      47.37292637409721
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.465249871862818,
+      14.472608714910098
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "upper-avionics",
+    "motor": "D12-5",
+    "report": "bt60-24-cd-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 5,
+    "pass_0_2_4": 7,
+    "failures": {
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 170.6987754861409,
+    "loaded_launch_mass_g": 213.2987754861409,
+    "apogee_m": [
+      186.72266848891888,
+      188.5845943817674
+    ],
+    "peak_powered_speed_m_s": [
+      60.43698108304153,
+      60.58391457789011
+    ],
+    "guide_departure_m_s": [
+      12.890575660589711,
+      12.895874946192363
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3045559013472603,
+      1.641192301924771
+    ],
+    "deployment_speed_m_s": [
+      1.3937214110741811,
+      3.2302309960508886
+    ],
+    "landing_descent_m_s": [
+      5.405272572434379,
+      5.405334186564027
+    ],
+    "landing_displacement_m": [
+      0.08940767800431623,
+      44.25970389525835
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.465249871862818,
+      14.472608714910098
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "upper-avionics",
+    "motor": "D12-7",
+    "report": "bt60-24-cd-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 170.6987754861409,
+    "loaded_launch_mass_g": 213.2987754861409,
+    "apogee_m": [
+      186.72266848891888,
+      188.5845943817674
+    ],
+    "peak_powered_speed_m_s": [
+      60.43698108304153,
+      60.58391457789011
+    ],
+    "guide_departure_m_s": [
+      12.890575660589711,
+      12.895874946192363
+    ],
+    "minimum_ascent_stability_cal": [
+      1.3045559013472603,
+      1.641192301924771
+    ],
+    "deployment_speed_m_s": [
+      15.779284530621307,
+      19.475300822693665
+    ],
+    "landing_descent_m_s": [
+      5.405272594414073,
+      5.405334154267757
+    ],
+    "landing_displacement_m": [
+      0.23308374213574698,
+      31.573209316113626
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.465249871862818,
+      14.472608714910098
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "upper-avionics",
+    "motor": "E12-4",
+    "report": "bt60-24-e-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 169.6987754861409,
+    "loaded_launch_mass_g": 229.5987754861409,
+    "apogee_m": [
+      315.21568195975146,
+      317.65814387251584
+    ],
+    "peak_powered_speed_m_s": [
+      84.88972827640222,
+      85.02801155144003
+    ],
+    "guide_departure_m_s": [
+      13.238253931308968,
+      13.243237597046098
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2233134816486697,
+      1.6356400770514061
+    ],
+    "deployment_speed_m_s": [
+      19.38504981458053,
+      19.430814924569574
+    ],
+    "landing_descent_m_s": [
+      5.426327172645347,
+      5.426388974367272
+    ],
+    "landing_displacement_m": [
+      0.12958006189137514,
+      84.20236170932607
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.977344377356392,
+      14.984203464083278
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "upper-avionics",
+    "motor": "E12-6",
+    "report": "bt60-24-e-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 4,
+    "failures": {
+      "minimum_ascent_stability_cal": 5
+    },
+    "loaded_dry_mass_g": 169.6987754861409,
+    "loaded_launch_mass_g": 229.5987754861409,
+    "apogee_m": [
+      329.2972937153433,
+      332.2104784492924
+    ],
+    "peak_powered_speed_m_s": [
+      84.88972827640222,
+      85.02801155144003
+    ],
+    "guide_departure_m_s": [
+      13.238253931308968,
+      13.243237597046098
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2233134816486697,
+      1.4336427174018271
+    ],
+    "deployment_speed_m_s": [
+      0.8092681278605992,
+      3.62013672764673
+    ],
+    "landing_descent_m_s": [
+      5.426327115779323,
+      5.426389046580456
+    ],
+    "landing_displacement_m": [
+      0.19713971068322367,
+      80.13628896714752
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.977344377356392,
+      14.984203464083278
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "upper-avionics",
+    "motor": "E12-8",
+    "report": "bt60-24-e-upper-avionics/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 169.6987754861409,
+    "loaded_launch_mass_g": 229.5987754861409,
+    "apogee_m": [
+      329.2972937153433,
+      332.2104784492924
+    ],
+    "peak_powered_speed_m_s": [
+      84.88972827640222,
+      85.02801155144003
+    ],
+    "guide_departure_m_s": [
+      13.238253931308968,
+      13.243237597046098
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2233134816486697,
+      1.4336427174018271
+    ],
+    "deployment_speed_m_s": [
+      15.265515558744992,
+      19.47526725482674
+    ],
+    "landing_descent_m_s": [
+      5.426327172306528,
+      5.426389052783278
+    ],
+    "landing_displacement_m": [
+      0.12859619556337604,
+      66.71918627315847
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.977344377356392,
+      14.984203464083278
+    ]
+  },
+  {
+    "platform": "18-c5",
+    "profile": "heavy-build",
+    "motor": "C5-3",
+    "report": "bt60-18-c5-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 2,
+    "pass_0_2_4": 2,
+    "failures": {
+      "minimum_ascent_stability_cal": 1,
+      "deployment_speed_m_s": 7,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 185.3044289977738,
+    "loaded_launch_mass_g": 209.10442899777382,
+    "apogee_m": [
+      40.875128413577755,
+      42.96764072380696
+    ],
+    "peak_powered_speed_m_s": [
+      17.73903107215724,
+      17.852695299044292
+    ],
+    "guide_departure_m_s": [
+      11.483366301552094,
+      11.488878883783299
+    ],
+    "minimum_ascent_stability_cal": [
+      1.7882216841989178,
+      2.16518374588343
+    ],
+    "deployment_speed_m_s": [
+      11.338875998302202,
+      13.248686196439152
+    ],
+    "landing_descent_m_s": [
+      5.487699899349516,
+      5.487762452339401
+    ],
+    "landing_displacement_m": [
+      0.44489036150914407,
+      8.533592227704483
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.073335826985836,
+      10.079558238434332
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "heavy-build",
+    "motor": "C11-3",
+    "report": "bt60-24-cd-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "guide_departure_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 192.8044289977738,
+    "loaded_launch_mass_g": 228.1044289977738,
+    "apogee_m": [
+      57.1654334126525,
+      57.74598159770937
+    ],
+    "peak_powered_speed_m_s": [
+      31.213425739099716,
+      31.3385317088862
+    ],
+    "guide_departure_m_s": [
+      11.354806102635473,
+      11.359820924601134
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0099180162167536,
+      1.8166230583687417
+    ],
+    "deployment_speed_m_s": [
+      0.35648543647225994,
+      1.346697701203145
+    ],
+    "landing_descent_m_s": [
+      5.731628655715736,
+      5.731694126115667
+    ],
+    "landing_displacement_m": [
+      0.015490131522568678,
+      13.351333596330553
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      9.87252541102533,
+      9.878924509840152
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "heavy-build",
+    "motor": "C11-5",
+    "report": "bt60-24-cd-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "guide_departure_m_s": 9,
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 192.8044289977738,
+    "loaded_launch_mass_g": 228.1044289977738,
+    "apogee_m": [
+      57.1654334126525,
+      57.74598159770937
+    ],
+    "peak_powered_speed_m_s": [
+      31.213425739099716,
+      31.3385317088862
+    ],
+    "guide_departure_m_s": [
+      11.354806102635473,
+      11.359820924601134
+    ],
+    "minimum_ascent_stability_cal": [
+      1.0099180162167536,
+      1.8166230583687417
+    ],
+    "deployment_speed_m_s": [
+      14.101981505672606,
+      15.91420199383129
+    ],
+    "landing_descent_m_s": [
+      5.731628728919135,
+      5.7316940908444804
+    ],
+    "landing_displacement_m": [
+      0.7816296500288238,
+      4.0367365187672934
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      9.87252541102533,
+      9.878924509840152
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "heavy-build",
+    "motor": "D12-3",
+    "report": "bt60-24-cd-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 192.8044289977738,
+    "loaded_launch_mass_g": 235.4044289977738,
+    "apogee_m": [
+      154.90512157120017,
+      156.52510105385647
+    ],
+    "peak_powered_speed_m_s": [
+      54.166309971064386,
+      54.31806264515076
+    ],
+    "guide_departure_m_s": [
+      12.593738041496481,
+      12.59858531106922
+    ],
+    "minimum_ascent_stability_cal": [
+      1.375438602775654,
+      1.804175363738296
+    ],
+    "deployment_speed_m_s": [
+      15.929230925585077,
+      15.989097625102817
+    ],
+    "landing_descent_m_s": [
+      5.707704674481683,
+      5.707769771156363
+    ],
+    "landing_displacement_m": [
+      0.04750352986223335,
+      36.92426439008862
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.0899599643145,
+      13.096466961567156
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "heavy-build",
+    "motor": "D12-5",
+    "report": "bt60-24-cd-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 6,
+    "failures": {
+      "minimum_ascent_stability_cal": 3
+    },
+    "loaded_dry_mass_g": 192.8044289977738,
+    "loaded_launch_mass_g": 235.4044289977738,
+    "apogee_m": [
+      163.78897873228257,
+      165.70046057895482
+    ],
+    "peak_powered_speed_m_s": [
+      54.166309971064386,
+      54.31806264515076
+    ],
+    "guide_departure_m_s": [
+      12.593738041496481,
+      12.59858531106922
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2388960194337872,
+      1.3476722523013474
+    ],
+    "deployment_speed_m_s": [
+      3.9735958075456543,
+      4.970039672263413
+    ],
+    "landing_descent_m_s": [
+      5.707704644735258,
+      5.707769814366773
+    ],
+    "landing_displacement_m": [
+      0.06823010698896491,
+      31.6839930964901
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.0899599643145,
+      13.096466961567156
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "heavy-build",
+    "motor": "D12-7",
+    "report": "bt60-24-cd-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9,
+      "launch_mass_g": 6
+    },
+    "loaded_dry_mass_g": 192.8044289977738,
+    "loaded_launch_mass_g": 235.4044289977738,
+    "apogee_m": [
+      163.78897873228257,
+      165.70046057895482
+    ],
+    "peak_powered_speed_m_s": [
+      54.166309971064386,
+      54.31806264515076
+    ],
+    "guide_departure_m_s": [
+      12.593738041496481,
+      12.59858531106922
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2388960194337872,
+      1.3476722523013474
+    ],
+    "deployment_speed_m_s": [
+      17.17493447158099,
+      21.882448178296116
+    ],
+    "landing_descent_m_s": [
+      5.707704622488499,
+      5.707769800142087
+    ],
+    "landing_displacement_m": [
+      0.01833926659014384,
+      17.39261701987491
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.0899599643145,
+      13.096466961567156
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "heavy-build",
+    "motor": "E12-4",
+    "report": "bt60-24-e-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 4
+    },
+    "loaded_dry_mass_g": 191.3044289977738,
+    "loaded_launch_mass_g": 251.2044289977738,
+    "apogee_m": [
+      291.7470464342228,
+      294.48021924726567
+    ],
+    "peak_powered_speed_m_s": [
+      77.94982921404817,
+      78.08882015923358
+    ],
+    "guide_departure_m_s": [
+      12.89288497698504,
+      12.897464529759423
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2069110851103613,
+      1.6279228193174693
+    ],
+    "deployment_speed_m_s": [
+      18.043602896563968,
+      18.18518043415486
+    ],
+    "landing_descent_m_s": [
+      5.721008182194449,
+      5.721073341513245
+    ],
+    "landing_displacement_m": [
+      0.1269294839698604,
+      68.39315328352147
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.669170861050105,
+      13.67551916806461
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "heavy-build",
+    "motor": "E12-6",
+    "report": "bt60-24-e-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 4,
+    "failures": {
+      "minimum_ascent_stability_cal": 5
+    },
+    "loaded_dry_mass_g": 191.3044289977738,
+    "loaded_launch_mass_g": 251.2044289977738,
+    "apogee_m": [
+      303.5037261545712,
+      306.6937494662071
+    ],
+    "peak_powered_speed_m_s": [
+      77.94982921404817,
+      78.08882015923358
+    ],
+    "guide_departure_m_s": [
+      12.89288497698504,
+      12.897464529759423
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2069110851103613,
+      1.3243436591048332
+    ],
+    "deployment_speed_m_s": [
+      1.992065644314424,
+      4.541576514466806
+    ],
+    "landing_descent_m_s": [
+      5.721008093355992,
+      5.721073317614371
+    ],
+    "landing_displacement_m": [
+      0.1882833798971932,
+      62.32360053206421
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.669170861050105,
+      13.67551916806461
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "heavy-build",
+    "motor": "E12-8",
+    "report": "bt60-24-e-heavy-build/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 5,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 191.3044289977738,
+    "loaded_launch_mass_g": 251.2044289977738,
+    "apogee_m": [
+      303.5037261545712,
+      306.6937494662071
+    ],
+    "peak_powered_speed_m_s": [
+      77.94982921404817,
+      78.08882015923358
+    ],
+    "guide_departure_m_s": [
+      12.89288497698504,
+      12.897464529759423
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2069110851103613,
+      1.3243436591048332
+    ],
+    "deployment_speed_m_s": [
+      15.520938413446263,
+      20.8213701036108
+    ],
+    "landing_descent_m_s": [
+      5.72100815256446,
+      5.72107333176513
+    ],
+    "landing_displacement_m": [
+      0.08858350577359335,
+      47.582240822582634
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.669170861050105,
+      13.67551916806461
+    ]
+  },
+  {
+    "platform": "18-c5",
+    "profile": "inert-plus20",
+    "motor": "C5-3",
+    "report": "bt60-18-c5-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 2,
+    "pass_0_2_4": 2,
+    "failures": {
+      "minimum_ascent_stability_cal": 1,
+      "guide_departure_m_s": 6,
+      "deployment_speed_m_s": 6
+    },
+    "loaded_dry_mass_g": 177.14877548614092,
+    "loaded_launch_mass_g": 200.94877548614093,
+    "apogee_m": [
+      45.08540280824234,
+      47.175365627334976
+    ],
+    "peak_powered_speed_m_s": [
+      19.131420699220833,
+      19.247074618846966
+    ],
+    "guide_departure_m_s": [
+      11.749275768565031,
+      11.754898768380054
+    ],
+    "minimum_ascent_stability_cal": [
+      2.046346042289475,
+      2.3743713519635534
+    ],
+    "deployment_speed_m_s": [
+      10.402068868724768,
+      12.112340784158647
+    ],
+    "landing_descent_m_s": [
+      5.373536085424346,
+      5.373597339746082
+    ],
+    "landing_displacement_m": [
+      0.2947034342890662,
+      6.124844320610052
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.486418788588567,
+      10.493125209382358
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus20",
+    "motor": "C11-3",
+    "report": "bt60-24-cd-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 2,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 182.14877548614092,
+    "loaded_launch_mass_g": 217.4487754861409,
+    "apogee_m": [
+      62.46212343757115,
+      63.14173114826816
+    ],
+    "peak_powered_speed_m_s": [
+      33.064778857878935,
+      33.19957450133842
+    ],
+    "guide_departure_m_s": [
+      11.49491848837082,
+      11.50011997506381
+    ],
+    "minimum_ascent_stability_cal": [
+      1.381048586033406,
+      2.178730340778049
+    ],
+    "deployment_speed_m_s": [
+      1.0233609910006145,
+      1.7274003300780896
+    ],
+    "landing_descent_m_s": [
+      5.588512761313452,
+      5.588576475315513
+    ],
+    "landing_displacement_m": [
+      0.01754409433558113,
+      14.972018469571722
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.362434779150693,
+      10.369202606385414
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus20",
+    "motor": "C11-5",
+    "report": "bt60-24-cd-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 182.14877548614092,
+    "loaded_launch_mass_g": 217.4487754861409,
+    "apogee_m": [
+      62.4667475007168,
+      63.14342323290723
+    ],
+    "peak_powered_speed_m_s": [
+      33.064778857878935,
+      33.19957450133842
+    ],
+    "guide_departure_m_s": [
+      11.49491848837082,
+      11.50011997506381
+    ],
+    "minimum_ascent_stability_cal": [
+      1.2823816616479347,
+      2.0933957790218907
+    ],
+    "deployment_speed_m_s": [
+      14.605847750540441,
+      16.231114513991304
+    ],
+    "landing_descent_m_s": [
+      5.5885126626177195,
+      5.588576429840059
+    ],
+    "landing_displacement_m": [
+      0.4396936546995094,
+      6.564079893948338
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      10.362434779150693,
+      10.369202606385414
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus20",
+    "motor": "D12-3",
+    "report": "bt60-24-cd-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 182.14877548614092,
+    "loaded_launch_mass_g": 224.74877548614091,
+    "apogee_m": [
+      163.68176118851457,
+      165.27258973097165
+    ],
+    "peak_powered_speed_m_s": [
+      57.075692164729965,
+      57.222492327789716
+    ],
+    "guide_departure_m_s": [
+      12.8223209563688,
+      12.827432173974605
+    ],
+    "minimum_ascent_stability_cal": [
+      1.6199643768514,
+      2.0426992888921913
+    ],
+    "deployment_speed_m_s": [
+      17.318190541510575,
+      17.341538670002528
+    ],
+    "landing_descent_m_s": [
+      5.5639737163574425,
+      5.564037172218721
+    ],
+    "landing_displacement_m": [
+      0.049385678912025305,
+      41.29583642828355
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.718901653065076,
+      13.725823767814205
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus20",
+    "motor": "D12-5",
+    "report": "bt60-24-cd-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 5,
+    "pass_0_2_4": 7,
+    "failures": {
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 182.14877548614092,
+    "loaded_launch_mass_g": 224.74877548614091,
+    "apogee_m": [
+      174.55439493754105,
+      176.50949947771514
+    ],
+    "peak_powered_speed_m_s": [
+      57.075692164729965,
+      57.222492327789716
+    ],
+    "guide_departure_m_s": [
+      12.8223209563688,
+      12.827432173974605
+    ],
+    "minimum_ascent_stability_cal": [
+      1.5591904984146925,
+      1.6852877046383428
+    ],
+    "deployment_speed_m_s": [
+      2.6941702336744937,
+      4.146667615433227
+    ],
+    "landing_descent_m_s": [
+      5.563973757774953,
+      5.564037133900687
+    ],
+    "landing_displacement_m": [
+      0.0818972425831012,
+      36.83133254912832
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.718901653065076,
+      13.725823767814205
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus20",
+    "motor": "D12-7",
+    "report": "bt60-24-cd-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 182.14877548614092,
+    "loaded_launch_mass_g": 224.74877548614091,
+    "apogee_m": [
+      174.55439493754105,
+      176.50949947771514
+    ],
+    "peak_powered_speed_m_s": [
+      57.075692164729965,
+      57.222492327789716
+    ],
+    "guide_departure_m_s": [
+      12.8223209563688,
+      12.827432173974605
+    ],
+    "minimum_ascent_stability_cal": [
+      1.5591904984146925,
+      1.6852877046383428
+    ],
+    "deployment_speed_m_s": [
+      17.241811496755954,
+      21.031399699934326
+    ],
+    "landing_descent_m_s": [
+      5.563973735517761,
+      5.564037193171225
+    ],
+    "landing_displacement_m": [
+      1.010016666408885,
+      23.073379636275003
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.718901653065076,
+      13.725823767814205
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus20",
+    "motor": "E12-4",
+    "report": "bt60-24-e-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 181.14877548614092,
+    "loaded_launch_mass_g": 241.04877548614093,
+    "apogee_m": [
+      302.6806297475659,
+      305.376153512626
+    ],
+    "peak_powered_speed_m_s": [
+      81.13646492785406,
+      81.27633233814925
+    ],
+    "guide_departure_m_s": [
+      12.983762499911615,
+      12.988467383032951
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4181512713176345,
+      1.8368328107170884
+    ],
+    "deployment_speed_m_s": [
+      18.745864503671225,
+      18.850955061674576
+    ],
+    "landing_descent_m_s": [
+      5.584430406104885,
+      5.584494119081557
+    ],
+    "landing_displacement_m": [
+      0.1257920285542361,
+      74.64833259621022
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.254588780167044,
+      14.26115529734239
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus20",
+    "motor": "E12-6",
+    "report": "bt60-24-e-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 6,
+    "failures": {
+      "minimum_ascent_stability_cal": 3
+    },
+    "loaded_dry_mass_g": 181.14877548614092,
+    "loaded_launch_mass_g": 241.04877548614093,
+    "apogee_m": [
+      315.5922914020548,
+      318.78491876314826
+    ],
+    "peak_powered_speed_m_s": [
+      81.13646492785406,
+      81.27633233814925
+    ],
+    "guide_departure_m_s": [
+      12.983762499911615,
+      12.988467383032951
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4181512713176345,
+      1.7744145781538296
+    ],
+    "deployment_speed_m_s": [
+      1.364626654509512,
+      4.212019295100614
+    ],
+    "landing_descent_m_s": [
+      5.584430404838199,
+      5.584494017750571
+    ],
+    "landing_displacement_m": [
+      0.19012960178533866,
+      69.24827013905787
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.254588780167044,
+      14.26115529734239
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus20",
+    "motor": "E12-8",
+    "report": "bt60-24-e-inert-plus20/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 181.14877548614092,
+    "loaded_launch_mass_g": 241.04877548614093,
+    "apogee_m": [
+      315.5922914020548,
+      318.78491876314826
+    ],
+    "peak_powered_speed_m_s": [
+      81.13646492785406,
+      81.27633233814925
+    ],
+    "guide_departure_m_s": [
+      12.983762499911615,
+      12.988467383032951
+    ],
+    "minimum_ascent_stability_cal": [
+      1.4181512713176345,
+      1.7744145781538296
+    ],
+    "deployment_speed_m_s": [
+      16.57434228574787,
+      20.327766136533427
+    ],
+    "landing_descent_m_s": [
+      5.584430397337845,
+      5.584493996144087
+    ],
+    "landing_displacement_m": [
+      0.5018171925432803,
+      54.80093513227324
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      14.254588780167044,
+      14.26115529734239
+    ]
+  },
+  {
+    "platform": "18-c5",
+    "profile": "inert-plus40",
+    "motor": "C5-3",
+    "report": "bt60-18-c5-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 2,
+    "pass_0_2_4": 2,
+    "failures": {
+      "minimum_ascent_stability_cal": 1,
+      "guide_departure_m_s": 6,
+      "deployment_speed_m_s": 6
+    },
+    "loaded_dry_mass_g": 197.1487754861409,
+    "loaded_launch_mass_g": 220.9487754861409,
+    "apogee_m": [
+      35.25570917465309,
+      37.57162493519009
+    ],
+    "peak_powered_speed_m_s": [
+      15.933413382757331,
+      15.985498214219739
+    ],
+    "guide_departure_m_s": [
+      10.922019582933524,
+      10.927251083595452
+    ],
+    "minimum_ascent_stability_cal": [
+      2.332939683079582,
+      2.4028930588382567
+    ],
+    "deployment_speed_m_s": [
+      12.038822047231143,
+      15.232786590831351
+    ],
+    "landing_descent_m_s": [
+      5.649394160725983,
+      5.64945863430697
+    ],
+    "landing_displacement_m": [
+      0.502277047318722,
+      13.794778979397238
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      9.528152672703945,
+      9.533724929809637
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus40",
+    "motor": "C11-3",
+    "report": "bt60-24-cd-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 2,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 202.1487754861409,
+    "loaded_launch_mass_g": 237.44877548614087,
+    "apogee_m": [
+      52.826072705576806,
+      53.458243530450055
+    ],
+    "peak_powered_speed_m_s": [
+      29.70505160876106,
+      29.839246042837065
+    ],
+    "guide_departure_m_s": [
+      11.138334802910082,
+      11.143118786216577
+    ],
+    "minimum_ascent_stability_cal": [
+      1.6164190469801079,
+      2.4570266818715236
+    ],
+    "deployment_speed_m_s": [
+      1.5141124560000838,
+      2.1903655279395866
+    ],
+    "landing_descent_m_s": [
+      5.854255800330063,
+      5.854322550625146
+    ],
+    "landing_displacement_m": [
+      0.013440558656317554,
+      10.66249499549847
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      9.479392941158327,
+      9.485466273983548
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus40",
+    "motor": "C11-5",
+    "report": "bt60-24-cd-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "launch_mass_g": 9,
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9,
+      "guide_departure_m_s": 6
+    },
+    "loaded_dry_mass_g": 202.1487754861409,
+    "loaded_launch_mass_g": 237.44877548614087,
+    "apogee_m": [
+      52.826072705576806,
+      53.458243530450055
+    ],
+    "peak_powered_speed_m_s": [
+      29.70505160876106,
+      29.839246042837065
+    ],
+    "guide_departure_m_s": [
+      11.138334802910082,
+      11.143118786216577
+    ],
+    "minimum_ascent_stability_cal": [
+      1.6164190469801079,
+      2.4570266818715236
+    ],
+    "deployment_speed_m_s": [
+      16.701179916815562,
+      18.99774023848644
+    ],
+    "landing_descent_m_s": [
+      5.854255737058147,
+      5.854322465246899
+    ],
+    "landing_displacement_m": [
+      0.8809735588386576,
+      1.195311269956739
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      9.479392941158327,
+      9.485466273983548
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus40",
+    "motor": "D12-3",
+    "report": "bt60-24-cd-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "deployment_speed_m_s": 9,
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 202.1487754861409,
+    "loaded_launch_mass_g": 244.7487754861409,
+    "apogee_m": [
+      147.2966964292978,
+      149.11700627490902
+    ],
+    "peak_powered_speed_m_s": [
+      51.78127916678953,
+      51.934671541499405
+    ],
+    "guide_departure_m_s": [
+      12.469681538216593,
+      12.474364422952418
+    ],
+    "minimum_ascent_stability_cal": [
+      1.931757135447026,
+      2.363829735337038
+    ],
+    "deployment_speed_m_s": [
+      14.689208545773218,
+      14.82084418638847
+    ],
+    "landing_descent_m_s": [
+      5.830834533875335,
+      5.8309010442795275
+    ],
+    "landing_displacement_m": [
+      0.04724447743480422,
+      31.727350996922983
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      12.583847277032179,
+      12.590046699805523
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus40",
+    "motor": "D12-5",
+    "report": "bt60-24-cd-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 5,
+    "pass_0_2_4": 7,
+    "failures": {
+      "minimum_ascent_stability_cal": 2
+    },
+    "loaded_dry_mass_g": 202.1487754861409,
+    "loaded_launch_mass_g": 244.7487754861409,
+    "apogee_m": [
+      154.51297290645658,
+      156.6142446018256
+    ],
+    "peak_powered_speed_m_s": [
+      51.78127916678953,
+      51.934671541499405
+    ],
+    "guide_departure_m_s": [
+      12.469681538216593,
+      12.474364422952418
+    ],
+    "minimum_ascent_stability_cal": [
+      1.931757135447026,
+      2.0311380132415358
+    ],
+    "deployment_speed_m_s": [
+      5.131330564829794,
+      6.258343684436973
+    ],
+    "landing_descent_m_s": [
+      5.8308345841229485,
+      5.830901087308804
+    ],
+    "landing_displacement_m": [
+      0.05332526104779368,
+      25.145632923942625
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      12.583847277032179,
+      12.590046699805523
+    ]
+  },
+  {
+    "platform": "24-cd",
+    "profile": "inert-plus40",
+    "motor": "D12-7",
+    "report": "bt60-24-cd-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9,
+      "launch_mass_g": 6
+    },
+    "loaded_dry_mass_g": 202.1487754861409,
+    "loaded_launch_mass_g": 244.7487754861409,
+    "apogee_m": [
+      154.51297290645658,
+      156.6142446018256
+    ],
+    "peak_powered_speed_m_s": [
+      51.78127916678953,
+      51.934671541499405
+    ],
+    "guide_departure_m_s": [
+      12.469681538216593,
+      12.474364422952418
+    ],
+    "minimum_ascent_stability_cal": [
+      1.931757135447026,
+      2.0311380132415358
+    ],
+    "deployment_speed_m_s": [
+      19.432550824682057,
+      23.548631561846253
+    ],
+    "landing_descent_m_s": [
+      5.830834556665801,
+      5.830901028560478
+    ],
+    "landing_displacement_m": [
+      1.9260271426060767,
+      9.186703716865733
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      12.583847277032179,
+      12.590046699805523
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus40",
+    "motor": "E12-4",
+    "report": "bt60-24-e-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 201.1487754861409,
+    "loaded_launch_mass_g": 261.04877548614087,
+    "apogee_m": [
+      280.8213602741518,
+      283.9692934175447
+    ],
+    "peak_powered_speed_m_s": [
+      74.9906828973151,
+      75.13179334570847
+    ],
+    "guide_departure_m_s": [
+      12.54410462209138,
+      12.548415447444649
+    ],
+    "minimum_ascent_stability_cal": [
+      1.7236303849236358,
+      2.153749036579212
+    ],
+    "deployment_speed_m_s": [
+      17.258966537772547,
+      17.5070216608288
+    ],
+    "landing_descent_m_s": [
+      5.850358644867352,
+      5.850425445198009
+    ],
+    "landing_displacement_m": [
+      0.126289797324556,
+      59.39678061587882
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.145686326869521,
+      13.151752754513451
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus40",
+    "motor": "E12-6",
+    "report": "bt60-24-e-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 4,
+    "pass_0_2_4": 6,
+    "failures": {
+      "minimum_ascent_stability_cal": 3
+    },
+    "loaded_dry_mass_g": 201.1487754861409,
+    "loaded_launch_mass_g": 261.04877548614087,
+    "apogee_m": [
+      291.2652222430843,
+      294.9144219021839
+    ],
+    "peak_powered_speed_m_s": [
+      74.9906828973151,
+      75.13179334570847
+    ],
+    "guide_departure_m_s": [
+      12.54410462209138,
+      12.548415447444649
+    ],
+    "minimum_ascent_stability_cal": [
+      1.7132962023260991,
+      1.7236303849236358
+    ],
+    "deployment_speed_m_s": [
+      2.7063048010557154,
+      5.496060311994063
+    ],
+    "landing_descent_m_s": [
+      5.850358763553949,
+      5.850425494066047
+    ],
+    "landing_displacement_m": [
+      0.18330339298362663,
+      51.732224129821944
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.145686326869521,
+      13.151752754513451
+    ]
+  },
+  {
+    "platform": "24-e",
+    "profile": "inert-plus40",
+    "motor": "E12-8",
+    "report": "bt60-24-e-inert-plus40/report.md",
+    "completed": 9,
+    "cases": 9,
+    "pass_0_2": 0,
+    "pass_0_2_4": 0,
+    "failures": {
+      "minimum_ascent_stability_cal": 3,
+      "deployment_speed_m_s": 9
+    },
+    "loaded_dry_mass_g": 201.1487754861409,
+    "loaded_launch_mass_g": 261.04877548614087,
+    "apogee_m": [
+      291.2652222430843,
+      294.9144219021839
+    ],
+    "peak_powered_speed_m_s": [
+      74.9906828973151,
+      75.13179334570847
+    ],
+    "guide_departure_m_s": [
+      12.54410462209138,
+      12.548415447444649
+    ],
+    "minimum_ascent_stability_cal": [
+      1.7132962023260991,
+      1.7236303849236358
+    ],
+    "deployment_speed_m_s": [
+      17.509409843003308,
+      21.967065185183714
+    ],
+    "landing_descent_m_s": [
+      5.850358756731901,
+      5.850425446291878
+    ],
+    "landing_displacement_m": [
+      1.434240148305387,
+      35.20747557601038
+    ],
+    "peak_powered_specific_force_estimate_g": [
+      13.145686326869521,
+      13.151752754513451
+    ]
+  }
+]
