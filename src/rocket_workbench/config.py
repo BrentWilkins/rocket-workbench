@@ -89,11 +89,21 @@ class Launch(Model):
     max_time: Quantity
 
 
+MOTOR_DIMENSIONS_MM = {
+    'A8': (18.0, 70.0), 'B4': (18.0, 70.0), 'C6': (18.0, 70.0), 'C5': (18.0, 70.0),
+    'C11': (24.0, 70.0), 'D12': (24.0, 70.0), 'E12': (24.0, 95.0),
+}
+
+
 class MotorCase(Model):
-    designation: Literal['A8', 'B4', 'C6', 'C5']
+    designation: Literal['A8', 'B4', 'C6', 'C5', 'C11', 'D12', 'E12']
     delay_s: float = Field(gt=0)
     digest: str = Field(pattern=r'^[0-9a-f]{32}$')
     max_liftoff_mass: Quantity
+
+    @property
+    def dimensions_mm(self):
+        return MOTOR_DIMENSIONS_MM[self.designation]
 
     @model_validator(mode='after')
     def mass_limit(self):
@@ -132,6 +142,7 @@ class Config(Model):
     reference_file: str | None = None
     geometry: Geometry
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
+    fin_shape: Literal['trapezoidal', 'elliptical', 'clipped-delta', 'swept'] = 'trapezoidal'
     avionics_profile: Literal['xiao-gnss-baro-v1'] | None = None
     material: Literal['PLA', 'PETG']
     density: Quantity
@@ -165,8 +176,10 @@ class Config(Model):
             raise ValueError('Fin root must fit on collar')
         if g.mm('motor_mount_id') >= g.mm('motor_mount_od') or g.mm('motor_mount_od') >= bore:
             raise ValueError('Motor mount ID < mount OD < body ID required')
-        if g.mm('motor_mount_id') < 18 or g.mm('motor_mount_length')+g.mm('motor_overhang') < 70:
-            raise ValueError('18 × 70 mm motor does not fit mount')
+        for motor in self.motors:
+            diameter, length = motor.dimensions_mm
+            if g.mm('motor_mount_id') < diameter or g.mm('motor_mount_length')+g.mm('motor_overhang') < length:
+                raise ValueError(f'{motor.designation}: {diameter:g} × {length:g} mm motor does not fit mount')
         available = g.mm('body_length') - g.mm('bay_length') - g.mm('motor_mount_length') - g.mm('motor_overhang') - 15
         if g.mm('chute_packed_length') > available or g.mm('chute_packed_diameter') + 4 > bore:
             raise ValueError('Recovery packing envelope and routing clearance do not fit')

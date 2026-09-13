@@ -1,0 +1,9 @@
+{
+  "basis": "complete_sled_assembly",
+  "datum": "assembled_nose_tip_positive_aft",
+  "mass_g": null,
+  "cg_x_mm": null,
+  "includes_retention": false,
+  "provenance": "unmeasured",
+  "source": ""
+}

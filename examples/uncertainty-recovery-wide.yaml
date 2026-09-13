@@ -1,0 +1,7 @@
+schema_version: 1
+print_mass_factors: [1.0, 1.2]
+payload_cg_offsets_mm: [-5, 5]
+chute_cd: [0.53, 1.04]
+wind_m_s: [0, 2, 4]
+max_cases: 72
+source: "Expanded deterministic screen inspired by Apogee flight-test report 662, https://www.apogeerockets.com/Peak-of-Flight/Newsletter662; not a measured distribution or universal canopy Cd range. Preserve the circular area convention; print mass +0/+20%, payload CG +/-5 mm, uniform wind 0/2/4 m/s."

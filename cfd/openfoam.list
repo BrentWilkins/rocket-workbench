@@ -1,0 +1,1 @@
+deb [arch=arm64 signed-by=/usr/share/keyrings/openfoam.gpg] https://dl.openfoam.com/repos/deb noble main

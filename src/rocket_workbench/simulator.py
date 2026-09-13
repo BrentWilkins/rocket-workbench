@@ -98,9 +98,13 @@ class Engine:
         opts.setMaxSimulationTime(launch.max_time.value)
 
     def motor(self, sim, case: MotorCase, config: Config):
+        diameter, length = case.dimensions_mm
         motors = list(self.core.startup.Application.getMotorSetDatabase().findMotors(
-            case.digest, self.core.motor.Motor.Type.SINGLE, 'Estes', case.designation, .018, .070))
-        matches = [m for m in motors if str(m.getDigest()) == case.digest]
+            case.digest, self.core.motor.Motor.Type.SINGLE, 'Estes', case.designation, diameter/1000, length/1000))
+        matches = [m for m in motors if str(m.getDigest()) == case.digest
+                   and str(m.getDesignation()) == case.designation
+                   and abs(m.getDiameter()*1000-diameter) < .01
+                   and abs(m.getLength()*1000-length) < .01]
         if len(matches) != 1:
             raise ValueError(f'Exact motor curve {case.digest} not uniquely available')
         motor = matches[0]

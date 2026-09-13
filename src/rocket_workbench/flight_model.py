@@ -22,7 +22,7 @@ def element(parent, tag, text=None, **attrs):
 def component(parent, tag, name, mass=None, cg=None, **fields):
     node = element(parent, tag)
     element(node, 'name', name)
-    if tag in {'nosecone', 'bodytube', 'transition', 'trapezoidfinset', 'launchlug'}:
+    if tag in {'nosecone', 'bodytube', 'transition', 'trapezoidfinset', 'freeformfinset', 'launchlug'}:
         element(node, 'finish', 'normal')
     if mass is not None:
         element(node, 'overridemass', mass/1000)
@@ -73,12 +73,20 @@ def generate(config: Config, parts: dict, loading: str, out: Path):
                        parts['fin-collar']['mass_g'], parts['fin-collar']['cg_x_mm']-collar_start,
                        length=mm('collar_length')/1000, radius=collar_radius/1000, thickness=mm('wall')/1000)
     collar_sub = element(collar, 'subcomponents')
-    component(collar_sub, 'trapezoidfinset', 'Three fins (mass included in collar)', 0,
-              fincount=3, rootchord=mm('fin_root')/1000, tipchord=mm('fin_tip')/1000,
-              height=mm('fin_span')/1000, sweeplength=mm('fin_sweep')/1000,
-              thickness=mm('fin_thickness')/1000, crosssection='square')
+    if config.fin_shape == 'trapezoidal':
+        component(collar_sub, 'trapezoidfinset', 'Three fins (mass included in collar)', 0,
+                  fincount=3, rootchord=mm('fin_root')/1000, tipchord=mm('fin_tip')/1000,
+                  height=mm('fin_span')/1000, sweeplength=mm('fin_sweep')/1000,
+                  thickness=mm('fin_thickness')/1000, crosssection='square')
+    else:
+        from .fins import outline
+        fins = component(collar_sub, 'freeformfinset', 'Three fins (mass included in collar)', 0,
+                         fincount=3, thickness=mm('fin_thickness')/1000, crosssection='square')
+        points = element(fins, 'finpoints')
+        for x, y in outline(config):
+            element(points, 'point', x=str(x/1000), y=str(y/1000))
     # Native motor mount with explicitly accounted assembly mass in mass items.
-    mount = component(body_sub, 'innertube', '18 mm motor mount', 0,
+    mount = component(body_sub, 'innertube', f"{config.motors[0].dimensions_mm[0]:g} mm motor mount", 0,
                       length=mm('motor_mount_length')/1000, outerradius=mm('motor_mount_od')/2000,
                       thickness=(mm('motor_mount_od')-mm('motor_mount_id'))/2000)
     element(mount, 'position', (mm('body_length')-mm('motor_mount_length')-mm('motor_overhang'))/1000, type='top')
@@ -88,7 +96,8 @@ def generate(config: Config, parts: dict, loading: str, out: Path):
     m = element(motor, 'motor', configid=CONFIG_ID)
     first_motor = config.motors[0]
     for k, v in dict(type='single', manufacturer='Estes', designation=first_motor.designation,
-                     digest=first_motor.digest, diameter=.018, length=.07, delay=first_motor.delay_s).items():
+                     digest=first_motor.digest, diameter=first_motor.dimensions_mm[0]/1000,
+                     length=first_motor.dimensions_mm[1]/1000, delay=first_motor.delay_s).items():
         element(m, k, v)
     for item in config.purchased_masses:
         if item.role == 'body':

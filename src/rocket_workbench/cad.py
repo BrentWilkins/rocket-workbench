@@ -9,8 +9,19 @@ from .config import Config
 from .interfaces import launch_guide
 
 
-def shapes(config: Config):
+def shapes(config: Config, *, cap_insert_angles=None):
+    """Build production geometry, or an explicitly requested experimental insert layout.
+
+    The optional layout is used only by the cap fit study. Normal exports and flight
+    mass accounting retain the existing printed pilots until a revision is selected.
+    """
     import cadquery as cq
+
+    if cap_insert_angles is not None:
+        if (not config.avionics_profile or len(cap_insert_angles) != 3
+                or len(set(cap_insert_angles)) != 3
+                or any(not math.isfinite(a) or not 0 <= a < 360 for a in cap_insert_angles)):
+            raise ValueError('Experimental insert layout requires an avionics profile and three distinct angles')
 
     g = config.geometry
     n, b, w = g.mm('nose_length'), g.mm('bay_length'), g.mm('wall')
@@ -26,15 +37,20 @@ def shapes(config: Config):
     sleeve = cq.Workplane('XY', origin=(0, 0, n)).circle(ri).circle(ri - w).extrude(b - 3)
     nose = nose.union(sleeve)
     boss_points = []
-    for deg in [30, 150, 270]:
+    for deg in ([30, 150, 270] if cap_insert_angles is None else cap_insert_angles):
         a = math.radians(deg)
-        boss_offset = 1.7 if config.avionics_profile else 2.2
+        boss_offset = (1.7 if config.avionics_profile else 2.2) if cap_insert_angles is None else 3.1
         x, y = (ri - boss_offset) * math.cos(a), (ri - boss_offset) * math.sin(a)
         boss_points.append((x, y))
-        boss = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(2.2 if config.avionics_profile else 2.8).extrude(8)
+        boss_radius = (2.2 if config.avionics_profile else 2.8) if cap_insert_angles is None else 3.1
+        boss = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(boss_radius).extrude(8)
         if config.avionics_profile:
             boss = boss.intersect(cq.Workplane('XY', origin=(0,0,n+b-11)).circle(ri).extrude(8))
-        pilot = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(0.8).extrude(8)
+        pilot_radius = .8 if cap_insert_angles is None else 1.1
+        pilot = cq.Workplane('XY', origin=(x, y, n + b - 11)).circle(pilot_radius).extrude(8)
+        if cap_insert_angles is not None:
+            # TC-M2x3.0: 3.2 mm receiving hole, 3 mm insert plus 1 mm depth allowance.
+            pilot = pilot.union(cq.Workplane('XY', origin=(x, y, n+b-7)).circle(1.6).extrude(4))
         nose = nose.union(boss).cut(pilot)
     cap = cq.Workplane('XY', origin=(0, 0, n + b - 3)).circle(ri).extrude(3)
     for x, y in boss_points + [(0, 0), (-10, -8), (10, -8)]:
@@ -88,12 +104,16 @@ def shapes(config: Config):
     fairing = fairing.cut(cq.Workplane('XY', origin=(0, 0, collar_start-fairing_length)).circle(collar_inner).extrude(fairing_length))
     collar = collar.union(fairing)
     # XZ polygon, extruded symmetrically in Y. Roots overlap the collar wall.
-    fin = (cq.Workplane('XZ').polyline([
-        (collar_outer-0.3, collar_start),
-        (collar_outer+g.mm('fin_span'), collar_start+g.mm('fin_sweep')),
-        (collar_outer+g.mm('fin_span'), collar_start+g.mm('fin_sweep')+g.mm('fin_tip')),
-        (collar_outer-0.3, collar_start+g.mm('fin_root')),
-    ]).close().extrude(g.mm('fin_thickness')/2, both=True))
+    from .fins import outline
+    points = outline(config)
+    # Add hidden root overlap without changing the exposed aerodynamic outline.
+    polygon = [(collar_outer-.3, collar_start)]
+    polygon += [(collar_outer+y, collar_start+x) for x, y in points]
+    polygon += [(collar_outer-.3, collar_start+g.mm('fin_root'))]
+    if config.fin_shape == 'trapezoidal':
+        # Preserve the historical trapezoid root-union construction and mass.
+        polygon = [(collar_outer+y-(.3 if y == 0 else 0), collar_start+x) for x,y in points]
+    fin = cq.Workplane('XZ').polyline(polygon).close().extrude(g.mm('fin_thickness')/2, both=True)
     for angle in [0, 120, 240]:
         collar = collar.union(fin.rotate((0, 0, 0), (0, 0, 1), angle))
     parts = {'nose-bay': nose, 'bay-bulkhead': cap, 'payload-sled': sled, 'fin-collar': collar}
@@ -219,7 +239,9 @@ def preview(config: Config, path: Path):
     n, length, r = g.mm('nose_length'), g.mm('body_length'), g.mm('body_od')/2
     end = n+length
     start = end-g.mm('collar_length')
-    span = g.mm('fin_span')
+    from .fins import outline as fin_outline
+    fin_radius = r+g.mm('clearance')+g.mm('wall')
+    fin_path = 'M'+' L'.join(f'{start+x:g} {-fin_radius-y:g}' for x,y in fin_outline(config))+' Z'
     top = [(n*i/100, -radius_at(config.nose_shape, n*i/100, n, r)) for i in range(101)]
     outline = top + [(x, -y) for x, y in reversed(top)]
     nose_outline = 'M' + ' L'.join(f'{x:g} {y:g}' for x, y in outline) + ' Z'
@@ -231,7 +253,7 @@ def preview(config: Config, path: Path):
 <rect x="{n}" y="{-r+2}" width="{g.mm('bay_length')}" height="{2*r-4}" fill="#4c9ad455" stroke="#4c9ad4"/>
 <rect x="{n+g.mm('bay_length')+10}" y="-15" width="{g.mm('chute_packed_length')}" height="30" fill="#83b86c"/>
 <rect x="{end-g.mm('motor_mount_length')-g.mm('motor_overhang')}" y="{-g.mm('motor_mount_od')/2}" width="{g.mm('motor_mount_length')}" height="{g.mm('motor_mount_od')}" fill="#888"/>
-<path d="M{start} {-r} L{start+g.mm('fin_sweep')} {-r-span} L{start+g.mm('fin_sweep')+g.mm('fin_tip')} {-r-span} L{end} {-r} Z" fill="#ce6258" stroke="#333"/>
+<path d="{fin_path}" fill="#ce6258" stroke="#333"/>
 <text x="0" y="-78">PROVISIONAL — axial dimensions in mm; not a fabrication approval</text>
 <text x="5" y="48">Printed nose</text><text x="{n}" y="65">Sealed removable bay / sled</text>
 <text x="{n+80}" y="48">Chute + harness</text>

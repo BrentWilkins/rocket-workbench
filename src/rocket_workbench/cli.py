@@ -27,10 +27,14 @@ def execute(args):
         seal_run(Path(args.path), record_sources=False)
         return 0
     if args.command == 'motors':
+        from .config import MOTOR_DIMENSIONS_MM
         from .simulator import Engine
+        if args.designation not in MOTOR_DIMENSIONS_MM:
+            raise ValueError(f'Unsupported family; choose from {list(MOTOR_DIMENSIONS_MM)}')
+        diameter, length = MOTOR_DIMENSIONS_MM[args.designation]
         with Engine() as engine:
             matches = engine.core.startup.Application.getMotorSetDatabase().findMotors(
-                None, engine.core.motor.Motor.Type.SINGLE, 'Estes', args.designation, .018, .070)
+                None, engine.core.motor.Motor.Type.SINGLE, 'Estes', args.designation, diameter/1000, length/1000)
             print(json.dumps([engine.motor_record(m, None) for m in matches], indent=2))
         return 0
     if args.command == 'sweep':

@@ -135,10 +135,10 @@ def stack_pins(config):
     return pins
 
 
-def fit_report(config, printed):
+def fit_report(config, printed, *, hardware=None):
     """Check installed solids and the conservative straight insertion path."""
     import cadquery as cq
-    hardware = keepouts(config)
+    hardware = keepouts(config) if hardware is None else hardware
     g = config.geometry
     radius = g.mm('body_id')/2-g.mm('clearance')-g.mm('wall')
     rows = []

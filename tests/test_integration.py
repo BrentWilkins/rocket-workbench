@@ -25,6 +25,40 @@ def engine():
         yield engine
 
 
+@pytest.mark.parametrize('platform', ['24-cd', '24-e'])
+def test_native_24mm_motor_identity_mass_and_saved_model(engine, tmp_path, platform):
+    import sys
+    sys.path.insert(0, str(ROOT/'scripts'))
+    from study_motor24 import configuration
+    config = configuration(platform, 'nominal')
+    parts = {name: dict(mass_g=10, cg_x_mm=150) for name in
+             ['nose-bay', 'bay-bulkhead', 'payload-sled', 'fin-collar', 'lug-sleeve-1', 'lug-sleeve-2']}
+    path = tmp_path/'input.ork'
+    expected = generate(config, parts, 'actual', path)
+    doc, warnings = engine.load(path)
+    assert not warnings
+    sim = engine.new_simulation(doc)
+    # Select the last motor/delay, not just the first one embedded in the XML.
+    selected = config.motors[-1]
+    record = engine.motor(sim, selected, config)
+    assert record['digest'] == selected.digest
+    assert record['diameter_mm'] == 24
+    assert record['length_mm'] == selected.dimensions_mm[1]
+    mass = engine.mass(sim)
+    assert mass['dry_mass_g'] == pytest.approx(expected['dry_mass_g'], abs=.05)
+    assert mass['launch_mass_g']-mass['dry_mass_g'] == pytest.approx(record['loaded_mass_g'], abs=.05)
+    saved = tmp_path/'saved.ork'
+    engine.save(doc, saved)
+    reloaded, warnings = engine.load(saved)
+    assert not warnings
+    mount = list(reloaded.getSimulation(0).getActiveConfiguration().getActiveMotors())[0]
+    assert str(mount.getMotor().getDigest()) == selected.digest
+    assert mount.getEjectionDelay() == selected.delay_s
+    wrong = selected.model_copy(update={'digest': '0'*32})
+    with pytest.raises(ValueError, match='not uniquely available'):
+        engine.motor(sim, wrong, config)
+
+
 def mesh_volume(path):
     data = path.read_bytes()
     count = struct.unpack_from('<I', data, 80)[0]
@@ -41,6 +75,27 @@ def mesh_volume(path):
                 edges[tuple(sorted([vertices[a], vertices[b]]))] += 1
     assert set(edges.values()) == {2}, 'Exported mesh has a hole or nonmanifold edge'
     return abs(volume)
+
+
+@pytest.mark.parametrize('shape', ['elliptical', 'clipped-delta', 'swept'])
+def test_native_freeform_matches_shared_outline(engine, tmp_path, shape):
+    import sys
+    sys.path.insert(0, str(ROOT/'scripts'))
+    from study_fin_shapes import variant
+    from rocket_workbench.fins import outline
+    config = variant(shape, 45, 410)
+    parts = {name: dict(mass_g=10, cg_x_mm=150) for name in
+             ['nose-bay', 'bay-bulkhead', 'payload-sled', 'fin-collar', 'lug-sleeve-1', 'lug-sleeve-2']}
+    path = tmp_path/'input.ork'
+    generate(config, parts, 'actual', path)
+    doc, warnings = engine.load(path)
+    assert not warnings
+    fins = [c for c in doc.getRocket().iterator() if str(c.getClass().getSimpleName())=='FreeformFinSet']
+    assert len(fins)==1
+    actual = [(float(p.x)*1000,float(p.y)*1000) for p in fins[0].getFinPoints()]
+    assert np.asarray(actual) == pytest.approx(np.asarray(outline(config)))
+    assert float(fins[0].getPosition().x) == pytest.approx(0)
+    assert fins[0].getFinCount()==3
 
 
 def test_cad_meshes_and_assembly_clearances(tmp_path):
