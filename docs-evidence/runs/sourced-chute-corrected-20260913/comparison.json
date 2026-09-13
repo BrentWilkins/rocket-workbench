@@ -1,0 +1,162 @@
+[
+  {
+    "design": "apogee24-body500-heavy0-cd053",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      180.79852966045004,
+      187.7427322256566
+    ],
+    "peak_powered_speed_m_s": [
+      60.07116711938703,
+      60.612736115977576
+    ],
+    "landing_descent_m_s": [
+      4.812880249938007,
+      4.812990019452863
+    ],
+    "landing_displacement_m": [
+      0.08609383084199046,
+      104.31785587146703
+    ]
+  },
+  {
+    "design": "apogee24-body500-heavy0-cd104",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      180.79852966045001,
+      187.7427322256566
+    ],
+    "peak_powered_speed_m_s": [
+      60.07116711938706,
+      60.612736115977576
+    ],
+    "landing_descent_m_s": [
+      3.4356906527794795,
+      3.435769032259678
+    ],
+    "landing_displacement_m": [
+      0.08565643583295234,
+      165.23011106371493
+    ]
+  },
+  {
+    "design": "apogee24-body500-heavy1-cd053",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      146.4034419871232,
+      153.80789583961834
+    ],
+    "peak_powered_speed_m_s": [
+      50.77689928146856,
+      51.3475719313599
+    ],
+    "landing_descent_m_s": [
+      5.223000089419716,
+      5.223119229983321
+    ],
+    "landing_displacement_m": [
+      0.042718518840113066,
+      61.4105595958735
+    ]
+  },
+  {
+    "design": "apogee24-body500-heavy1-cd104",
+    "summary": {
+      "planned_loadings": [
+        "dummy",
+        "actual"
+      ],
+      "planned": {
+        "cases": 6,
+        "completed": 6,
+        "passed": 6,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "diagnostic_empty": {
+        "cases": 3,
+        "completed": 3,
+        "passed": 3,
+        "failures": {},
+        "warning_cases": 0
+      },
+      "flight_cleared": false
+    },
+    "apogee_m": [
+      146.40344198712322,
+      153.80789583961834
+    ],
+    "peak_powered_speed_m_s": [
+      50.77689928146853,
+      51.3475719313599
+    ],
+    "landing_descent_m_s": [
+      3.728437356880472,
+      3.7285223841828836
+    ],
+    "landing_displacement_m": [
+      0.05160439144489664,
+      106.69067829504785
+    ]
+  }
+]

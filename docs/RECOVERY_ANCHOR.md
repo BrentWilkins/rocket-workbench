@@ -36,6 +36,20 @@ not establish fit around our long avionics sleeve or the strength of this comple
 
 ## Bay-cap fastener sourcing — checked 2026-09-13
 
+A local 10-degree placement screen found 21 three-boss patterns clearing the existing conservative sled insertion
+projection by at least 0.2 mm, with the recovery eye inside the support triangle. The subsequent full CAD check rejected
+all three tested layouts with the original wire/strain-relief routing: clearing the sled alone was insufficient.
+
+A second trial rotates the two 4 × 10 mm routing cross-sections to 10 × 4 mm, above the boards, retaining their volume,
+axial positions and mass allowances. With that change, layouts **0/100/260 degrees** and **10/170/270 degrees** clear
+the modeled installed and straight-insertion paths. The original 30/150/270-degree pattern still fails. The revised
+printed nose/cap adds approximately **0.366 g**, excluding insert, screw and washer changes. All trial printed parts are
+valid single CAD solids. Routing bend radius, tool access and physical retention remain unverified.
+
+These are experimental CAD exports, not production selections. Evidence is retained in `runs/cap-boss-screen-20260913`,
+`runs/cap-insert-fit-20260913` and `runs/cap-insert-rerouted-fit-20260913`. The production geometry, avionics layout and
+sealed flight studies remain unchanged; adopting a trial requires explicit integration of its hardware and mass/CG.
+
 The current CAD uses three M2 screws in 1.6 mm printed pilots, not threaded inserts. The cap is 3 mm thick; the
 avionics-profile bosses are 8 mm long with nominal 4.4 mm diameter, clipped at the sleeve boundary. These joints carry
 recovery load as well as retaining the cap. Repeated service and pull-out strength remain untested.

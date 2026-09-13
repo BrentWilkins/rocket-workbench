@@ -1,8 +1,21 @@
 # Current avionics designs and comparison
 
-**Current development leader:** D12-5 in BT-60, 430 mm body, 50 mm conical nose, small clipped-delta fins and a
-provisional 20-inch parachute envelope. All 192 planned dummy/logger uncertainty cases pass the configured numeric
-gates, with loaded altitude 154.32–193.99 m across that envelope. This is not physical validation or a global optimum.
+**Current development shortlist:** D12-5 in BT-60, 50 mm conical nose and small clipped-delta fins, with either a 460 mm
+body / provisional 22-inch chute or a 500 mm body / literature-characterized Apogee 24-inch chute. Both pass **192/192
+planned dummy/logger cases** in the completed expanded recovery study (Cd 0.53–1.04, including an upper chute-mass
+allowance). This is a bounded comparison, not physical validation or a global optimum.
+
+| Recovery / body          | Loaded altitude m | Powered speed m/s | Descent m/s | Landing displacement m |
+| ------------------------ | ----------------- | ----------------- | ----------- | ---------------------- |
+| Generic 22 inch / 460 mm | 145.12–187.64     | 50.40–60.36       | 3.76–5.72   | 0.04–145.07            |
+| Sourced 24 inch / 500 mm | 146.40–187.74     | 50.78–60.61       | 3.44–5.22   | 0.04–165.24            |
+
+The 24-inch option offers more modeled descent margin and a specific sourced canopy, with more drift and a longer body.
+The small speed/altitude differences do not establish a decisive aerodynamic advantage. Its nominal mass is from a
+published specimen, not our delivered hardware; packing is still provisional. Final selection awaits integration.
+
+The earlier 20-inch/430 mm leader passes only **156/192** expanded cases, with 36 descent-speed failures. Its historical
+192/192 result applies only to the narrower Cd 0.6–0.9 study.
 
 See the [fin, recovery and uncertainty comparison](FIN_SHAPES.md) for the 22-/24-inch recovery tradeoffs, failed designs
 and actual study bounds. CFD has not been accepted, hardware mass/packing remain provisional, and recovery attachment

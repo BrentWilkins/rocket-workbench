@@ -118,11 +118,58 @@ cleared design. The other options offer more descent margin at lower altitude an
 [Full recovery uncertainty report](../runs/fin-recovery-stress-summary-20260913/report.md) and
 [complete comparison with source-batch references](../runs/fin-recovery-stress-summary-20260913/comparison.json).
 
+### Literature-characterized parachute follow-up
+
+A separate **36-flight screen** evaluates Apogee 29093, a 24-inch nylon hexagonal chute, using a reported specimen mass
+of 16.9 g and a provisional 20% upper mass allowance. The primary flight-test report gives Cd 0.53–1.04 using circular
+area at the measured flat-to-flat diameter; these are not measurements of our eventual hardware. The existing generic
+24-inch packing envelope and 500 mm body are retained. Lower canopy mass does not prove smaller packed volume.
+[Primary test report](https://www.apogeerockets.com/Peak-of-Flight/Newsletter662)
+
+All **24 planned dummy/logger cases pass** across two mass profiles, two drag bounds and three winds. Nominal loaded
+apogee is 180.80–187.74 m; the heavier profile reaches 146.40–153.81 m. Low-drag descent is 4.81 m/s nominal and 5.22
+m/s heavy. These are four screening configurations, not the full uncertainty grid or a new production selection.
+[Sourced-chute screen](../runs/sourced-chute-corrected-20260913/report.md) and
+[metrics including drift](../runs/sourced-chute-corrected-20260913/comparison.json).
+
+This evidence motivates checking wider recovery-drag bounds; the earlier 192/192 results remain specifically bounded by
+Cd 0.6–0.9. Neither range guarantees deployment or transfers unchanged to every canopy geometry and rigging.
+
+The expanded **864-case comparison is complete**. The 20-inch/430 mm option passes **156/192 planned cases**, with 36
+excessive-descent-speed failures. The intermediate 22-inch and sourced 24-inch alternatives both pass **192/192**. Upper
+chute mass (+20%) is paired with upper avionics mass; those allowances are not independently varied. See the
+[expanded comparison including drift](../runs/recovery-wide-summary-20260913/report.md) and
+[retained profile and metric data](../runs/recovery-wide-summary-20260913/comparison.json).
+
+### Nonplanar geometry trials
+
+Two 1.2 mm-wall ring-tail trials connect the three clipped-delta fin tips. A 5 mm axial ring adds 3.55 g; a 10 mm ring
+adds 7.10 g. Both are valid connected CAD solids and fit the print-bed screen. These are geometry/mass trials only:
+native planar OpenRocket forces do not represent them, and no aerodynamic ranking or print release is implied.
+[Ring-tail geometry and orientation report](../runs/ring-tail-geometry-step-20260913/report.md).
+
+![Actual STEP geometry: planar fins beside 5 mm and 10 mm ring-tail trials](../plots/ring-tail-comparison.png)
+
+The common-scale render shows the aft end upward for inspection, not the intended print orientation. The ring is at the
+trailing ends of the fins. Print screening uses aft-down placement.
+
+### CFD baseline checks
+
 The CFD pilot finished 600 iterations and passed the last-100-sample settling screen. It **fails the zero-angle symmetry
 screen**: mean lateral coefficients are Cl = 0.146 and Cs = 0.050, with nonzero moments. A settled result is not
 necessarily an accurate result. No CFD-based ranking is accepted until the asymmetry, mesh/wall sensitivity and baseline
 comparison are resolved. [CFD pilot audit](../runs/cfd-pilot-audit-20260913/report.md) and
 [diagnostic data and actual solver axes](../runs/cfd-pilot-audit-20260913/audit.json).
+
+The 20 mm background-grid refinement also reaches 600 iterations and settles, but still fails symmetry. Cd changes from
+0.597994 to 0.583297 (−2.46%); similar drag alone is not acceptance. The third, 15 mm background grid has passed mesh
+checks and is solving. Wall, domain and benchmark checks remain outstanding.
+[Two-grid diagnostic comparison](../runs/cfd-grid-comparison-20260913/report.md).
+
+The clipped-delta/ring comparison exposed a separate surface-preparation defect: relative-tolerance tessellation left
+22 open edges at the collar junction. Explicit absolute-tolerance meshing now produces closed matched planar and
+5/10 mm ring surfaces, with regression tests. These inputs are prepared, not solved or accepted; they do not replace
+the retained baseline grid-study surfaces. See the [CFD workflow and limitations](../cfd/README.md).
 
 Compare mass/CG, recovery-drag and build-mass uncertainty; check print contact and overhangs; assess plausible nonplanar
 alternatives with CFD. Retain the conventional baseline for comparison. The Docker OpenFOAM environment is built, but no

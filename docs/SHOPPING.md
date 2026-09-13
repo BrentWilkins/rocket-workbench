@@ -6,21 +6,49 @@ older 18 mm review package. Neither is a launch-approved kit. The old package ba
 
 ## Current D12 study: purchase-relevant limits
 
-- BT-60 with a provisional 430 mm body and a commercial 24 mm D/E-length motor-mount assembly. Keep the tube uncut until
-  the selected mount, recovery bundle and avionics sleeve are dry-fitted.
+- BT-60 with a shortlisted 460 or 500 mm body and a commercial 24 mm D/E-length motor-mount assembly. Keep the tube
+  uncut until the selected mount, recovery bundle and avionics sleeve are dry-fitted.
 - D12-5 is the simulated motor/delay. Use the exact commercial motor; no motor modification is part of this project.
-- The leading study uses a **20-inch canopy envelope**, not an identified, measured parachute. Its mass and packed
-  volume are scaled estimates. The 22-/24-inch options trade some altitude and speed for slower descent.
+- The expanded study shortlists a generic **22-inch canopy** and the **Apogee 29093 24-inch nylon canopy**. Packing
+  envelopes remain provisional. The earlier generic 20-inch option fails some expanded descent cases and is no longer
+  the leading recovery recommendation.
 - The [anchor decision](RECOVERY_ANCHOR.md) keeps the motor-ring-captured leader and through-bolted bulkhead eye as the
   provisional load path. Estes 003052 is an alternative, not a mandatory additional purchase.
-- Printed cap attachment remains three M2 screws into printed pilots. Inserts/captive nuts are not modeled. Verify the
-  full recovery load path; a successful flight simulation does not establish joint strength.
+- Production cap attachment remains three M2 screws into printed pilots. Insert CAD trials exist but are not selected.
+  Verify the full recovery load path; a successful flight simulation does not establish joint strength.
 
-A commercially available 20-inch option is the Fruity Chutes TARC-20-S-SM, listed at **$61.20** and **0.8 oz (22.7 g)**
+The Apogee chute's **16.9 g** nominal mass comes from a published test specimen, not a delivered part weighed for this
+project. The comparison uses a 20% upper mass allowance and Cd 0.53–1.04 with the source's circular-area convention.
+This is better characterized than a generic canopy, but does not establish our packing, rigging or deployment behavior.
+Verify stock and delivered cost before ordering; the final purchase list is not released.
+[Primary specimen and flight-test report](https://www.apogeerockets.com/Peak-of-Flight/Newsletter662)
+
+An alternative 20-inch sourcing example is the Fruity Chutes TARC-20-S-SM, listed at **$61.20** and **0.8 oz (22.7 g)**
 on 2026-09-13. That mass is higher than the study's area-scaled allowance, and its six-gore/spill-hole design is not
 proven equivalent to the generic canopy model. This is a sourcing example, **not a purchase recommendation or a drop-in
 match**. It needs its own mass, packing and drag inputs before adoption.
 [Manufacturer specifications](https://shop.fruitychutes.com/products/20-low-and-mid-power-chute-1-5lbs-20fps)
+
+## Newly checked mount and harness sources
+
+- **Estes 003159 D/E mount kit**, $11.99 listed on 2026-09-13: manufacturer specifies 24 mm motors and BT-60
+  compatibility, with motor tubes, centering rings, hooks, blocks, retainers and an E-to-D spacer. Use one appropriate
+  mount assembly, not all included pieces. Its installed length, mass, centering-ring positions and leader routing still
+  need reconciliation with the provisional CAD; do not infer those from the kit name.
+  [Manufacturer kit contents](https://estesrockets.com/products/d-and-e-engine-mount-kit)
+- **Apogee 30328 round elastic**, nominal 1/8-inch diameter, sold per foot at $0.66 with a displayed minimum order of 10
+  feet on 2026-09-13. The supplier lists 45 lb test strength and 100% extension. This is a candidate replaceable elastic
+  segment, not a rated complete recovery joint. Final installed length and packed mass remain to be checked.
+  [Supplier specification](https://www.apogeerockets.com/index.php?main_page=product_motor_info&products_id=195)
+- The supplier's material guide recommends 300 lb Kevlar for D–G models and describes a short internal Kevlar leader
+  joined to replaceable elastic. Keep the Kevlar/elastic transition below the tube lip to reduce concentrated cutting
+  loads. This supports the proposed hybrid layout; it does not qualify our anchor, knots, bulkhead or printed bosses.
+  Current exact Kevlar SKU and supplied dimensions are not yet verified, so no substitute is silently selected.
+  [Manufacturer harness guidance](https://www.apogeerockets.com/Peak-of-Flight/Newsletter591)
+
+These newly sourced items belong to the D12 development work, not the older package below. Prices exclude shipping and
+tax; no purchase has been made. The current 5 g harness estimate must be replaced or bounded using the complete selected
+leader, elastic, swivel, knots and attachment hardware before final release.
 
 ## What the existing 18 mm review package uses
 

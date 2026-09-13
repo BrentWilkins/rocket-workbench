@@ -2,19 +2,22 @@
 
 Updated 2026-09-13. Start at [current designs](CURRENT_DESIGN.md), not an earlier study report.
 
-- Current performance-led candidate: D12-5, BT-60, 430 mm body, small clipped-delta fins and a provisional 20-inch
-  chute. Its 192 planned dummy/logger uncertainty cases meet the configured numeric gates; loaded apogee spans
-  154.32–193.99 m. These cases are a bounded study, not a probability of success or physical validation.
+- Current shortlist: D12-5 / BT-60 / clipped-delta, with 22-inch recovery and a 460 mm body, or a sourced 24-inch canopy
+  and a 500 mm body. Both pass 192/192 planned expanded uncertainty cases. Loaded altitudes span approximately 145–188
+  m; see the comparison for speed, descent and drift. These are bounded results, not physical validation.
 - [24 mm motor comparison](MOTOR24.md): 405 completed flights.
 - [Fin and recovery comparison](FIN_SHAPES.md): 144 nominal fin cases, 16 CAD print-orientation screens, 1,440 original
   uncertainty cases, 54 larger-chute screening cases and 864 larger-chute uncertainty cases. The original 18-inch
-  recovery options did not clear the full planned uncertainty envelope. The 20-, 22- and 24-inch options each clear all
-  192 planned cases in their respective revised configurations.
-- CFD is in progress, not accepted for design selection. The first completed pilot fails the zero-angle symmetry check
-  despite settled coefficients. A finer baseline is running; results will be posted after its audit.
+  recovery options did not clear the full planned uncertainty envelope. The subsequent 36-case sourced-chute screen and
+  864-case expanded recovery comparison are also complete. In the expanded bounds, the prior 20-inch option passes only
+  156/192 planned cases, with 36 descent failures; the 22-inch and sourced 24-inch options each pass 192/192.
+- CFD is in progress, not accepted for design selection. Both completed baseline grids settle but fail zero-angle
+  symmetry; drag differs by 2.46%. The third grid is solving. Two ring-tail CAD trials add 3.55/7.10 g, but no
+  aerodynamic benefit is established.
 - [Recovery attachment and cap hardware](RECOVERY_ANCHOR.md): specific insert and nut dimensions have been sourced.
-  Neither is a drop-in fit to the existing bosses. Hardware selection, detailed fit, mass/CG updates and retention
-  checks remain open.
+  Neither is a drop-in fit to the existing bosses. Two insert CAD trials clear the full modeled insertion path only
+  after rerouting equal-volume wiring allowances. Production integration, hardware mass and physical retention remain
+  open.
 - The existing six-part V5 X1C download is the older 18 mm review package, not the new D12 candidate. New final print
   packaging remains pending. No servo-equipped configuration or logger firmware is implemented.
 - Physical fit, measured mass/CG, pressure response, recovery separation and flight validation remain pending.
