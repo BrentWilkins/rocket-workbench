@@ -10,6 +10,44 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 LINK = re.compile(r"\]\(([^\s)]+)\)")
 
+# Explicit release inventory: future studies must be promoted deliberately.
+CURRENT_RUNS = {
+    "avionics-geometry-20260913-corrected",
+    "avionics-finalist-stress-20260913",
+    "avionics-baseline-stress-20260913",
+    "avionics-selected-20260913",
+    "avionics-orientation-20260913",
+}
+ARCHIVE_PAGES = {
+    "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md",
+    "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md",
+    "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md",
+    "ROCKET_PROJECT_BRIEF.md",
+}
+
+
+def archive_page(relative):
+    return relative.as_posix() in ARCHIVE_PAGES or (
+        relative.parts[0] == "runs" and relative.parts[1] not in CURRENT_RUNS
+    )
+
+
+def publication_markdown(relative, content):
+    """Label old deep links too, without modifying sealed source evidence."""
+    if not archive_page(relative):
+        return content
+    title = re.search(r"^# (.+)$", content, re.MULTILINE)
+    if title:
+        content = content[:title.start()] + "# Archived — " + content[title.start() + 2:]
+    current = posixpath.relpath("docs/CURRENT_DESIGN.md", relative.parent.as_posix())
+    archive = posixpath.relpath("docs/ARCHIVE.md", relative.parent.as_posix())
+    notice = (
+        "> **ARCHIVED / SUPERSEDED — not current design or purchase guidance.**\n"
+        f"> See [current designs]({current}) or the [archive index]({archive}).\n"
+        "> Old dimensions, altitude gates, pass counts and downloads below are retained only for provenance.\n\n"
+    )
+    return "---\nsearch:\n  exclude: true\n---\n\n" + notice + content
+
 
 def home_at_site_root(content):
     """HOME lives in docs/ but is also rendered as the site-root index."""
@@ -36,6 +74,12 @@ def linked_files(path):
 
 def prepare(snapshot=False):
     stage = ROOT / "_site_docs"
+    # This fixed generated directory is disposable; stale pages must not leak into releases.
+    if stage.is_symlink():
+        raise ValueError("Refusing to replace a symlinked documentation staging directory")
+    if stage.exists():
+        shutil.rmtree(stage)
+    stage.mkdir()
     evidence = ROOT / "docs-evidence"
     sources = list((ROOT / "docs").rglob("*.md"))
     sources += list((ROOT / "docs").glob("*.yaml"))
@@ -65,6 +109,7 @@ def prepare(snapshot=False):
         if source.suffix == ".md":
             for linked in linked_files(target):
                 pending.append(ROOT / linked.relative_to(stage))
+            target.write_text(publication_markdown(relative, target.read_text()))
     (stage / 'index.md').write_text(home_at_site_root((stage / 'docs' / 'HOME.md').read_text()))
     print(f"Staged {len(seen)} files in {stage}")
 

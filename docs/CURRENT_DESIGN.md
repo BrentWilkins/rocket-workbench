@@ -3,6 +3,11 @@
 **Updated after the component-level avionics and recovery-wadding CG correction.** This is a bounded performance
 comparison, not physical validation or a globally optimized rocket. No candidate clears the entire stress envelope.
 
+**Reading the heights:** the loaded leader is about 58–60 m nominally, or 52–54 m at the upper avionics mass allowance.
+The retained studies still used a 30–120 m demonstration screening gate; 120 m is neither a physical ceiling nor your
+performance target. It is not what limits the leader's altitude. See [next platform and motor choices](NEXT_PLATFORM.md)
+for the proposed higher-performance comparison. Historical gates/results are preserved, not retroactively relabeled.
+
 ## What to inspect
 
 The **45 mm-fin cone** is the nominal altitude/speed leader. The **55 mm-fin cone** remains a useful baseline with more
@@ -105,7 +110,7 @@ This search holds bay architecture, wall/fin thickness, tube diameter and recove
 that a shorter/lighter sealed bay, lighter carrier, different compatible commercial motor/delay, or different guide
 cannot improve the result. Those are next controlled design changes, not reasons to relax failed gates. A larger chute
 may improve descent but adds mass/packing/drift and does not fix guide departure or deployment timing. The ogive drag
-model has a documented upstream caveat in [the nose study](NOSE_STUDY.md).
+model has a documented upstream caveat in the [archived nose study](NOSE_STUDY.md).
 
 Before flight decisions: identify and weigh hardware, fit-print, measure assembled CG, verify retention and seals, test
 pressure response and recovery separation, and rerun the measured configuration. Firmware and actual sensor logging are

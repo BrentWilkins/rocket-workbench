@@ -18,8 +18,20 @@ uv run --locked --only-group docs zensical build --clean --strict
 The generated site is in `site/`. Neither `site/` nor `_site_docs/` belongs in Git. Staging copies source Markdown and
 the explicitly linked evidence in `docs-evidence/runs/`. It does not publish the full local `runs/`, tools,
 environments, or historical deliverable bundles. To refresh evidence intentionally from local runs, use
-`python scripts/prepare_docs.py --snapshot`, then review the `docs-evidence/` changes before committing. Staging does
-not delete stale files; use a fresh checkout for release builds, as the Pages workflow does.
+`python scripts/prepare_docs.py --snapshot`, then review the `docs-evidence/` changes before committing. Staging
+recreates the generated `_site_docs/` directory so unlinked old pages cannot leak into search or a local preview. Do not
+edit that generated directory; edit repository source documents. Pages also builds from a fresh checkout.
+
+## Current versus archived material
+
+Navigation keeps superseded pages together under **Archive — old news, not current designs**. Staging adds an
+unambiguous archive heading and notice to every old page and linked old run report, including bookmarked deep links.
+These pages are excluded from site search using
+[Zensical's documented search exclusion](https://zensical.org/docs/setup/search/). Original report snapshots, hashes and
+downloads are unchanged; the notices apply only to the rendered documentation.
+
+`CURRENT_RUNS` and `ARCHIVE_PAGES` in `scripts/prepare_docs.py` are the explicit publication inventory. Promote new
+studies deliberately when updating the current comparison. Do not silently rewrite historical criteria or pass counts.
 
 ## GitHub Pages
 

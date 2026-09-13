@@ -7,8 +7,8 @@ For the local Zensical site and GitHub Pages setup, see [documentation](docs/DOC
 
 Start with [current designs, simulations and downloads](docs/CURRENT_DESIGN.md), [build instructions](docs/BUILD.md),
 [shopping guide](docs/SHOPPING.md), and [component-level avionics](docs/AVIONICS_DESIGN.md). The
-[original MVP review](docs/REVIEW.md) is historical; all physical fit, strength, pressure and flight checks remain
-pending.
+[old-news archive](docs/ARCHIVE.md) contains superseded results; all physical fit, strength, pressure and flight checks
+remain pending.
 
 ## Setup
 
@@ -38,12 +38,9 @@ permission for macOS preferences outside a restrictive sandbox. No credentials o
 After setup, ordinary use is offline:
 
 ```sh
-uv run --offline --frozen rocket-workbench validate examples/candidate-recovery.yaml
-uv run --offline --frozen rocket-workbench build examples/candidate-recovery.yaml
-uv run --offline --frozen rocket-workbench simulate examples/candidate-recovery.yaml
-uv run --offline --frozen rocket-workbench sweep examples/baseline.yaml examples/sweep.yaml
-uv run --offline --frozen rocket-workbench sweep examples/c5-standard.yaml examples/c5-standard-sweep.yaml
-uv run --offline --frozen rocket-workbench stress examples/candidate-recovery-stress.yaml examples/uncertainty.yaml
+uv run --offline --frozen rocket-workbench validate examples/avionics-performance.yaml
+uv run --offline --frozen rocket-workbench build examples/avionics-performance.yaml
+uv run --offline --frozen rocket-workbench simulate examples/avionics-performance.yaml
 uv run --offline --frozen pytest -q
 ```
 
@@ -67,9 +64,9 @@ demonstration examples; do not run them over personally edited examples without 
 Every full candidate run includes resolved inputs, configuration hash, CAD STEP/STL/preview, normalized `.ork` files for
 all loadings and each simulated case, mass ledger, JSON time series/events/motor curves, CSV, Markdown and logs. New run
 manifests include dependency/runtime versions through the hashed results, source file hashes and artifact hashes. A
-missing Git revision is reported as null when unavailable; the project has not been published. Sweeps retain rejected
-inputs and failed simulations. Stress cases also retain their per-corner inputs. Null outputs mean unavailable, never
-zero performance.
+missing Git revision is reported as null when unavailable. The source and documentation are published on GitHub. Sweeps
+retain rejected inputs and failed simulations. Stress cases also retain their per-corner inputs. Null outputs mean
+unavailable, never zero performance.
 
 Keep results and their input/configuration files together. `runs/` is ignored by Git by default and is not permanent
 archival storage by itself. Early development runs may predate schema/interface corrections; use the reviewed runs

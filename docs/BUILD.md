@@ -4,10 +4,10 @@ This is a reviewable design and assembly plan, not a tested kit. Start with fit 
 motor or powered battery during fabrication/fit work. The [avionics specification](AVIONICS_DESIGN.md) now identifies a
 provisional XIAO/GNSS/barometer stack and battery. Its detailed models remain approximations until hardware is measured.
 
-Use one complete candidate's resolved inputs and CAD/ORK files together. Never mix the 15-inch and 18-inch chute
-configurations. Dimensions below are the v1 interfaces; the chosen run's files are authoritative for candidate
-dimensions. The avionics variant adds locating rails, an antenna shelf, pressure ports and sealing interfaces; follow
-its dedicated specification rather than the older generic-tray dimensions below.
+Use the [current performance candidate and V5 project](CURRENT_DESIGN.md) with its matching CAD/ORK files. It uses a 410
+mm BT-60 body, 50 mm cone, 145 mm avionics bay, 45 mm fin span and 18-inch chute. The 55 mm-fin baseline also uses a 410
+mm body; the comparison ogive uses 440 mm. Do not mix their files or substitute the owned 15-inch chute without
+rerunning recovery checks. The avionics specification controls rails, antenna shelf, pressure ports and seals.
 
 ## Parts and interfaces
 
@@ -15,7 +15,7 @@ its dedicated specification rather than the older generic-tray dimensions below.
 | -------------------------------------- | -------: | -------------------------------------------------------------------------------------------------------------- |
 | `nose-bay.stl`                         |        1 | Conical nose with integral internal bay sleeve; slides into measured BT-60 ID with configured radial clearance |
 | `bay-bulkhead.stl`                     |        1 | 3 mm removable aft cap; three M2 clearance holes to nose bosses, central M3 recovery eye hole                  |
-| `payload-sled.stl`                     |        1 | Removable generic 2 mm tray with tie slots and foot; two M2 screws attach it to the cap                        |
+| `payload-sled.stl`                     |        1 | Component-specific carrier with rails, antenna shelf, tie slots and foot; two M2 screws attach it to the cap   |
 | `fin-collar.stl`                       |        1 | Three fins and external tube sleeve; 8 mm tapered leading fairing, bonded to paper airframe                    |
 | `lug-sleeve-1.stl`, `lug-sleeve-2.stl` |   1 each | Raised sleeves holding purchased paper lugs; align at 60° between fins, not at a fin's azimuth                 |
 
@@ -36,19 +36,20 @@ density assumes solid modeled material, not sparse infill. Record the slicer est
 
 Current STLs place the nose shoulder-down, cap flat, sled broad-back-down, collar aft-down and lug sleeves vertically.
 Earlier exports incorrectly left the collar forward-down and the sled on its small foot; use regenerated files. See
-[print-orientation analysis](PRINT_ORIENTATION.md). Use a brim as needed. Inspect shoulder-to-nose bridging, boss
-support, the sled foot and fin leading edges; supports, if required, must be fully removable without gouging critical
-fits. The nose screws load printed bosses and layer bonds; the collar fins can fail at their roots. Layer orientation is
-not a substitute for pull/bend/separation tests.
+[current print-orientation analysis](../runs/avionics-orientation-20260913/report.md). Use a brim as needed. Inspect
+shoulder-to-nose bridging, boss support, the sled foot and fin leading edges; supports, if required, must be fully
+removable without gouging critical fits. The nose screws load printed bosses and layer bonds; the collar fins can fail
+at their roots. Layer orientation is not a substitute for pull/bend/separation tests.
 
 ## Dry fit and assembly order
 
 1. Measure the tube, mount, lugs, recovery hardware and selected payload or dummy. Update inputs before printing. Print
    a short fit sample or spare sleeve/cap first. Deburr without enlarging holes indiscriminately. Reject cracked, porous
    or delaminated pieces. The nose must slide freely without a forced fit.
-2. Cut the chosen BT-60 length square: 340 mm compact or 380 mm longer variants. Test fit the external collar and mark
-   its axial position. The fairing starts 8 mm ahead of the collar. Fill the tiny clearance-created leading lip with a
-   smooth adhesive fillet; OpenRocket approximates it as a continuous taper.
+2. After confirming hardware and the chosen configuration, cut the BT-60 square: 410 mm for either current cone or 440
+   mm for the comparison ogive. Test fit the external collar and mark its axial position. The fairing starts 8 mm ahead
+   of the collar. Fill the tiny clearance-created leading lip with a smooth adhesive fillet; OpenRocket approximates it
+   as a continuous taper.
 3. Assemble the commercial 18 mm mount following the kit instructions, selecting the BT-60 centering rings. Locate it
    from the chosen configuration; nominal review dimensions are 69.85 mm mount length with 3.2 mm motor overhang beyond
    the mount, and the motor aft end at the airframe aft end. Kit hook access and actual thrust-block location take
@@ -98,11 +99,11 @@ seam/penetrations and layer integrity must also be checked. No custom ejection c
 The existing motor provides deployment; simulated deployment proves neither real separation nor electronics protection.
 A club-supervised recovery check using appropriate commercial procedures is required before flight.
 
-The modeled chute bundle is a 30 mm diameter cylinder: about 101 mm long for the 15-inch chute and 146 mm for the
-18-inch chute. It begins 10 mm aft of the bay. The longer airframe leaves additional aft space and an annulus for loose
-cord, but these geometric envelopes do not prove a real chute/cord/wadding bundle fits. Perform repeated hand extraction
-and repacking checks without motors or powered batteries. Do not force the nose home against a compressed bundle. Keep
-all recovery lines aft of the sealed cap, out of the nose sliding interface.
+The current modeled 18-inch chute bundle is a 30 mm diameter cylinder, about 146 mm long. It begins 10 mm aft of the
+bay. The airframe leaves additional aft space and an annulus for loose cord, but these geometric envelopes do not prove
+a real chute/cord/wadding bundle fits. Perform repeated hand extraction and repacking checks without motors or powered
+batteries. Do not force the nose home against a compressed bundle. Keep all recovery lines aft of the sealed cap, out of
+the nose sliding interface.
 
 The intended separation is the nose shoulder sliding out of the paper tube; the fin collar and motor mount remain fixed.
 After any added tape, seal or paint, recheck separation and guide sliding. Record actual mass/CG in empty, secured dummy

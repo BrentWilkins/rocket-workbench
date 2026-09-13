@@ -43,10 +43,10 @@ part of dry mass. Every generated loading is checked against an independent mass
 
 Native components model the conical nose, tube, tapered collar, three flat fins and cylindrical lug sleeves. V2 lug
 saddles add a curved bonding pad to the CAD: their mass/CG is included, but their noncylindrical drag is not resolved by
-the native cylindrical lug component. See [saddle revision](LUG_SADDLES.md). `cad/interfaces.json` records the shared
-guide dimensions. Paper lugs sit inside printed sleeves at 60 degrees between fins; the sleeve raises the rod clear of
-the collar. OpenRocket sees the combined outer sleeve and inner lug bore; the small internal adhesive gap is not an
-aerodynamic feature. Sleeve-to-body adhesive fillets and the thin collar-fairing lip are not resolved aerodynamic
+the native cylindrical lug component. See [archived saddle revision](LUG_SADDLES.md). `cad/interfaces.json` records the
+shared guide dimensions. Paper lugs sit inside printed sleeves at 60 degrees between fins; the sleeve raises the rod
+clear of the collar. OpenRocket sees the combined outer sleeve and inner lug bore; the small internal adhesive gap is
+not an aerodynamic feature. Sleeve-to-body adhesive fillets and the thin collar-fairing lip are not resolved aerodynamic
 surfaces. Attachment strength is unverified.
 
 The payload is an internal mass with provisional combined electronics/battery/ wiring dimensions and CG. Dummy and

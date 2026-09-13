@@ -10,9 +10,9 @@ enter quantities with `provenance: measured` and a meaningful `source`. Keep unt
   commercial motor to make it fit.
 - Actual launch-lug ID/OD and rod diameter/straightness. Measure effective usable rod travel with the pad/rocket
   mounted; the configured 0.9144 m is provisional.
-- Exact payload or secured surrogate: all boards, sensor connectors, camera, antenna, wire bends, battery
-  protection/connector, cushioning and ties. The generic combined target is not a verified fit. Battery selection
-  remains open.
+- Exact payload or secured surrogate: all boards, sensor connectors, antenna, wire bends, battery protection/connector,
+  cushioning and ties. Measure the [provisional component specification](AVIONICS_DESIGN.md), including the selected 150
+  mAh battery and actual antenna. A camera and servos are not part of this configuration.
 - Screw pilot compatibility, washer/eye clearance, insulation and service access.
 - Chute/line/cord/wadding packing, full nose insertion and repeatable extraction.
 
@@ -56,8 +56,9 @@ suitable margin; a forecast alone does not establish field conditions.
 - Check nose separation, packed extraction and thermal shielding with suitable commercial procedures. Do not create a
   custom ejection charge for this test.
 - Verify launch-guide sliding and pad clearance of the whole assembled rocket.
-- Confirm sealed bay isolation and inspect after recovery. Any future barometer needs a separately designed external
-  pressure vent; see [AVIONICS](AVIONICS.md).
+- Confirm sealed bay isolation, unobstructed radial static ports and pressure response; inspect after recovery. The
+  current BMP581 has modeled vents and seal interfaces, but neither sealing nor pressure accuracy is validated; see
+  [current avionics](AVIONICS_DESIGN.md).
 - Obtain site permission, check current local restrictions/fire conditions and applicable
   [NAR safety guidance](https://www.nar.org/ModelRocketSafetyCode).
 - Adult supervision and commercial launch-system instructions govern the outing. A successful software run is never
