@@ -7,6 +7,13 @@ image base digest and OpenFOAM packages (2512.0-2) are pinned; transitive Ubuntu
 locked. Every executed case records the resolved image ID. Keep container CPU/memory limits explicit. Mount only the
 individual study directory, never the Docker socket.
 
+For another host, build a native image and pass its tag explicitly with `--image`. The APT source uses the native
+package architecture; AMD64 builds still need verification on the destination. The runner sources the explicit
+`--openfoam-bashrc` path (default `/usr/lib/openfoam/openfoam2512/etc/bashrc`) independently of image tag. Use an empty
+value only for an image whose environment is already configured. The current solver is serial: a Docker CPU quota does
+not enable MPI or GPU acceleration. Record architecture, image identity and resource allocation before comparing results
+across machines.
+
 The retained v1912 Dockerfile documents the first installation attempt. Its upstream cavity smoke test passed, but the
 rocket run failed in function-object initialization. It is not the default solver environment. Failed cases are
 retained, including the initial degenerate nose-apex STL and the mesh-quality failure that returned exit status zero.

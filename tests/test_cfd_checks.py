@@ -2,7 +2,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from cfd_run import stage_passes
+from cfd_run import stage_passes, shell_command
+
+
+def test_environment_setup_does_not_depend_on_image_tag():
+    assert shell_command('simpleFoam', '/opt/foam/etc/bashrc') == 'source /opt/foam/etc/bashrc && simpleFoam'
+    assert shell_command('simpleFoam', '') == 'simpleFoam'
+    assert shell_command('simpleFoam', '/opt/foam with spaces/bashrc') == (
+        "source '/opt/foam with spaces/bashrc' && simpleFoam")
 
 
 def test_checkmesh_zero_exit_does_not_hide_quality_failure():

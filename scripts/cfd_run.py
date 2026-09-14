@@ -3,7 +3,12 @@ import argparse
 import json
 import subprocess
 import re
+import shlex
 from pathlib import Path
+
+
+def shell_command(stage, bashrc):
+    return 'source '+shlex.quote(bashrc)+' && '+stage if bashrc else stage
 
 
 def stage_passes(stage, returncode, log):
@@ -21,6 +26,8 @@ def main():
     parser.add_argument('--case',required=True,type=Path)
     parser.add_argument('--mesh-only',action='store_true')
     parser.add_argument('--image',default='rocket-workbench-cfd:2512-arm64')
+    parser.add_argument('--openfoam-bashrc', default='/usr/lib/openfoam/openfoam2512/etc/bashrc',
+                        help='OpenFOAM environment inside the image; empty for an already configured image')
     args=parser.parse_args()
     folder=args.case.resolve(strict=True)
     if not (folder/'case-spec.json').is_file() or (folder/'execution.json').exists():
@@ -33,16 +40,15 @@ def main():
         stages.append('simpleFoam')
     results=[]
     for index,stage in enumerate(stages):
-        shell_stage=stage
-        if image=='rocket-workbench-cfd:2512-arm64':
-            shell_stage='source /usr/lib/openfoam/openfoam2512/etc/bashrc && '+stage
+        shell_stage=shell_command(stage, args.openfoam_bashrc)
         command=['docker','run','--rm','--network=none','--cpus=2','--memory=4g',
                  '--mount',f'type=bind,src={folder},dst=/case',identity['Id'],shell_stage]
         with (folder/f'{index}-{stage.split()[0]}.log').open('w') as log:
             result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT)
         log_text=(folder/f'{index}-{stage.split()[0]}.log').read_text()
         passed=stage_passes(stage,result.returncode,log_text)
-        results.append(dict(stage=stage,returncode=result.returncode,stage_passed=passed))
+        results.append(dict(stage=stage,returncode=result.returncode,stage_passed=passed,
+                            command=command, openfoam_bashrc=args.openfoam_bashrc))
         (folder/'execution.json').write_text(json.dumps(results,indent=2)+'\n')
         print(stage,result.returncode,flush=True)
         if not passed:
