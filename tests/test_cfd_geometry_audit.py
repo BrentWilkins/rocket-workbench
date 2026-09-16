@@ -8,7 +8,7 @@ import pytest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 
-from cfd_geometry_audit import read_binary_stl, surface_statistics
+from cfd_geometry_audit import read_binary_stl, surface_statistics, transform_statistics
 
 
 def tetrahedron():
@@ -27,6 +27,17 @@ def test_surface_integrity_detects_closed_outward_tetrahedron():
     assert result['integrity']['stored_normals_match_winding']
     assert result['integrity']['positive_signed_volume']
     assert result['integrity']['degenerate_triangles'] == 0
+
+
+def test_surface_symmetry_accepts_vertices_that_map_to_triangle_interiors():
+    triangles = np.asarray(
+        [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [0.0, 1.0, 0.0]]]
+    )
+    points = np.vstack((triangles.reshape(-1, 3), [0.2, 0.0, 0.0]))
+    result = transform_statistics(points, triangles, np.diag([-1, 1, 1]), 1e-8)
+    assert result['vertices_over_tolerance'] == 1
+    assert result['surface_points_over_tolerance'] == 0
+    assert result['screen_passed']
 
 
 def test_binary_stl_reader_fails_closed_on_size_mismatch(tmp_path):

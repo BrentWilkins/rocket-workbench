@@ -40,14 +40,69 @@ def nearest_distances(points: np.ndarray,transformed: np.ndarray,decimals: int=8
     return np.asarray(distances)
 
 
-def transform_statistics(points: np.ndarray,matrix: np.ndarray,tolerance_m: float) -> dict:
-    distances=nearest_distances(points,points@matrix.T)
+def point_triangle_distances(point: np.ndarray, triangles: np.ndarray) -> np.ndarray:
+    """Return exact distances from one point to each nondegenerate triangle."""
+    a = triangles[:, 0]
+    b = triangles[:, 1]
+    c = triangles[:, 2]
+    ab = b - a
+    ac = c - a
+    normal = np.cross(ab, ac)
+    normal_squared = np.einsum("ij,ij->i", normal, normal)
+    if np.any(normal_squared <= 1e-30):
+        raise ValueError("Point-to-surface distance requires nondegenerate triangles")
+
+    ap = point - a
+    signed_numerator = np.einsum("ij,ij->i", ap, normal)
+    projected = point - (signed_numerator / normal_squared)[:, None] * normal
+    projected_ap = projected - a
+
+    dot00 = np.einsum("ij,ij->i", ac, ac)
+    dot01 = np.einsum("ij,ij->i", ac, ab)
+    dot02 = np.einsum("ij,ij->i", ac, projected_ap)
+    dot11 = np.einsum("ij,ij->i", ab, ab)
+    dot12 = np.einsum("ij,ij->i", ab, projected_ap)
+    denominator = dot00 * dot11 - dot01 * dot01
+    u = (dot11 * dot02 - dot01 * dot12) / denominator
+    v = (dot00 * dot12 - dot01 * dot02) / denominator
+    inside = (u >= 0) & (v >= 0) & (u + v <= 1)
+    plane_distance = np.abs(signed_numerator) / np.sqrt(normal_squared)
+
+    def segment_distances(start, end):
+        delta = end - start
+        fraction = np.einsum("ij,ij->i", point - start, delta) / np.einsum(
+            "ij,ij->i", delta, delta
+        )
+        fraction = np.clip(fraction, 0, 1)
+        closest = start + fraction[:, None] * delta
+        return np.linalg.norm(point - closest, axis=1)
+
+    edge_distance = np.minimum.reduce(
+        (
+            segment_distances(a, b),
+            segment_distances(b, c),
+            segment_distances(c, a),
+        )
+    )
+    return np.where(inside, plane_distance, edge_distance)
+
+
+def transform_statistics(
+    points: np.ndarray, triangles: np.ndarray, matrix: np.ndarray, tolerance_m: float
+) -> dict:
+    transformed = points @ matrix.T
+    vertex_distances = nearest_distances(points, transformed)
+    surface_distances = vertex_distances.copy()
+    for index in np.flatnonzero(vertex_distances > tolerance_m):
+        surface_distances[index] = float(point_triangle_distances(transformed[index], triangles).min())
     return {
-        'max_nearest_vertex_error_m': float(distances.max(initial=0)),
-        'p99_nearest_vertex_error_m': float(np.quantile(distances,.99)),
-        'vertices_over_tolerance': int(np.count_nonzero(distances>tolerance_m)),
+        'max_nearest_vertex_error_m': float(vertex_distances.max(initial=0)),
+        'p99_nearest_vertex_error_m': float(np.quantile(vertex_distances,.99)),
+        'vertices_over_tolerance': int(np.count_nonzero(vertex_distances>tolerance_m)),
+        'max_nearest_surface_error_m': float(surface_distances.max(initial=0)),
+        'surface_points_over_tolerance': int(np.count_nonzero(surface_distances>tolerance_m)),
         'tolerance_m': tolerance_m,
-        'screen_passed': bool(np.all(distances<=tolerance_m)),
+        'screen_passed': bool(np.all(surface_distances<=tolerance_m)),
     }
 
 
@@ -82,7 +137,7 @@ def surface_statistics(normals: np.ndarray,vertices: np.ndarray,tolerance_m: flo
         matrix=np.array([[1,0,0],[0,math.cos(angle),-math.sin(angle)],
                          [0,math.sin(angle),math.cos(angle)]])
         rotations.append(dict(angle_deg=360*step/rotational_order,
-                              **transform_statistics(points,matrix,tolerance_m)))
+                              **transform_statistics(points,vertices,matrix,tolerance_m)))
     mirror_y=np.diag([1,-1,1])
     integrity={
         'closed_two_manifold': not bad_edges,
@@ -95,7 +150,7 @@ def surface_statistics(normals: np.ndarray,vertices: np.ndarray,tolerance_m: flo
     symmetry={
         'rotational_order_about_x': rotational_order,
         'rotations': rotations,
-        'mirror_y': transform_statistics(points,mirror_y,tolerance_m),
+        'mirror_y': transform_statistics(points,vertices,mirror_y,tolerance_m),
         'lateral_volume_centroid_within_tolerance': bool(
             np.isfinite(volume_centroid[1:]).all()
             and max(abs(value) for value in volume_centroid[1:])<=tolerance_m

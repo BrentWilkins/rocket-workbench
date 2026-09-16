@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "predeclared_exploratory_comparison",
+  "objective": "Rank matched passive fin geometries and identify only clear winners or losers that survive the declared two-grid screen.",
+  "claim_boundary": {
+    "validated_rocket_aerodynamics": false,
+    "flight_model_coefficients_authorized": false,
+    "allowed_claim": "Exploratory relative ranking at the simulated conditions.",
+    "prohibited_claims": [
+      "Absolute flight drag prediction",
+      "Physical validation",
+      "Global optimum",
+      "Ranking differences smaller than numerical sensitivity"
+    ]
+  },
+  "geometry": {
+    "body_length_mm": 430,
+    "fin_area_per_fin_mm2": 2092.5,
+    "planar_shapes": [
+      "trapezoidal",
+      "elliptical",
+      "clipped-delta",
+      "swept"
+    ],
+    "ring_tail_variants": {
+      "base_shape": "clipped-delta",
+      "chords_mm": [5, 10],
+      "wall_mm": 1.2
+    }
+  },
+  "conditions": {
+    "speed_m_s": 40,
+    "angles_deg": [0, 5],
+    "background_cell_mm": [20, 15],
+    "iterations": 600,
+    "turbulence_model": "stock OpenFOAM kOmegaSST with bounded-upwind k and omega convection",
+    "reference_area": "common BT-60 frontal area",
+    "moment_origin": "each planar baseline dry CG; ring mass excluded from aerodynamic comparison origin"
+  },
+  "quality_gates": {
+    "all_solver_stages_complete": true,
+    "requested_iterations_complete": true,
+    "last_100_settled": true,
+    "zero_angle_symmetry_required": true,
+    "same_solver_image_and_force_axes": true
+  },
+  "ranking_rule": {
+    "drag_metric": "last-100 mean Cd at zero degrees; lower is better",
+    "grid_interval": "closed interval spanning each design's 20 mm and 15 mm result",
+    "clear_pairwise_drag_winner": "winner's entire grid interval is below loser's entire grid interval",
+    "clear_pairwise_drag_loser": "loser's entire grid interval is above competitor's entire grid interval",
+    "five_degree_metrics": [
+      "Cd",
+      "Cl",
+      "CmPitch"
+    ],
+    "overall_rule": "Do not name an overall winner from drag alone. Report five-degree lift and pitch moment with their grid intervals, and require physically consistent restoring sign before interpreting stability.",
+    "indeterminate_rule": "Overlapping grid intervals or a failed quality gate produce no clear ordering."
+  },
+  "follow_up": "Only designs not clearly eliminated proceed to 20 and 60 m/s checks or additional mesh/orientation sensitivity."
+}

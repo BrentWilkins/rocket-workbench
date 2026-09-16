@@ -127,9 +127,11 @@ def axisymmetric_surface_mesh(profile_mm, path, angular_segments=192):
 
 
 def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_chord_mm=0,
-             axisymmetric_control=False):
+             axisymmetric_control=False, surface_refinement_level=4):
     if ring_chord_mm not in (0, 5, 10):
         raise ValueError('Ring comparison supports only the retained 0/5/10 mm chord trials')
+    if not isinstance(surface_refinement_level, int) or not 3 <= surface_refinement_level <= 6:
+        raise ValueError('Surface refinement level must be an integer from 3 through 6')
     if axisymmetric_control and ring_chord_mm:
         raise ValueError('Axisymmetric control cannot include a ring-tail variant')
     out.mkdir(parents=True,exist_ok=False)
@@ -200,7 +202,8 @@ def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_ch
                     'Moment origin is planar-baseline loaded dry CG; ring and instantaneous motor mass need a reference shift for flight use',
                     'Fully turbulent incompressible kOmegaSST; transition and compressibility not assessed',
                     'No boundary layers in pilot mesh; do not accept drag ranking before wall/mesh checks'],
-        mesh=mesh,generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        mesh={**mesh,'surface_refinement_level':surface_refinement_level},
+        generator_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         accepted_for_design=False))
     nx,ny=math.ceil(2.5/(cell_mm*.001)),math.ceil(.8/(cell_mm*.001))
     foam(out/'system/blockMeshDict',f'''convertToMeters 1;
@@ -220,7 +223,7 @@ geometry { rocket.stl {type triSurfaceMesh; name rocket;}
 castellatedMeshControls {
  maxLocalCells 2000000; maxGlobalCells 2000000; minRefinementCells 0; maxLoadUnbalance 0.1;
  nCellsBetweenLevels 3; features ();
- refinementSurfaces {rocket {level (4 4); patchInfo {type wall;}}}
+ refinementSurfaces {rocket {level (__SURFACE_LEVEL__ __SURFACE_LEVEL__); patchInfo {type wall;}}}
  resolveFeatureAngle 30;
  refinementRegions {wake {mode inside; levels ((1e15 1));}}
  locationInMesh (-.3 .2 .2); allowFreeStandingZoneFaces true;
@@ -234,7 +237,7 @@ meshQualityControls {
  minDeterminant .001; minFaceWeight .02; minVolRatio .01; minTriangleTwist -1;
  nSmoothScale 4; errorReduction .75;
 }
-mergeTolerance 1e-6;''')
+mergeTolerance 1e-6;'''.replace('__SURFACE_LEVEL__',str(surface_refinement_level)))
     foam(out/'system/controlDict',f'''application simpleFoam;
 startFrom startTime; startTime 0; stopAt endTime; endTime {iterations}; deltaT 1;
 writeControl timeStep; writeInterval {iterations}; purgeWrite 0;
@@ -292,11 +295,12 @@ def main():
     parser.add_argument('--iterations',type=int,default=600)
     parser.add_argument('--ring-chord-mm',type=int,choices=[0,5,10],default=0)
     parser.add_argument('--axisymmetric-control',action='store_true')
+    parser.add_argument('--surface-refinement-level',type=int,choices=range(3,7),default=4)
     args=parser.parse_args()
     if not 15<=args.cell_mm<=50 or not 10<=args.speed<=70 or not 0<=args.alpha<=10 or not 50<=args.iterations<=3000:
         parser.error('Pilot resource/flow bounds exceeded')
     generate(load_config(args.config),args.output,args.cell_mm,args.speed,args.alpha,args.iterations,
-             args.ring_chord_mm,args.axisymmetric_control)
+             args.ring_chord_mm,args.axisymmetric_control,args.surface_refinement_level)
 
 
 if __name__=='__main__':

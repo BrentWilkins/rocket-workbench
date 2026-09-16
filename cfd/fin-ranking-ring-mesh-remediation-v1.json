@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "predeclared_exploratory_mesh_remediation",
+  "trigger": "The level-4, 20 mm background meshes failed the unchanged checkMesh skewness gate for both ring-tail variants; the 15 mm clipped-delta control also failed on one highly skew face.",
+  "objective": "Test whether one matched increase in surface refinement makes the clipped-delta control and its 5 mm and 10 mm ring tails meshable without relaxing any quality gate.",
+  "claim_boundary": {
+    "validated_rocket_aerodynamics": false,
+    "flight_model_coefficients_authorized": false,
+    "allowed_claim": "Exploratory matched comparison if all three cases pass the existing mesh and run gates.",
+    "prohibited_claims": [
+      "Treating a mesh failure as an aerodynamic loss",
+      "Relaxing checkMesh thresholds after seeing results",
+      "Comparing remediated rings against an unmatched level-4 control",
+      "Physical validation"
+    ]
+  },
+  "cases": [
+    {"id": "clipped-delta", "ring_chord_mm": 0},
+    {"id": "clipped-delta-ring-5mm", "ring_chord_mm": 5},
+    {"id": "clipped-delta-ring-10mm", "ring_chord_mm": 10}
+  ],
+  "conditions": {
+    "speed_m_s": 40,
+    "alpha_deg": 0,
+    "background_cell_mm": 20,
+    "surface_refinement_level": 5,
+    "iterations": 600,
+    "solver_and_image": "unchanged from fin-ranking-plan-v1"
+  },
+  "execution_rule": "Generate fresh cases, run mesh-only first, and run the solver only for cases passing the unchanged checkMesh gate.",
+  "interpretation_rule": "If every case passes, compare last-100 mean Cd within this matched branch. Otherwise report failed variants as unrankable, not aerodynamic losers."
+}

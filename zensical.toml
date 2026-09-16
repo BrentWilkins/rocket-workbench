@@ -9,6 +9,7 @@ nav = [
   { "Current designs" = "docs/CURRENT_DESIGN.md" },
   { "24 mm motor comparison" = "docs/MOTOR24.md" },
   { "Fin and recovery comparison" = "docs/FIN_SHAPES.md" },
+  { "Exploratory CFD fin ranking" = "docs/CFD_FIN_RANKING.md" },
   { "Next platform decision" = "docs/NEXT_PLATFORM.md" },
   { "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
   { "Engineering" = ["docs/MODELING.md", "docs/ARCHITECTURE.md"] },

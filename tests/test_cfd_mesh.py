@@ -28,6 +28,28 @@ def test_delta_external_surface_is_closed(tmp_path):
     assert record['mesh']['absolute_deflection_m']==1e-5
 
 
+def test_surface_refinement_level_is_recorded_and_rendered(tmp_path):
+    from cfd_case import generate
+    from study_fin_shapes import variant
+
+    case=tmp_path/'case'
+    generate(variant('clipped-delta',45,430),case,surface_refinement_level=5)
+    record=json.loads((case/'case-spec.json').read_text())
+    mesh_dict=(case/'system/snappyHexMeshDict').read_text()
+    assert record['mesh']['surface_refinement_level']==5
+    assert 'level (5 5)' in mesh_dict
+
+
+@pytest.mark.parametrize('level',[2,7,4.5])
+def test_surface_refinement_level_rejects_unsupported_values(tmp_path,level):
+    from cfd_case import generate
+    from study_fin_shapes import variant
+
+    with pytest.raises(ValueError,match='integer from 3 through 6'):
+        generate(variant('clipped-delta',45,430),tmp_path/f'case-{level}',
+                 surface_refinement_level=level)
+
+
 def test_delta_cad_is_symmetric_even_when_surface_audit_fails_closed(tmp_path):
     from cfd_case import generate
     from cfd_geometry_audit import audit
