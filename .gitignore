@@ -1,6 +1,7 @@
 .venv/
 .tools/
 .cache/
+.serena/
 __pycache__/
 .pytest_cache/
 /runs/

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "scope": "Stock-SST turbulence-upwind recovery mechanism outcome",
+  "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-upwind-remediation5000-v2-20260915",
+  "case_spec_sha256": "4cff508027caf199ff4e3c1533acc21aae44034fef6273e676347ecb40a65190",
+  "audit": "runs/cfd-openfoam-naca0012-stock-sst-upwind-remediation-audit-v1-20260915/naca0012-stock-sst-upwind-remediation-audit.json",
+  "audit_sha256": "325a04c6f97c2b451775a1a34871f28136da2077464457a11a70c14ec8451b28",
+  "endpoint": {
+    "mean": {
+      "Cd": 0.019615285344169998,
+      "Cl": 0.006302440137173001,
+      "CmPitch": -0.0012140949316580003
+    },
+    "projected_change_over_500_iterations": {
+      "Cd": 0.000011381557960543865,
+      "Cl": 0.00003674222062931813,
+      "CmPitch": 0.000020806938906025224
+    },
+    "openfoam_minus_nasa_cfl3d_sst_cd": 0.011521556106169997,
+    "upwind_minus_linearupwind_source": {
+      "Cd": -0.000041188665580001865,
+      "Cl": 0.0008246992083010014,
+      "CmPitch": -0.00003713343689700009
+    },
+    "negative_k": {
+      "occurrences": 5001,
+      "worst_minimum": -8.803553348e-9,
+      "final_minimum": 0.0
+    }
+  },
+  "gates": {
+    "provenance": true,
+    "scheme_change_only": true,
+    "runtime_and_execution": true,
+    "model_configuration": true,
+    "finite_force_history": true,
+    "iteration_horizon": true,
+    "settling": true,
+    "long_window_trend": true,
+    "solver_residual": true,
+    "zero_angle_symmetry": false,
+    "force_agreement": false,
+    "remediation_passed": false
+  },
+  "conclusion": "Changing only k and omega convection to bounded upwind removes meaningful negative-k undershoot but stabilizes rather than removes the inherited asymmetric force branch. Negative-k bounding was not the dominant cause of the zero-angle asymmetry.",
+  "next_action": "Run the separately predeclared stock-SST upwind replication from the original accepted SA source to distinguish branch avoidance from branch recovery.",
+  "exact_sstm_entry_allowed": false,
+  "accepted_for_rocket": false
+}

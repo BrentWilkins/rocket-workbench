@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "stock-sst-upwind-unchanged-residual-continuation",
+  "objective": "Determine whether the clean SA-to-stock-SST upwind replication satisfies the already declared Uy residual gate after additional unchanged iterations, without changing its mesh, physics, model, fields, boundary conditions, convection schemes, solvers, relaxation, forces, or thresholds.",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-upwind-from-sa5000-v1-20260915",
+    "case_spec_sha256": "461e03bff20edda5c619bf317035a6a9eb75257d3b3dc857225677c42ff016a1",
+    "audit": "runs/cfd-openfoam-naca0012-stock-sst-upwind-from-sa-audit-v2-20260915/naca0012-stock-sst-upwind-from-sa-audit.json",
+    "audit_sha256": "209e6bc2b1cdaac5782c6c2473ceb398dc456cd99d16ce574d11240cb48877db"
+  },
+  "trigger": {
+    "required_true": [
+      "provenance_gate",
+      "source_required_state_gate",
+      "source_provenance_gate",
+      "copied_solution_fields_gate",
+      "copied_invariants_gate",
+      "scheme_change_only_gate",
+      "construction_provenance_gate",
+      "runtime_and_execution_gate",
+      "model_configuration_gate",
+      "stock_sst_coefficients_gate",
+      "finite_force_history_gate",
+      "iteration_horizon_gate",
+      "settling_gate",
+      "long_window_trend_gate",
+      "zero_angle_symmetry_gate",
+      "force_agreement_gate"
+    ],
+    "required_false": [
+      "solver_residual_gate",
+      "diagnostic_numerics_passed"
+    ],
+    "observed_failure": "Final Uy initial residual 2.380820461e-05 and final-100 maximum 2.560585195e-05 exceed the unchanged 1e-5 limit; all other numerical-entry gates pass.",
+    "prohibited_conditions": [
+      "NaN or infinity in fields, residuals, or force history",
+      "OpenFOAM fatal error",
+      "failed execution stage",
+      "source case or audit digest mismatch"
+    ]
+  },
+  "fixed_invariants": "Copy the final U, p, k, omega, and nut fields plus every mesh, transport, turbulence, scheme, solver, relaxation, decomposition, and force-definition file unchanged. Only FoamFile locations, start/end times, output directories, and provenance metadata may change.",
+  "execution": {
+    "additional_iterations": 5000,
+    "cumulative_iterations": 10000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-native",
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "unchanged_gates": {
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002"
+  },
+  "decision_rule": "Run exactly one unchanged 5000-iteration continuation. It may seed the exact-SSTm rung only if provenance, invariant, runtime, model, finite-history, horizon, settling, trend, residual, and symmetry gates pass. NASA agreement remains reportable and required for the relative stock-SST rung, while strict validation remains blocked by failed Gate 1. No threshold or numerical control may be changed after observing the result."
+}

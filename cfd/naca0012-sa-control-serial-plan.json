@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Isolate whether the remaining documented-SA Uy residual and force bias depend on 12-rank Scotch decomposition.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "gate_1_passed": false,
+    "long_window_trend_gate": true,
+    "solver_residual_gate": false,
+    "zero_angle_symmetry_gate": true,
+    "force_agreement_gate": false,
+    "mean_cd": 0.008491375437945,
+    "final_uy_initial_residual": 0.00004135628366
+  },
+  "single_change": {
+    "name": "scotch_12_rank_to_serial_execution",
+    "before": {
+      "mpi_ranks": 12,
+      "decomposition": "Scotch"
+    },
+    "after": {
+      "mpi_ranks": 1,
+      "decomposition": "none"
+    },
+    "diagnostic_iterations": 1000,
+    "initialization": "Copy the reconstructed damping-test final U, p, nuTilda, and nut fields to time zero on the identical mesh with SHA-256 provenance."
+  },
+  "fixed": [
+    "official NASA 897x257 C-grid",
+    "OpenFOAM v2512 simpleFoam",
+    "stock OpenFOAM v2512 SpalartAllmaras SA-noft2",
+    "OpenFOAM-documentation freestream including nuTilda/nu=4",
+    "linearUpwind schemes",
+    "half-scaled p=0.15, U=0.35, nuTilda=0.35 relaxation",
+    "linear solver tolerances",
+    "force normalization",
+    "all acceptance thresholds"
+  ],
+  "falsifiable_expectation": {
+    "primary": "If Scotch decomposition sustains the remaining mode, serial execution will materially reduce the Uy initial residual and alter the Cl/Cm bias within 1000 iterations.",
+    "null": "If the residual and force state continue smoothly from the 12-rank result, decomposition is not the dominant mechanism.",
+    "drag": "Compare the final 500-iteration mean Cd with the source case using the fixed 0.0002 numerical-equivalence limit; do not interpret NASA agreement unless the serial residual and symmetry gates pass."
+  },
+  "resource_policy": {
+    "cpu_limit": 2,
+    "solver_threads_or_ranks": 1,
+    "memory_limit": "24g",
+    "gpu": false,
+    "reason": "Serial execution is the variable under test. Additional CPU or GPU parallelism would invalidate the comparison."
+  },
+  "terminal_rule": "Do not extend this serial diagnostic. If decomposition is ruled out, localize Cp and Cf on the damped 12-rank result, then test nuTilda/nu=4-to-3 and SA-noft2-to-standard-SA separately. If decomposition is material, reproduce the full documented control serially before changing turbulence inputs."
+}

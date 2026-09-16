@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "stock-sst-to-exact-nasa-sstm-incompressible-relative-diagnostic",
+  "objective": "Measure the effect of replacing packaged OpenFOAM kOmegaSST by the source-audited exact NASA TMR SSTm equations while keeping the same incompressible solver, mesh, conditions, fields, transport, numerics, and force definitions.",
+  "validation_status": "planned_diagnostic_only; strict Gate 3 remains downstream of failed Gate 1",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-direct-from-sa-fixed5000-v2-20260915",
+    "case_spec_sha256": "72509f92e0d709cd60a62f568a0ff9c9c3eef69a7b5cda5c0cacae1517eb9c90",
+    "required_audit": "runs/cfd-openfoam-naca0012-stock-sst-direct-audit-v1-20260915/naca0012-stock-sst-diagnostic-audit.json",
+    "entry_gate": "diagnostic_numerics_passed must be true; force agreement may be reported as failed but does not authorize validation"
+  },
+  "fixed_invariants": [
+    "NASA TMR altered closed NACA 0012 897x257 mesh and every polyMesh file",
+    "alpha=0 deg, U=51.4815 m/s, nu=8.58e-6 m2/s, chord Reynolds number 6000174.825",
+    "incompressible simpleFoam solver and constant kinematic-viscosity transport",
+    "all final U, p, k, omega, and nut fields copied from the numerically accepted stock-SST diagnostic",
+    "linearUpwind velocity, k, and omega convection",
+    "SIMPLE solvers and relaxation factors",
+    "force coefficient axes, density, reference area, reference length, and quarter-chord moment center"
+  ],
+  "declared_changes": {
+    "runtime_image": {
+      "reason": "The exact runtime model is not part of packaged OpenFOAM and must be dynamically registered in an otherwise derived image.",
+      "from_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267",
+      "to_id": "sha256:94665df91dec038611dd3f953d2d5d06283f1ac41185302e2c6b81d64e76c8e2",
+      "provenance": "cfd/sstm-exact-production-dual-image-provenance.json",
+      "provenance_sha256": "6338791a1d3f17027c70f453efca3d183b8399c7cad69ac07657e5d7c2d3b9a7"
+    },
+    "turbulence_model": "kOmegaSST to TmrSSTmExactProduction",
+    "required_coefficients": {
+      "gamma1": 0.5531666666666668,
+      "gamma2": 0.4403546666666667,
+      "c1": 20
+    },
+    "equation_delta": "NASA TMR SSTm F1/F2 mapping and vorticity limiter, factor-20 production limiter only in k, and P=mu_t*S^2 in both production terms."
+  },
+  "execution": {
+    "iterations": 5000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-sstm-exact-production-dual",
+    "image_id": "sha256:94665df91dec038611dd3f953d2d5d06283f1ac41185302e2c6b81d64e76c8e2"
+  },
+  "predeclared_outputs": {
+    "primary_effect": "mean Cd(exact SSTm) minus mean Cd(stock SST) over each final 100-iteration window",
+    "nasa_reference": {
+      "file": "n0012clcd_cfl3d_sst.dat",
+      "sha256": "373dc142018816628b7b53ad278327db731162988ba35a166cd9fdc131a7fd7a",
+      "alpha_0_cd": 0.008093729238
+    },
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002"
+  },
+  "decision_rule": "If the stock-SST entry gate fails, do not construct or execute this rung from its unconverged fields. If it passes, retain and report the exact-SSTm result regardless of force agreement. Strict validation remains blocked by failed Gate 1 and no result is accepted for rocket design."
+}

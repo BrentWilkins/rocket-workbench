@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Test whether the documented SA control's persistent 2500-iteration lateral and moment mode is caused by insufficient SIMPLE under-relaxation.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-continuation5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-control-continuation-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "7b688bc80adf7e418d3305a8322fce5d0569442c306f2669ce49a6998b851a7f",
+    "gate_1_passed": false,
+    "long_window_trend_gate": false,
+    "solver_residual_gate": false,
+    "zero_angle_symmetry_gate": false,
+    "force_agreement_gate": false
+  },
+  "read_only_diagnosis": {
+    "path": "cfd/naca0012-sa-control-diagnosis.json",
+    "sha256": "ebe30f4bd9e2f5b3d824a524d26a8bee855c299996788ae76870f407bcdd0d51",
+    "dominant_cl_period_iterations": 2500,
+    "dominant_cm_period_iterations": 2500,
+    "airfoil_mesh_mirror_error_chords_max": 1.0704405259e-07,
+    "final_uy_initial_residual": 0.0001716267747
+  },
+  "single_change": {
+    "name": "uniform_half_scale_SIMPLE_under_relaxation",
+    "before": {
+      "p": 0.3,
+      "U": 0.7,
+      "nuTilda": 0.7
+    },
+    "after": {
+      "p": 0.15,
+      "U": 0.35,
+      "nuTilda": 0.35
+    },
+    "selection_rule": "Apply one factor of 0.5 to every under-relaxation value inherited from the packaged upstream tutorial; do not tune fields independently.",
+    "additional_iterations": 5000,
+    "initialization": "Copy the fully reconstructed cumulative-10000 U, p, nuTilda, and nut fields to time zero on the identical mesh with SHA-256 provenance."
+  },
+  "fixed": {
+    "grid": "official NASA 897x257 C-grid",
+    "solver": "OpenFOAM v2512 simpleFoam",
+    "model": "stock OpenFOAM v2512 SpalartAllmaras, default SA-noft2 form",
+    "freestream": "OpenFOAM documentation values including nuTilda/nu=4",
+    "schemes": "documented linearUpwind velocity and nuTilda convection",
+    "linear_solvers": "unchanged",
+    "decomposition": "12-rank Scotch",
+    "resources": "12 CPU limit and 24g memory limit",
+    "force_normalization": "unchanged",
+    "acceptance_thresholds": "unchanged"
+  },
+  "falsifiable_expectation": {
+    "primary": "The final and last-100 maximum Uy initial residual and projected 500-iteration Cl/Cm changes fall below the existing Gate 1 thresholds.",
+    "secondary": "The 2500-iteration Cl/Cm oscillation amplitude decreases relative to the undamped continuation.",
+    "drag": "No target direction is assumed. CFL3D drag agreement is evaluated only after iterative and symmetry gates pass."
+  },
+  "terminal_rule": "If damping does not pass the existing iterative and symmetry gates, do not extend or retune it. Next run must isolate serial/decomposition behavior. If damping converges, evaluate unchanged force agreement; if drag still fails, proceed to Cp/Cf localization and then separate nuTilda/nu=4-to-3 from SA-noft2-to-standard-SA tests."
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "image_tag": "rocket-workbench-cfd:2512-sstm-exact-production-pr072",
+  "image_id": "sha256:ae3235d75b54311a6dbcdfc2b45f6c9be77a8ff0743c099cf5ca3f3e9db0d23f",
+  "created": "2026-09-14T12:18:47.747662777-06:00",
+  "base_image": "rocket-workbench-cfd:2512-sstm-k-only-limiter-pr072",
+  "base_image_id": "sha256:777e5ff0348eab1026f69bfe7fd2a01685d250a6a186a674a9bdc0e83ff7ef8b",
+  "openfoam_package_version": "2512.0-2",
+  "source_sha256": {
+    "cfd/Dockerfile.2512-sstm-exact-production-pr072": "ba2ef8b279c49b792e232d3b13ad6173ea284b4adc09fe5bd78e4b4322afd319",
+    "cfd/models/TmrSSTmExactProduction/TmrSSTmExactProduction.H": "3d6919b15c3e32ed84daeb2203e40d7106c82d5d13f736a53a07991f4e4c2c4f",
+    "cfd/models/TmrSSTmExactProduction/TmrSSTmExactProduction.C": "9c879ad5a1a480bbdefea73e8d3f3a5940922dde85de5da5fc8f8a503fc1027b",
+    "cfd/models/TmrSSTmExactProduction/makeTmrSSTmExactProductionCompressible.C": "6ae269b61d845443ec10b0b5c83f6f4556d124fc420e277142d71d16fd3b3a8c",
+    "cfd/models/TmrSSTmExactProduction/Make/files": "627d05d268f8f84c20b6dc44b2cf2579a0eb010299b49a6a4b5cd7adbebbd92c",
+    "cfd/models/TmrSSTmExactProduction/Make/options": "9adec155645ad2787995a0262a5990cd28ec0e4658f4e3312f04c89f3345e0c8",
+    "cfd/naca0012-sstm-production-definition-sensitivity-plan.json": "dd138d42993d3cd728397327d77e13b874cd778aad77797309e556393c9dbc58"
+  },
+  "runtime_library": "libTmrSSTmExactProductionCompressible.so",
+  "runtime_model": "TmrSSTmExactProduction",
+  "equation_delta": "NASA TMR SSTm P = mu_t S squared in omega and k, with factor-20 limiter only in k.",
+  "acceptance_note": "Successful compilation and registration do not establish NACA 0012 benchmark agreement."
+}

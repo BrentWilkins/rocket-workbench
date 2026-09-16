@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "openfoam_release": "v2512",
+  "openfoam_package_version": "2512.0-2",
+  "development_image": {
+    "tag": "rocket-workbench-cfd:2512-dev",
+    "id": "sha256:1bd63d3ba5f7a4b837c7583d3fa46572db95517bad2c4bbc6b5f19fc1a34a084",
+    "size_bytes": 1611594008
+  },
+  "sstm_image": {
+    "tag": "rocket-workbench-cfd:2512-sstm",
+    "id": "sha256:e83f84b5ab244104c47ee342489d3fdce78d5d82158fc37b686f499b7af07656",
+    "size_bytes": 1615207676
+  },
+  "build_inputs_sha256": {
+    "cfd/Dockerfile.2512-dev": "ee370ec6b975284f48cc73bb24205aa3b69f3a48cc19bd380f48b79d8d69a9ee",
+    "cfd/Dockerfile.2512-sstm": "77fb558528929e87dca5cb072e8f3941a5a887ba1ee71973177d9888885ac8a1",
+    "cfd/openfoam.list": "2e44ea7de780332c3df0495c08948dc40075285d6d7facb85abe19bbc04cf955",
+    "cfd/models/TmrSSTm/TmrSSTm.H": "527ca733d1248d10403614b88943ada7a416f569e83762e79ef75074f78ef2b4",
+    "cfd/models/TmrSSTm/TmrSSTm.C": "edc69bf799fb4f7199038fdaa40e1428e6e1cb1409546b0ff686cb993b3787fb",
+    "cfd/models/TmrSSTm/makeTmrSSTm.C": "e5df2600641d12c35c52a02beff9a9ac4c0c41890fc25ba5b55f30b5678d5083",
+    "cfd/models/TmrSSTm/Make/files": "3ddb3213c3fd4be46a01a0d00b189bd6dda485530f326021315ddf9b17aa48fa",
+    "cfd/models/TmrSSTm/Make/options": "848bb8df75cda8ed18302ca56d990f208ccf5653e64d9ab1cd5a80aeec0c2f5a"
+  },
+  "reference_source": {
+    "tmr_equations": "https://tmbwg.github.io/turbmodels/sst.html",
+    "tmr_openfoam_changes": "https://tmbwg.github.io/turbmodels/Papers/ChangesToOpenFOAM.pdf",
+    "unm_openfoam_2_3_source_archive_sha256": "03865038511674da4f9b2f0cbe30bfcbe27517dd8dcbd7fbd177420101a2d79d"
+  },
+  "acceptance_note": "The image and source map establish reproducibility and equation intent; benchmark gates remain independently required."
+}

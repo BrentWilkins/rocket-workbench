@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "objective": "Validate the aerodynamic CFD workflow before using it for rocket optimization.",
+  "overall_status": "not_validated",
+  "methodology_source": "https://www.grc.nasa.gov/www/wind/valid/tutorial/tutorial.html",
+  "benchmark_data_fetcher": "scripts/cfd_fetch_benchmarks.py",
+  "coefficient_acceptance_rule": "Absolute CFD-reference discrepancy must not exceed the conservative sum of documented experimental, numerical-discretization, iterative/sampling, and data-extraction uncertainties for that quantity.",
+  "benchmarks": [
+    {
+      "id": "tmr-2dzp-flat-plate",
+      "scope": "wall_and_turbulence_subsystem_only",
+      "primary_source": "https://tmbwg.github.io/turbmodels/flatplate_val.html",
+      "conditions": {
+        "reynolds_number_per_unit_length": 5000000,
+        "plate_length": 2,
+        "reynolds_number_plate_length": 10000000,
+        "comparison_reynolds_theta_range": [
+          4000,
+          13000
+        ],
+        "law_of_wall_reynolds_theta": 10000
+      },
+      "comparison_quantities": [
+        "wall_skin_friction_coefficient_vs_reynolds_theta",
+        "u_plus_vs_y_plus"
+      ],
+      "predeclared_tolerance": {
+        "engineering_screen_relative": 0.05,
+        "basis": "The TMR plots include 5 percent error bars while warning that the actual experimental error levels are unclear.",
+        "acceptance_condition": "Pass only if the comparison is within the 5 percent screen and the implemented equations and boundary conditions are mapped to the SSTm variant used by the retained sst-* reference files. Report numerical and extraction uncertainty separately."
+      },
+      "predeclared_numerical_screen": {
+        "mesh": {
+          "comparison_reynolds_theta_points": [
+            4000,
+            4500,
+            5000,
+            5500,
+            6000,
+            6500,
+            7000,
+            7500,
+            8000,
+            8500,
+            9000,
+            9500,
+            10000,
+            10500,
+            11000,
+            11500,
+            12000,
+            12500,
+            13000
+          ],
+          "maximum_medium_to_fine_cf_relative_change": 0.02,
+          "basis": "Keep the observed fine-grid skin-friction change below two fifths of the predeclared 5 percent benchmark screen; report all pointwise changes and do not claim GCI without demonstrated asymptotic behavior."
+        },
+        "scheme": {
+          "maximum_first_order_to_linear_upwind_velocity_cf_relative_change": 0.02,
+          "basis": "Use the same two-fifths allocation for discretization-scheme sensitivity; first-order upwind remains a stabilization baseline, not acceptance evidence."
+        },
+        "near_wall": {
+          "maximum_y_plus": 1.0,
+          "evaluation_region_reynolds_theta": [
+            4000,
+            13000
+          ],
+          "basis": "The supplied TMR grids are intended for wall-resolved integration to the wall; require every plate face in the declared comparison region to remain at y-plus no greater than one."
+        },
+        "domain": {
+          "reduced_top_boundary_target_m": 0.5,
+          "maximum_cf_relative_change": 0.005,
+          "basis": "TMR reports less than 0.2 percent change when reducing the top extent from one plate reference length to 0.48; use a conservative 0.5 percent screen and preserve the supplied inner-grid coordinates."
+        },
+        "turbulence_mapping": {
+          "comparison": "OpenFOAM default kOmegaSST and omegaWallFunction, the partial SSTm coefficient/wall map, and the v2512 source-mapped TmrSSTm model on the same grid and higher-order scheme.",
+          "decision_rule": "Report the full relative skin-friction change without a pass threshold. Coefficient-only similarity cannot establish SSTm equivalence. Benchmark acceptance requires the source-mapped model to pass immutable image/source provenance, runtime selection, and all independent numerical and comparison gates."
+        },
+        "boundary_conditions": {
+          "comparison": "Legacy overconstrained pressure/top-boundary or high-Re wall-wrapper cases versus the published TMR/OpenFOAM flat-plate boundary-condition table on the same grid, turbulence setup, scheme, and solver controls, including fixed wall k and nut.",
+          "decision_rule": "The published boundary conditions are mandatory for benchmark acceptance. Report skin-friction, profile, momentum-thickness, and outer-flow changes without deriving a new tolerance from either result; the existing benchmark and outer-flow limits remain unchanged."
+        },
+        "outer_flow_quality": {
+          "evaluation_minimum_y_m": 0.2,
+          "maximum_absolute_u_over_uinf_minus_one": 0.005,
+          "maximum_adjacent_wall_normal_u_over_uinf_jump": 0.005,
+          "basis": "Added after an alternating outer-flow pattern was discovered. The check only tightens acceptance: well above the reported maximum boundary-layer thickness, freestream velocity must be uniform within 0.5 percent and free of larger adjacent-cell oscillations."
+        },
+        "momentum_thickness_extraction": {
+          "edge_velocity_fractions": [
+            0.99,
+            0.995,
+            0.999
+          ],
+          "maximum_retheta_relative_error_vs_tmr_typical": 0.05,
+          "decision_rule": "All three edge-truncated integrations must agree with the independent TMR typical x-to-Re-theta curve within the existing 5 percent benchmark allocation. Full finite-domain integration remains a non-governing diagnostic because a small outer-velocity offset accumulates over the far field.",
+          "method_status": "Post-processing correction made after the published top boundary condition exposed full-domain tail bias; the 5 percent limit was not changed and prior outputs remain preserved."
+        }
+      },
+      "limitations": [
+        "Does not validate separation, external-body pressure drag, force integration, fins, or a rocket.",
+        "A model-equation mismatch is a documented different model, not benchmark disagreement to tune away."
+      ],
+      "status": "accepted_attached_wall_sstm_subsystem_only"
+    },
+    {
+      "id": "tmr-naca0012-external-body",
+      "scope": "external_body_force_pressure_and_moment_workflow",
+      "primary_sources": [
+        "https://tmbwg.github.io/turbmodels/naca0012_val.html",
+        "https://ntrs.nasa.gov/citations/19880019495",
+        "https://ntrs.nasa.gov/citations/19880002254"
+      ],
+      "geometry": "Use the exact altered closed NACA 0012 definition and grids or a demonstrably equivalent systematic grid family supplied by TMR; do not silently use the textbook open-trailing-edge polynomial.",
+      "conditions": {
+        "mach": 0.15,
+        "reynolds_number_chord": 6000000,
+        "angles_of_attack_deg": [
+          0,
+          10
+        ],
+        "experimental_boundary_layer": "tripped_data_required_for_fully_turbulent_CFD_drag_comparison"
+      },
+      "pressure_data_condition_rule": "Pressure comparisons are separate cases matched to each retained data file's Reynolds number, Mach number, angle, and transition state; do not treat the Gregory and Ladson pressure files as M=0.15 tripped data.",
+      "comparison_quantities": [
+        "lift_coefficient",
+        "drag_coefficient",
+        "pitching_moment_coefficient",
+        "surface_pressure_coefficient_vs_x_over_c"
+      ],
+      "experimental_repeatability_from_nasa_tm_4074": {
+        "applicability": "repeat points whose angle of attack differs by no more than 0.01 degree",
+        "drag_coefficient_absolute": 0.0002,
+        "normal_force_coefficient_absolute": 0.004,
+        "pitching_moment_coefficient_absolute": 0.0002,
+        "pressure_transducer_accuracy_fraction_of_reading": 0.0025
+      },
+      "predeclared_tolerance": {
+        "force_and_moment": "For each quantity, absolute CFD-experiment discrepancy must be no greater than experimental repeatability plus quantified numerical-discretization uncertainty plus iterative/sampling uncertainty plus digitization uncertainty. NASA TM 4074 reports normal-force repeatability, so lift uncertainty must be propagated through the documented wind-axis transformation rather than equated directly to 0.004.",
+        "surface_pressure": "At each retained tap, absolute Cp discrepancy must be no greater than propagated pressure-instrument uncertainty plus quantified numerical and digitization uncertainty; publish both pointwise residuals and an uncertainty-normalized aggregate without deleting outliers.",
+        "symmetry": "At zero angle, retain the existing absolute lateral and moment coefficient screen of 0.01 and the existing last-100 peak-to-peak settling screen.",
+        "iterative_convergence": "In addition to force-history gates, every solved field must finish with normalized initial residual at most 1e-5 and have no initial residual above 1e-4 over the final 100 iterations.",
+        "numerical_independence": "For the finest nested-grid pair and the retained first-order versus higher-order scheme comparison, every absolute Cd, Cl, and quarter-chord Cm change must be no larger than the corresponding experimental repeatability scale.",
+        "domain_sensitivity": "Compare the official approximately 500-chord outer boundary with a reduced boundary using an exact retained structured grid row at approximately 100 chords upstream and crossflow while preserving the 500-chord wake extent. Every absolute Cd, Cl, and quarter-chord Cm change must be no larger than the corresponding experimental repeatability scale, and report the change separately in numerical uncertainty."
+      },
+      "limitations": [
+        "Two-dimensional wind-tunnel data become less reliable near stall; 10 degrees is retained, 15 degrees is excluded initially.",
+        "Passing does not physically validate a three-dimensional finned rocket, base/nozzle treatment, launch lugs, roughness, or transition assumptions."
+      ],
+      "diagnostic_controls": {
+        "exact_sutherland_pr072": "Passes all solver gates; changes Cd by -0.00000588, only 0.83 percent of the Ladson discrepancy, and does not resolve high skin friction.",
+        "incompressible_same_grid": "Passes all diagnostic gates; changes Cd by -0.00003251, 4.71 percent of the CFL3D discrepancy, leaves viscous Cd essentially unchanged, and still exceeds CFL3D by 0.00065846.",
+        "exact_sstm_production": "Passes all diagnostic gates after a preserved residual-only failure and predeclared continuation. Correcting omega limiter placement and P = mu_t S squared changes Cd by -0.00002658, 3.88 percent of the exact-Pr baseline CFL3D gap. Mean Cd 0.00875224 still exceeds CFL3D by 0.00065851 and mean skin friction remains 1.10021 times CFL3D.",
+        "interpretation": "Neither molecular-Prandtl mapping nor compressibility/thermophysical coupling is the dominant benchmark discrepancy. Neither diagnostic accepts the production workflow."
+      },
+      "status": "exact_model_grid_scheme_wall_recovered_reduced_domain_residual_gate_failed_zero_angle_benchmark_failed"
+    }
+  ],
+  "acceptance_matrix": [
+    {
+      "gate": "environment_and_installation",
+      "status": "diagnostic_pass_only",
+      "verdict": "Native AMD64 OpenFOAM v2512 cavity smoke passed; no aerodynamic validity follows."
+    },
+    {
+      "gate": "geometry_mesh_and_force_conventions",
+      "status": "in_progress",
+      "verdict": "An analytic axisymmetric control surface passes closure, winding, SI/reference, CAD-solid, mirror, and 12-fold rotation screens. Its 25 mm background-grid solve passes the provisional zero-angle force/moment screen. The non-authoritative finned STL still fails the strict surface-symmetry screen, and exact retained/current-review cases are absent."
+    },
+    {
+      "gate": "benchmark_agreement",
+      "status": "failed",
+      "corrected_model_numerical_refresh": "The predeclared exact-SSTm refresh passes the 449x129-to-897x257 finest-pair change (absolute Cd 0.00002237), fine-grid LUST change (absolute Cd 0.00000774), and wall-resolved maximum y-plus 0.13519. The approximately 100-chord domain case fails the unchanged residual gate with final energy initial residual 0.00002098; its coefficients are withheld. Numerical independence therefore remains not satisfied.",
+      "corrected_model_zero_angle_acceptance": "Mean Cd differs from the matched Ladson tripped mean by 0.00067624. The conservative allowance is 0.00043868 even after granting the full 0.0002 domain budget, leaving 0.00023756 excess. Domain sensitivity and zero-angle drag agreement both fail independently; no coefficient is accepted.",
+      "sstm_equation_parity_control": "A source re-audit found that the first TmrSSTm class inherited the v2512 omega-production limiter and deviatoric production contraction. The provenance-pinned TmrSSTmExactProduction class uses unlimited omega production, the factor-20 limiter only in k, and NASA TMR P = mu_t S squared. Its residual-only first run was preserved; a predeclared continuation passes all diagnostic gates. Mean Cd 0.00875224 remains 0.00065851 above CFL3D, and mean OpenFOAM/CFL3D skin friction remains 1.10021. The full correction changes Cd by -0.00002658, 3.88 percent of the exact-Pr baseline CFL3D gap, so it is required for fidelity but not dominant. Affected grid, scheme, wall, and domain checks must be repeated with the exact model before acceptance.",
+      "solver_path_control": "A bounded five-flow-through 225x65 rhoPimpleFoam run completed and was flat over its final flow-through interval, but Cd differed from the accepted steady control by 0.000309874 versus the predeclared 0.000200 limit. A fine transient run was not justified.",
+      "verdict": "The attached-wall SSTm flat-plate subsystem is accepted. At zero angle, corrected TMR freestream inputs and structured coarse-to-fine initialization recover NACA 0012 iterative, finest-pair grid, LUST scheme, wall-resolution, and report-only stock-SST model-sensitivity checks. The predeclared approximately 100-chord reduced-domain cases fail equation-residual convergence at default and 0.5x relaxation. Fine-grid Cd still differs from official CFL3D SST by 0.00069097 and the matched Ladson tripped mean by 0.00070870. Even granting the entire 0.0002 domain-change budget, the conservative total allowance is 0.00043180 and the Ladson discrepancy exceeds it by 0.00027690. Force decomposition attributes 0.00045946 (66.5 percent) of the CFL3D difference to excess viscous Cd and 0.00023151 (33.5 percent) to inferred excess pressure Cd. A provenance-pinned exact-Sutherland constant-Pr=0.72 sensitivity passes all solver gates but changes Cd by only -0.00000588, 0.83 percent of the Ladson discrepancy, and leaves the skin-friction ratio at 1.10736; the Prandtl mismatch is not the dominant cause. Benchmark agreement is failed and no NACA coefficient is accepted."
+    },
+    {
+      "gate": "iterative_mesh_wall_domain_scheme_turbulence_sensitivity",
+      "status": "not_satisfied",
+      "verdict": "Matched axisymmetric controls isolate severe coarse-mesh bias: 50 mm/15,536 cells gives Cd 0.69646, Cl 0.03460, CmPitch 0.54424 and fails zero-angle symmetry; 25 mm/247,912 cells gives Cd 0.42379, |Cl| 0.00010, |CmPitch| 0.00063 and passes the provisional symmetry screen. The large drag shift fails mesh independence. No layers, domain, scheme, or turbulence sensitivity has passed."
+    },
+    {
+      "gate": "conventional_rocket_cross_model",
+      "status": "blocked_by_prior_gates",
+      "verdict": "No CFD coefficients may be transferred to OpenRocket."
+    },
+    {
+      "gate": "novel_fin_ranking",
+      "status": "blocked_by_prior_gates",
+      "verdict": "No ring-tail aerodynamic benefit is established."
+    }
+  ]
+}

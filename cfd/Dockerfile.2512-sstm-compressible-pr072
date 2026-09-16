@@ -1,0 +1,11 @@
+FROM rocket-workbench-cfd:2512-sstm-compressible
+
+COPY models/SutherlandPrTransport /opt/rocket-workbench/SutherlandPrTransport
+
+RUN . /usr/lib/openfoam/openfoam2512/etc/bashrc \
+    && cd /opt/rocket-workbench/SutherlandPrTransport \
+    && wmake libso \
+    && test -f "$FOAM_USER_LIBBIN/libSutherlandPrTransport.so"
+
+WORKDIR /case
+ENTRYPOINT ["/bin/bash", "-lc"]

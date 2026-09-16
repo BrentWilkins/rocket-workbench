@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-15",
+  "scope": "Test the strongest remaining external-evidence hypothesis: whether the documented SA agreement depends on historical OpenFOAM Foundation v4 solver/model behavior rather than current OpenCFD v2512 behavior.",
+  "evidence_basis": {
+    "community_thread": "https://www.cfd-online.com/Forums/openfoam-solving/233932-naca0012-validation-v4-v2006.html",
+    "reported_observation": "One independent user reported NASA-like SA lift with OpenFOAM Foundation v4 and about a 10 percent shift with OpenCFD v2006 using the same case files.",
+    "caveat": "The report does not prove that the official openfoam.com plot was generated with Foundation v4; this is a lineage screen, not an attribution claim.",
+    "foundation_v4_source_commit": "d214c8dfd5ba56dd442bae186fd4fb50dd35c338",
+    "v2512_source_commit": "87ed40d256d22ea38fcc648dfc82a22162427b18"
+  },
+  "container": {
+    "reference": "openfoam/openfoam4-paraview50@sha256:a9cde0fffd6dee35f1d6fac0494d8595850aa8063005997a75c8430666f6c230",
+    "manifest_digest": "sha256:a9cde0fffd6dee35f1d6fac0494d8595850aa8063005997a75c8430666f6c230",
+    "config_digest": "sha256:e644ef04fd37619f48c2226f2aa9496bcaec2716546671e09ad37d9d850f7e36",
+    "publisher": "OpenFOAM Foundation",
+    "platform": "linux/amd64"
+  },
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "mean_cd": 0.008491375437945,
+    "openfoam_minus_cfl3d_cd": 0.000298907833845
+  },
+  "single_change": {
+    "name": "OpenFOAM_solver_and_SA_lineage",
+    "before": "OpenCFD v2512",
+    "after": "OpenFOAM Foundation v4",
+    "additional_iterations": 1000,
+    "initialization": "Copy the settled v2512 ratio-4/no-ft2 fields to time zero, then execute with Foundation v4.",
+    "compatibility_adapters": "Allow only dictionary-key/library-name changes required for v4 to parse and report the same mathematical case; record every adapter and hash. No physical or numerical setting may change silently."
+  },
+  "fixed": {
+    "grid": "official NASA 897x257 C-grid with verified direct PLOT3D topology parity",
+    "solver_family": "steady incompressible simpleFoam",
+    "model_intent": "stock Spalart-Allmaras, no ft2 term",
+    "freestream": "documented nuTilda/nu=4 and nut/nu=1",
+    "schemes_relaxation_and_force_normalization": "mathematically unchanged after explicit compatibility translation",
+    "decomposition": "12-rank Scotch",
+    "resources": "12 CPU limit and 24g memory limit"
+  },
+  "screen_decision": {
+    "material_toward_official_plot": "last-100 mean Cd decreases by at least 0.00005 relative to the v2512 source",
+    "null_effect": "absolute last-100 mean Cd change is at most 0.00002",
+    "ambiguous_effect": "absolute change is between 0.00002 and 0.00005 or moves away; retain and diagnose without tuning"
+  },
+  "terminal_rule": "Run a parse/mesh smoke check first. If compatibility requires a physics or discretization change, stop and revise the plan. Otherwise stop after 1000 solver iterations; extend only under a separately declared plan if the result moves materially toward the official plot."
+}

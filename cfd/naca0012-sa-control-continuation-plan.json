@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "declared_before_continuation_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Resolve the failed iterative-convergence gates in the documented OpenFOAM/NASA Spalart-Allmaras Gate 1 control without changing physics, mesh, numerics, or acceptance limits.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-v3-20260914",
+  "source_audit": "runs/cfd-openfoam-naca0012-sa-control-audit-v1-20260914/naca0012-sa-control-audit.json",
+  "source_case_spec_sha256": "de43315933cf065ead422c57d8572f2f362d4680c939eea7f86faabf8f6521e9",
+  "source_status": {
+    "gate_1_passed": false,
+    "long_window_trend_gate": false,
+    "solver_residual_gate": false,
+    "force_agreement_gate": false,
+    "last_100_mean_cd": 0.008565002184514,
+    "cfl3d_sa_cd": 0.0081924676041,
+    "cd_difference": 0.0003725345804140006,
+    "final_uy_initial_residual": 0.0002217207398,
+    "projected_500_iteration_cm_change": 0.0005521519931398302
+  },
+  "continuation": {
+    "additional_iterations": 5000,
+    "initialization": "Copy reconstructed time 5000 U, p, nuTilda, and nut fields to time zero on the identical mesh and record SHA-256 hashes.",
+    "fixed": [
+      "official 897x257 NASA grid",
+      "simpleFoam",
+      "stock OpenFOAM v2512 SpalartAllmaras",
+      "all freestream and wall boundary conditions",
+      "linearUpwind convection schemes",
+      "linear solvers and relaxation factors",
+      "force normalization and directions",
+      "12 MPI ranks, 12 CPU limit, 24g memory limit",
+      "all Gate 1 acceptance thresholds"
+    ],
+    "expected_falsifiable_effect": "Additional iterations reduce the final and last-100 maximum Uy initial residual and the projected 500-iteration force/moment changes. Drag agreement is assessed only if both convergence gates pass.",
+    "prohibited": [
+      "changing turbulence coefficients or freestream values",
+      "changing schemes or relaxation",
+      "changing force normalization",
+      "loosening acceptance thresholds",
+      "advancing to stock SST before Gate 1 passes"
+    ]
+  },
+  "terminal_rule": "If the continuation passes iterative gates, apply the unchanged Gate 1 force and symmetry criteria. If it still fails iterative gates, retain it and diagnose the oscillatory mode before another solve. If it converges but force agreement fails, localize Cp and Cf differences before proposing a correction."
+}

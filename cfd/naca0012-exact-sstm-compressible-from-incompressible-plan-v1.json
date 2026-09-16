@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "exact-sstm-incompressible-to-compressible-relative-diagnostic",
+  "objective": "Isolate the effect of changing the accepted exact NASA SSTm NACA 0012 solution from incompressible simpleFoam with constant nu to compressible rhoSimpleFoam with a perfect-gas energy equation and exact Sutherland transport, while preserving mesh, velocity, Mach, Reynolds number, turbulence equations, overlapping convection schemes, overlapping relaxation factors, and force conventions.",
+  "validation_status": "planned_diagnostic_only; strict Gate 4 remains downstream of failed Gate 1",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-exact-sstm-incompressible-from-stock-upwind5000-v1-20260915",
+    "case_spec_sha256": "de3540882c7fd155b0fcafc4686487837e663829fb9253386c108778b8bc93a2",
+    "audit": "runs/cfd-openfoam-naca0012-exact-sstm-incompressible-from-stock-upwind-audit-v1-20260915/naca0012-exact-sstm-incompressible-audit.json",
+    "audit_sha256": "7afa3f8d7b180fd1b939358e1e4ce9b1479e881588a05de3e69f27061a8f30d8",
+    "required_gate": "diagnostic_numerics_passed must be true"
+  },
+  "fixed_invariants": [
+    "NASA TMR altered closed NACA 0012 897x257 mesh and every polyMesh file",
+    "alpha=0 deg and freestream velocity 51.4815 m/s",
+    "freestream kinematic viscosity 8.58e-6 m2/s and chord Reynolds number 6000174.825",
+    "Mach number 0.15",
+    "TmrSSTmExactProduction equations, coefficients, and turbulent Prandtl number 0.9",
+    "final U, k, omega, and nut internal fields from the accepted incompressible source",
+    "linearUpwind U convection and bounded upwind k and omega convection",
+    "overlapping p, U, k, and omega relaxation factors",
+    "force axes, reference area, reference length, quarter-chord center, and freestream dynamic-pressure normalization"
+  ],
+  "declared_changes": {
+    "solver": "simpleFoam to rhoSimpleFoam",
+    "pressure": "kinematic gauge p to absolute thermodynamic p using p_abs = 101325 Pa + rho_inf*p_kinematic",
+    "thermodynamics": {
+      "equation_of_state": "perfectGas",
+      "energy": "sensibleInternalEnergy",
+      "gamma": 1.4,
+      "molecular_weight_kg_kmol": 28.97,
+      "cp_j_kg_k": 1004.5,
+      "pressure_pa": 101325.0,
+      "temperature_k": 293.1609639128304,
+      "density_kg_m3": 1.2042725343206233,
+      "velocity_m_s": 51.4815,
+      "mach": 0.15,
+      "kinematic_viscosity_m2_s": 8.58e-6,
+      "dynamic_viscosity_pa_s": 1.0332658344470948e-5,
+      "sutherland_temperature_k": 110.4,
+      "sutherland_as": 8.307340442679636e-7,
+      "molecular_prandtl": 0.72,
+      "turbulent_prandtl": 0.9
+    },
+    "new_fields": ["T", "alphat"],
+    "solver_only_controls": [
+      "rho relaxation 0.01",
+      "energy relaxation 0.35",
+      "energy linearUpwind convection",
+      "pressure-density and viscous compressible terms",
+      "temperature limiter 250-350 K"
+    ],
+    "runtime_library": "libTmrSSTmExactProduction.so to libTmrSSTmExactProductionCompressible.so plus libSutherlandPrTransport.so"
+  },
+  "execution": {
+    "iterations": 5000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-sstm-exact-production-dual",
+    "image_id": "sha256:94665df91dec038611dd3f953d2d5d06283f1ac41185302e2c6b81d64e76c8e2",
+    "image_provenance": "cfd/sstm-exact-production-dual-image-provenance.json",
+    "image_provenance_sha256": "6338791a1d3f17027c70f453efca3d183b8399c7cad69ac07657e5d7c2d3b9a7"
+  },
+  "predeclared_outputs": {
+    "primary_effect": "mean Cd(compressible exact SSTm) minus mean Cd(incompressible exact SSTm) over each final 100-iteration window",
+    "nasa_reference": {
+      "file": "n0012clcd_cfl3d_sst.dat",
+      "sha256": "373dc142018816628b7b53ad278327db731162988ba35a166cd9fdc131a7fd7a",
+      "alpha_0_cd": 0.008093729238
+    },
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, e, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002"
+  },
+  "decision_rule": "Retain and report the compressible result regardless of NASA force agreement. The diagnostic rung passes only if provenance, invariant, runtime, exact-model selection, thermodynamic mapping, finite-history, horizon, settling, trend, residual, and symmetry gates pass. Strict validation remains blocked by failed Gate 1 and no coefficient is accepted for rocket design."
+}

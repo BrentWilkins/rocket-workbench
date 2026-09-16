@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "image_tag": "rocket-workbench-cfd:2512-sstm-k-only-limiter-pr072",
+  "image_id": "sha256:777e5ff0348eab1026f69bfe7fd2a01685d250a6a186a674a9bdc0e83ff7ef8b",
+  "created": "2026-09-14T12:07:52.356938912-06:00",
+  "base_image": "rocket-workbench-cfd:2512-sstm-compressible-pr072",
+  "base_image_id": "sha256:2870176815d77d1b6e252003db8f7598f2bb25e891c7ea97ec459e469b54d020",
+  "openfoam_package_version": "2512.0-2",
+  "source_sha256": {
+    "cfd/Dockerfile.2512-sstm-k-only-limiter-pr072": "1476e00176d58a92aa5fbf28e6a41956e9be8d27cf52ab822bde923b0f6ea962",
+    "cfd/models/TmrSSTmKOnlyLimiter/TmrSSTmKOnlyLimiter.H": "8d98e1f45e34082067973aef657bd9f908e218bb15d8755da23ff4440b2153d7",
+    "cfd/models/TmrSSTmKOnlyLimiter/TmrSSTmKOnlyLimiter.C": "25bbab2899fbd2ffea8d2b230c2a1b8854668e4e043cdcb090ca3c32cc13453c",
+    "cfd/models/TmrSSTmKOnlyLimiter/makeTmrSSTmKOnlyLimiterCompressible.C": "77b1600135d99e1f8fa3bd6985f1136e35b3f79268cc0f96ccfa035f6c346662",
+    "cfd/models/TmrSSTmKOnlyLimiter/Make/files": "cfd399ae2325c73a37d8979062bf1e3578c58215bed046dacd57af82047580ab",
+    "cfd/models/TmrSSTmKOnlyLimiter/Make/options": "df3d58947931589a5d931fd21536fa83cd78cfdba91872a872f4e7f9d621decf",
+    "cfd/naca0012-sstm-production-limiter-sensitivity-plan.json": "294a0e765620f777f6b469733d7c7b9a3221c7a313b3fa74039cc45285e224a0"
+  },
+  "runtime_library": "libTmrSSTmKOnlyLimiterCompressible.so",
+  "runtime_model": "TmrSSTmKOnlyLimiter",
+  "equation_delta": "Unlimited G/nut in omega production; factor-20 production limiter remains only in k.",
+  "acceptance_note": "Successful compilation and registration do not establish NACA 0012 benchmark agreement."
+}

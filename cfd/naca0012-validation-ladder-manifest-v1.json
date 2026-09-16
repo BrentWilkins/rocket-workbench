@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "scope": "Compact publication manifest for the OpenFOAM NACA 0012 SA-to-SST-to-exact-SSTm-to-compressible ladder",
+  "accepted_for_rocket": false,
+  "files_sha256": {
+    "cfd/NACA0012_VALIDATION_LADDER_REPORT.md": "57ecc1d6e36afe43fbe8bae3884eeae2a931af6769596f313a7d7721cda05234",
+    "cfd/naca0012-validation-ladder-outcome-v1.json": "003e4a8063ea47e74f1d831055b80817c49016d75462d57597f2c1a0b59bf92d",
+    "cfd/naca0012-validation-ladder-plan.json": "de257d3dbdac94f62f14be1e940da2ab345ec4f9e5b5c10b724f2f5336a3c50e",
+    "cfd/naca0012-sa-control-diagnosis-v3.json": "32f43add0dd5b54bae09308e60a3b8ff98350c890cae9eddcb2298cfc012315b",
+    "cfd/naca0012-stock-sst-upwind-from-sa-plan-v1.json": "cd58d149088a3ab51fce9009b28f333db96b81913135edbd4ac41e115915fea3",
+    "cfd/naca0012-stock-sst-upwind-continuation-plan-v1.json": "7362eb86906dd0c86e6511d05e3c0f6af511aae9e8afbb439fd9c55109bae5d2",
+    "cfd/naca0012-stock-sst-upwind-continuation-outcome-v1.json": "f31c98566c995a353646bb825699ff29ec91258db0fbe9ad7ef2492f2c6fe730",
+    "cfd/naca0012-exact-sstm-incompressible-from-upwind-plan-v1.json": "a6287a4ad1da741f7c6565a5d77c22b0621340ac9ffe5ec9aba174b6f59efa81",
+    "cfd/naca0012-exact-sstm-compressible-from-incompressible-plan-v1.json": "522b18cb21c7022b6c4e6c2b947632f713bdfd075b9dcbd868dc795a07cacba2",
+    "cfd/sstm-exact-production-dual-image-provenance.json": "6338791a1d3f17027c70f453efca3d183b8399c7cad69ac07657e5d7c2d3b9a7",
+    "scripts/cfd_openfoam_airfoil2d_control_audit.py": "29c7dd15ef67d6b5c5c187779cc550801d476d63ad39a54a6caed5bad1f858f0",
+    "scripts/cfd_naca0012_stock_sst_upwind_from_sa_audit.py": "6085444b875666c63698588a7bbaa59a226b5d4d4fae63fe3a162a1fea298100",
+    "scripts/cfd_naca0012_stock_sst_continuation_audit.py": "f07612cc6e969137133614fc9b4be3914772b7011ee518cc2c6db8b214c9aa6c",
+    "scripts/cfd_naca0012_exact_sstm_incompressible_audit.py": "cbb5bc702500e29f46c36d9efc62e781a9bca45aa9ce42b8a1d9a1b6467fd88c",
+    "scripts/cfd_naca0012_exact_sstm_compressible_restart.py": "d9208c536371992c8c106a02c3dbefc942b6cb76b0ff1dc7cf0c5ecf24f33abd",
+    "scripts/cfd_naca0012_exact_sstm_compressible_audit.py": "c88c734a1d9d0df224eab2464d5ef505360d24e0c3e3f77eb03acc09f12d0378",
+    "runs/cfd-openfoam-airfoil2d-sa-control-audit-v1-20260914/openfoam-airfoil2d-control-audit.json": "66822b2b20b082d5b786fb0718371e259097130d274cab6d216bd9ed6055a7b8",
+    "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "runs/cfd-openfoam-naca0012-stock-sst-continuation-audit-v1-20260915/naca0012-stock-sst-continuation-audit.json": "a47f38b2a3878e2517d4ca71909bd065914eb3084c77cde07d9638274a7ccd5b",
+    "runs/cfd-openfoam-naca0012-stock-sst-upwind-remediation-audit-v1-20260915/naca0012-stock-sst-upwind-remediation-audit.json": "325a04c6f97c2b451775a1a34871f28136da2077464457a11a70c14ec8451b28",
+    "runs/cfd-openfoam-naca0012-stock-sst-upwind-continuation-audit-v2-20260915/naca0012-stock-sst-continuation-audit.json": "5f776d9a14b77164cf992f813677d2b3ca4a06b348403da3f0cab5b8ecf8c900",
+    "runs/cfd-openfoam-naca0012-exact-sstm-incompressible-from-stock-upwind-audit-v1-20260915/naca0012-exact-sstm-incompressible-audit.json": "7afa3f8d7b180fd1b939358e1e4ce9b1479e881588a05de3e69f27061a8f30d8",
+    "runs/cfd-openfoam-naca0012-exact-sstm-compressible-from-incompressible-audit-v2-20260915/naca0012-exact-sstm-compressible-audit.json": "514f9fca2e7a7d1d28d7fe2d8d2cfaf5cca405a51abc81e70b56db2930de4965"
+  },
+  "reference_data_sha256": {
+    "n0012clcd_cfl3d_sa.dat": "b07afec6ce3ae4bf2f2d1a1d53785fde0a5ca68481a0d4186aa92754d811944e",
+    "n0012clcd_cfl3d_sst.dat": "373dc142018816628b7b53ad278327db731162988ba35a166cd9fdc131a7fd7a"
+  },
+  "raw_case_policy": "Raw meshes, fields, solver logs, and postProcessing histories remain under runs/ and are intentionally not represented as compact Git artifacts. Each retained audit points to its complete local case and pins the case specification and relevant construction provenance.",
+  "overall_status": "strict_ladder_failed_at_gate_1; downstream_relative_diagnostics_complete"
+}

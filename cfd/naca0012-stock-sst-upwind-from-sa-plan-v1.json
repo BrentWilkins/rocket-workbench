@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "direct-sa-to-stock-sst-upwind-replication",
+  "objective": "Determine whether bounded-upwind k and omega transport avoids the asymmetric stock-SST branch when applied from the original accepted SA source, rather than attempting to recover the already asymmetric stock-SST fields.",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+    "case_spec_sha256": "57f0fb5c9ed4466ad4e9c1c068c292c82d873139ef7e0e6de13ae8388e74f167",
+    "audit": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "audit_sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "source_mean": {
+      "Cd": 0.008491375437945,
+      "Cl": 0.003450707353695,
+      "CmPitch": 0.00009613666403051001
+    },
+    "required_gates": {
+      "provenance_gate": true,
+      "runtime_and_execution_gate": true,
+      "model_configuration_gate": true,
+      "settling_gate": true,
+      "long_window_trend_gate": true,
+      "zero_angle_symmetry_gate": true,
+      "gate_1_passed": false
+    }
+  },
+  "fixed_invariants": [
+    "NASA TMR altered closed NACA 0012 897x257 mesh and every polyMesh file",
+    "converged U and p copied from the same accepted SA source used by the original stock-SST diagnostic",
+    "alpha=0 deg, U=51.4815 m/s, nu=8.58e-6 m2/s, chord Reynolds number 6000174.825",
+    "incompressible simpleFoam in the same digest-pinned OpenFOAM v2512 image",
+    "linearUpwind velocity convection",
+    "pressure and velocity solvers, relaxation, gradients, laplacians, interpolation, wall distance, and force definitions",
+    "stock kOmegaSST model, default coefficients, initial k/omega/nut values, and wall/farfield conditions",
+    "all settling, trend, residual, symmetry, and NASA agreement tolerances"
+  ],
+  "declared_changes_relative_to_original_stock_sst_diagnostic": {
+    "div(phi,k)": {
+      "from": "bounded Gauss linearUpwind grad(k)",
+      "to": "bounded Gauss upwind"
+    },
+    "div(phi,omega)": {
+      "from": "bounded Gauss linearUpwind grad(omega)",
+      "to": "bounded Gauss upwind"
+    }
+  },
+  "execution": {
+    "iterations": 5000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-native",
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "predeclared_outputs": {
+    "primary_effect": "final-100 mean force difference from the original linearUpwind-turbulence stock-SST diagnostic",
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002",
+    "negative_k": "report occurrence count, worst minimum, and final minimum; no post-hoc acceptance tolerance"
+  },
+  "decision_rule": "This replication may become the stock-SST source for an exact-SSTm comparison only if provenance, invariants, runtime, model, finite history, horizon, settling, trend, residual, and zero-angle symmetry gates all pass. NASA force agreement remains required for strict Gate 2. No threshold may be weakened after observing results.",
+  "strict_validation_status": "blocked_by_failed_gate_1_and_failed_stock_sst_entry_gate",
+  "accepted_for_rocket": false
+}

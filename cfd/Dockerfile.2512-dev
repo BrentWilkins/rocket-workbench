@@ -1,0 +1,16 @@
+FROM ubuntu:24.04@sha256:561618e2c15bf2397621dd04f96926663a3b5616c189cf7e38db7e82f5c538ea
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl gnupg
+RUN curl --fail --location https://dl.openfoam.com/pubkey.gpg --output /tmp/openfoam-key \
+ && gpg --dearmor --output /usr/share/keyrings/openfoam.gpg /tmp/openfoam-key \
+ && gpg --show-keys --fingerprint /usr/share/keyrings/openfoam.gpg
+COPY openfoam.list /etc/apt/sources.list.d/openfoam.list
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      openfoam2512=2512.0-2 \
+      openfoam2512-common=2512.0-2 \
+      openfoam2512-dev=2512.0-2 \
+      openfoam2512-source=2512.0-2 \
+      openfoam2512-tools=2512.0-2 \
+      openfoam2512-tutorials=2512.0-2 \
+ && apt-get clean
+WORKDIR /case
+ENTRYPOINT ["/bin/bash", "-lc"]

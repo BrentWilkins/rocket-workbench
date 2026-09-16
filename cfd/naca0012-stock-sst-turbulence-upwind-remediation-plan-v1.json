@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "stock-sst-turbulence-upwind-symmetry-remediation",
+  "objective": "Test whether the persistent negative-k bounding caused by linear-upwind k and omega transport is responsible for the stationary zero-angle asymmetry, without changing the mesh, model, velocity scheme, boundary conditions, force definitions, gates, or source solution.",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-direct-continuation5000-v1-20260915",
+    "case_spec_sha256": "755087fdbfc2eeecaa695042c283f497ba3944f2bce0f5729d7cbd950aa57be1",
+    "audit": "runs/cfd-openfoam-naca0012-stock-sst-continuation-audit-v1-20260915/naca0012-stock-sst-continuation-audit.json",
+    "audit_sha256": "a47f38b2a3878e2517d4ca71909bd065914eb3084c77cde07d9638274a7ccd5b",
+    "required_state": {
+      "long_window_trend_gate": true,
+      "solver_residual_gate": true,
+      "zero_angle_symmetry_gate": false,
+      "diagnostic_numerics_passed": false,
+      "bounded_k_occurrences": 5001
+    }
+  },
+  "fixed_invariants": [
+    "NASA TMR altered closed NACA 0012 897x257 mesh and every polyMesh file",
+    "all final U, p, k, omega, and nut fields copied from the completed stock-SST continuation",
+    "incompressible simpleFoam and packaged OpenFOAM v2512 kOmegaSST",
+    "alpha=0 deg, U=51.4815 m/s, nu=8.58e-6 m2/s, and freestream turbulence values",
+    "linearUpwind velocity convection",
+    "all gradients, laplacians, interpolation, wall distance, SIMPLE solvers, relaxation factors, and force definitions",
+    "all predeclared settling, trend, residual, symmetry, and NASA force-agreement tolerances"
+  ],
+  "declared_change": {
+    "div(phi,k)": {
+      "from": "bounded Gauss linearUpwind grad(k)",
+      "to": "bounded Gauss upwind"
+    },
+    "div(phi,omega)": {
+      "from": "bounded Gauss linearUpwind grad(omega)",
+      "to": "bounded Gauss upwind"
+    }
+  },
+  "execution": {
+    "iterations": 5000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-native",
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "predeclared_outputs": {
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002",
+    "negative_k": "report occurrence count, worst minimum, and final minimum; no post-hoc acceptance tolerance",
+    "primary_effect": "final-100 mean force changes relative to the unchanged stock-SST continuation"
+  },
+  "decision_rule": "The remediation is a viable stock-SST source only if provenance, invariant, runtime, model, finite-history, horizon, settling, trend, residual, and zero-angle symmetry gates all pass. NASA force agreement remains required for strict Gate 2. If symmetry does not recover, do not start exact SSTm and retain this as a failed mechanism test. No threshold may be loosened after observing results.",
+  "strict_validation_status": "blocked_by_failed_gate_1_and_failed_stock_sst_entry_gate",
+  "accepted_for_rocket": false
+}

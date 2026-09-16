@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "declared_before_candidate_execution": true,
+  "scope": "TMR NACA 0012 zero-angle exact molecular-transport parity diagnostic",
+  "superseded_configuration_attempt": "cfd/naca0012-transport-sensitivity-plan.json",
+  "reason_for_new_plan": "The pinned v2512 image does not register polynomial transport with the baseline hePsiThermo, hConst, perfectGas, sensibleInternalEnergy combination. Those failed solver starts remain preserved. A narrow runtime transport class is required to change Pr without changing the remaining thermophysical model.",
+  "baseline": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-sutherland-prt09-linearupwindU-tmrfreestream-structured449-fixed6000-12r-20260914",
+    "transport": "OpenFOAM built-in Sutherland",
+    "effective_freestream_molecular_prandtl": 0.6903347705666375
+  },
+  "candidate": {
+    "grid": "same official 897x257 grid",
+    "angle_of_attack_deg": 0.0,
+    "turbulence_model": "same source-mapped TMR SSTm",
+    "convection_scheme": "same linear-upwind",
+    "initialization": "same-grid restart from the accepted baseline final fields",
+    "iterations": 1500,
+    "viscosity": "exact same Sutherland formula and As/Ts coefficients",
+    "thermophysical_model": "same hePsiThermo, pureMixture, hConst, perfectGas, sensibleInternalEnergy combination",
+    "thermal_conductivity": "kappa(T) = Cp * mu(T) / 0.72",
+    "molecular_prandtl": 0.72,
+    "turbulent_prandtl": 0.9
+  },
+  "required_candidate_gates": [
+    "immutable derived-image and source provenance",
+    "restart field integrity",
+    "force settling and long-window trend",
+    "equation residual convergence",
+    "temperature limiter inactivity",
+    "zero-angle symmetry"
+  ],
+  "decision_rule": {
+    "report": [
+      "candidate minus baseline Cd",
+      "fraction of the baseline-to-Ladson drag discrepancy attributable to the transport change",
+      "candidate CFL3D skin-friction profile ratio if candidate gates pass"
+    ],
+    "no_post_hoc_pass_threshold": true,
+    "benchmark_acceptance": "A passing candidate does not accept the benchmark by itself. If it reaches the existing force-and-moment uncertainty gate, all numerical-independence gates must be repeated with the corrected transport mapping before acceptance.",
+    "failure_handling": "Preserve a failed or nonconverged candidate and do not use its coefficients."
+  }
+}

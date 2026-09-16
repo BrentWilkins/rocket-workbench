@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
-from cfd_audit import audit
+from cfd_audit import audit, solver_stage_completed
 
 
 def fixture_case(tmp_path, lateral):
@@ -31,3 +31,19 @@ def test_symmetric_settling_still_needs_grid_and_benchmark(tmp_path):
     assert result['zero_angle_symmetry_screen']
     assert not result['accepted_for_design']
     assert 'Grid convergence' in result['remaining']
+
+
+def test_parallel_solver_stage_counts_as_completed_execution(tmp_path):
+    case=fixture_case(tmp_path,0)
+    stages=[
+        dict(stage='decomposePar -force',stage_passed=True),
+        dict(stage='mpirun --allow-run-as-root -np 8 simpleFoam -parallel',stage_passed=True),
+        dict(stage='reconstructPar -latestTime',stage_passed=True),
+    ]
+    (case/'execution.json').write_text(json.dumps(stages))
+    assert solver_stage_completed(stages)
+    assert audit(case)['solver_completed']
+    stages[-1]['stage_passed']=False
+    assert solver_stage_completed(stages)
+    (case/'execution.json').write_text(json.dumps(stages))
+    assert not audit(case)['solver_completed']

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "openfoam_release": "v2512",
+  "openfoam_package_version": "2512.0-2",
+  "parent_sstm_image": {
+    "tag": "rocket-workbench-cfd:2512-sstm",
+    "id": "sha256:e83f84b5ab244104c47ee342489d3fdce78d5d82158fc37b686f499b7af07656",
+    "provenance_path": "cfd/sstm-image-provenance.json",
+    "provenance_sha256": "6587241050d7c1ef727c93cfb3b6f5064a3be9953318313436d110f8cf7839c7"
+  },
+  "compressible_sstm_image": {
+    "tag": "rocket-workbench-cfd:2512-sstm-compressible",
+    "id": "sha256:143e0e81aa690349714910f096ef1a2dc5fbc723a27355f5078839503a9b7634",
+    "size_bytes": 1618886224
+  },
+  "build_inputs_sha256": {
+    "cfd/Dockerfile.2512-sstm-compressible": "5784093400bb017a01e26d8d63659c2e96efd0ed5252bde597fd4c503a5411c6",
+    "cfd/models/TmrSSTmCompressible/makeTmrSSTmCompressible.C": "1c41b97cd677635fb69593d617491bdef2e33993615919d68c044f6845633b65",
+    "cfd/models/TmrSSTmCompressible/Make/files": "79b608da9ebc826219dd6ada8ad690229b50ceca76846004a0a708dd04ac3f55",
+    "cfd/models/TmrSSTmCompressible/Make/options": "09ee74f92814ff1ed1c149a2844961f279b8f5730029ba3f3f635021ed02de0a"
+  },
+  "registration_scope": "rhoSimpleFoam compressible fluid-thermo RAS runtime selection",
+  "acceptance_note": "Registration provenance does not establish NACA 0012 benchmark agreement."
+}

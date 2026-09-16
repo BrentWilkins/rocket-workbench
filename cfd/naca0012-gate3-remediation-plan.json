@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "declared_before_new_solver_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Diagnose and remediate the rejected NACA 0012 zero-angle Gate 3 result without changing the benchmark, exact NASA TMR SSTm equations, or acceptance thresholds.",
+  "frozen_inputs": {
+    "validation_verdict": {
+      "path": "cfd/validation-verdict.json",
+      "sha256": "09ebbb1ef8c3874112786878ad44727a9cff9b62893e6afc350a50687071f006",
+      "status": "rejected_not_validated"
+    },
+    "numerical_refresh_plan": {
+      "path": "cfd/naca0012-exact-sstm-numerical-refresh-plan.json",
+      "sha256": "df28424c2822fa5789597d45ff08d85bc3039f12100df1e24974182d29e1e991"
+    },
+    "full_domain_baseline": {
+      "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation1500-12r-v1-20260914",
+      "audit": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation-force-audit-v1-20260914/naca0012-force-audit.json",
+      "audit_sha256": "31c2cd837c13341e4abdd3b7fdfb1f929d037bdf3ebcb1772bf9f12d757195b5",
+      "grid_dimensions": [897, 257],
+      "upstream_extent_chords": 484.456616747519,
+      "crossflow_extent_chords": 507.806809185105,
+      "downstream_extent_chords": 500.000007802345
+    },
+    "failed_100c_domain": {
+      "case": "runs/cfd-tmr-naca0012-897x233-a0-sstm-exactsutherland-pr072-exactproduction-domain100c-relax05-target-v2-20260914",
+      "audit": "runs/cfd-tmr-naca0012-897x233-a0-sstm-exactsutherland-pr072-exactproduction-domain100c-force-audit-failed-v1-20260914/naca0012-force-audit.json",
+      "audit_sha256": "2a17c00463df4174cd48c4790c44ba2dd7bc6a8fb38e295e97ea7d4c7b7742e4",
+      "grid_dimensions": [897, 233],
+      "upstream_extent_chords": 96.1252023764839,
+      "crossflow_extent_chords": 102.77675599236,
+      "downstream_extent_chords": 500.000007802345,
+      "failed_gate": "energy initial residual",
+      "final_energy_initial_residual": 0.00002098290345,
+      "unchanged_limit": 0.00001
+    }
+  },
+  "fixed_configuration": {
+    "solver": "OpenFOAM v2512 rhoSimpleFoam",
+    "runtime_model": "TmrSSTmExactProduction",
+    "model_variant": "tmr-sstm-exact-production",
+    "transport": "Sutherland viscosity with molecular Prandtl number 0.72",
+    "convection_scheme": "linear-upwind-velocity",
+    "relaxation": {
+      "p": 0.1,
+      "rho": 0.005,
+      "U": 0.05,
+      "e": 0.05,
+      "k": 0.15,
+      "omega": 0.15
+    },
+    "mpi_ranks": 12,
+    "docker_cpu_limit": 12,
+    "docker_memory_limit": "24g",
+    "image_id": "sha256:ae3235d75b54311a6dbcdfc2b45f6c9be77a8ff0743c099cf5ca3f3e9db0d23f",
+    "gpu": false
+  },
+  "phase_order": [
+    {
+      "phase": 1,
+      "name": "read_only_boundary_and_flux_audit",
+      "solver_execution": false,
+      "cases": ["full_domain_baseline", "failed_100c_domain"],
+      "measurements": [
+        "farfield mass-flux inflow, outflow, and net closure from phi",
+        "farfield area-weighted and extrema of p, T, rho, and velocity components",
+        "geometric segmentation of the single farfield patch into upstream, upper, lower, and downstream portions",
+        "convective momentum and total-enthalpy transport by segment",
+        "pressure traction by segment"
+      ],
+      "decision_use": "Localize whether shrinking the upstream and crossflow boundary changes conservation, thermodynamic state, or pressure loading. Measurements are diagnostic and grant no acceptance by themselves."
+    },
+    {
+      "phase": 2,
+      "name": "domain_ladder",
+      "solver_execution": true,
+      "execution_order": ["250c", "150c"],
+      "candidates": {
+        "250c": {
+          "retained_outer_row_index_zero_based": 246,
+          "grid_dimensions": [897, 247],
+          "cells": 220416,
+          "upstream_extent_chords": 245.719419208126,
+          "crossflow_extent_chords": 259.222794887043,
+          "downstream_extent_chords": 500.000007802345,
+          "iterations": 4000
+        },
+        "150c": {
+          "retained_outer_row_index_zero_based": 239,
+          "grid_dimensions": [897, 240],
+          "cells": 214144,
+          "upstream_extent_chords": 153.371467261517,
+          "crossflow_extent_chords": 162.753408041776,
+          "downstream_extent_chords": 500.000007802345,
+          "iterations": 4000
+        }
+      },
+      "initialization": "Crop the frozen full-domain final fields by exact structured-row correspondence using an audited restart; do not interpolate or modify the full-domain source.",
+      "required_case_gates": [
+        "mesh and restart integrity",
+        "solver completion",
+        "all existing fixed final and final-window residual limits",
+        "force long-window settling and trend",
+        "temperature limiter inactivity",
+        "zero-angle symmetry"
+      ],
+      "comparison": "Compare admissible intermediate results with both frozen endpoints using the existing absolute limits Cd 0.0002, Cl 0.004, and CmPitch 0.0002. Preserve and withhold coefficients from any inadmissible case.",
+      "decision_use": "A monotonic thermodynamic or residual trend with boundary distance prioritizes farfield treatment. A distance-insensitive approximately ten-percent skin-friction excess prioritizes near-wall and solver-coupling diagnosis."
+    },
+    {
+      "phase": 3,
+      "name": "pressure_energy_and_near_wall_localization",
+      "solver_execution": false,
+      "pressure_energy_checks": [
+        "audit pinned rhoSimpleFoam momentum and energy equations against the declared NASA compressible formulation",
+        "audit p, T, U, k, omega, and nut boundary-condition behavior on inflow and outflow portions of the mixed farfield patch",
+        "separate pressure traction, convective momentum transport, and total-enthalpy transport"
+      ],
+      "near_wall_checks": [
+        "wall velocity gradient and wall shear",
+        "molecular and turbulent viscosity",
+        "k, omega, and nut profiles",
+        "boundary-layer velocity profiles at available NASA stations",
+        "forceCoeffs viscous integration consistency with an independent surface reconstruction"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "minimal_evidence_supported_correction",
+      "solver_execution": "conditional",
+      "entry_condition": "Phases 1 through 3 identify a concrete implementation, boundary, discretization, or force-evaluation mechanism.",
+      "rules": [
+        "predeclare the proposed correction and its falsifiable expected effect before executing it",
+        "change one mechanism at a time",
+        "do not tune coefficients or boundary values to the target drag",
+        "preserve every failed or null result"
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "gate3_revalidation",
+      "solver_execution": true,
+      "entry_condition": "A correction survives its predeclared mechanism test.",
+      "required_repetitions": [
+        "three-grid numerical study",
+        "linear-upwind versus LUST scheme comparison",
+        "wall-resolved y-plus check",
+        "full versus original 100c domain check",
+        "zero-angle NASA CFL3D and Ladson force acceptance"
+      ],
+      "thresholds": "Use the thresholds already frozen in the numerical-refresh and zero-angle acceptance artifacts; no post-hoc changes."
+    }
+  ],
+  "terminal_rules": {
+    "pass": "Gate 3 passes only if every repeated numerical gate and the frozen external force-agreement rule pass with admissible cases.",
+    "fail_closed": "If no defensible correction passes, or repeated Gate 3 evidence fails, update the verdict as rejected_not_validated with the localized cause and preserve all evidence.",
+    "downstream_block": "Do not run the 10-degree case, rocket CFD, optimization, novel-fin ranking, or OpenRocket coefficient transfer unless Gate 3 passes.",
+    "domain_non_substitution": "The 250c and 150c diagnostic cases cannot replace or relax the original approximately 100c domain acceptance check.",
+    "gpu_non_substitution": "Do not migrate solver version or GPU backend during diagnosis. Any future GPU work is a separate equivalence and performance goal."
+  }
+}

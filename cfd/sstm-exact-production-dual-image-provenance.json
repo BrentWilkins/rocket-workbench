@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "image_tag": "rocket-workbench-cfd:2512-sstm-exact-production-dual",
+  "image_id": "sha256:94665df91dec038611dd3f953d2d5d06283f1ac41185302e2c6b81d64e76c8e2",
+  "created": "2026-09-15T07:27:04.433497635-06:00",
+  "architecture": "amd64",
+  "base_image": "rocket-workbench-cfd:2512-sstm-exact-production-pr072",
+  "base_image_id": "sha256:ae3235d75b54311a6dbcdfc2b45f6c9be77a8ff0743c099cf5ca3f3e9db0d23f",
+  "openfoam_package_version": "2512.0-2",
+  "source_sha256": {
+    "cfd/Dockerfile.2512-sstm-exact-production-dual": "8db9fcff0a6eefac1207fd6f659651443808b08aafad200f338d52202d96fc78",
+    "cfd/models/TmrSSTm/TmrSSTm.H": "527ca733d1248d10403614b88943ada7a416f569e83762e79ef75074f78ef2b4",
+    "cfd/models/TmrSSTm/TmrSSTm.C": "edc69bf799fb4f7199038fdaa40e1428e6e1cb1409546b0ff686cb993b3787fb",
+    "cfd/models/TmrSSTmKOnlyLimiter/TmrSSTmKOnlyLimiter.H": "8d98e1f45e34082067973aef657bd9f908e218bb15d8755da23ff4440b2153d7",
+    "cfd/models/TmrSSTmKOnlyLimiter/TmrSSTmKOnlyLimiter.C": "25bbab2899fbd2ffea8d2b230c2a1b8854668e4e043cdcb090ca3c32cc13453c",
+    "cfd/models/TmrSSTmExactProduction/TmrSSTmExactProduction.H": "3d6919b15c3e32ed84daeb2203e40d7106c82d5d13f736a53a07991f4e4c2c4f",
+    "cfd/models/TmrSSTmExactProduction/TmrSSTmExactProduction.C": "9c879ad5a1a480bbdefea73e8d3f3a5940922dde85de5da5fc8f8a503fc1027b",
+    "cfd/models/TmrSSTmKOnlyLimiterIncompressible/makeTmrSSTmKOnlyLimiter.C": "252654d4ea9fa2ca199462848a9a2714b1a37c1b715d2eab0b4ad91fe61086fb",
+    "cfd/models/TmrSSTmKOnlyLimiterIncompressible/Make/files": "7e36f2b5651676822c26f5fcc0d46a168ef182d2741d37727e0b4308d436bc2c",
+    "cfd/models/TmrSSTmKOnlyLimiterIncompressible/Make/options": "2e29b6e31cd60f5f8e6395f6275aa2bb541af1e86726c3a0e4a47f8b1357b3f0",
+    "cfd/models/TmrSSTmExactProductionIncompressible/makeTmrSSTmExactProduction.C": "a57294a9bdc7ee12577b4af51f9aa7cf59473022a45ea6c73a9c00da2407cf26",
+    "cfd/models/TmrSSTmExactProductionIncompressible/Make/files": "31d4fb12a08e24bd8be38da81db1d4f3661e684573f0f1daa7451458af21e646",
+    "cfd/models/TmrSSTmExactProductionIncompressible/Make/options": "cfcbb37f0b402c33951904095753f455ed9a7d3d9f527441d5ab6502bdf15492"
+  },
+  "runtime_libraries": {
+    "incompressible": "libTmrSSTmExactProduction.so",
+    "compressible": "libTmrSSTmExactProductionCompressible.so"
+  },
+  "runtime_model": "TmrSSTmExactProduction",
+  "equation_mapping": "NASA TMR SSTm: F1/F2 and vorticity limiter mapping, factor-20 limiter only in k, and P=mu_t*S^2 for k and omega production.",
+  "acceptance_note": "Successful compilation provides both solver registrations but does not establish benchmark agreement or pass any validation gate."
+}

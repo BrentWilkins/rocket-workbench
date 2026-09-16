@@ -1,0 +1,10 @@
+FROM rocket-workbench-cfd:2512-dev
+
+COPY models/TmrSSTm /opt/rocket-workbench/TmrSSTm
+RUN . /usr/lib/openfoam/openfoam2512/etc/bashrc \
+ && cd /opt/rocket-workbench/TmrSSTm \
+ && wmake libso \
+ && test -f "$FOAM_USER_LIBBIN/libTmrSSTm.so"
+
+WORKDIR /case
+ENTRYPOINT ["/bin/bash", "-lc"]

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "declared_before_corrected_candidate_execution": true,
+  "declared_date": "2026-09-14",
+  "scientific_plan": {
+    "path": "cfd/naca0012-exact-wall-distance-sensitivity-plan.json",
+    "sha256": "3bdd4ca2618415a58fe917308c4936b991064baa15a01aab86638237f344f1a8"
+  },
+  "failed_attempt": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-exactwalldistance-restart2000-12r-v4-20260914",
+    "execution_sha256": "3c86d0a5bb8185210c3e46d16884382859f9f12cac6a66de1be61e9f16313d0e",
+    "solver_log_sha256": "e994309e8a08fea38decd8cfbb87a25110d5df7a0435045a03da003649ad84a5",
+    "failure": "exactDistance was selected and began local face triangulation, then its parallel surface redistribution could not instantiate the case decomposeParDict method scotch because rhoSimpleFoam had not loaded the installed decomposition plugin. No equation iteration began."
+  },
+  "image_evidence": {
+    "library": "libscotchDecomp.so",
+    "installed_in_pinned_image": true,
+    "decomposePar_direct_dependency": true,
+    "rhoSimpleFoam_direct_dependency": false
+  },
+  "correction": {
+    "load_existing_library_in_solver": "libscotchDecomp.so",
+    "scientific_change": false,
+    "all_mesh_physics_numerics_boundary_fields_and_thresholds_unchanged": true
+  },
+  "no_post_hoc_threshold_changes": true
+}

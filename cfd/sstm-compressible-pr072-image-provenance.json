@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "image": {
+    "tag": "rocket-workbench-cfd:2512-sstm-compressible-pr072",
+    "id": "sha256:2870176815d77d1b6e252003db8f7598f2bb25e891c7ea97ec459e469b54d020",
+    "architecture": "amd64",
+    "os": "linux"
+  },
+  "parent": {
+    "tag": "rocket-workbench-cfd:2512-sstm-compressible",
+    "id": "sha256:143e0e81aa690349714910f096ef1a2dc5fbc723a27355f5078839503a9b7634",
+    "provenance_file": "cfd/sstm-compressible-image-provenance.json",
+    "provenance_sha256": "317c0c35150356d996589be454c6e51cafd6d3ac2656e9fb989785103201db2b"
+  },
+  "build_inputs": {
+    "cfd/Dockerfile.2512-sstm-compressible-pr072": "cf7e4f51b9b3cdf48b10f7f31c430a55377fa9bce858b1b54bfee6884dc8d2e8",
+    "cfd/models/SutherlandPrTransport/sutherlandPrTransport.H": "172d617688736b98e5702a6c7488c615034b1edffe680e4e4320035b570c576b",
+    "cfd/models/SutherlandPrTransport/makeSutherlandPrThermo.C": "84850675f75edb13195178fb781214d535cbdaaabd02a8c5d56fc692111d7648",
+    "cfd/models/SutherlandPrTransport/Make/files": "253ecbc31d9f0f3ce0dd06594ad4cfee73f135b10a1fe2e18b107048de73eb74",
+    "cfd/models/SutherlandPrTransport/Make/options": "b24453f14c50b931686f881700a98b61fa47bce56bfd04853a1dd436054d0bbf"
+  },
+  "registration_scope": "hePsiThermo pureMixture hConst perfectGas sensibleInternalEnergy with exact Sutherland viscosity and independently specified constant molecular Prandtl number",
+  "physics_delta": "Only kappa/alphah mapping changes: kappa(T)=Cp*mu(T)/Pr. The Sutherland mu(T), thermodynamics, equation of state, energy variable, SSTm model, and solver remain unchanged."
+}

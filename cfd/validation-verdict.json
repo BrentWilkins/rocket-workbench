@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-14",
+  "objective": "Validate the aerodynamic CFD workflow before using it for rocket optimization.",
+  "verdict": "rejected_not_validated",
+  "decision": "Do not use this CFD workflow or any retained CFD coefficient for rocket optimization or flight prediction.",
+  "acceptance_plan": {
+    "path": "cfd/validation-plan.json",
+    "sha256": "e19e8c3fd5c9ce1853c3cd2fe5235f38a24b1db79439768765cd1b3b28f14aea",
+    "overall_status": "not_validated"
+  },
+  "requirement_audit": {
+    "failed_evidence_preserved": {
+      "status": "satisfied",
+      "evidence": [
+        "Earlier approximate-model reduced-domain failures remain under runs/cfd-tmr-naca0012-897x233-a0-sstm-*force-audit-failed*.",
+        "The exact-production residual-only first run and corrected-model reduced-domain failure remain in distinct run directories.",
+        "Constructor and audit invocation failures were not overwritten."
+      ]
+    },
+    "reproducible_environment_and_image_provenance": {
+      "status": "satisfied_for_diagnostic_environment",
+      "evidence": {
+        "path": "cfd/sstm-exact-production-pr072-image-provenance.json",
+        "sha256": "b31f07e27f18dea0acd08ae4b9c1c4f083bc5b7abef8b252d5e22632552df790",
+        "image_id": "sha256:ae3235d75b54311a6dbcdfc2b45f6c9be77a8ff0743c099cf5ca3f3e9db0d23f",
+        "runtime": "OpenFOAM v2512, native AMD64, network-disabled case mounts, 12 MPI ranks and 24 GiB limit"
+      }
+    },
+    "read_only_geometry_mesh_physics_and_force_diagnosis": {
+      "status": "completed_with_failures",
+      "evidence": {
+        "axisymmetric_control_geometry_audit": {
+          "path": "runs/cfd-axisymmetric-control-symmetric-surface-coarse25-geometry-audit-20260913/geometry-audit.json",
+          "sha256": "5990ae59568165cdfad51b7ac95f68c97201709ec12ecd8d7b58dd055c05ec12"
+        },
+        "finding": "Analytic controls and NACA force conventions were audited, but the non-authoritative finned rocket surface remains asymmetric and the exact current-review rocket geometry is absent."
+      }
+    },
+    "benchmarks_and_tolerances_predeclared": {
+      "status": "satisfied",
+      "evidence": "NASA TMR flat plate and altered closed NACA 0012 benchmarks, matched experimental conditions, and uncertainty-based tolerances are recorded in cfd/validation-plan.json."
+    },
+    "wall_and_turbulence_subsystem": {
+      "status": "accepted_only_for_attached_wall_subsystem",
+      "evidence": {
+        "path": "runs/cfd-tmr-flatplate-final-sstm-acceptance-20260913/flat-plate-acceptance.json",
+        "sha256": "fd9eeb962b490732b2a5348f5e0e42d28290097387b27348d527e63f4a97cc19"
+      },
+      "limitation": "This does not validate external-body pressure drag, separation, fins, or a rocket."
+    },
+    "external_body_numerical_behavior": {
+      "status": "failed",
+      "evidence": {
+        "path": "runs/cfd-tmr-naca0012-a0-exactsutherland-pr072-exactproduction-numerical-refresh-v1-20260914/naca0012-exact-numerical-refresh.json",
+        "sha256": "b01f32ab2ea8230fb3870fae9ddf6deea97d36b9954fc2fb19909fad4f9f1ee3"
+      },
+      "finding": "Corrected-model iterative, finest-pair grid, LUST scheme, and y-plus checks pass; the predeclared reduced-domain energy-residual gate fails at 2.098e-5 versus 1e-5."
+    },
+    "external_body_benchmark_agreement": {
+      "status": "failed",
+      "evidence": {
+        "path": "runs/cfd-tmr-naca0012-zero-angle-exact-acceptance-v1-20260914/naca0012-exact-acceptance.json",
+        "sha256": "da98ec9ddda17621e96da98bbb44e66010d334810092f7d15002814e7f144fb7"
+      },
+      "finding": "Absolute Cd discrepancy 0.00067624 exceeds conservative allowance 0.00043868 by 0.00023756 even when the full domain budget is granted."
+    },
+    "automated_integrity_and_physics_checks": {
+      "status": "satisfied_for_evaluated_scope",
+      "evidence": "Case construction, immutable field mapping, runtime/image checks, force/residual/temperature/symmetry audits, y-plus, pressure, skin friction, grid, scheme, and acceptance checks are executable scripts with passing tests."
+    },
+    "conventional_rocket_openrocket_comparison": {
+      "status": "correctly_not_performed",
+      "reason": "Blocked by failed external-body numerical and benchmark gates. No CFD coefficient was transferred."
+    },
+    "novel_fin_ranking": {
+      "status": "correctly_not_performed",
+      "reason": "Blocked by prior gates; no ring-tail aerodynamic benefit is claimed."
+    }
+  },
+  "prohibited_actions_audit": {
+    "checks_tuned_to_current_rocket": false,
+    "unvalidated_coefficients_used_in_flight_prediction": false,
+    "physical_validation_claimed": false,
+    "hardware_purchased_or_operated": false,
+    "sealed_evidence_overwritten": false,
+    "published_without_authorization": false,
+    "raw_heavy_cfd_outputs_committed": false
+  },
+  "terminal_condition": "The declared workflow has been evaluated and rejected. Further solver or boundary-condition remediation is a new predeclared validation campaign, not permission to use current coefficients.",
+  "user_review_required_before_new_campaign": true
+}

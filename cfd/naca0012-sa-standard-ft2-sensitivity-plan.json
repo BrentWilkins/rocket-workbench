@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Complete exact NASA standard-SA equation and inflow parity by activating ft2 after separately setting nuTilda/nu=3.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-ratio3-noft2-5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-ratio3-noft2-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "3765cce97ef0f730241862eaff97b0b2546917858c0819135776c0eb4e6ecd6f",
+    "gate_1_passed": false,
+    "long_window_trend_gate": true,
+    "solver_residual_gate": false,
+    "zero_angle_symmetry_gate": false,
+    "force_agreement_gate": false,
+    "mean_cd": 0.008479140908072,
+    "openfoam_minus_cfl3d_cd": 0.0002866733039720015
+  },
+  "single_change": {
+    "name": "SpalartAllmaras_ft2_switch",
+    "before": false,
+    "after": true,
+    "coefficients": {
+      "Ct3": 1.2,
+      "Ct4": 0.5
+    },
+    "additional_iterations": 5000,
+    "initialization": "Copy the reconstructed ratio-3/no-ft2 solution to time zero on the identical mesh, then add only ft2 true to SpalartAllmarasCoeffs."
+  },
+  "source_code_basis": {
+    "openfoam_tag": "OpenFOAM-v2512",
+    "commit": "87ed40d256d22ea38fcc648dfc82a22162427b18",
+    "default": "ft2=false",
+    "activation": "SpalartAllmarasCoeffs { ft2 true; }",
+    "default_Ct3": 1.2,
+    "default_Ct4": 0.5
+  },
+  "fixed": {
+    "grid": "official NASA 897x257 C-grid",
+    "solver": "OpenFOAM v2512 simpleFoam",
+    "farfield_nuTilda_to_nu_ratio": 3.0,
+    "velocity_viscosity_angle": "unchanged",
+    "schemes_linear_solvers_and_relaxation": "unchanged",
+    "decomposition": "12-rank Scotch",
+    "resources": "12 CPU limit and 24g memory limit",
+    "force_normalization_and_acceptance_thresholds": "unchanged"
+  },
+  "falsifiable_expectation": {
+    "primary": "The log reports ft2 active and the run reaches the existing trend, residual, and alpha-zero symmetry thresholds.",
+    "drag": "No target direction is assumed; compare the converged last-100 Cd with the ratio-3/no-ft2 source and hash-pinned NASA CFL3D standard-SA reference."
+  },
+  "terminal_rule": "Do not tune or extend this test. Audit at 5000 iterations. If exact standard SA still fails, retain that result and diagnose the remaining numerical/full-grid steady-mode limitation before advancing to stock SST."
+}

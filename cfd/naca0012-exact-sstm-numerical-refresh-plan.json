@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "declared_before_candidate_execution": true,
+  "scope": "Repeat NACA 0012 numerical-independence evidence affected by the corrected NASA TMR SSTm production equations",
+  "baseline": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation1500-12r-v1-20260914",
+    "audit": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation-force-audit-v1-20260914/naca0012-force-audit.json",
+    "grid_dimensions": [897, 257],
+    "cells": 229376,
+    "convection_scheme": "linear-upwind-velocity",
+    "runtime_model": "TmrSSTmExactProduction",
+    "transport": "exact Sutherland viscosity and molecular Prandtl 0.72"
+  },
+  "checks": {
+    "finest_pair_grid": {
+      "candidate_grid_dimensions": [449, 129],
+      "candidate_cells": 57344,
+      "initialization": "restart from the previously converged source-mapped 449x129 fields, changing transport and SSTm production mapping before execution",
+      "iterations": 2000,
+      "absolute_limits": {"Cd": 0.0002, "Cl": 0.004, "CmPitch": 0.0002}
+    },
+    "scheme": {
+      "candidate": "LUST blended velocity and energy convection with unchanged turbulence upwind treatment",
+      "initialization": "same-grid restart from the corrected 897x257 baseline",
+      "iterations": 1500,
+      "relaxation": "Use the previously established stable LUST setting: one-half of the linear-upwind relaxation factors (p 0.1, rho 0.005, U/e 0.05, k/omega 0.15).",
+      "absolute_limits": {"Cd": 0.0002, "Cl": 0.004, "CmPitch": 0.0002}
+    },
+    "near_wall": {
+      "maximum_y_plus": 1.0,
+      "case": "corrected 897x257 linear-upwind baseline"
+    },
+    "domain": {
+      "candidate": "exact retained structured row near 100 chords upstream and crossflow, retaining approximately 500-chord wake extent",
+      "initialization": "mapped or regenerated only through a separately audited restart",
+      "iterations": 4000,
+      "convection_scheme": "linear-upwind-velocity",
+      "relaxation": "Use the prior reduced-domain half-relaxation setting (p 0.1, rho 0.005, U/e 0.05, k/omega 0.15).",
+      "absolute_limits": {"Cd": 0.0002, "Cl": 0.004, "CmPitch": 0.0002},
+      "residual_gate_unchanged": true
+    }
+  },
+  "common_required_gates": [
+    "immutable image and source provenance",
+    "restart field integrity",
+    "force settling and long-window trend",
+    "all solved-field final and final-window residual limits",
+    "temperature limiter inactivity",
+    "zero-angle symmetry"
+  ],
+  "decision_rule": {
+    "no_post_hoc_threshold_changes": true,
+    "independent_results": "A failure in one check is preserved and is not hidden by passes in other checks.",
+    "benchmark_acceptance": "Numerical refresh passing does not accept benchmark agreement; external force agreement must independently pass the predeclared uncertainty rule.",
+    "failure_handling": "Preserve failed cases and coefficients; do not use coefficients from candidates that fail common gates."
+  }
+}

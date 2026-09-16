@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "declared_before_corrected_candidate_execution": true,
+  "declared_date": "2026-09-14",
+  "scientific_plan": {
+    "path": "cfd/naca0012-exact-wall-distance-sensitivity-plan.json",
+    "sha256": "3bdd4ca2618415a58fe917308c4936b991064baa15a01aab86638237f344f1a8"
+  },
+  "failed_attempt": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-exactwalldistance-restart2000-12r-v2-20260914",
+    "execution_sha256": "7c2cedeb23c2519fa3cbbd5cde56cb7d683f6536b7fa2d3f50011309b7e4b795",
+    "solver_log_sha256": "44cbfe84677d9d067029069e9f63a90ce94ae82941f48c119e0e254ff884be0c",
+    "failure": "OpenFOAM v2512 rejected patchDistMethod type exact before any equation iteration and listed exactDistance as the available exact nearest-patch method."
+  },
+  "correction": {
+    "from_runtime_token": "exact",
+    "to_runtime_token": "exactDistance",
+    "scientific_change": false,
+    "reason": "Runtime-selection spelling correction using the solver's enumerated valid methods.",
+    "all_other_candidate_controls_unchanged": true
+  },
+  "no_post_hoc_threshold_changes": true
+}

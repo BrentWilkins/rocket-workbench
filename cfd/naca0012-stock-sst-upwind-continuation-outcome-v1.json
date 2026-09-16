@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "scope": "Numerical-entry outcome for the clean stock-SST upwind continuation",
+  "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-upwind-continuation5000-v1-20260915",
+  "case_spec_sha256": "29f808102aea2049086e2e522c2ab91117627be004c38273edb5ef8dcce5973c",
+  "audit": "runs/cfd-openfoam-naca0012-stock-sst-upwind-continuation-audit-v2-20260915/naca0012-stock-sst-continuation-audit.json",
+  "audit_sha256": "5f776d9a14b77164cf992f813677d2b3ca4a06b348403da3f0cab5b8ecf8c900",
+  "iterations": {
+    "initial_replication": 5000,
+    "unchanged_continuation": 5000,
+    "cumulative": 10000
+  },
+  "final_100": {
+    "mean": {
+      "Cd": 0.008144244277783,
+      "Cl": 3.483441711533331e-07,
+      "CmPitch": 1.957466475695e-06
+    },
+    "peak_to_peak": {
+      "Cd": 4.0661090000039535e-07,
+      "Cl": 1.7330125244e-06,
+      "CmPitch": 7.614647637000001e-07
+    },
+    "maximum_initial_residual": {
+      "p": 1.257730434e-07,
+      "Ux": 1.908866879e-08,
+      "Uy": 4.429598947e-06,
+      "k": 1.707732165e-08,
+      "omega": 9.99255225e-10
+    }
+  },
+  "cfl3d_sst": {
+    "Cd": 0.008093729238,
+    "openfoam_minus_reference_cd": 5.051503978299905e-05,
+    "force_agreement_gate": true
+  },
+  "gates": {
+    "source_plan": true,
+    "source_trigger": true,
+    "provenance": true,
+    "copied_dictionaries_and_mesh": true,
+    "copied_solution_fields": true,
+    "runtime_and_execution": true,
+    "model_configuration": true,
+    "finite_force_history": true,
+    "iteration_horizon": true,
+    "settling": true,
+    "long_window_trend": true,
+    "solver_residual": true,
+    "zero_angle_symmetry": true,
+    "force_agreement": true,
+    "diagnostic_numerics": true,
+    "strict_gate_2": false
+  },
+  "decision": "allow_as_exact_sstm_relative_diagnostic_source",
+  "strict_validation_status": "blocked_by_failed_gate_1",
+  "accepted_for_rocket": false
+}

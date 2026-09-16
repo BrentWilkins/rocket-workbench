@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "declared_before_candidate_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Test whether approximate meshWave wall distance on the curved NACA 0012 mesh is a dominant source of the downstream SSTm skin-friction excess.",
+  "basis": {
+    "observed_profile": "OpenFOAM-to-CFL3D Cf is near unity over the forward chord and grows to approximately 1.29 over x/c 0.8 to 0.98, while the aligned flat-plate SSTm subsystem passed.",
+    "openfoam_documentation": "OpenFOAM documents meshWave as approximate on skewed or non-orthogonal meshes and provides an exact nearest-patch method.",
+    "fixed_solution_gradient_audit": "Removing the cell gradient limiter changes summed nut*S2 in retained airfoil owner cells by only 0.0023 percent and is not a plausible dominant mechanism."
+  },
+  "source": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation1500-12r-v1-20260914",
+    "force_audit": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-continuation-force-audit-v1-20260914/naca0012-force-audit.json",
+    "runtime_model": "TmrSSTmExactProduction",
+    "wall_distance_method": "meshWave",
+    "mean_cd": 0.008752240674012,
+    "mean_openfoam_to_cfl3d_cf_ratio": 1.1002103645901091
+  },
+  "candidate": {
+    "single_change": "Replace wallDist method meshWave with exact.",
+    "same_grid": [897, 257],
+    "same_model": "TmrSSTmExactProduction",
+    "same_transport": "exact Sutherland viscosity and molecular Prandtl number 0.72",
+    "same_convection_and_gradient_schemes": true,
+    "same_boundary_conditions": true,
+    "initialization": "same-grid restart from the frozen source final fields",
+    "iterations": 2000,
+    "mpi_ranks": 12,
+    "docker_cpu_limit": 12,
+    "docker_memory_limit": "24g",
+    "gpu": false
+  },
+  "required_gates": [
+    "immutable image and restart provenance",
+    "solver completion",
+    "all existing final and final-window residual limits",
+    "force settling and long-window trend",
+    "temperature limiter inactivity",
+    "zero-angle symmetry"
+  ],
+  "mechanism_test": {
+    "direction": "Candidate Cd and downstream Cf discrepancy must decrease.",
+    "minimum_cd_change_beyond_existing_numerical_variation": 0.00003368094464354697,
+    "basis": "Sum of frozen finest-pair, scheme, and iterative Cd allowances; this is a diagnostic materiality threshold, not a replacement acceptance threshold.",
+    "skin_friction": "Repeat the pinned CFL3D Cf comparison and report chordwise bins, with emphasis on x/c 0.4 to 0.98.",
+    "decision": "If the candidate passes all gates, moves in the expected direction, and exceeds the materiality threshold while improving downstream Cf, wall distance is supported as a correction mechanism. Otherwise preserve it as a null or failed sensitivity and do not revalidate Gate 3 on this basis."
+  },
+  "acceptance_effect": "This single sensitivity cannot accept the benchmark or rocket workflow. A supported correction must still repeat the complete Gate 3 suite under the main remediation plan.",
+  "no_post_hoc_threshold_changes": true
+}

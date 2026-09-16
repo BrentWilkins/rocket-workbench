@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "direct-stock-sst-unchanged-convergence-continuation",
+  "objective": "Determine whether the direct SA-to-stock-SST diagnostic reaches the already declared numerical gates with additional iterations, without changing any model, field, boundary condition, numerical control, force definition, or tolerance.",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-direct-from-sa-fixed5000-v2-20260915",
+    "case_spec_sha256": "72509f92e0d709cd60a62f568a0ff9c9c3eef69a7b5cda5c0cacae1517eb9c90",
+    "audit": "runs/cfd-openfoam-naca0012-stock-sst-direct-audit-v4-20260915/naca0012-stock-sst-diagnostic-audit.json"
+  },
+  "trigger": {
+    "required_true": [
+      "provenance_gate",
+      "copied_mesh_and_transport_gate",
+      "required_numerics_only_gate",
+      "copied_sa_velocity_and_pressure_gate",
+      "runtime_and_execution_gate",
+      "model_configuration_gate",
+      "finite_force_history_gate",
+      "iteration_horizon_gate"
+    ],
+    "required_failure": "At least one of settling_gate, long_window_trend_gate, solver_residual_gate, or zero_angle_symmetry_gate is false.",
+    "prohibited_conditions": [
+      "NaN or infinity in fields, residuals, or force history",
+      "OpenFOAM fatal error",
+      "failed execution stage",
+      "a changed or unverified source case"
+    ]
+  },
+  "fixed_invariants": "All case files and final U, p, k, omega, and nut values are copied from the source. Only FoamFile locations, start/end times, output directories, and provenance metadata may change.",
+  "execution": {
+    "additional_iterations": 5000,
+    "cumulative_iterations": 10000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-native",
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "unchanged_gates": {
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002"
+  },
+  "decision_rule": "Execute this continuation only if the trigger is met. If the source already passes diagnostic numerical gates, skip continuation and use it as the source for exact SSTm. If the continuation still fails convergence, retain it as a failed diagnostic and do not initialize exact SSTm from it. Never tune the setup to recover the NASA target."
+}

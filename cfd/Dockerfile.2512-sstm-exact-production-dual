@@ -1,0 +1,18 @@
+FROM rocket-workbench-cfd:2512-sstm-exact-production-pr072
+
+COPY models/TmrSSTm /opt/rocket-workbench/TmrSSTm
+COPY models/TmrSSTmKOnlyLimiter /opt/rocket-workbench/TmrSSTmKOnlyLimiter
+COPY models/TmrSSTmExactProduction /opt/rocket-workbench/TmrSSTmExactProduction
+COPY models/TmrSSTmKOnlyLimiterIncompressible /opt/rocket-workbench/TmrSSTmKOnlyLimiterIncompressible
+COPY models/TmrSSTmExactProductionIncompressible /opt/rocket-workbench/TmrSSTmExactProductionIncompressible
+
+RUN . /usr/lib/openfoam/openfoam2512/etc/bashrc \
+    && cd /opt/rocket-workbench/TmrSSTmKOnlyLimiterIncompressible \
+    && wmake libso \
+    && test -f "$FOAM_USER_LIBBIN/libTmrSSTmKOnlyLimiter.so" \
+    && cd /opt/rocket-workbench/TmrSSTmExactProductionIncompressible \
+    && wmake libso \
+    && test -f "$FOAM_USER_LIBBIN/libTmrSSTmExactProduction.so"
+
+WORKDIR /case
+ENTRYPOINT ["/bin/bash", "-lc"]

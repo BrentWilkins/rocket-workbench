@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "declared_before_corrected_candidate_execution": true,
+  "declared_date": "2026-09-14",
+  "scientific_plan": {
+    "path": "cfd/naca0012-exact-wall-distance-sensitivity-plan.json",
+    "sha256": "3bdd4ca2618415a58fe917308c4936b991064baa15a01aab86638237f344f1a8"
+  },
+  "failed_attempt": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-exactwalldistance-restart2000-12r-v5-20260914",
+    "execution_sha256": "9794cad645094d4bc24f018aaa7ca144d4d46ce235c5df1cbfed32a9e2a4aea2",
+    "solver_log_sha256": "2df60aa7414bf20f4a69ca2b9a7e5d4cb09574eade1268ff20985ddd7ef39a06",
+    "failure": "With the Scotch plugin loaded, exactDistance selected Scotch for surface redistribution, but Scotch does not implement the point-and-weight decomposition overload required by exactDistance. No equation iteration began."
+  },
+  "binary_api_evidence": {
+    "library": "libdecompositionMethods.so",
+    "exported_symbol": "Foam::simpleGeomDecomp::decompose(pointField const&, scalarField const&) const",
+    "interpretation": "The simple method implements the exact point-based overload requested in the failure."
+  },
+  "correction": {
+    "volume_mesh_decomposition": "scotch",
+    "solver_internal_exactDistance_surface_decomposition": "simple",
+    "restore_case_dictionary_after_solver": "scotch",
+    "scientific_change": false,
+    "all_mesh_physics_numerics_boundary_fields_and_thresholds_unchanged": true
+  },
+  "runner_option": "--runtime-decomposition-method simple",
+  "no_post_hoc_threshold_changes": true
+}

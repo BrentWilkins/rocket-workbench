@@ -62,9 +62,76 @@ def surface_mesh(solid, path):
                 absolute_deflection_m=1e-5,angular_deflection_rad=.05,relative_deflection=False)
 
 
-def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_chord_mm=0):
+def axisymmetric_surface_mesh(profile_mm, path, angular_segments=192):
+    """Write a closed surface of revolution with exact, declared cyclic topology."""
+    if angular_segments < 12 or angular_segments % 12:
+        raise ValueError('Axisymmetric control requires angular segments divisible by 12')
+    if len(profile_mm) < 2 or profile_mm[0][1] != 0 or profile_mm[-1][1] <= 0:
+        raise ValueError('Axisymmetric profile must run from a zero-radius tip to a positive aft radius')
+    if any(b[0] <= a[0] for a,b in zip(profile_mm,profile_mm[1:])):
+        raise ValueError('Axisymmetric profile axial stations must increase strictly')
+
+    profile=[(round(x*.001,12),round(radius*.001,12)) for x,radius in profile_mm]
+    rings=[]
+    for x,radius in profile[1:]:
+        ring=[]
+        for index in range(angular_segments):
+            angle=2*math.pi*index/angular_segments
+            coordinates=(x,radius*math.cos(angle),radius*math.sin(angle))
+            ring.append(tuple(0.0 if abs(value)<5e-13 else round(value,12)
+                              for value in coordinates))
+        rings.append(ring)
+
+    faces=[]
+    tip=(profile[0][0],0.0,0.0)
+    first=rings[0]
+    for index in range(angular_segments):
+        following=(index+1)%angular_segments
+        faces.append((tip,first[following],first[index]))
+    for upstream,downstream in zip(rings,rings[1:]):
+        for index in range(angular_segments):
+            following=(index+1)%angular_segments
+            faces.append((upstream[index],downstream[following],downstream[index]))
+            faces.append((upstream[index],upstream[following],downstream[following]))
+    aft_center=(profile[-1][0],0.0,0.0)
+    aft=rings[-1]
+    for index in range(angular_segments):
+        following=(index+1)%angular_segments
+        faces.append((aft_center,aft[index],aft[following]))
+
+    edges=Counter()
+    records=[]
+    for points in faces:
+        normal=np.cross(np.subtract(points[1],points[0]),np.subtract(points[2],points[0]))
+        norm=float(np.linalg.norm(normal))
+        if norm<=1e-18:
+            raise ValueError('Axisymmetric control produced a degenerate triangle')
+        records.append((normal/norm,points))
+        for a,b in zip(points,points[1:]+points[:1]):
+            edges[tuple(sorted((a,b)))]+=1
+    if set(edges.values())!={2}:
+        bad=[(edge,count) for edge,count in edges.items() if count!=2]
+        raise ValueError(f'Axisymmetric surface is not two-manifold: {bad[:3]}')
+
+    header=b'rocket-workbench analytic axisymmetric control; SI metres'.ljust(80,b' ')
+    data=bytearray(header+struct.pack('<I',len(records)))
+    for normal,points in records:
+        data.extend(struct.pack('<12fH',*normal,*(value for point in points for value in point),0))
+    path.write_bytes(data)
+    maximum_radius=max(radius for _,radius in profile)
+    chord_error=maximum_radius*(1-math.cos(math.pi/angular_segments))
+    return dict(triangles=len(records),removed_degenerate_or_duplicate=0,weld_precision_m=1e-12,
+                source='analytic-axisymmetric-control',angular_segments=angular_segments,
+                maximum_radial_chord_error_m=chord_error,absolute_deflection_m=1e-5,
+                relative_deflection=False)
+
+
+def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_chord_mm=0,
+             axisymmetric_control=False):
     if ring_chord_mm not in (0, 5, 10):
         raise ValueError('Ring comparison supports only the retained 0/5/10 mm chord trials')
+    if axisymmetric_control and ring_chord_mm:
+        raise ValueError('Axisymmetric control cannot include a ring-tail variant')
     out.mkdir(parents=True,exist_ok=False)
     save_json(out/'resolved-inputs.json',config.model_dump())
     g=config.geometry
@@ -88,7 +155,9 @@ def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_ch
         original=parts['fin-collar']
         parts['fin-collar']=ring_tail(config,original,chord_mm=ring_chord_mm)
         added_ring_mass=(parts['fin-collar'].val().Volume()-original.val().Volume())*config.density.value/1000
-    external=nose.union(body).union(fill).union(fairing).union(parts['fin-collar'])
+    external=nose.union(body).union(fill).union(fairing)
+    if not axisymmetric_control:
+        external=external.union(parts['fin-collar'])
     if not external.val().isValid() or len(external.solids().vals())!=1:
         raise ValueError('External flow geometry must be one closed valid solid')
     # Round-trip the actual external STEP to avoid stale per-face triangulations
@@ -98,22 +167,36 @@ def generate(config, out, cell_mm=40, speed=40, alpha=0, iterations=600, ring_ch
     solid=external.val().rotate((0,0,0),(0,1,0),90).scale(.001)
     surface=out/'constant/triSurface/rocket.stl'
     surface.parent.mkdir(parents=True)
-    mesh=surface_mesh(solid,surface)
+    if axisymmetric_control:
+        fairing_start=start-g.mm('fairing_length')
+        if fairing_start<n:
+            raise ValueError('Axisymmetric control fairing cannot overlap the conical nose')
+        profile=[(0.0,0.0),(n,r)]
+        if fairing_start>n:
+            profile.append((fairing_start,r))
+        profile.extend(((start,radius),(n+length,radius)))
+        mesh=axisymmetric_surface_mesh(profile,surface)
+    else:
+        mesh=surface_mesh(solid,surface)
     angle=math.radians(alpha)
     ux,uy=speed*math.cos(angle),speed*math.sin(angle)
     velocity=f'({ux:.10g} {uy:.10g} 0)'
     k=1.5*(.01*speed)**2
     omega=math.sqrt(k)/(.09**.25*.004)
     refarea=math.pi*(r*.001)**2
-    save_json(out/'case-spec.json',dict(design=config.name,cell_mm=cell_mm,speed_m_s=speed,alpha_deg=alpha,
+    design=config.name+'-axisymmetric-control' if axisymmetric_control else config.name
+    save_json(out/'case-spec.json',dict(design=design,cell_mm=cell_mm,speed_m_s=speed,alpha_deg=alpha,
         iterations=iterations,reference_area_m2=refarea,reference_length_m=2*r*.001,
         moment_origin_m=[dry_cg*.001,0,0],
+        geometry_variant='axisymmetric-control' if axisymmetric_control else 'three-fin-rocket',
         ring_tail=dict(chord_mm=ring_chord_mm,wall_mm=1.2 if ring_chord_mm else None,
                        added_cad_mass_g=added_ring_mass,
                        force_reference='Unmodified planar baseline dry CG retained for matched moment comparison',
                        flight_model_updated=False),
         axes='x nose to aft; flow +x; positive alpha adds +y flow; v2512 drag/lift basis reports pitch about -z; verify output headers',
-        limitations=['Pilot only; no launch lugs, nozzle cavity, exhaust plume, surface roughness or flexibility',
+        limitations=['Axisymmetric implementation-bias control; not the finned rocket'
+                     if axisymmetric_control else
+                     'Pilot only; no launch lugs, nozzle cavity, exhaust plume, surface roughness or flexibility',
                     'Moment origin is planar-baseline loaded dry CG; ring and instantaneous motor mass need a reference shift for flight use',
                     'Fully turbulent incompressible kOmegaSST; transition and compressibility not assessed',
                     'No boundary layers in pilot mesh; do not accept drag ranking before wall/mesh checks'],
@@ -208,10 +291,12 @@ def main():
     parser.add_argument('--alpha',type=float,default=0)
     parser.add_argument('--iterations',type=int,default=600)
     parser.add_argument('--ring-chord-mm',type=int,choices=[0,5,10],default=0)
+    parser.add_argument('--axisymmetric-control',action='store_true')
     args=parser.parse_args()
     if not 15<=args.cell_mm<=50 or not 10<=args.speed<=70 or not 0<=args.alpha<=10 or not 50<=args.iterations<=3000:
         parser.error('Pilot resource/flow bounds exceeded')
-    generate(load_config(args.config),args.output,args.cell_mm,args.speed,args.alpha,args.iterations,args.ring_chord_mm)
+    generate(load_config(args.config),args.output,args.cell_mm,args.speed,args.alpha,args.iterations,
+             args.ring_chord_mm,args.axisymmetric_control)
 
 
 if __name__=='__main__':

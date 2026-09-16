@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "planned_source": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-direct-from-sa-fixed5000-v2-20260915",
+  "planned_source_audit": "runs/cfd-openfoam-naca0012-stock-sst-direct-audit-v4-20260915/naca0012-stock-sst-diagnostic-audit.json",
+  "planned_source_audit_sha256": "82e1c7132109def6b32698c05bc5fd98cd8ce5de5b62eb3f02072fd58905e911",
+  "decision": "do_not_start_exact_sstm_from_initial_stock_sst_run",
+  "entry_gate_passed": false,
+  "failed_entry_checks": {
+    "long_window_trend_gate": false,
+    "zero_angle_symmetry_gate": false,
+    "diagnostic_numerics_passed": false
+  },
+  "next_action": "Execute the separately predeclared unchanged stock-SST continuation. If its diagnostic numerical gate passes, declare a new exact-SSTm plan pinned to that converged source; otherwise retain the failed continuation and stop the model ladder.",
+  "strict_validation_status": "blocked_by_failed_gate_1",
+  "accepted_for_rocket": false
+}

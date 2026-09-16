@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "scope": "Gate 2 stock-SST continuation outcome and exact-SSTm entry decision",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-stock-sst-direct-continuation5000-v1-20260915",
+  "source_case_spec_sha256": "755087fdbfc2eeecaa695042c283f497ba3944f2bce0f5729d7cbd950aa57be1",
+  "source_audit": "runs/cfd-openfoam-naca0012-stock-sst-continuation-audit-v1-20260915/naca0012-stock-sst-continuation-audit.json",
+  "source_audit_sha256": "a47f38b2a3878e2517d4ca71909bd065914eb3084c77cde07d9638274a7ccd5b",
+  "execution": {
+    "local_iterations": 5000,
+    "cumulative_stock_sst_iterations": 10000,
+    "runner_exit_code": 0,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "network": false,
+    "gpu": false
+  },
+  "endpoint": {
+    "last_window": 100,
+    "mean": {
+      "Cd": 0.01965647400975,
+      "Cl": 0.005477740928871999,
+      "CmPitch": -0.0011769614947610002
+    },
+    "projected_change_over_500_iterations": {
+      "Cd": 0.000019716935198948483,
+      "Cl": 0.0004800346955967864,
+      "CmPitch": 0.00008851792506480024
+    },
+    "nasa_cfl3d_sst_cd": 0.008093729238,
+    "openfoam_minus_nasa_cfl3d_sst_cd": 0.011562744771749999,
+    "continuation_minus_initial_stock_sst_cd": -0.004895813794179998
+  },
+  "gates": {
+    "provenance": true,
+    "copied_invariants": true,
+    "runtime_and_execution": true,
+    "model_configuration": true,
+    "finite_force_history": true,
+    "iteration_horizon": true,
+    "settling": true,
+    "long_window_trend": true,
+    "solver_residual": true,
+    "zero_angle_symmetry": false,
+    "force_agreement": false,
+    "diagnostic_numerics_passed": false,
+    "strict_gate_2_passed": false
+  },
+  "decision": "do_not_start_exact_sstm_from_failed_stock_sst_continuation",
+  "reason": "The stock-SST solution is stationary by the declared trend and residual checks but fails the predeclared zero-angle symmetry gate for both Cl and CmPitch and disagrees strongly with the NASA CFL3D SST drag. Starting exact SSTm from these fields would violate the declared entry rule and would not isolate a model-only change from a numerically accepted stock-SST state.",
+  "next_action": "Diagnose and remediate the zero-angle asymmetry without weakening the gate. Predeclare any remediation before running it. Only a numerically accepted stock-SST source may seed a newly pinned exact-SSTm plan.",
+  "strict_validation_status": "blocked_by_failed_gate_1_and_failed_stock_sst_entry_gate",
+  "accepted_for_rocket": false
+}

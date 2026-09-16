@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "declared_before_corrected_candidate_execution": true,
+  "declared_date": "2026-09-14",
+  "scientific_plan": {
+    "path": "cfd/naca0012-exact-wall-distance-sensitivity-plan.json",
+    "sha256": "3bdd4ca2618415a58fe917308c4936b991064baa15a01aab86638237f344f1a8"
+  },
+  "failed_attempt": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-exactwalldistance-restart2000-12r-v7-20260914",
+    "execution_sha256": "f2f872e46e0c29dce43a4dfb089b14f131f59e187c2a71194fd47a199e66a4b2",
+    "solver_log_sha256": "2aff59d6ce74b281cc14405f3b5cfabb9ed05cd2ced071eb8362132e30c59ec6",
+    "failure": "The simple point decomposer was selected successfully and then required its standard n vector. No equation iteration began."
+  },
+  "correction": {
+    "simpleCoeffs": {
+      "n": [12, 1, 1],
+      "delta": 0.001
+    },
+    "product_of_n": 12,
+    "volume_mesh_decomposition_remains": "scotch",
+    "scientific_change": false,
+    "all_mesh_physics_numerics_boundary_fields_and_thresholds_unchanged": true
+  },
+  "no_post_hoc_threshold_changes": true
+}

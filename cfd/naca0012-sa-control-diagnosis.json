@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-14",
+  "scope": "Read-only localization after the documented OpenFOAM Spalart-Allmaras Gate 1 control and its unchanged-state continuation failed.",
+  "solver_execution_authorized_by_this_artifact": false,
+  "gate_1_evidence": {
+    "initial_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-v3-20260914",
+    "continuation_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-continuation5000-v1-20260914",
+    "cumulative_iterations": 10000,
+    "latest_audit": "runs/cfd-openfoam-naca0012-sa-control-continuation-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "mean_cd": 0.008503271143796,
+    "cfl3d_sa_cd": 0.0081924676041,
+    "cd_difference": 0.000310803539696,
+    "cd_relative_difference_percent": 3.793771971,
+    "mean_cl": -0.00140077256897,
+    "mean_cm_quarter_chord": -0.000388316257313,
+    "final_uy_initial_residual": 0.0001716267747,
+    "dominant_cl_period_iterations": 2500,
+    "dominant_cm_period_iterations": 2500
+  },
+  "mesh_symmetry": {
+    "airfoil_max_abs_mirrored_x_difference": 1.2533973858808167e-11,
+    "airfoil_max_abs_mirrored_y_sum": 1.0704405259e-07,
+    "outer_boundary_max_abs_mirrored_x_difference": 1.6673957986768073e-05,
+    "outer_boundary_max_abs_mirrored_y_sum": 3.66087776465667e-05,
+    "interpretation": "The airfoil and near-wall grid are symmetric to approximately 1e-7 chord or better. Small farfield coordinate asymmetry can seed a mode but is not sufficient evidence that it causes the drag excess."
+  },
+  "equation_and_input_mapping": {
+    "openfoam_v2512_source_commit": "87ed40d256d22ea38fcc648dfc82a22162427b18",
+    "openfoam_v2512_default": "SpalartAllmaras with ft2 disabled, i.e. the commonly used SA-noft2 form, plus the documented Stilda lower limiter",
+    "nasa_reference_dataset": "n0012clcd_cfl3d_sa.dat labels its CFL3D run as SA with freestream nuTilda/nu=3",
+    "openfoam_documentation": "The OpenFOAM NACA0012 page specifies freestream nuTilda/nu=4 and nut/nu approximately 1",
+    "consequence": "The OpenFOAM documentation setup and linked NASA CFL3D SA coefficient table are not exact equation-and-inflow parity. Direct drag comparison remains informative but cannot isolate discretization alone.",
+    "historical_note": "Zhang reported an fv3 difference in the older OpenFOAM version studied. Direct inspection shows v2512 no longer contains that fv3 formulation, so the historical mechanism must not be asserted for v2512."
+  },
+  "independent_openfoam_sst_corroboration": {
+    "source": "Ye Zhang, Verification and Validation of OpenFOAM Code, Delft University of Technology dissertation, 2017, section 3.2.1",
+    "conditions": "NACA0012, alpha=0 degrees, Reynolds number 6 million, incompressible OpenFOAM k-omega SST, second-order convection, convergence criterion 1e-6",
+    "reported_cd": {
+      "113x33": 0.0108018,
+      "225x65": 0.00874222,
+      "449x129": 0.00870783,
+      "richardson_extrapolated_observed_order": 0.008707246,
+      "richardson_extrapolated_second_order": 0.008696367
+    },
+    "reported_interpretation": "OpenFOAM Cp agreed closely with CFL3D while OpenFOAM Cf was slightly higher.",
+    "comparison_to_retained_exact_sstm": {
+      "rocket_workbench_cd": 0.00875224,
+      "minus_zhang_449x129": 0.00004441,
+      "minus_zhang_second_order_extrapolation": 0.000055873
+    },
+    "interpretation": "The retained OpenFOAM SSTm drag is consistent with an independent published OpenFOAM SST result. The high drag relative to CFL3D is reproducible prior art, not unique to rocket-workbench."
+  },
+  "next_decision": {
+    "gate_2_status": "blocked",
+    "required_before_next_solve": [
+      "Predeclare whether the next mechanism test targets numerical damping or exact NASA SA equation/inflow parity.",
+      "Keep the documented OpenFOAM SA result distinct from any exact-TMR-SA variant.",
+      "Do not use the unconverged SA coefficients for rocket design or claim they validate OpenFOAM."
+    ]
+  }
+}

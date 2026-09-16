@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-14",
+  "scope": "Isolate the documented OpenFOAM nuTilda/nu=4 farfield value from NASA CFL3D SA's nuTilda/nu=3 value on the identical settled case.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "gate_1_passed": false,
+    "long_window_trend_gate": true,
+    "solver_residual_gate": false,
+    "zero_angle_symmetry_gate": true,
+    "force_agreement_gate": false
+  },
+  "diagnostic_inputs": {
+    "execution_sensitivity": "runs/cfd-openfoam-naca0012-sa-execution-sensitivity-v1-20260914/naca0012-sa-execution-sensitivity.json",
+    "surface_profile_audit": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-profile-audit-v2-20260914/naca0012-sa-profile-audit.json"
+  },
+  "single_change": {
+    "name": "farfield_nuTilda_to_nu_ratio",
+    "before": 4.0,
+    "after": 3.0,
+    "before_nuTilda_m2_s": 0.00003432,
+    "after_nuTilda_m2_s": 0.00002574,
+    "additional_iterations": 5000,
+    "initialization": "Copy the reconstructed settled solution to time zero; change only the farfield fixedValue and freestream reference for nuTilda. Retain the inherited internal field as restart state."
+  },
+  "fixed": {
+    "grid": "official NASA 897x257 C-grid",
+    "solver": "OpenFOAM v2512 simpleFoam",
+    "model": "stock OpenFOAM v2512 SpalartAllmaras with default ft2=false",
+    "velocity_viscosity_angle": "unchanged documented values",
+    "schemes_and_linear_solvers": "unchanged",
+    "relaxation": "p=0.15, U=0.35, nuTilda=0.35",
+    "decomposition": "12-rank Scotch",
+    "resources": "12 CPU limit and 24g memory limit",
+    "force_normalization_and_acceptance_thresholds": "unchanged"
+  },
+  "falsifiable_expectation": {
+    "primary": "The run reaches the existing trend, residual, and alpha-zero symmetry thresholds.",
+    "drag": "No direction is assumed; compare the converged last-100 Cd with both the ratio-4 source and hash-pinned NASA CFL3D SA reference.",
+    "interpretation": "This run cannot establish exact standard-SA agreement because ft2 remains false."
+  },
+  "terminal_rule": "Do not tune or extend this sensitivity. Audit it after 5000 iterations, then run a separately predeclared ft2=false-to-true test at nuTilda/nu=3."
+}

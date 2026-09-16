@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "date": "2026-09-15",
+  "scope": "Fail-closed Gate 1 diagnosis after packaged-control, documented-grid, execution, model-input parity, and surface-force localization tests.",
+  "accepted_for_rocket": false,
+  "official_reproducibility_gap": {
+    "packaged_tutorial": "The OpenFOAM v2512 airFoil2D tutorial linked from the validation page has 10720 cells, 78 airfoil faces, U=(25.75 3.62 0), nu=1e-5, and no forceCoeffs object.",
+    "documented_validation": "The page describes the NASA 897x257 grid, U=51.4815 m/s, nu=8.58e-6 m2/s, and alpha=0/10/15 degree comparisons.",
+    "missing_artifact": "The linked packaged tutorial is not the case that generated the documented NASA-grid plots, so there is no unchanged public case containing all solver controls to execute.",
+    "commented_setting": "The documentation source contains 'Non-orthogonal correctors: 4' only inside an HTML comment. It is not treated as an active documented setting."
+  },
+  "retained_controls": {
+    "packaged_installation_control": {
+      "case": "runs/cfd-openfoam-airfoil2d-sa-control-v2512-20260914/case-run-02",
+      "result": "Passed unchanged in 308 iterations; not a NASA agreement case."
+    },
+    "documented_grid_settled_control": {
+      "case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+      "audit": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+      "mean_cd": 0.008491375437945,
+      "openfoam_minus_cfl3d_cd": 0.000298907833845,
+      "relative_cd_difference_percent": 3.648569006,
+      "gate_1_passed": false
+    }
+  },
+  "execution_sensitivity": {
+    "artifact": "runs/cfd-openfoam-naca0012-sa-execution-sensitivity-v1-20260914/naca0012-sa-execution-sensitivity.json",
+    "serial_minus_12_rank_mean_cd": -0.00000207674513,
+    "serial_final_uy_initial_residual": 0.00003512918227,
+    "conclusion": "Serial execution did not clear the residual gate or materially change coefficients; 12-rank Scotch decomposition is not the dominant mechanism."
+  },
+  "model_and_inflow_parity_ladder": {
+    "artifact": "runs/cfd-openfoam-naca0012-sa-variant-comparison-v1-20260915/naca0012-sa-variant-comparison.json",
+    "documented_ratio4_noft2_mean_cd": 0.008491375437945,
+    "ratio3_noft2_mean_cd": 0.008479140908072,
+    "ratio3_change_in_cd": -0.000012234529873,
+    "exact_standard_sa_ratio3_ft2_mean_cd": 0.008469058191256,
+    "ft2_change_in_cd": -0.000010082716816,
+    "exact_standard_sa_openfoam_minus_cfl3d_cd": 0.000276590587156,
+    "exact_standard_sa_relative_cd_difference_percent": 3.376157228,
+    "exact_standard_sa_final_uy_initial_residual": 0.00003291634136,
+    "exact_standard_sa_gate_1_passed": false,
+    "conclusion": "Correcting both explicit NASA/OpenFOAM SA parity differences improves drag by only 0.0000223172 and does not clear residual, symmetry, or force-agreement gates."
+  },
+  "surface_force_localization": {
+    "artifact": "runs/cfd-openfoam-naca0012-standard-sa-ft2-profile-audit-v1-20260915/naca0012-sa-profile-audit.json",
+    "openfoam_final": {
+      "pressure_cd": 0.001593380151423136,
+      "viscous_cd": 0.006875631956400748,
+      "total_cd": 0.008469012107823883
+    },
+    "nasa_cfl3d_reconstructed_from_profiles": {
+      "pressure_cd": 0.00135923105013233,
+      "viscous_cd": 0.006831205963063206,
+      "total_cd": 0.008190437013195537
+    },
+    "openfoam_minus_nasa": {
+      "pressure_cd": 0.000234149101290806,
+      "viscous_cd": 0.0000444259933375414,
+      "total_cd": 0.000276544503723884
+    },
+    "fraction_of_excess_drag_from_pressure": 0.846695915,
+    "reconstruction_check": "Profile integration recovers OpenFOAM final Cd within 4.61e-8 and NASA tabulated Cd within 2.03e-6."
+  },
+  "prior_art": {
+    "source": "Ye Zhang, Verification and Validation of OpenFOAM Code, Delft University of Technology dissertation, 2017, section 3.2.1",
+    "finding": "Independent OpenFOAM SST calculations on TMR NACA0012 also report elevated drag and slightly elevated skin friction relative to CFL3D, corroborating that this is not unique to rocket-workbench."
+  },
+  "gate_decision": {
+    "gate_1": "failed_not_reproduced",
+    "gate_2": "blocked_for_validation",
+    "permitted_next_work": "A stock-SST run may proceed only as a clearly labelled relative diagnostic, not as a passed validation rung. Alternatively, obtain the unpublished exact OpenFOAM plot-generating case before resuming strict validation.",
+    "reason": "The public linked case is not the documented case, all explicit parity corrections were tested, and the remaining discrepancy is predominantly pressure drag rather than decomposition or SA inflow/model selection."
+  }
+}

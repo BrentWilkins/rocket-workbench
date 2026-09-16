@@ -1,9 +1,17 @@
 """Audit retained CFD coefficients without confusing solver completion with validation."""
 import argparse
 import json
+import shlex
 from pathlib import Path
 
 import numpy as np
+
+
+def solver_stage_completed(stages):
+    return any(
+        stage.get('stage_passed') and 'simpleFoam' in shlex.split(stage['stage'])
+        for stage in stages
+    )
 
 
 def audit(case):
@@ -18,7 +26,7 @@ def audit(case):
     rows={name:data[:,i] for i,name in enumerate(columns)}
     tail={name:values[-100:] for name,values in rows.items() if name!='Time'}
     stats={name:dict(mean=float(values.mean()),peak_to_peak=float(np.ptp(values))) for name,values in tail.items()}
-    completed=all(s.get('stage_passed') for s in stages) and any(s['stage']=='simpleFoam' for s in stages)
+    completed=all(s.get('stage_passed') for s in stages) and solver_stage_completed(stages)
     iteration_complete=rows['Time'][-1]>=spec['iterations']
     settled=all(stats[name]['peak_to_peak']<=max(.001,.01*abs(stats[name]['mean']))
                 for name in ['Cd','Cl','Cs','CmPitch','CmYaw','CmRoll'])

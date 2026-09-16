@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-15",
+  "name": "direct-sa-to-stock-sst-relative-diagnostic",
+  "objective": "Measure the effect of changing only the turbulence closure from the reconstructed documented OpenFOAM Spalart-Allmaras control to packaged OpenFOAM v2512 kOmegaSST on the identical NASA 897x257 mesh and incompressible solver path.",
+  "validation_status": "diagnostic_only_gate_2_remains_blocked_by_failed_gate_1",
+  "source": {
+    "case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+    "case_spec_sha256": "57f0fb5c9ed4466ad4e9c1c068c292c82d873139ef7e0e6de13ae8388e74f167",
+    "audit": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "audit_sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "source_mean_cd": 0.008491375437945,
+    "source_gate_1_passed": false
+  },
+  "fixed_invariants": [
+    "NASA TMR altered closed NACA 0012 897x257 mesh and all polyMesh files",
+    "alpha=0 deg, U=51.4815 m/s, nu=8.58e-6 m2/s, chord Reynolds number 6000174.825",
+    "incompressible simpleFoam in the same digest-pinned OpenFOAM v2512 image",
+    "linearUpwind velocity and turbulence convection",
+    "pressure, velocity, force coefficient, reference area, and quarter-chord moment conventions",
+    "SIMPLE pressure and velocity relaxation inherited byte-for-byte from the settled SA source"
+  ],
+  "declared_changes": {
+    "turbulence_model": "SpalartAllmaras to packaged kOmegaSST with default coefficients",
+    "required_fields": "Remove nuTilda; initialize k and omega from NASA TMR freestream ratios and nut consistently; use fixed-zero wall k/nut and the TMR factor-10 fixed wall omega values.",
+    "required_numerical_entries": "Replace only nuTilda convection, linear-solver, and relaxation entries by corresponding k and omega entries with identical schemes and relaxation values.",
+    "initialization": "Copy converged U and p from the source SA case; do not transfer SA nut into the SST closure."
+  },
+  "execution": {
+    "iterations": 5000,
+    "mpi_ranks": 12,
+    "cpu_limit": 12,
+    "memory_limit": "24g",
+    "gpu": false,
+    "network": false,
+    "image": "rocket-workbench-cfd:2512-native",
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "predeclared_outputs": {
+    "primary_effect": "mean Cd(stock SST) minus mean Cd(source SA) over the final 100 iterations",
+    "nasa_reference": {
+      "file": "n0012clcd_cfl3d_sst.dat",
+      "sha256": "373dc142018816628b7b53ad278327db731162988ba35a166cd9fdc131a7fd7a",
+      "alpha_0_cd": 0.00809373
+    },
+    "settling": "final-100 peak-to-peak <= max(0.001, 1% of absolute coefficient mean)",
+    "trend": "projected absolute change over 500 iterations within Cd 0.0002, Cl 0.004, and CmPitch 0.0002",
+    "residuals": "final-100 maximum initial residual <= 1e-5 for p, Ux, Uy, k, and omega",
+    "zero_angle_symmetry": "absolute mean Cl <= 0.004 and absolute mean quarter-chord CmPitch <= 0.0002",
+    "force_agreement": "absolute mean Cd minus NASA CFL3D SST Cd <= 0.0002"
+  },
+  "decision_rule": "Retain and report the result regardless of outcome. It may quantify a relative model effect but cannot pass strict Gate 2 or support rocket design while Gate 1 is failed. Do not tune coefficients, conditions, schemes, relaxation, or tolerances after observing the result."
+}

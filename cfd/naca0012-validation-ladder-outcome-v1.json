@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-15",
+  "objective": "Run the official OpenFOAM SA tutorial unchanged, test the documented NASA NACA 0012 reconstruction, then isolate stock SST, exact NASA SSTm, and compressibility with explicit gates.",
+  "overall_status": "strict_ladder_failed_at_gate_1; downstream_relative_diagnostics_complete",
+  "publication_status": "draft_artifacts_ready_for_user_review; not_published",
+  "accepted_for_rocket": false,
+  "reference": {
+    "nasa_cfl3d_sa_cd": 0.0081924676041,
+    "nasa_cfl3d_sst_cd": 0.008093729238,
+    "force_agreement_absolute_cd_limit": 0.0002
+  },
+  "gates": [
+    {
+      "gate": 0,
+      "name": "unchanged packaged OpenFOAM v2512 airFoil2D tutorial",
+      "status": "passed_installation_control_only",
+      "result": "Solver-reported convergence at iteration 308 with every upstream input hash unchanged.",
+      "nasa_agreement": "not_applicable",
+      "reason": "The packaged case has 10720 cells, 78 wall faces, alpha 8.002 degrees, speed 26.0032 m/s, nu 1e-5 m2/s, and no forceCoeffs object; it is not the documented NASA alpha-zero case.",
+      "audit": "runs/cfd-openfoam-airfoil2d-sa-control-audit-v1-20260914/openfoam-airfoil2d-control-audit.json",
+      "audit_sha256": "66822b2b20b082d5b786fb0718371e259097130d274cab6d216bd9ed6055a7b8"
+    },
+    {
+      "gate": 1,
+      "name": "documented NASA-grid Spalart-Allmaras reconstruction",
+      "status": "failed_not_reproduced",
+      "mean_cd": 0.008491375437945,
+      "openfoam_minus_cfl3d_sa_cd": 0.000298907833845001,
+      "relative_difference_percent": 3.648569006,
+      "exact_standard_sa_sensitivity_cd": 0.008469058191256,
+      "exact_standard_sa_minus_cfl3d_cd": 0.000276590587156,
+      "official_plot_recovered_cd": 0.00813559322034,
+      "official_plot_one_pixel_cd_uncertainty": 0.00010169491525,
+      "strict_gate_passed": false,
+      "diagnosis": "cfd/naca0012-sa-control-diagnosis-v3.json",
+      "diagnosis_sha256": "32f43add0dd5b54bae09308e60a3b8ff98350c890cae9eddcb2298cfc012315b"
+    },
+    {
+      "gate": 2,
+      "name": "stock OpenFOAM kOmegaSST",
+      "status": "strict_blocked; numerically_accepted_relative_branch_after_predeclared_remediation",
+      "initial_model_only_attempt": {
+        "status": "failed_numerical_entry",
+        "mean_cd_after_10000_iterations": 0.01965647399618,
+        "failures": ["zero_angle_symmetry", "NASA SST force agreement"]
+      },
+      "remediation": "Change only k and omega convection from bounded linearUpwind to bounded upwind, then restart from the original SA U and p fields.",
+      "final_mean": {
+        "Cd": 0.008144244277783,
+        "Cl": 3.483441711533331e-7,
+        "CmPitch": 1.957466475695e-6
+      },
+      "openfoam_minus_cfl3d_sst_cd": 0.00005051503978299905,
+      "relative_to_sa_cd": -0.0003471311601620005,
+      "relative_to_sa_percent": -4.0880439535247985,
+      "diagnostic_numerics_passed": true,
+      "strict_gate_passed": false,
+      "confounding_note": "The accepted stock-SST value is conditional on the separately declared turbulence-convection remediation, so the SA-to-stock delta is not a pure turbulence-model-only effect.",
+      "audit": "runs/cfd-openfoam-naca0012-stock-sst-upwind-continuation-audit-v2-20260915/naca0012-stock-sst-continuation-audit.json",
+      "audit_sha256": "5f776d9a14b77164cf992f813677d2b3ca4a06b348403da3f0cab5b8ecf8c900"
+    },
+    {
+      "gate": 3,
+      "name": "exact NASA SSTm incompressible",
+      "status": "diagnostic_passed; strict_blocked_by_gate_1",
+      "final_mean": {
+        "Cd": 0.008121287081584,
+        "Cl": -3.0735098793239997e-6,
+        "CmPitch": 1.2539594805449996e-6
+      },
+      "exact_sstm_minus_stock_sst_cd": -0.000022957196199000288,
+      "exact_sstm_minus_stock_sst_percent": -0.28188246098690967,
+      "openfoam_minus_cfl3d_sst_cd": 0.000027557843583998765,
+      "diagnostic_numerics_passed": true,
+      "strict_gate_passed": false,
+      "audit": "runs/cfd-openfoam-naca0012-exact-sstm-incompressible-from-stock-upwind-audit-v1-20260915/naca0012-exact-sstm-incompressible-audit.json",
+      "audit_sha256": "7afa3f8d7b180fd1b939358e1e4ce9b1479e881588a05de3e69f27061a8f30d8"
+    },
+    {
+      "gate": 4,
+      "name": "exact NASA SSTm compressible",
+      "status": "diagnostic_passed; strict_blocked_by_gate_1",
+      "final_mean": {
+        "Cd": 0.008122031621215,
+        "Cl": -3.629461258992001e-6,
+        "CmPitch": 1.1621502445589998e-6
+      },
+      "compressible_minus_incompressible_cd": 7.445396310000463e-7,
+      "compressible_minus_incompressible_percent": 0.009167754119767295,
+      "openfoam_minus_cfl3d_sst_cd": 0.00002830238321499881,
+      "diagnostic_numerics_passed": true,
+      "strict_gate_passed": false,
+      "audit": "runs/cfd-openfoam-naca0012-exact-sstm-compressible-from-incompressible-audit-v2-20260915/naca0012-exact-sstm-compressible-audit.json",
+      "audit_sha256": "514f9fca2e7a7d1d28d7fe2d8d2cfaf5cca405a51abc81e70b56db2930de4965"
+    }
+  ],
+  "interpretation": {
+    "stock_sst": "A stable, symmetric stock-SST branch can agree with the CFL3D SST force value, but only after an explicit turbulence-convection remediation; the initial pure model-only branch failed numerical entry.",
+    "exact_sstm": "On the accepted upwind branch, exact NASA SSTm reduces Cd by 0.00002296, or 0.282 percent, relative to stock SST.",
+    "compressibility": "At matched Mach, Reynolds number, velocity, mesh, turbulence equations, and force normalization, rhoSimpleFoam changes Cd by only +0.000000745, or +0.0092 percent; compressibility is negligible for this alpha-zero comparison.",
+    "validation": "Agreement of the downstream diagnostic values does not repair the failed SA reproduction, prove the undocumented official setup, or validate rocket aerodynamics."
+  }
+}

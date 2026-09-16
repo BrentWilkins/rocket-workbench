@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "declared_before_candidate_execution": true,
+  "scope": "TMR NACA 0012 zero-angle compressible-versus-incompressible solver-path diagnostic",
+  "basis": "The TMR case is described as essentially incompressible at Mach 0.15. This control isolates rhoSimpleFoam thermophysical coupling from the shared mesh, Reynolds number, SSTm implementation, velocity, and force conventions.",
+  "baseline": "runs/cfd-tmr-naca0012-897x257-a0-sstm-sutherland-prt09-linearupwindU-tmrfreestream-structured449-fixed6000-12r-20260914",
+  "candidate": {
+    "solver": "simpleFoam",
+    "image": "rocket-workbench-cfd:2512-sstm",
+    "image_id": "sha256:e83f84b5ab244104c47ee342489d3fdce78d5d82158fc37b686f499b7af07656",
+    "grid": "same official 897x257 grid",
+    "reynolds_number_chord": 6000000,
+    "angle_of_attack_deg": 0.0,
+    "turbulence_model": "same source-mapped TMR SSTm equations",
+    "convection_scheme": "same linear-upwind velocity and upwind turbulence",
+    "initialization": "U, k, omega, and nut from converged compressible baseline; kinematic p=(p_absolute-p_inf)/rho_inf",
+    "iterations": 1500
+  },
+  "required_candidate_gates": [
+    "immutable image and restart provenance",
+    "force settling and 500-iteration trend",
+    "final and final-100 equation residual convergence",
+    "zero-angle symmetry"
+  ],
+  "decision_rule": {
+    "report": [
+      "candidate minus compressible baseline Cd",
+      "candidate minus CFL3D Cd",
+      "candidate pressure and viscous force decomposition"
+    ],
+    "no_post_hoc_pass_threshold": true,
+    "acceptance_effect": "This diagnostic cannot accept the production compressible workflow. If the incompressible candidate materially resolves the discrepancy, the compressible formulation requires repair; if not, thermophysical coupling is not the dominant cause.",
+    "failure_handling": "Preserve failed/nonconverged evidence and do not use candidate coefficients."
+  }
+}

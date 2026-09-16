@@ -1,0 +1,10 @@
+FROM rocket-workbench-cfd:2512-sstm
+
+COPY models/TmrSSTmCompressible /opt/rocket-workbench/TmrSSTmCompressible
+RUN . /usr/lib/openfoam/openfoam2512/etc/bashrc \
+ && cd /opt/rocket-workbench/TmrSSTmCompressible \
+ && wmake libso \
+ && test -f "$FOAM_USER_LIBBIN/libTmrSSTmCompressible.so"
+
+WORKDIR /case
+ENTRYPOINT ["/bin/bash", "-lc"]

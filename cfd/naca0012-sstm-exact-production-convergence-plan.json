@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "declared_before_candidate_execution": true,
+  "scope": "Convergence-only continuation of the exact NASA TMR SSTm production diagnostic",
+  "source": {
+    "case": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-restart1500-12r-v1-20260914",
+    "audit": "runs/cfd-tmr-naca0012-897x257-a0-sstm-exactsutherland-pr072-exactproduction-force-audit-v1-20260914/naca0012-force-audit.json",
+    "status": "All non-residual diagnostic gates pass; final energy initial residual 1.09823165e-5 exceeds the fixed 1e-5 gate."
+  },
+  "continuation": {
+    "same_grid": true,
+    "same_model": "TmrSSTmExactProduction",
+    "same_transport": "exact Sutherland viscosity, molecular Prandtl 0.72",
+    "same_scheme": "linear-upwind",
+    "additional_iterations": 1500,
+    "initialization": "byte-identical final fields from the residual-only failed source"
+  },
+  "fixed_gates": {
+    "solver_initial_residual_limit": 1e-5,
+    "settling_and_trend": "same existing limits",
+    "temperature_limiter": "inactive",
+    "zero_angle_symmetry": "same existing limit"
+  },
+  "decision_rule": "Do not report coefficients unless all diagnostic gates pass; preserve the source failure and any continuation failure."
+}

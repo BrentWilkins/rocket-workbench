@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "declared_date": "2026-09-14",
+  "objective": "Build a publishable, evidence-backed OpenFOAM NACA 0012 validation ladder by changing one solver component at a time.",
+  "publication_status": "not_authorized; user review is required before publishing results",
+  "design_use_status": "blocked until the complete ladder passes",
+  "current_status": {
+    "active_gate": 1,
+    "status": "failed_not_converged_after_10000_cumulative_iterations",
+    "gate_2_blocked": true,
+    "latest_audit": "runs/cfd-openfoam-naca0012-sa-control-continuation-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "latest_mean_cd": 0.008503271143796,
+    "latest_cd_minus_cfl3d_sa": 0.000310803539696,
+    "latest_mean_cl": -0.00140077256897,
+    "latest_mean_cm_quarter_chord": -0.000388316257313,
+    "failed_gates": [
+      "500-iteration force and moment trend",
+      "Uy equation residual",
+      "quarter-chord moment symmetry",
+      "CFL3D SA drag agreement"
+    ]
+  },
+  "upstream_control": {
+    "source_repository": "https://gitlab.com/openfoam/core/openfoam.git",
+    "source_tag": "OpenFOAM-v2512",
+    "source_commit": "87ed40d256d22ea38fcc648dfc82a22162427b18",
+    "tutorial_path": "tutorials/incompressible/simpleFoam/airFoil2D",
+    "resolved_image": "rocket-workbench-cfd:2512-native",
+    "resolved_image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267",
+    "execution_resources": {
+      "mpi_ranks": 8,
+      "cpu_limit": 8,
+      "memory_limit": "24g",
+      "gpu": false,
+      "network": false
+    },
+    "retained_bundle": "runs/cfd-openfoam-airfoil2d-sa-control-v2512-20260914",
+    "successful_case": "runs/cfd-openfoam-airfoil2d-sa-control-v2512-20260914/case-run-02",
+    "result": {
+      "solver": "simpleFoam",
+      "model": "SpalartAllmaras",
+      "cells": 10720,
+      "converged_iteration": 308,
+      "status": "installation_and_upstream_tutorial_control_passed",
+      "nasa_agreement_claimed": false
+    },
+    "failed_attempt_retained": {
+      "case": "runs/cfd-openfoam-airfoil2d-sa-control-v2512-20260914/case",
+      "cause": "The official Allrun wrapper did not propagate OpenMPI's refusal to execute as root; reconstructPar then found no times and the wrapper returned success.",
+      "corrective_execution_change": "Run the pristine official case as uid 1000 without modifying tutorial inputs."
+    }
+  },
+  "official_documentation_mismatch": {
+    "documentation_repository": "https://gitlab.com/openfoam/documentation.git",
+    "documentation_commit_observed": "4b7889154eb5ed4aaffb4d269055083c364a8286",
+    "documentation_path": "content/examples/verification-validation/turbulent/naca0012.md",
+    "status": "packaged_tutorial_is_not_the_documented_nasa_validation_case",
+    "packaged_tutorial": {
+      "cells": 10720,
+      "wall_faces": 78,
+      "velocity_m_s": [25.75, 3.62, 0.0],
+      "angle_deg": 8.002342357058653,
+      "kinematic_viscosity_m2_s": 1e-05,
+      "end_iteration": 500,
+      "force_coefficients_configured": false
+    },
+    "documented_validation": {
+      "grid_points": [897, 257],
+      "airfoil_surface_points": 513,
+      "velocity_magnitude_m_s": 51.4815,
+      "angles_deg": [0.0, 10.0, 15.0],
+      "kinematic_viscosity_m2_s": 8.58e-06,
+      "reynolds_number": 6000000,
+      "mach": 0.15
+    },
+    "decision": "Retain the unchanged packaged run as an installation and tutorial-integrity control. Reconstruct the separately documented NASA setup before asserting validation agreement."
+  },
+  "fixed_comparison_rules": {
+    "primary_angle_deg": 0.0,
+    "minimum_iterations_for_force_trend": 500,
+    "zero_angle_symmetry_limits": {
+      "abs_cl": 0.004,
+      "abs_cm_quarter_chord": 0.0002
+    },
+    "cfl3d_force_limit": {
+      "abs_cd": 0.0002,
+      "rationale": "Carry forward the already declared NACA 0012 numerical-independence scale; do not widen it to pass a result."
+    },
+    "profile_metrics": [
+      "surface Cp RMS and maximum absolute difference on matched coordinates",
+      "surface Cf mean ratio, RMS difference, and maximum absolute difference on matched coordinates"
+    ],
+    "profile_acceptance": "report-only until coordinate mapping and comparison exclusions are declared before the first documented-control solve",
+    "failure_policy": "Preserve failed and null results. Do not tune freestream values, turbulence coefficients, normalization, or tolerances to the target result."
+  },
+  "reference_values": {
+    "source": "NASA TMR CFL3D 897x257 results",
+    "spalart_allmaras_alpha_0": {
+      "cl": -6.8553224298e-06,
+      "cd": 0.0081924676041,
+      "file": "n0012clcd_cfl3d_sa.dat",
+      "sha256": "b07afec6ce3ae4bf2f2d1a1d53785fde0a5ca68481a0d4186aa92754d811944e"
+    },
+    "sst_alpha_0": {
+      "cd": 0.00809373,
+      "file": "n0012clcd_cfl3d_sst.dat",
+      "sha256": "373dc142018816628b7b53ad278327db731162988ba35a166cd9fdc131a7fd7a"
+    }
+  },
+  "ordered_gates": [
+    {
+      "gate": 0,
+      "name": "unchanged_packaged_tutorial",
+      "change_from_previous": "none",
+      "purpose": "Verify the pinned v2512 image can execute the exact upstream airFoil2D tutorial and expose wrapper failures.",
+      "status": "passed_as_installation_control_only"
+    },
+    {
+      "gate": 1,
+      "name": "documented_nasa_spalart_allmaras_control",
+      "change_from_previous": "Replace the packaged demonstration mesh and conditions with the official documentation's NASA 897x257 mesh and stated SA conditions.",
+      "solver": "simpleFoam",
+      "model": "SpalartAllmaras",
+      "status": "failed_not_converged_after_10000_cumulative_iterations"
+    },
+    {
+      "gate": 2,
+      "name": "stock_openfoam_sst",
+      "change_from_previous": "Change only turbulence model and required turbulence fields from SA to packaged kOmegaSST.",
+      "solver": "simpleFoam",
+      "model": "kOmegaSST",
+      "status": "blocked_by_gate_1"
+    },
+    {
+      "gate": 3,
+      "name": "exact_nasa_sstm_incompressible",
+      "change_from_previous": "Change only the stock SST implementation to the provenance-pinned exact NASA SSTm runtime model.",
+      "solver": "simpleFoam",
+      "model": "TmrSSTmExactProduction",
+      "status": "blocked_by_gate_2"
+    },
+    {
+      "gate": 4,
+      "name": "exact_nasa_sstm_compressible",
+      "change_from_previous": "Change only the flow solver and thermodynamic closure from incompressible simpleFoam to compressible rhoSimpleFoam.",
+      "solver": "rhoSimpleFoam",
+      "model": "TmrSSTmExactProduction",
+      "status": "blocked_by_gate_3"
+    }
+  ],
+  "terminal_rule": "Stop at the first failed gate, localize the discrepancy, and require a predeclared mechanism test before continuing. Passing the ladder validates only this benchmark and operating point, not rocket aerodynamics generally."
+}

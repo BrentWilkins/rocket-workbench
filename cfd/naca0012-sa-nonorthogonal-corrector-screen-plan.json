@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "declared_before_solver_execution": true,
+  "declared_date": "2026-09-15",
+  "scope": "Test the only recoverable hidden pressure-algorithm value in the official documentation source after surface integration localized 85 percent of excess drag to pressure.",
+  "source_case": "runs/cfd-openfoam-naca0012-897x257-a0-sa-doc-control-halfrelax5000-v1-20260914",
+  "source_audit": {
+    "path": "runs/cfd-openfoam-naca0012-sa-control-halfrelax-audit-v1-20260914/naca0012-sa-control-audit.json",
+    "sha256": "ff6fe49324c620978b6a1628d3a62eb56af8ac01a22aa7c6de4174dba9ca283f",
+    "mean_cd": 0.008491375437945,
+    "openfoam_minus_cfl3d_cd": 0.000298907833845
+  },
+  "evidence_basis": {
+    "documentation_commit": "4b7889154eb5ed4aaffb4d269055083c364a8286",
+    "documentation_path": "content/examples/verification-validation/turbulent/naca0012.md",
+    "source_line": "<!-- + Non-orthogonal correctors: 4 -->",
+    "rendering_status": "commented_out_not_an_active_public_parameter",
+    "pressure_fraction_of_exact_standard_sa_drag_excess": 0.846695915,
+    "mesh_max_nonorthogonality_deg": 19.72982451
+  },
+  "single_change": {
+    "name": "SIMPLE_nNonOrthogonalCorrectors",
+    "before": 0,
+    "after": 4,
+    "additional_iterations": 1000,
+    "initialization": "Copy the reconstructed settled documented ratio-4/no-ft2 state to time zero; change one fvSolution integer only."
+  },
+  "fixed": {
+    "grid": "official NASA 897x257 C-grid with independently verified plot3dToFoam topology parity",
+    "solver": "OpenFOAM v2512 simpleFoam",
+    "model": "stock SpalartAllmaras, ft2=false",
+    "farfield": "documented nuTilda/nu=4 and nut/nu=1",
+    "schemes_linear_solvers_and_relaxation": "unchanged, including p=0.15 U=0.35 nuTilda=0.35",
+    "decomposition": "12-rank Scotch",
+    "resources": "12 CPU limit and 24g memory limit",
+    "force_normalization_and_gate_thresholds": "unchanged"
+  },
+  "screen_decision": {
+    "material_toward_official_plot": "last-100 mean Cd decreases by at least 0.00005 relative to source",
+    "null_effect": "absolute last-100 mean Cd change is at most 0.00002",
+    "ambiguous_effect": "absolute change is between 0.00002 and 0.00005; retain and diagnose without tuning",
+    "residual_report": "Report Uy residual and symmetry gates, but do not substitute them for the drag mechanism decision."
+  },
+  "terminal_rule": "Stop after 1000 iterations. Extend only under a separately declared plan if the material-toward-plot threshold is met; otherwise rule out or retain as ambiguous."
+}
