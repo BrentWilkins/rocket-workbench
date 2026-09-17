@@ -6,20 +6,25 @@ alternative is separate. Earlier 18 mm cut lengths are in the [archived build gu
 
 ## Configuration and parts
 
-| Item                    | Current modeled value                         | Required check                                       |
-| ----------------------- | --------------------------------------------- | ---------------------------------------------------- |
-| BT-60 body              | 500 mm long, OD 41.6 / ID 40.5 mm             | Delivered dimensions; keep uncut until dry fit       |
-| Nose / internal bay     | 50 / 145 mm                                   | Sliding fit, antenna clearance, seals and extraction |
-| Clipped-delta collar    | 65 mm root/collar, 53.65 mm span, 1.6 mm fins | Printed root strength and bond                       |
-| Commercial motor mount  | 24 mm, provisional 95 mm length               | Actual rings, hook, block, spacer, installed mass    |
-| Recovery                | Apogee 29093 24-inch canopy                   | Actual mass, packing and deployment                  |
-| Canopy packing envelope | 32 mm diameter × 228.22 mm long               | Not proof of actual packing                          |
-| Bay cap                 | 3 mm, three relocated M2 insert bosses        | Installation, engagement, mass and strength          |
+| Item                    | Current modeled value                                             | Required check                                       |
+| ----------------------- | ----------------------------------------------------------------- | ---------------------------------------------------- |
+| BT-60 body              | 500 mm long, OD 41.6 / ID 40.5 mm                                 | Delivered dimensions; keep uncut until dry fit       |
+| Nose / internal bay     | 50 / 145 mm                                                       | Sliding fit, antenna clearance, seals and extraction |
+| Clipped-delta collar v2 | 65 mm root/collar, 53.65 mm span, 2.0 mm fins, tangent root coves | Printed root strength and bond                       |
+| Commercial motor mount  | 24 mm, provisional 95 mm length                                   | Actual rings, hook, block, spacer, installed mass    |
+| Recovery                | Apogee 29093 24-inch canopy                                       | Actual mass, packing and deployment                  |
+| Canopy packing envelope | 32 mm diameter × 228.22 mm long                                   | Not proof of actual packing                          |
+| Bay cap                 | 3 mm, three relocated M2 insert bosses                            | Installation, engagement, mass and strength          |
 
 Print six parts: nose-bay, bay-bulkhead, payload-sled, fin-collar and two lug sleeves. Electronics, paper tube, mount
 and recovery envelopes in the assembly STEP are **not printable parts**. The X1C project uses a 0.4 mm nozzle, Textured
 PEI and provisional PLA. CAD mass assumes solid material; slicer support/brim waste is not installed flight mass. Local
 slicing and placement checks passed, but inspect toolpaths and removable supports before printing.
+
+The current standalone [organic fin-collar v2](FIN_COLLAR_V2.md) replaces only the older 1.6 mm square-edge collar in
+the six-part project. Import its STL into Bambu Studio separately. Its 2.0 mm fins have rounded leading/tip edges, a 0.7
+mm trailing edge, and true cylinder-to-fin tangent root coves. The older project remains useful for the other five
+parts, but its fin collar is superseded. Native slicing of v2 has not been run on this Linux workstation.
 
 ## Dry assembly sequence
 

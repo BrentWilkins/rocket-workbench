@@ -4,18 +4,16 @@
 
 The validation campaign described below has now completed. Its authoritative endpoint is
 `cfd/NACA0012_VALIDATION_LADDER_REPORT.md`, with the machine-readable decision in
-`cfd/naca0012-validation-ladder-outcome-v1.json`. The strict ladder failed at the documented
-Spalart–Allmaras reproduction gate. Downstream stock-SST, exact-SSTm, and compressible runs are
-retained as reproducible relative diagnostics, not validated rocket coefficients.
+`cfd/naca0012-validation-ladder-outcome-v1.json`. The strict ladder failed at the documented Spalart–Allmaras
+reproduction gate. Downstream stock-SST, exact-SSTm, and compressible runs are retained as reproducible relative
+diagnostics, not validated rocket coefficients.
 
-No CFD coefficient has been transferred into a flight model. The next authorized use is an
-explicitly exploratory, matched fin-design comparison that reports numerical sensitivity and only
-calls a winner or loser when the ordering survives those checks. Preserve every failed run and keep
-the ranking campaign separate from this validation checkpoint.
+No CFD coefficient has been transferred into a flight model. The next authorized use is an explicitly exploratory,
+matched fin-design comparison that reports numerical sensitivity and only calls a winner or loser when the ordering
+survives those checks. Preserve every failed run and keep the ranking campaign separate from this validation checkpoint.
 
-The original September 13 transfer instructions remain below as historical setup context. Several
-of their future-tense tasks are complete; do not treat them as current status when they disagree
-with the ladder report.
+The original September 13 transfer instructions remain below as historical setup context. Several of their future-tense
+tasks are complete; do not treat them as current status when they disagree with the ladder report.
 
 ## Prompt for the next coding agent
 

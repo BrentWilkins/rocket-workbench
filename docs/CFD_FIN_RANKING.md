@@ -38,9 +38,9 @@ the campaign's axis convention.
 
 ![Provisional drag versus restoring-response Pareto frontier for the planar fin designs](../plots/cfd-fin-pareto.svg)
 
-The plot minimizes zero-angle `Cd` while maximizing the magnitude of the restoring `CmPitch` at 5 degrees. Solid
-markers are the midpoint of the 20 and 15 mm-grid results, with bars spanning those two values; the hollow clipped-delta
-marker is its available 20 mm-grid result only. Every point is provisional because it failed at least one campaign gate.
+The plot minimizes zero-angle `Cd` while maximizing the magnitude of the restoring `CmPitch` at 5 degrees. Solid markers
+are the midpoint of the 20 and 15 mm-grid results, with bars spanning those two values; the hollow clipped-delta marker
+is its available 20 mm-grid result only. Every point is provisional because it failed at least one campaign gate.
 “Frontier” here means nondominated among these exploratory points, not validated superiority or a global optimum.
 
 The ordering is stable wherever both grids exist:

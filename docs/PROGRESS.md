@@ -1,6 +1,6 @@
 # Current project status
 
-Updated 2026-09-13. Start at [current designs](CURRENT_DESIGN.md), not an earlier study report.
+Updated 2026-09-17. Start at [current designs](CURRENT_DESIGN.md), not an earlier study report.
 
 - Current shortlist: D12-5 / BT-60 / clipped-delta, with 22-inch recovery and a 460 mm body, or a sourced 24-inch canopy
   and a 500 mm body. Both pass 192/192 planned expanded uncertainty cases. Loaded altitudes span approximately 145–188
@@ -23,6 +23,9 @@ Updated 2026-09-13. Start at [current designs](CURRENT_DESIGN.md), not an earlie
 - A separate integrated D12 review bundle now includes matching CAD, flight models, X1C project, renders and retained
   simulation evidence. Local slicing and placement checks pass. The V5 download remains the archived 18 mm package;
   physical print/flight qualification is not implied. No servo-equipped configuration or logger firmware is implemented.
+- Organic fin-collar v2 supersedes the earlier 1.6 mm square-edge collar only. It uses 2.0 mm fins, rounded leading/tip
+  edges, a tapered 0.7 mm trailing edge, and cylinder-tangent variable root coves. CAD/STL integrity and updated
+  OpenRocket checks pass; native slicer inspection and physical root-strength testing remain pending.
 - Physical fit, measured mass/CG, pressure response, recovery separation and flight validation remain pending.
 
 ## Ongoing work and publication

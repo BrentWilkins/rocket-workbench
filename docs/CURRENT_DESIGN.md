@@ -31,6 +31,21 @@ margin. Earlier 18 mm downloads are now confined to the archived review linked a
 
 ## D12 review files
 
+### Current fin collar
+
+The [organic fin-collar v2](FIN_COLLAR_V2.md) is now the current printable collar candidate. It retains the selected 65
+mm clipped-delta planform and 53.65 mm span, increases thickness from 1.6 to 2.0 mm, rounds the leading and tip edges,
+tapers the trailing edge to 0.7 mm, and uses variable-radius coves tangent to the cylindrical collar. Estimated
+solid-density mass is 28.92 g. The corrected 36-inch-guide check predicts 12.91–12.92 m/s loaded guide departure and
+1.66–2.46 cal minimum loaded stability. These are numerical checks, not strength validation or flight clearance.
+
+The downloadable six-part X1C projects below predate this collar revision and still contain the earlier 1.6 mm
+square-edge collar. Use them for the other parts only; import the v2 collar STL separately. The launch-lug sleeves also
+remain sized around the earlier 1/8-inch guide arrangement and have not yet been revised for the selected 3/16-inch rod.
+
+The current [30–50 mm nose-length and stock-rod screen](../runs/d12-nose-length-screen-20260916/report.md) retains the
+evidence behind the 50 mm nose selection and the 30-inch rod rejection.
+
 [Download the integrated D12 review files](assets/d12-insert-review-20260913.zip) (about 2.5 MB): matching six-part X1C
 project, CAD STEP/STL, OpenRocket files, configuration, nominal results, mass ledger and CAD renders. The archive has a
 per-file hash manifest and does not contain a flight-clearance claim. Its SHA256 is

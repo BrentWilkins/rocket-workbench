@@ -1,0 +1,17 @@
+{
+  "part": "fin-collar",
+  "profile": "organic-v2",
+  "fin_thickness_mm": 2.0,
+  "root_cove_radius_mm": {
+    "ends": 0.8,
+    "maximum": 3.0
+  },
+  "root_cove_hidden_overlap_mm": 0.2,
+  "trailing_edge_mm": 0.7,
+  "mass_g_solid_density_estimate": 28.91753198407489,
+  "limitations": [
+    "No mechanical coupon or destructive test completed",
+    "Slicer and measured print mass remain required",
+    "Root-fairing aerodynamics are not validated CFD evidence"
+  ]
+}

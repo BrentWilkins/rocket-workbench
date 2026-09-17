@@ -8,80 +8,80 @@ Configuration SHA256: `670cb052d3774a01d0f853d584d1e6ae03dfaa00b32eb2c0cdf935b3b
 
 ## Cases
 
-| Case | Execution / evaluation | Apogee m | Guide m/s | Min ascent cal | Deploy m/s | Descent m/s | Drift m | Powered accel g | Estimated load g | Powered speed m/s |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 0-empty-D12-5-wind0 | completed / incomplete inputs | 215.19 | 13.35 | 1.44 | 1.15 | 5.68 | 0.10 | 15.22 | 16.22 | 68.24 |
-| 0-empty-D12-5-wind2 | completed / outside configured limits | 213.50 | 13.35 | 0.89 | 2.66 | 5.68 | 51.88 | 15.21 | 16.21 | 68.11 |
-| 0-empty-D12-5-wind4 | completed / outside configured limits | 209.02 | 13.35 | 0.73 | 4.73 | 5.68 | 104.97 | 15.20 | 16.20 | 67.75 |
-| 0-dummy-D12-5-wind0 | completed / outside configured limits | 182.85 | 12.92 | 1.91 | 1.88 | 6.15 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 0-dummy-D12-5-wind2 | completed / outside configured limits | 180.83 | 12.92 | 1.60 | 3.74 | 6.15 | 31.94 | 13.03 | 14.03 | 58.60 |
-| 0-dummy-D12-5-wind4 | completed / outside configured limits | 175.24 | 12.92 | 1.39 | 7.01 | 6.15 | 63.56 | 13.02 | 14.02 | 58.20 |
-| 0-actual-D12-5-wind0 | completed / outside configured limits | 182.85 | 12.92 | 1.91 | 1.88 | 6.15 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 0-actual-D12-5-wind2 | completed / outside configured limits | 180.83 | 12.92 | 1.60 | 3.74 | 6.15 | 31.94 | 13.03 | 14.03 | 58.60 |
-| 0-actual-D12-5-wind4 | completed / outside configured limits | 175.24 | 12.92 | 1.39 | 7.01 | 6.15 | 63.56 | 13.02 | 14.02 | 58.20 |
-| 1-empty-D12-5-wind0 | completed / incomplete inputs | 215.19 | 13.35 | 1.44 | 1.15 | 4.63 | 0.10 | 15.22 | 16.22 | 68.24 |
-| 1-empty-D12-5-wind2 | completed / outside configured limits | 213.50 | 13.35 | 0.89 | 2.66 | 4.63 | 69.28 | 15.21 | 16.21 | 68.11 |
-| 1-empty-D12-5-wind4 | completed / outside configured limits | 209.02 | 13.35 | 0.73 | 4.73 | 4.63 | 138.78 | 15.20 | 16.20 | 67.75 |
-| 1-dummy-D12-5-wind0 | completed / incomplete inputs | 182.85 | 12.92 | 1.91 | 1.88 | 5.02 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 1-dummy-D12-5-wind2 | completed / incomplete inputs | 180.83 | 12.92 | 1.60 | 3.74 | 5.02 | 45.78 | 13.03 | 14.03 | 58.60 |
-| 1-dummy-D12-5-wind4 | completed / incomplete inputs | 175.24 | 12.92 | 1.39 | 7.01 | 5.02 | 90.10 | 13.02 | 14.02 | 58.20 |
-| 1-actual-D12-5-wind0 | completed / incomplete inputs | 182.85 | 12.92 | 1.91 | 1.88 | 5.02 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 1-actual-D12-5-wind2 | completed / incomplete inputs | 180.83 | 12.92 | 1.60 | 3.74 | 5.02 | 45.78 | 13.03 | 14.03 | 58.60 |
-| 1-actual-D12-5-wind4 | completed / incomplete inputs | 175.24 | 12.92 | 1.39 | 7.01 | 5.02 | 90.10 | 13.02 | 14.02 | 58.20 |
-| 2-empty-D12-5-wind0 | completed / incomplete inputs | 215.19 | 13.35 | 1.44 | 1.15 | 5.68 | 0.10 | 15.22 | 16.22 | 68.24 |
-| 2-empty-D12-5-wind2 | completed / outside configured limits | 213.50 | 13.35 | 0.89 | 2.66 | 5.68 | 51.88 | 15.21 | 16.21 | 68.11 |
-| 2-empty-D12-5-wind4 | completed / outside configured limits | 209.02 | 13.35 | 0.73 | 4.73 | 5.68 | 104.97 | 15.20 | 16.20 | 67.75 |
-| 2-dummy-D12-5-wind0 | completed / outside configured limits | 182.85 | 12.92 | 1.88 | 1.88 | 6.15 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 2-dummy-D12-5-wind2 | completed / outside configured limits | 180.83 | 12.92 | 1.57 | 3.75 | 6.15 | 31.92 | 13.03 | 14.03 | 58.61 |
-| 2-dummy-D12-5-wind4 | completed / outside configured limits | 175.24 | 12.92 | 1.36 | 7.00 | 6.15 | 63.58 | 13.02 | 14.02 | 58.20 |
-| 2-actual-D12-5-wind0 | completed / outside configured limits | 182.85 | 12.92 | 1.88 | 1.88 | 6.15 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 2-actual-D12-5-wind2 | completed / outside configured limits | 180.83 | 12.92 | 1.57 | 3.75 | 6.15 | 31.92 | 13.03 | 14.03 | 58.61 |
-| 2-actual-D12-5-wind4 | completed / outside configured limits | 175.24 | 12.92 | 1.36 | 7.00 | 6.15 | 63.58 | 13.02 | 14.02 | 58.20 |
-| 3-empty-D12-5-wind0 | completed / incomplete inputs | 215.19 | 13.35 | 1.44 | 1.15 | 4.63 | 0.10 | 15.22 | 16.22 | 68.24 |
-| 3-empty-D12-5-wind2 | completed / outside configured limits | 213.50 | 13.35 | 0.89 | 2.66 | 4.63 | 69.28 | 15.21 | 16.21 | 68.11 |
-| 3-empty-D12-5-wind4 | completed / outside configured limits | 209.02 | 13.35 | 0.73 | 4.73 | 4.63 | 138.78 | 15.20 | 16.20 | 67.75 |
-| 3-dummy-D12-5-wind0 | completed / incomplete inputs | 182.85 | 12.92 | 1.88 | 1.88 | 5.02 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 3-dummy-D12-5-wind2 | completed / incomplete inputs | 180.83 | 12.92 | 1.57 | 3.75 | 5.02 | 45.76 | 13.03 | 14.03 | 58.61 |
-| 3-dummy-D12-5-wind4 | completed / incomplete inputs | 175.24 | 12.92 | 1.36 | 7.00 | 5.02 | 90.13 | 13.02 | 14.02 | 58.20 |
-| 3-actual-D12-5-wind0 | completed / incomplete inputs | 182.85 | 12.92 | 1.88 | 1.88 | 5.02 | 0.09 | 13.04 | 14.04 | 58.76 |
-| 3-actual-D12-5-wind2 | completed / incomplete inputs | 180.83 | 12.92 | 1.57 | 3.75 | 5.02 | 45.76 | 13.03 | 14.03 | 58.61 |
-| 3-actual-D12-5-wind4 | completed / incomplete inputs | 175.24 | 12.92 | 1.36 | 7.00 | 5.02 | 90.13 | 13.02 | 14.02 | 58.20 |
-| 4-empty-D12-5-wind0 | completed / outside configured limits | 197.67 | 13.16 | 0.97 | 0.36 | 5.93 | 0.09 | 13.98 | 14.98 | 62.94 |
-| 4-empty-D12-5-wind2 | completed / outside configured limits | 195.86 | 13.16 | 0.89 | 2.79 | 5.93 | 41.37 | 13.97 | 14.97 | 62.79 |
-| 4-empty-D12-5-wind4 | completed / outside configured limits | 191.01 | 13.16 | 0.85 | 5.52 | 5.93 | 83.61 | 13.96 | 14.96 | 62.41 |
-| 4-dummy-D12-5-wind0 | completed / outside configured limits | 166.62 | 12.60 | 1.77 | 3.77 | 6.38 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 4-dummy-D12-5-wind2 | completed / outside configured limits | 164.56 | 12.59 | 1.69 | 5.08 | 6.38 | 23.85 | 12.09 | 13.09 | 54.26 |
-| 4-dummy-D12-5-wind4 | completed / outside configured limits | 158.84 | 12.59 | 1.45 | 8.40 | 6.38 | 47.12 | 12.08 | 13.08 | 53.85 |
-| 4-actual-D12-5-wind0 | completed / outside configured limits | 166.62 | 12.60 | 1.77 | 3.77 | 6.38 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 4-actual-D12-5-wind2 | completed / outside configured limits | 164.56 | 12.59 | 1.69 | 5.08 | 6.38 | 23.85 | 12.09 | 13.09 | 54.26 |
-| 4-actual-D12-5-wind4 | completed / outside configured limits | 158.84 | 12.59 | 1.45 | 8.40 | 6.38 | 47.12 | 12.08 | 13.08 | 53.85 |
-| 5-empty-D12-5-wind0 | completed / outside configured limits | 197.67 | 13.16 | 0.97 | 0.36 | 4.84 | 0.09 | 13.98 | 14.98 | 62.94 |
-| 5-empty-D12-5-wind2 | completed / outside configured limits | 195.86 | 13.16 | 0.89 | 2.79 | 4.84 | 56.79 | 13.97 | 14.97 | 62.79 |
-| 5-empty-D12-5-wind4 | completed / outside configured limits | 191.01 | 13.16 | 0.85 | 5.52 | 4.84 | 113.38 | 13.96 | 14.96 | 62.41 |
-| 5-dummy-D12-5-wind0 | completed / incomplete inputs | 166.62 | 12.60 | 1.77 | 3.77 | 5.21 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 5-dummy-D12-5-wind2 | completed / incomplete inputs | 164.56 | 12.59 | 1.69 | 5.08 | 5.21 | 36.06 | 12.09 | 13.09 | 54.26 |
-| 5-dummy-D12-5-wind4 | completed / incomplete inputs | 158.84 | 12.59 | 1.45 | 8.40 | 5.21 | 70.36 | 12.08 | 13.08 | 53.85 |
-| 5-actual-D12-5-wind0 | completed / incomplete inputs | 166.62 | 12.60 | 1.77 | 3.77 | 5.21 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 5-actual-D12-5-wind2 | completed / incomplete inputs | 164.56 | 12.59 | 1.69 | 5.08 | 5.21 | 36.06 | 12.09 | 13.09 | 54.26 |
-| 5-actual-D12-5-wind4 | completed / incomplete inputs | 158.84 | 12.59 | 1.45 | 8.40 | 5.21 | 70.36 | 12.08 | 13.08 | 53.85 |
-| 6-empty-D12-5-wind0 | completed / outside configured limits | 197.67 | 13.16 | 0.97 | 0.36 | 5.93 | 0.09 | 13.98 | 14.98 | 62.94 |
-| 6-empty-D12-5-wind2 | completed / outside configured limits | 195.86 | 13.16 | 0.89 | 2.79 | 5.93 | 41.37 | 13.97 | 14.97 | 62.79 |
-| 6-empty-D12-5-wind4 | completed / outside configured limits | 191.01 | 13.16 | 0.85 | 5.52 | 5.93 | 83.61 | 13.96 | 14.96 | 62.41 |
-| 6-dummy-D12-5-wind0 | completed / outside configured limits | 166.62 | 12.60 | 1.73 | 3.77 | 6.38 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 6-dummy-D12-5-wind2 | completed / outside configured limits | 164.56 | 12.59 | 1.66 | 5.08 | 6.38 | 23.84 | 12.09 | 13.09 | 54.26 |
-| 6-dummy-D12-5-wind4 | completed / outside configured limits | 158.84 | 12.59 | 1.42 | 8.40 | 6.38 | 47.13 | 12.08 | 13.08 | 53.85 |
-| 6-actual-D12-5-wind0 | completed / outside configured limits | 166.62 | 12.60 | 1.73 | 3.77 | 6.38 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 6-actual-D12-5-wind2 | completed / outside configured limits | 164.56 | 12.59 | 1.66 | 5.08 | 6.38 | 23.84 | 12.09 | 13.09 | 54.26 |
-| 6-actual-D12-5-wind4 | completed / outside configured limits | 158.84 | 12.59 | 1.42 | 8.40 | 6.38 | 47.13 | 12.08 | 13.08 | 53.85 |
-| 7-empty-D12-5-wind0 | completed / outside configured limits | 197.67 | 13.16 | 0.97 | 0.36 | 4.84 | 0.09 | 13.98 | 14.98 | 62.94 |
-| 7-empty-D12-5-wind2 | completed / outside configured limits | 195.86 | 13.16 | 0.89 | 2.79 | 4.84 | 56.79 | 13.97 | 14.97 | 62.79 |
-| 7-empty-D12-5-wind4 | completed / outside configured limits | 191.01 | 13.16 | 0.85 | 5.52 | 4.84 | 113.38 | 13.96 | 14.96 | 62.41 |
-| 7-dummy-D12-5-wind0 | completed / incomplete inputs | 166.62 | 12.60 | 1.73 | 3.77 | 5.21 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 7-dummy-D12-5-wind2 | completed / incomplete inputs | 164.56 | 12.59 | 1.66 | 5.08 | 5.21 | 36.04 | 12.09 | 13.09 | 54.26 |
-| 7-dummy-D12-5-wind4 | completed / incomplete inputs | 158.84 | 12.59 | 1.42 | 8.40 | 5.21 | 70.37 | 12.08 | 13.08 | 53.85 |
-| 7-actual-D12-5-wind0 | completed / incomplete inputs | 166.62 | 12.60 | 1.73 | 3.77 | 5.21 | 0.07 | 12.10 | 13.10 | 54.41 |
-| 7-actual-D12-5-wind2 | completed / incomplete inputs | 164.56 | 12.59 | 1.66 | 5.08 | 5.21 | 36.04 | 12.09 | 13.09 | 54.26 |
-| 7-actual-D12-5-wind4 | completed / incomplete inputs | 158.84 | 12.59 | 1.42 | 8.40 | 5.21 | 70.37 | 12.08 | 13.08 | 53.85 |
+| Case                 | Execution / evaluation                | Apogee m | Guide m/s | Min ascent cal | Deploy m/s | Descent m/s | Drift m | Powered accel g | Estimated load g | Powered speed m/s |
+| -------------------- | ------------------------------------- | -------: | --------: | -------------: | ---------: | ----------: | ------: | --------------: | ---------------: | ----------------: |
+| 0-empty-D12-5-wind0  | completed / incomplete inputs         |   215.19 |     13.35 |           1.44 |       1.15 |        5.68 |    0.10 |           15.22 |            16.22 |             68.24 |
+| 0-empty-D12-5-wind2  | completed / outside configured limits |   213.50 |     13.35 |           0.89 |       2.66 |        5.68 |   51.88 |           15.21 |            16.21 |             68.11 |
+| 0-empty-D12-5-wind4  | completed / outside configured limits |   209.02 |     13.35 |           0.73 |       4.73 |        5.68 |  104.97 |           15.20 |            16.20 |             67.75 |
+| 0-dummy-D12-5-wind0  | completed / outside configured limits |   182.85 |     12.92 |           1.91 |       1.88 |        6.15 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 0-dummy-D12-5-wind2  | completed / outside configured limits |   180.83 |     12.92 |           1.60 |       3.74 |        6.15 |   31.94 |           13.03 |            14.03 |             58.60 |
+| 0-dummy-D12-5-wind4  | completed / outside configured limits |   175.24 |     12.92 |           1.39 |       7.01 |        6.15 |   63.56 |           13.02 |            14.02 |             58.20 |
+| 0-actual-D12-5-wind0 | completed / outside configured limits |   182.85 |     12.92 |           1.91 |       1.88 |        6.15 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 0-actual-D12-5-wind2 | completed / outside configured limits |   180.83 |     12.92 |           1.60 |       3.74 |        6.15 |   31.94 |           13.03 |            14.03 |             58.60 |
+| 0-actual-D12-5-wind4 | completed / outside configured limits |   175.24 |     12.92 |           1.39 |       7.01 |        6.15 |   63.56 |           13.02 |            14.02 |             58.20 |
+| 1-empty-D12-5-wind0  | completed / incomplete inputs         |   215.19 |     13.35 |           1.44 |       1.15 |        4.63 |    0.10 |           15.22 |            16.22 |             68.24 |
+| 1-empty-D12-5-wind2  | completed / outside configured limits |   213.50 |     13.35 |           0.89 |       2.66 |        4.63 |   69.28 |           15.21 |            16.21 |             68.11 |
+| 1-empty-D12-5-wind4  | completed / outside configured limits |   209.02 |     13.35 |           0.73 |       4.73 |        4.63 |  138.78 |           15.20 |            16.20 |             67.75 |
+| 1-dummy-D12-5-wind0  | completed / incomplete inputs         |   182.85 |     12.92 |           1.91 |       1.88 |        5.02 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 1-dummy-D12-5-wind2  | completed / incomplete inputs         |   180.83 |     12.92 |           1.60 |       3.74 |        5.02 |   45.78 |           13.03 |            14.03 |             58.60 |
+| 1-dummy-D12-5-wind4  | completed / incomplete inputs         |   175.24 |     12.92 |           1.39 |       7.01 |        5.02 |   90.10 |           13.02 |            14.02 |             58.20 |
+| 1-actual-D12-5-wind0 | completed / incomplete inputs         |   182.85 |     12.92 |           1.91 |       1.88 |        5.02 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 1-actual-D12-5-wind2 | completed / incomplete inputs         |   180.83 |     12.92 |           1.60 |       3.74 |        5.02 |   45.78 |           13.03 |            14.03 |             58.60 |
+| 1-actual-D12-5-wind4 | completed / incomplete inputs         |   175.24 |     12.92 |           1.39 |       7.01 |        5.02 |   90.10 |           13.02 |            14.02 |             58.20 |
+| 2-empty-D12-5-wind0  | completed / incomplete inputs         |   215.19 |     13.35 |           1.44 |       1.15 |        5.68 |    0.10 |           15.22 |            16.22 |             68.24 |
+| 2-empty-D12-5-wind2  | completed / outside configured limits |   213.50 |     13.35 |           0.89 |       2.66 |        5.68 |   51.88 |           15.21 |            16.21 |             68.11 |
+| 2-empty-D12-5-wind4  | completed / outside configured limits |   209.02 |     13.35 |           0.73 |       4.73 |        5.68 |  104.97 |           15.20 |            16.20 |             67.75 |
+| 2-dummy-D12-5-wind0  | completed / outside configured limits |   182.85 |     12.92 |           1.88 |       1.88 |        6.15 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 2-dummy-D12-5-wind2  | completed / outside configured limits |   180.83 |     12.92 |           1.57 |       3.75 |        6.15 |   31.92 |           13.03 |            14.03 |             58.61 |
+| 2-dummy-D12-5-wind4  | completed / outside configured limits |   175.24 |     12.92 |           1.36 |       7.00 |        6.15 |   63.58 |           13.02 |            14.02 |             58.20 |
+| 2-actual-D12-5-wind0 | completed / outside configured limits |   182.85 |     12.92 |           1.88 |       1.88 |        6.15 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 2-actual-D12-5-wind2 | completed / outside configured limits |   180.83 |     12.92 |           1.57 |       3.75 |        6.15 |   31.92 |           13.03 |            14.03 |             58.61 |
+| 2-actual-D12-5-wind4 | completed / outside configured limits |   175.24 |     12.92 |           1.36 |       7.00 |        6.15 |   63.58 |           13.02 |            14.02 |             58.20 |
+| 3-empty-D12-5-wind0  | completed / incomplete inputs         |   215.19 |     13.35 |           1.44 |       1.15 |        4.63 |    0.10 |           15.22 |            16.22 |             68.24 |
+| 3-empty-D12-5-wind2  | completed / outside configured limits |   213.50 |     13.35 |           0.89 |       2.66 |        4.63 |   69.28 |           15.21 |            16.21 |             68.11 |
+| 3-empty-D12-5-wind4  | completed / outside configured limits |   209.02 |     13.35 |           0.73 |       4.73 |        4.63 |  138.78 |           15.20 |            16.20 |             67.75 |
+| 3-dummy-D12-5-wind0  | completed / incomplete inputs         |   182.85 |     12.92 |           1.88 |       1.88 |        5.02 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 3-dummy-D12-5-wind2  | completed / incomplete inputs         |   180.83 |     12.92 |           1.57 |       3.75 |        5.02 |   45.76 |           13.03 |            14.03 |             58.61 |
+| 3-dummy-D12-5-wind4  | completed / incomplete inputs         |   175.24 |     12.92 |           1.36 |       7.00 |        5.02 |   90.13 |           13.02 |            14.02 |             58.20 |
+| 3-actual-D12-5-wind0 | completed / incomplete inputs         |   182.85 |     12.92 |           1.88 |       1.88 |        5.02 |    0.09 |           13.04 |            14.04 |             58.76 |
+| 3-actual-D12-5-wind2 | completed / incomplete inputs         |   180.83 |     12.92 |           1.57 |       3.75 |        5.02 |   45.76 |           13.03 |            14.03 |             58.61 |
+| 3-actual-D12-5-wind4 | completed / incomplete inputs         |   175.24 |     12.92 |           1.36 |       7.00 |        5.02 |   90.13 |           13.02 |            14.02 |             58.20 |
+| 4-empty-D12-5-wind0  | completed / outside configured limits |   197.67 |     13.16 |           0.97 |       0.36 |        5.93 |    0.09 |           13.98 |            14.98 |             62.94 |
+| 4-empty-D12-5-wind2  | completed / outside configured limits |   195.86 |     13.16 |           0.89 |       2.79 |        5.93 |   41.37 |           13.97 |            14.97 |             62.79 |
+| 4-empty-D12-5-wind4  | completed / outside configured limits |   191.01 |     13.16 |           0.85 |       5.52 |        5.93 |   83.61 |           13.96 |            14.96 |             62.41 |
+| 4-dummy-D12-5-wind0  | completed / outside configured limits |   166.62 |     12.60 |           1.77 |       3.77 |        6.38 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 4-dummy-D12-5-wind2  | completed / outside configured limits |   164.56 |     12.59 |           1.69 |       5.08 |        6.38 |   23.85 |           12.09 |            13.09 |             54.26 |
+| 4-dummy-D12-5-wind4  | completed / outside configured limits |   158.84 |     12.59 |           1.45 |       8.40 |        6.38 |   47.12 |           12.08 |            13.08 |             53.85 |
+| 4-actual-D12-5-wind0 | completed / outside configured limits |   166.62 |     12.60 |           1.77 |       3.77 |        6.38 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 4-actual-D12-5-wind2 | completed / outside configured limits |   164.56 |     12.59 |           1.69 |       5.08 |        6.38 |   23.85 |           12.09 |            13.09 |             54.26 |
+| 4-actual-D12-5-wind4 | completed / outside configured limits |   158.84 |     12.59 |           1.45 |       8.40 |        6.38 |   47.12 |           12.08 |            13.08 |             53.85 |
+| 5-empty-D12-5-wind0  | completed / outside configured limits |   197.67 |     13.16 |           0.97 |       0.36 |        4.84 |    0.09 |           13.98 |            14.98 |             62.94 |
+| 5-empty-D12-5-wind2  | completed / outside configured limits |   195.86 |     13.16 |           0.89 |       2.79 |        4.84 |   56.79 |           13.97 |            14.97 |             62.79 |
+| 5-empty-D12-5-wind4  | completed / outside configured limits |   191.01 |     13.16 |           0.85 |       5.52 |        4.84 |  113.38 |           13.96 |            14.96 |             62.41 |
+| 5-dummy-D12-5-wind0  | completed / incomplete inputs         |   166.62 |     12.60 |           1.77 |       3.77 |        5.21 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 5-dummy-D12-5-wind2  | completed / incomplete inputs         |   164.56 |     12.59 |           1.69 |       5.08 |        5.21 |   36.06 |           12.09 |            13.09 |             54.26 |
+| 5-dummy-D12-5-wind4  | completed / incomplete inputs         |   158.84 |     12.59 |           1.45 |       8.40 |        5.21 |   70.36 |           12.08 |            13.08 |             53.85 |
+| 5-actual-D12-5-wind0 | completed / incomplete inputs         |   166.62 |     12.60 |           1.77 |       3.77 |        5.21 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 5-actual-D12-5-wind2 | completed / incomplete inputs         |   164.56 |     12.59 |           1.69 |       5.08 |        5.21 |   36.06 |           12.09 |            13.09 |             54.26 |
+| 5-actual-D12-5-wind4 | completed / incomplete inputs         |   158.84 |     12.59 |           1.45 |       8.40 |        5.21 |   70.36 |           12.08 |            13.08 |             53.85 |
+| 6-empty-D12-5-wind0  | completed / outside configured limits |   197.67 |     13.16 |           0.97 |       0.36 |        5.93 |    0.09 |           13.98 |            14.98 |             62.94 |
+| 6-empty-D12-5-wind2  | completed / outside configured limits |   195.86 |     13.16 |           0.89 |       2.79 |        5.93 |   41.37 |           13.97 |            14.97 |             62.79 |
+| 6-empty-D12-5-wind4  | completed / outside configured limits |   191.01 |     13.16 |           0.85 |       5.52 |        5.93 |   83.61 |           13.96 |            14.96 |             62.41 |
+| 6-dummy-D12-5-wind0  | completed / outside configured limits |   166.62 |     12.60 |           1.73 |       3.77 |        6.38 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 6-dummy-D12-5-wind2  | completed / outside configured limits |   164.56 |     12.59 |           1.66 |       5.08 |        6.38 |   23.84 |           12.09 |            13.09 |             54.26 |
+| 6-dummy-D12-5-wind4  | completed / outside configured limits |   158.84 |     12.59 |           1.42 |       8.40 |        6.38 |   47.13 |           12.08 |            13.08 |             53.85 |
+| 6-actual-D12-5-wind0 | completed / outside configured limits |   166.62 |     12.60 |           1.73 |       3.77 |        6.38 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 6-actual-D12-5-wind2 | completed / outside configured limits |   164.56 |     12.59 |           1.66 |       5.08 |        6.38 |   23.84 |           12.09 |            13.09 |             54.26 |
+| 6-actual-D12-5-wind4 | completed / outside configured limits |   158.84 |     12.59 |           1.42 |       8.40 |        6.38 |   47.13 |           12.08 |            13.08 |             53.85 |
+| 7-empty-D12-5-wind0  | completed / outside configured limits |   197.67 |     13.16 |           0.97 |       0.36 |        4.84 |    0.09 |           13.98 |            14.98 |             62.94 |
+| 7-empty-D12-5-wind2  | completed / outside configured limits |   195.86 |     13.16 |           0.89 |       2.79 |        4.84 |   56.79 |           13.97 |            14.97 |             62.79 |
+| 7-empty-D12-5-wind4  | completed / outside configured limits |   191.01 |     13.16 |           0.85 |       5.52 |        4.84 |  113.38 |           13.96 |            14.96 |             62.41 |
+| 7-dummy-D12-5-wind0  | completed / incomplete inputs         |   166.62 |     12.60 |           1.73 |       3.77 |        5.21 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 7-dummy-D12-5-wind2  | completed / incomplete inputs         |   164.56 |     12.59 |           1.66 |       5.08 |        5.21 |   36.04 |           12.09 |            13.09 |             54.26 |
+| 7-dummy-D12-5-wind4  | completed / incomplete inputs         |   158.84 |     12.59 |           1.42 |       8.40 |        5.21 |   70.37 |           12.08 |            13.08 |             53.85 |
+| 7-actual-D12-5-wind0 | completed / incomplete inputs         |   166.62 |     12.60 |           1.73 |       3.77 |        5.21 |    0.07 |           12.10 |            13.10 |             54.41 |
+| 7-actual-D12-5-wind2 | completed / incomplete inputs         |   164.56 |     12.59 |           1.66 |       5.08 |        5.21 |   36.04 |           12.09 |            13.09 |             54.26 |
+| 7-actual-D12-5-wind4 | completed / incomplete inputs         |   158.84 |     12.59 |           1.42 |       8.40 |        5.21 |   70.37 |           12.08 |            13.08 |             53.85 |
 
 No case is ranked or cleared for flight. Dummy and provisional actual loads use the same mass and CG.
 
@@ -173,8 +173,10 @@ No case is ranked or cleared for flight. Dummy and provisional actual loads use 
 - Measured mass and balance: Flame-resistant bay shield and perimeter seal allowance
 - Assembled mass/CG, print fit, attachment strength and recovery separation checks
 - V2 saddle bond strength and adhesive mass require physical checks; saddle-specific aerodynamic drag is unresolved
-- Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is not physical validation
-- Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require bench/flight validation
+- Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is
+  not physical validation
+- Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require
+  bench/flight validation
 
 ## Per-case criterion failures
 
@@ -258,23 +260,10 @@ These are bounded scenario corners, not probabilities or reliability estimates.
 ```json
 {
   "schema_version": 1,
-  "print_mass_factors": [
-    1.0,
-    1.2
-  ],
-  "payload_cg_offsets_mm": [
-    -5.0,
-    5.0
-  ],
-  "chute_cd": [
-    0.6,
-    0.9
-  ],
-  "wind_m_s": [
-    0.0,
-    2.0,
-    4.0
-  ],
+  "print_mass_factors": [1.0, 1.2],
+  "payload_cg_offsets_mm": [-5.0, 5.0],
+  "chute_cd": [0.6, 0.9],
+  "wind_m_s": [0.0, 2.0, 4.0],
   "max_cases": 72,
   "source": "Engineering stress envelope, not measured distributions: print mass +0/+20%, payload CG +/-5 mm, chute Cd 0.6/0.9, uniform wind 0/2/4 m/s"
 }
@@ -285,24 +274,42 @@ Each case records its applied factors in results.json and has a resolved corner 
 ## Assumptions and boundaries
 
 - Length origin: nose tip, +x aft; CAD +Z maps to axial +x. Flight position: OpenRocket local east/north/up, SI units.
-- ISA atmosphere, constant wind at every height, zero turbulence; configured seed is retained. Displacement is scenario-dependent.
-- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat trapezoidal fins and tapered collar fairing. The thin fairing lip/glue fillet is an approximation documented in BUILD.md.
-- CAD volume × material density is a solid-mass estimate. Nose/bay/sled lumped mass and CG; fin mass included once in collar override.
-- No external camera/antenna is modeled. Configuration rejects protrusions. An internal camera has no guaranteed useful view.
-- Stability minimum is sampled from guide departure strictly before apogee or deployment, whichever comes first, using (CP−CG)/reference diameter. Low-speed samples remain included; time, speed and angle at the minimum are in JSON.
-- Event metrics interpolate adjacent samples at the engine event time. Landing descent is vertical speed at ground event, not a structural impact assessment.
-- Powered peaks use positive-thrust samples from liftoff strictly before first burnout, deployment, abort or ground contact. Missing events/data yield unavailable metrics; peak times and sample coverage are in JSON. These are sampled single-stage maxima, not continuous-time bounds.
-- Powered acceleration is trajectory acceleration magnitude / 9.80665. Estimated load is hypot(lateral acceleration, vertical acceleration + local gravity) / 9.80665 at the center of mass. Coriolis correction, sensor-offset rotation, vibration and deployment/impact shock are excluded; this is not a per-axis IMU prediction or a hardware survival rating.
-- Recovery is motor-ejection deployment with configured Cd; packing envelope, ejection seal, thermal protection and attachment loads require physical checks.
-- Reference mode preserves upstream geometry and masses; demonstration CAD and baseline mass assumptions do not apply to that reference.
+- ISA atmosphere, constant wind at every height, zero turbulence; configured seed is retained. Displacement is
+  scenario-dependent.
+- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat trapezoidal fins and
+  tapered collar fairing. The thin fairing lip/glue fillet is an approximation documented in BUILD.md.
+- CAD volume × material density is a solid-mass estimate. Nose/bay/sled lumped mass and CG; fin mass included once in
+  collar override.
+- No external camera/antenna is modeled. Configuration rejects protrusions. An internal camera has no guaranteed useful
+  view.
+- Stability minimum is sampled from guide departure strictly before apogee or deployment, whichever comes first, using
+  (CP−CG)/reference diameter. Low-speed samples remain included; time, speed and angle at the minimum are in JSON.
+- Event metrics interpolate adjacent samples at the engine event time. Landing descent is vertical speed at ground
+  event, not a structural impact assessment.
+- Powered peaks use positive-thrust samples from liftoff strictly before first burnout, deployment, abort or ground
+  contact. Missing events/data yield unavailable metrics; peak times and sample coverage are in JSON. These are sampled
+  single-stage maxima, not continuous-time bounds.
+- Powered acceleration is trajectory acceleration magnitude / 9.80665. Estimated load is hypot(lateral acceleration,
+  vertical acceleration + local gravity) / 9.80665 at the center of mass. Coriolis correction, sensor-offset rotation,
+  vibration and deployment/impact shock are excluded; this is not a per-axis IMU prediction or a hardware survival
+  rating.
+- Recovery is motor-ejection deployment with configured Cd; packing envelope, ejection seal, thermal protection and
+  attachment loads require physical checks.
+- Reference mode preserves upstream geometry and masses; demonstration CAD and baseline mass assumptions do not apply to
+  that reference.
 
 ## Configured criteria
 
-- apogee_m: 30.0 … None m; engineering assumption; New motor comparison: report altitude without inherited 120 m ceiling; retain 30 m minimum. Site altitude clearance is unassessed.
-- guide_departure_m_s: 12.0 … None m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- minimum_ascent_stability_cal: 1.0 … None cal; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- deployment_speed_m_s: None … 10.0 m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- landing_descent_m_s: None … 6.0 m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
+- apogee_m: 30.0 … None m; engineering assumption; New motor comparison: report altitude without inherited 120 m
+  ceiling; retain 30 m minimum. Site altitude clearance is unassessed.
+- guide_departure_m_s: 12.0 … None m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- minimum_ascent_stability_cal: 1.0 … None cal; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- deployment_speed_m_s: None … 10.0 m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- landing_descent_m_s: None … 6.0 m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
 
 ## Reproducibility
 
@@ -322,4 +329,5 @@ Each case records its applied factors in results.json and has a resolved corner 
 }
 ```
 
-Exact motor curves, events and time series are retained in results.json. Null means unavailable; failures remain in the table.
+Exact motor curves, events and time series are retained in results.json. Null means unavailable; failures remain in the
+table.

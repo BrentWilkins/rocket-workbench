@@ -8,17 +8,17 @@ Configuration SHA256: `607b8164dcd07ab82d52796b9d0b2d06e6541b276744f9287670ae5e5
 
 ## Cases
 
-| Case | Execution / evaluation | Apogee m | Guide m/s | Min ascent cal | Deploy m/s | Descent m/s | Drift m | Powered accel g | Estimated load g | Powered speed m/s |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| empty-D12-5-wind0 | completed / incomplete inputs | 186.08 | 12.99 | 1.62 | 1.68 | 4.97 | 0.09 | 13.33 | 14.33 | 59.92 |
-| empty-D12-5-wind2 | completed / incomplete inputs | 184.30 | 12.99 | 1.04 | 3.21 | 4.97 | 50.26 | 13.32 | 14.32 | 59.78 |
-| empty-D12-5-wind4 | completed / incomplete inputs | 179.53 | 12.98 | 1.03 | 6.01 | 4.97 | 100.27 | 13.31 | 14.31 | 59.40 |
-| dummy-D12-5-wind0 | completed / incomplete inputs | 156.58 | 12.48 | 1.81 | 5.15 | 5.33 | 0.05 | 11.60 | 12.60 | 51.95 |
-| dummy-D12-5-wind2 | completed / incomplete inputs | 154.56 | 12.48 | 1.86 | 6.05 | 5.33 | 31.04 | 11.59 | 12.59 | 51.80 |
-| dummy-D12-5-wind4 | completed / incomplete inputs | 149.00 | 12.48 | 1.65 | 9.28 | 5.33 | 60.34 | 11.59 | 12.59 | 51.38 |
-| actual-D12-5-wind0 | completed / incomplete inputs | 156.58 | 12.48 | 1.81 | 5.15 | 5.33 | 0.05 | 11.60 | 12.60 | 51.95 |
-| actual-D12-5-wind2 | completed / incomplete inputs | 154.56 | 12.48 | 1.86 | 6.05 | 5.33 | 31.04 | 11.59 | 12.59 | 51.80 |
-| actual-D12-5-wind4 | completed / incomplete inputs | 149.00 | 12.48 | 1.65 | 9.28 | 5.33 | 60.34 | 11.59 | 12.59 | 51.38 |
+| Case               | Execution / evaluation        | Apogee m | Guide m/s | Min ascent cal | Deploy m/s | Descent m/s | Drift m | Powered accel g | Estimated load g | Powered speed m/s |
+| ------------------ | ----------------------------- | -------: | --------: | -------------: | ---------: | ----------: | ------: | --------------: | ---------------: | ----------------: |
+| empty-D12-5-wind0  | completed / incomplete inputs |   186.08 |     12.99 |           1.62 |       1.68 |        4.97 |    0.09 |           13.33 |            14.33 |             59.92 |
+| empty-D12-5-wind2  | completed / incomplete inputs |   184.30 |     12.99 |           1.04 |       3.21 |        4.97 |   50.26 |           13.32 |            14.32 |             59.78 |
+| empty-D12-5-wind4  | completed / incomplete inputs |   179.53 |     12.98 |           1.03 |       6.01 |        4.97 |  100.27 |           13.31 |            14.31 |             59.40 |
+| dummy-D12-5-wind0  | completed / incomplete inputs |   156.58 |     12.48 |           1.81 |       5.15 |        5.33 |    0.05 |           11.60 |            12.60 |             51.95 |
+| dummy-D12-5-wind2  | completed / incomplete inputs |   154.56 |     12.48 |           1.86 |       6.05 |        5.33 |   31.04 |           11.59 |            12.59 |             51.80 |
+| dummy-D12-5-wind4  | completed / incomplete inputs |   149.00 |     12.48 |           1.65 |       9.28 |        5.33 |   60.34 |           11.59 |            12.59 |             51.38 |
+| actual-D12-5-wind0 | completed / incomplete inputs |   156.58 |     12.48 |           1.81 |       5.15 |        5.33 |    0.05 |           11.60 |            12.60 |             51.95 |
+| actual-D12-5-wind2 | completed / incomplete inputs |   154.56 |     12.48 |           1.86 |       6.05 |        5.33 |   31.04 |           11.59 |            12.59 |             51.80 |
+| actual-D12-5-wind4 | completed / incomplete inputs |   149.00 |     12.48 |           1.65 |       9.28 |        5.33 |   60.34 |           11.59 |            12.59 |             51.38 |
 
 No case is ranked or cleared for flight. Dummy and provisional actual loads use the same mass and CG.
 
@@ -47,8 +47,10 @@ No case is ranked or cleared for flight. Dummy and provisional actual loads use 
 - Measured mass and balance: Flame-resistant bay shield and perimeter seal allowance
 - Assembled mass/CG, print fit, attachment strength and recovery separation checks
 - V2 saddle bond strength and adhesive mass require physical checks; saddle-specific aerodynamic drag is unresolved
-- Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is not physical validation
-- Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require bench/flight validation
+- Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is
+  not physical validation
+- Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require
+  bench/flight validation
 
 ## Per-case criterion failures
 
@@ -65,24 +67,42 @@ No case is ranked or cleared for flight. Dummy and provisional actual loads use 
 ## Assumptions and boundaries
 
 - Length origin: nose tip, +x aft; CAD +Z maps to axial +x. Flight position: OpenRocket local east/north/up, SI units.
-- ISA atmosphere, constant wind at every height, zero turbulence; configured seed is retained. Displacement is scenario-dependent.
-- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat trapezoidal fins and tapered collar fairing. The thin fairing lip/glue fillet is an approximation documented in BUILD.md.
-- CAD volume × material density is a solid-mass estimate. Nose/bay/sled lumped mass and CG; fin mass included once in collar override.
-- No external camera/antenna is modeled. Configuration rejects protrusions. An internal camera has no guaranteed useful view.
-- Stability minimum is sampled from guide departure strictly before apogee or deployment, whichever comes first, using (CP−CG)/reference diameter. Low-speed samples remain included; time, speed and angle at the minimum are in JSON.
-- Event metrics interpolate adjacent samples at the engine event time. Landing descent is vertical speed at ground event, not a structural impact assessment.
-- Powered peaks use positive-thrust samples from liftoff strictly before first burnout, deployment, abort or ground contact. Missing events/data yield unavailable metrics; peak times and sample coverage are in JSON. These are sampled single-stage maxima, not continuous-time bounds.
-- Powered acceleration is trajectory acceleration magnitude / 9.80665. Estimated load is hypot(lateral acceleration, vertical acceleration + local gravity) / 9.80665 at the center of mass. Coriolis correction, sensor-offset rotation, vibration and deployment/impact shock are excluded; this is not a per-axis IMU prediction or a hardware survival rating.
-- Recovery is motor-ejection deployment with configured Cd; packing envelope, ejection seal, thermal protection and attachment loads require physical checks.
-- Reference mode preserves upstream geometry and masses; demonstration CAD and baseline mass assumptions do not apply to that reference.
+- ISA atmosphere, constant wind at every height, zero turbulence; configured seed is retained. Displacement is
+  scenario-dependent.
+- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat trapezoidal fins and
+  tapered collar fairing. The thin fairing lip/glue fillet is an approximation documented in BUILD.md.
+- CAD volume × material density is a solid-mass estimate. Nose/bay/sled lumped mass and CG; fin mass included once in
+  collar override.
+- No external camera/antenna is modeled. Configuration rejects protrusions. An internal camera has no guaranteed useful
+  view.
+- Stability minimum is sampled from guide departure strictly before apogee or deployment, whichever comes first, using
+  (CP−CG)/reference diameter. Low-speed samples remain included; time, speed and angle at the minimum are in JSON.
+- Event metrics interpolate adjacent samples at the engine event time. Landing descent is vertical speed at ground
+  event, not a structural impact assessment.
+- Powered peaks use positive-thrust samples from liftoff strictly before first burnout, deployment, abort or ground
+  contact. Missing events/data yield unavailable metrics; peak times and sample coverage are in JSON. These are sampled
+  single-stage maxima, not continuous-time bounds.
+- Powered acceleration is trajectory acceleration magnitude / 9.80665. Estimated load is hypot(lateral acceleration,
+  vertical acceleration + local gravity) / 9.80665 at the center of mass. Coriolis correction, sensor-offset rotation,
+  vibration and deployment/impact shock are excluded; this is not a per-axis IMU prediction or a hardware survival
+  rating.
+- Recovery is motor-ejection deployment with configured Cd; packing envelope, ejection seal, thermal protection and
+  attachment loads require physical checks.
+- Reference mode preserves upstream geometry and masses; demonstration CAD and baseline mass assumptions do not apply to
+  that reference.
 
 ## Configured criteria
 
-- apogee_m: 30.0 … None m; engineering assumption; New motor comparison: report altitude without inherited 120 m ceiling; retain 30 m minimum. Site altitude clearance is unassessed.
-- guide_departure_m_s: 12.0 … None m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- minimum_ascent_stability_cal: 1.0 … None cal; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- deployment_speed_m_s: None … 10.0 m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
-- landing_descent_m_s: None … 6.0 m/s; engineering assumption; Project engineering assumption for demonstration screening; not a launch clearance
+- apogee_m: 30.0 … None m; engineering assumption; New motor comparison: report altitude without inherited 120 m
+  ceiling; retain 30 m minimum. Site altitude clearance is unassessed.
+- guide_departure_m_s: 12.0 … None m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- minimum_ascent_stability_cal: 1.0 … None cal; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- deployment_speed_m_s: None … 10.0 m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
+- landing_descent_m_s: None … 6.0 m/s; engineering assumption; Project engineering assumption for demonstration
+  screening; not a launch clearance
 
 ## Reproducibility
 
@@ -104,4 +124,5 @@ No case is ranked or cleared for flight. Dummy and provisional actual loads use 
 }
 ```
 
-Exact motor curves, events and time series are retained in results.json. Null means unavailable; failures remain in the table.
+Exact motor curves, events and time series are retained in results.json. Null means unavailable; failures remain in the
+table.

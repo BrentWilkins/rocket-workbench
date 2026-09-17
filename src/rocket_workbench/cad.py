@@ -116,6 +116,90 @@ def shapes(config: Config, *, cap_insert_angles=None):
         # Preserve the historical trapezoid root-union construction and mass.
         polygon = [(collar_outer+y-(.3 if y == 0 else 0), collar_start+x) for x,y in points]
     fin = cq.Workplane('XZ').polyline(polygon).close().extrude(g.mm('fin_thickness')/2, both=True)
+    if config.fin_profile == 'organic-v2':
+        # Round the exposed leading and tip edges without softening the hidden
+        # root. The aft edge is tapered separately instead of made half-round.
+        exposed_edges = [
+            edge for edge in fin.val().Edges()
+            if edge.BoundingBox().ylen < 1e-6
+            and edge.Center().x > collar_outer + .5
+            and edge.Center().z < collar_start + g.mm('fin_root') - .5
+        ]
+        fin = fin.newObject(exposed_edges).fillet(g.mm('fin_thickness') / 2 - .1)
+
+        # Taper the final 7 mm of chord to a printable 0.7 mm trailing edge.
+        # These cuts are made before union with the collar, so its wall remains
+        # intact behind the hidden fin root.
+        trailing_z = collar_start + g.mm('fin_root')
+        taper_length = 7.0
+        edge_half = .35
+        full_half = g.mm('fin_thickness') / 2
+        radial_start = collar_outer - 1
+        radial_length = g.mm('fin_span') + 3
+        for side in (-1, 1):
+            cut = (cq.Workplane('YZ', origin=(radial_start, 0, 0))
+                   .moveTo(side * edge_half, trailing_z)
+                   .lineTo(side * full_half, trailing_z - taper_length)
+                   .lineTo(side * (full_half + 1), trailing_z - taper_length)
+                   .lineTo(side * (full_half + 1), trailing_z)
+                   .close().extrude(radial_length))
+            fin = fin.cut(cut)
+
+        # A variable-radius cove grows through the load-bearing middle of the
+        # root and relaxes near both ends. It leaves the selected planform,
+        # span, and sweep unchanged.
+        def root_cove(side):
+            wires = []
+            stations = ((0, .8), (.12, 2.4), (.38, 3.0),
+                        (.68, 3.0), (.88, 2.4), (1, .8))
+            y0 = side * g.mm('fin_thickness') / 2
+            for fraction, radius in stations:
+                z = collar_start + fraction * g.mm('fin_root')
+                # Solve the fillet circle tangent to both the cylindrical
+                # collar and the planar fin side. The earlier tangent-plane
+                # approximation touched the collar only at one line and left
+                # a visible trough alongside the cove.
+                y_center = y0 + side * radius
+                x_center = math.sqrt((collar_outer + radius) ** 2 - y_center ** 2)
+                tangent_angle = math.atan2(y_center, x_center)
+                body_tangent = (
+                    collar_outer * math.cos(tangent_angle),
+                    collar_outer * math.sin(tangent_angle),
+                )
+                fillet_start_angle = tangent_angle + math.pi
+                fin_tangent_angle = 3 * math.pi / 2 if side > 0 else math.pi / 2
+                fillet_mid_angle = (fillet_start_angle + fin_tangent_angle) / 2
+                fillet_mid = (
+                    x_center + radius * math.cos(fillet_mid_angle),
+                    y_center + radius * math.sin(fillet_mid_angle),
+                )
+                fin_tangent = (x_center, y0)
+                # Extend the hidden side of the cove 0.2 mm into both solids.
+                # The visible arc remains exactly tangent to the collar, while
+                # the overlap prevents coincident-face seams in STL slicers.
+                overlap_radius = collar_outer - .2
+                root_inner_x = math.sqrt(overlap_radius ** 2 - y0 ** 2)
+                body_inner = (
+                    overlap_radius * math.cos(tangent_angle),
+                    overlap_radius * math.sin(tangent_angle),
+                )
+                root_inner_angle = math.atan2(y0, root_inner_x)
+                inner_mid_angle = (root_inner_angle + tangent_angle) / 2
+                body_inner_mid = (
+                    overlap_radius * math.cos(inner_mid_angle),
+                    overlap_radius * math.sin(inner_mid_angle),
+                )
+                section = (cq.Workplane('XY', origin=(0, 0, z))
+                           .moveTo(root_inner_x, y0)
+                           .lineTo(*fin_tangent)
+                           .threePointArc(fillet_mid, body_tangent)
+                           .lineTo(*body_inner)
+                           .threePointArc(body_inner_mid, (root_inner_x, y0))
+                           .close())
+                wires.append(section.wire().val())
+            return cq.Workplane(obj=cq.Solid.makeLoft(wires, False))
+
+        fin = fin.union(root_cove(-1)).union(root_cove(1))
     for angle in [0, 120, 240]:
         collar = collar.union(fin.rotate((0, 0, 0), (0, 0, 1), angle))
     parts = {'nose-bay': nose, 'bay-bulkhead': cap, 'payload-sled': sled, 'fin-collar': collar}

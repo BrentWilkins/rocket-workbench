@@ -143,6 +143,7 @@ class Config(Model):
     geometry: Geometry
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
     fin_shape: Literal['trapezoidal', 'elliptical', 'clipped-delta', 'swept'] = 'trapezoidal'
+    fin_profile: Literal['square', 'organic-v2'] = 'square'
     avionics_profile: Literal['xiao-gnss-baro-v1'] | None = None
     bay_retention: Literal['printed-pilots', 'm2-insert-trial-v1'] = 'printed-pilots'
     material: Literal['PLA', 'PETG']
@@ -159,6 +160,8 @@ class Config(Model):
     def feasible(self):
         if self.bay_retention != 'printed-pilots' and not self.avionics_profile:
             raise ValueError('Insert trial requires the specified avionics layout')
+        if self.fin_profile == 'organic-v2' and self.fin_shape != 'clipped-delta':
+            raise ValueError('Organic fin profile v2 is defined only for clipped-delta fins')
         g = self.geometry
         for name in Geometry.model_fields:
             g.mm(name)

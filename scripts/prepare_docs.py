@@ -31,6 +31,7 @@ CURRENT_RUNS = {
     "avionics-baseline-stress-20260913",
     "avionics-selected-20260913",
     "avionics-orientation-20260913",
+    "d12-nose-length-screen-20260916",
 }
 ARCHIVE_PAGES = {
     "docs/BUILD_18MM.md",
@@ -99,6 +100,8 @@ def prepare(snapshot=False, snapshot_runs=()):
     evidence = ROOT / "docs-evidence"
     sources = list((ROOT / "docs").rglob("*.md"))
     sources += list((ROOT / "docs").glob("*.yaml"))
+    sources += list((ROOT / "docs").rglob("*.css"))
+    sources += list((ROOT / "docs").rglob("*.webp"))
     sources += [path for path in (ROOT / "docs" / "assets").rglob("*") if path.is_file()]
     sources += list((ROOT / "plots").glob("*.svg"))
     sources += [ROOT / "README.md", ROOT / "ROCKET_PROJECT_BRIEF.md"]

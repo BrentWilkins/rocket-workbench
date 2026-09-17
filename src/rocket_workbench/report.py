@@ -80,7 +80,7 @@ def write_report(out: Path):
     lines += ['', '## Assumptions and boundaries', '',
               '- Length origin: nose tip, +x aft; CAD +Z maps to axial +x. Flight position: OpenRocket local east/north/up, SI units.',
               '- ISA atmosphere, constant wind at every height, zero turbulence; configured seed is retained. Displacement is scenario-dependent.',
-              '- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat trapezoidal fins and tapered collar fairing. The thin fairing lip/glue fillet is an approximation documented in BUILD.md.',
+              '- Native OpenRocket aerodynamics; configured axisymmetric nose, cylindrical sections, three flat fins and tapered collar fairing. CAD edge rounding, root coves, and the thin collar lip/glue fillet are not resolved aerodynamic surfaces.',
               '- CAD volume × material density is a solid-mass estimate. Nose/bay/sled lumped mass and CG; fin mass included once in collar override.',
               '- No external camera/antenna is modeled. Configuration rejects protrusions. An internal camera has no guaranteed useful view.',
               '- Stability minimum is sampled from guide departure strictly before apogee or deployment, whichever comes first, using (CP−CG)/reference diameter. Low-speed samples remain included; time, speed and angle at the minimum are in JSON.',
