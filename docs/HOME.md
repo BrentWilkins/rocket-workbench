@@ -1,6 +1,5 @@
 ---
 hide:
-  - navigation
   - toc
   - path
 ---
@@ -30,7 +29,7 @@ hide:
       </div>
       <div class="rw-actions">
         <a class="rw-button rw-button--primary" href="docs/CURRENT_DESIGN/">Current design</a>
-        <a class="rw-button" href="docs/BUILD/">Build and hardware</a>
+        <a class="rw-button" href="docs/BUILD/">Build hardware</a>
       </div>
     </div>
     <p class="rw-hero__caption">Velocity-colored streamlines from the retained swept-fin OpenFOAM case</p>
@@ -40,37 +39,37 @@ hide:
     <article class="rw-card">
       <p class="rw-card__label">Current platform</p>
       <p class="rw-card__value">D12-5 / BT-60</p>
-      <p>Passive clipped-delta configuration with a 500 mm body, removable avionics bay, organic fin-collar v2, and 192/192 simulated D12 cases meeting the earlier bounded screens.</p>
+      <p>Passive clipped-delta configuration, 500 mm body, removable avionics bay, and organic fin-collar v2.</p>
     </article>
     <article class="rw-card">
-      <p class="rw-card__label">Stock-pad finding</p>
-      <p class="rw-card__value">11.43–11.51 m/s</p>
-      <p>The 30-inch rod misses the project’s 12 m/s guide-departure screen across every 30–50 mm nose tested.</p>
+      <p class="rw-card__label">Selected launch guide</p>
+      <p class="rw-card__value">36 × 3/16 inches</p>
+      <p>Estes’ two-piece <a href="https://estesrockets.com/products/3-16-two-piece-maxi-launch-rod">Maxi rod</a> fits the existing <a href="https://estesrockets.com/products/porta-pad-ii-launch-pad">Porta-Pad II</a> and provides a longer, stiffer guide.</p>
     </article>
     <article class="rw-card">
-      <p class="rw-card__label">Next physical gate</p>
-      <p class="rw-card__value">Measure, fit, verify</p>
-      <p>Use a stiffer 36-inch guide, then measure assembled mass, balance, retention, and recovery packing.</p>
+      <p class="rw-card__label">Modeled guide departure</p>
+      <p class="rw-card__value">12.91–12.92 m/s</p>
+      <p>The current loaded cases clear the project’s 12 m/s screen on the 36-inch guide.</p>
     </article>
   </section>
 
   <section class="rw-copy">
     <div>
-      <p class="rw-eyebrow">CURRENT DECISION</p>
-      <h2>The small pad can stay. The stock rod should not.</h2>
+      <p class="rw-eyebrow">CURRENT LAUNCH SETUP</p>
+      <h2>The pad stays. The guide gets longer and stiffer.</h2>
     </div>
     <div>
       <p>
-        The Porta-Pad II base accepts Estes’ 36-inch, 3/16-inch Maxi rod. The current printed lug sleeves assume 1/8-inch paper lugs, so both lugs must be resized or replaced together and checked for free, coaxial travel on the actual rod.
+        The stock 1/8-inch rod lifts out of the Porta-Pad II and the two-piece 3/16-inch Maxi rod installs in the same pad. Two aligned launch lugs keep the rocket pointed on the selected path while the D12 builds enough airspeed for the fins to take over.
       </p>
       <p>
-        The commercial 24 mm motor mount remains bonded inside the paper BT-60 tube; the printed fin collar bonds around the tube and does not retain the motor.
+        The current simulation predicts 12.91–12.92 m/s at guide departure. That is a useful modeled margin, not flight clearance: the printed lug sleeves still need to be resized from 1/8 inch, and the assembled rocket must slide freely over the straight, clean rod with both lugs coaxial. Actual usable guide travel, loaded mass, balance, wind, and pad setup remain physical checks.
       </p>
       <p class="rw-links">
+        <a href="docs/CURRENT_DESIGN/">Current configuration →</a>
         <a href="docs/MEASUREMENTS/">Measurement checklist →</a>
-        <a href="docs/SHOPPING/">Hardware and sourcing →</a>
+        <a href="docs/SHOPPING/">Hardware sourcing →</a>
         <a href="docs/FIN_COLLAR_V2/">Fin-collar v2 →</a>
-        <a href="runs/d12-nose-length-screen-20260916/report/">30–50 mm nose screen →</a>
       </p>
     </div>
   </section>
@@ -80,17 +79,17 @@ hide:
 
 ```mermaid
 flowchart TD
-  Inputs[Geometry + provisional hardware inputs] --> Config[Validated configuration]
-  Config --> CAD[CAD parts + mass ledger]
-  CAD --> Model[OpenRocket flight model]
-  Model --> Cases[Motor, payload + wind cases]
-  Cases --> Criteria[Metrics + feasibility criteria]
-  Criteria --> Shortlist[Shortlist + tradeoffs]
-  Shortlist --> Review[As-built measurements + human review]
-  Review --> Config
+    Inputs[Geometry + provisional hardware inputs] --> Config[Validated configuration]
+    Config --> CAD[CAD parts + mass ledger]
+    CAD --> Model[OpenRocket flight model]
+    Model --> Cases[Motor, payload + wind cases]
+    Cases --> Criteria[Metrics + feasibility criteria]
+    Criteria --> Shortlist[Shortlist + tradeoffs]
+    Shortlist --> Review[As-built measurements + human review]
+    Review --> Config
 ```
 
-The loop is the development workflow—not automated approval for physical flight. CFD remains exploratory until its
+This loop is a development workflow—not automated approval for physical flight. CFD remains exploratory until its
 validation gates pass.
 
 [Browse archived and superseded studies](ARCHIVE.md)
