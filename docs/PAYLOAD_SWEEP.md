@@ -10,10 +10,10 @@ These are conditional design comparisons. Only the raw collar (27 g) and raw XIA
 weighed. The other installed masses, axial CGs, parachute behavior and packaging remain estimates. The
 [current physical baseline](CURRENT_DESIGN.md) is still the 500 mm body, 50 mm conical nose and printed collar.
 
-For wind response and launcher decisions, use the newer [flight-robustness study](FLIGHT_ROBUSTNESS.md).
-It compares these finalists under paired conditions and corrects guide travel for the aft-lug offset.
-The historical sweep below remains a preliminary geometry comparison; its whole-ascent stability metric and
-uncompensated guide-departure speeds are not interchangeable with the newer free-powered-flight results.
+For wind response and launcher decisions, use the newer [flight-robustness study](FLIGHT_ROBUSTNESS.md). It compares
+these finalists under paired conditions and corrects guide travel for the aft-lug offset. The historical sweep below
+remains a preliminary geometry comparison; its whole-ascent stability metric and uncompensated guide-departure speeds
+are not interchangeable with the newer free-powered-flight results.
 
 An **ogive** has pointed, smoothly curved sides, roughly like a bullet. A cone has straight sides; an ellipsoid has a
 rounded tip. The profiles below use the same base diameter and the lengths discussed in this report.
@@ -47,20 +47,20 @@ altitude alone does not select the design.
 
 ### What the extra stability buys
 
-For the 40 mm ogive candidates, increasing body length from 500 to 530 mm adds **30 mm (3 cm)**.
-The E12-6 comparison gains about **0.13 caliber**, from 1.51 to 1.64, while losing about **4 m (1.3%)**
-of apogee; the D12-5 altitude cost is about **2.5 m (1.4%)**.
+For the 40 mm ogive candidates, increasing body length from 500 to 530 mm adds **30 mm (3 cm)**. The E12-6 comparison
+gains about **0.13 caliber**, from 1.51 to 1.64, while losing about **4 m (1.3%)** of apogee; the D12-5 altitude cost is
+about **2.5 m (1.4%)**.
 
-A caliber is one body diameter. At our modeled 41.6 mm OD, that extra 0.13 caliber represents about
-**5.3 mm more CG-to-CP separation** at the reported minimum. The CG is the balance point; the CP is where
-the aerodynamic side force effectively acts. Keeping the CP behind the CG lets that force turn the nose
-back toward the airflow. More separation means more correcting leverage: 1.64 versus 1.51 is roughly
-**8.5% more leverage for the same side force**, not a guarantee of that much better flight behavior.
+A caliber is one body diameter. At our modeled 41.6 mm OD, that extra 0.13 caliber represents about **5.3 mm more
+CG-to-CP separation** at the reported minimum. The CG is the balance point; the CP is where the aerodynamic side force
+effectively acts. Keeping the CP behind the CG lets that force turn the nose back toward the airflow. More separation
+means more correcting leverage: 1.64 versus 1.51 is roughly **8.5% more leverage for the same side force**, not a
+guarantee of that much better flight behavior.
 
-Compared with 1.0 caliber, 1.64 means 64% more separation—not “64% safer.” The practical benefit is a
-modest cushion against mass/placement errors and changing aerodynamic conditions. It does not guarantee
-less wobble or better vertical flight in wind; weathercocking can increase. The 530 mm option is therefore
-a low-altitude-cost margin and packaging choice, not a demonstrated higher-wind capability. See the
+Compared with 1.0 caliber, 1.64 means 64% more separation—not “64% safer.” The practical benefit is a modest cushion
+against mass/placement errors and changing aerodynamic conditions. It does not guarantee less wobble or better vertical
+flight in wind; weathercocking can increase. The 530 mm option is therefore a low-altitude-cost margin and packaging
+choice, not a demonstrated higher-wind capability. See the
 [CG/CP and wind explanation](OPENROCKET.md#stability-margin-calibers-versus-diameter).
 
 ## What was swept

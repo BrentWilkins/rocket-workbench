@@ -1,29 +1,30 @@
 # D12 / BT-60 provisional build guide
 
-**Existing 500 mm baseline, not the latest manufacturing release.** The [current study recommendation](CURRENT_DESIGN.md) is a 530 mm body with a 40 mm ogive. Update and verify the selected configuration/CAD before using these cut lengths or print files; launch-guide and recovery checks remain open.
+**Existing 500 mm baseline, not the latest manufacturing release.** The
+[current study recommendation](CURRENT_DESIGN.md) is a 530 mm body with a 40 mm ogive. Update and verify the selected
+configuration/CAD before using these cut lengths or print files; launch-guide and recovery checks remain open.
 
-This guide covers the provisional **500 mm BT-60 airframe**, assembled from two tube sections and a
-3-inch coupler with the [integrated fin collar](INTEGRATED_FIN_COLLAR.md). It is a development
-build, not a flight-qualified kit. Dry-fit all purchased hardware before cutting or bonding.
-Earlier 18 mm cut lengths are in the [archived build guide](BUILD_18MM.md).
+This guide covers the provisional **500 mm BT-60 airframe**, assembled from two tube sections and a 3-inch coupler with
+the [integrated fin collar](INTEGRATED_FIN_COLLAR.md). It is a development build, not a flight-qualified kit. Dry-fit
+all purchased hardware before cutting or bonding. Earlier 18 mm cut lengths are in the
+[archived build guide](BUILD_18MM.md).
 
 ## Configuration and parts
 
-| Item                    | Current modeled value                                             | Required check                                       |
-| ----------------------- | ----------------------------------------------------------------- | ---------------------------------------------------- |
-| BT-60 body              | Two ~250 mm sections, 3-inch BT-60 coupler; 500 mm assembled, OD 41.6 / ID 40.5 mm | Delivered dimensions, coupler engagement/straightness and seam; keep uncut until dry fit |
-| Nose / internal bay     | 50 / 145 mm                                                       | Sliding fit, antenna clearance, seals and extraction |
-| [Integrated fin collar](INTEGRATED_FIN_COLLAR.md) | 65 mm root/collar, about 53.65 mm span; raw print 27 g | Finished mass/CG, bore fit, root strength and bond |
-| Commercial motor mount  | 24 mm, provisional 95 mm length                                   | Actual rings, hook, block, spacer, installed mass    |
-| Recovery | 24-inch canopy; Estes EST2271 is the local trial part | Actual mass/CG, packing and deployment; rerun for the chosen canopy |
-| Canopy packing envelope | 32 mm diameter × 228.22 mm long                                   | Not proof of actual packing                          |
-| Bay cap                 | 3 mm, three relocated M2 insert bosses                            | Installation, engagement, mass and strength          |
+| Item                                              | Current modeled value                                                              | Required check                                                                           |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| BT-60 body                                        | Two ~250 mm sections, 3-inch BT-60 coupler; 500 mm assembled, OD 41.6 / ID 40.5 mm | Delivered dimensions, coupler engagement/straightness and seam; keep uncut until dry fit |
+| Nose / internal bay                               | 50 / 145 mm                                                                        | Sliding fit, antenna clearance, seals and extraction                                     |
+| [Integrated fin collar](INTEGRATED_FIN_COLLAR.md) | 65 mm root/collar, about 53.65 mm span; raw print 27 g                             | Finished mass/CG, bore fit, root strength and bond                                       |
+| Commercial motor mount                            | 24 mm, provisional 95 mm length                                                    | Actual rings, hook, block, spacer, installed mass                                        |
+| Recovery                                          | 24-inch canopy; Estes EST2271 is the local trial part                              | Actual mass/CG, packing and deployment; rerun for the chosen canopy                      |
+| Canopy packing envelope                           | 32 mm diameter × 228.22 mm long                                                    | Not proof of actual packing                                                              |
+| Bay cap                                           | 3 mm, three relocated M2 insert bosses                                             | Installation, engagement, mass and strength                                              |
 
-The [integrated fin collar](INTEGRATED_FIN_COLLAR.md) has its own unsliced X1C project. The nose,
-bay bulkhead, sled, and other pieces come from the corresponding CAD exports; do not print
-the older six-part project's 1.6 mm fin collar as though it were the current design.
-Inspect all Bambu Studio toolpaths and support contacts before printing. Slicer support and brim
-waste are not installed flight mass.
+The [integrated fin collar](INTEGRATED_FIN_COLLAR.md) has its own unsliced X1C project. The nose, bay bulkhead, sled,
+and other pieces come from the corresponding CAD exports; do not print the older six-part project's 1.6 mm fin collar as
+though it were the current design. Inspect all Bambu Studio toolpaths and support contacts before printing. Slicer
+support and brim waste are not installed flight mass.
 
 ## Dry assembly sequence
 

@@ -5,13 +5,13 @@
 - Current one-piece fin collar: **27 g as printed**, including a tiny amount of brim still to remove. This is not a
   finished painted mass; primer, sanding, and paint may change it. Its axial CG has not been measured, so the
   STEP-derived 522.285 mm nose-tip station remains an estimate.
-- XIAO ESP32-S3 Sense with camera and WiFi antenna: **6 g raw**. This excludes final solder, wiring, mounting,
-  and any installed accessory not on the scale.
+- XIAO ESP32-S3 Sense with camera and WiFi antenna: **6 g raw**. This excludes final solder, wiring, mounting, and any
+  installed accessory not on the scale.
 
-The measured-mass simulation uses 27 g for the bare collar and 6 g for the raw XIAO. Its upper case adds a
-**provisional 3 g collar finish allowance**, while leaving other unmeasured masses at their existing upper bounds.
-Record a cleaned/finished collar mass and complete assembled CG later; buying all remaining electronics is not a
-prerequisite to continue design work.
+The measured-mass simulation uses 27 g for the bare collar and 6 g for the raw XIAO. Its upper case adds a **provisional
+3 g collar finish allowance**, while leaving other unmeasured masses at their existing upper bounds. Record a
+cleaned/finished collar mass and complete assembled CG later; buying all remaining electronics is not a prerequisite to
+continue design work.
 
 Nothing below is claimed completed by the software tests. Record date, method, instrument resolution and uncertainty;
 enter quantities with `provenance: measured` and a meaningful `source`. Keep untouched copies of original run inputs.
@@ -21,8 +21,8 @@ enter quantities with `provenance: measured` and a meaningful `source`. Keep unt
 - Each BT-60 section's ID/OD, roundness, actual cut length, and mass/CG; collar/nose fit on the tube.
 - Selected 3-inch coupler's mass/CG and engagement depth on both sides; joint-adhesive mass/CG, assembled straightness,
   external seam, and repeated fit through the collar/nose/launch guide. The coupler is a new ledger item, not part of
-  the earlier unjointed-body evidence. Record the combined coupler plus joint adhesive as the optional
-  `airframe_joint` purchased-mass role, with its measured mass and nose-tip axial CG.
+  the earlier unjointed-body evidence. Record the combined coupler plus joint adhesive as the optional `airframe_joint`
+  purchased-mass role, with its measured mass and nose-tip axial CG.
 - Motor mount tube dimensions, kit ring spacing, hook access, motor thrust-block seating and retention. Never modify a
   commercial motor to make it fit.
 - Actual launch-lug ID/OD and rod diameter/straightness. Measure effective usable rod travel with the pad/rocket

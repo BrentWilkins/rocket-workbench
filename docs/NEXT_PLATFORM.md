@@ -1,6 +1,7 @@
 # Next platform: more altitude and payload margin
 
-> Historical platform-selection rationale. For the present recommendation and outstanding launch/recovery limits, read the [current design](CURRENT_DESIGN.md) and [final robustness study](FLIGHT_ROBUSTNESS.md).
+> Historical platform-selection rationale. For the present recommendation and outstanding launch/recovery limits, read
+> the [current design](CURRENT_DESIGN.md) and [final robustness study](FLIGHT_ROBUSTNESS.md).
 
 Decision note, 2026-09-13. **The first [24 mm / BT-60 comparison](MOTOR24.md) is now available: 405 completed flights.**
 The reasoning and dated prices below explain that study's scope, not purchase approval.

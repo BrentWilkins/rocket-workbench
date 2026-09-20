@@ -1,8 +1,8 @@
 # Shop-made recovery canopy — sourcing and construction notes
 
-Research notes captured 2026-09-19. Nothing here is built, measured or flown. This page records why a homemade canopy
-is worth considering for this airframe, where to buy suitable fabric locally, and which construction details are
-reported failure points. It is not a build procedure and carries no flight-clearance claim.
+Research notes captured 2026-09-19. Nothing here is built, measured or flown. This page records why a homemade canopy is
+worth considering for this airframe, where to buy suitable fabric locally, and which construction details are reported
+failure points. It is not a build procedure and carries no flight-clearance claim.
 
 ## Why DIY is interesting here specifically
 
@@ -16,11 +16,11 @@ it is not a cost argument. See [the shopping list](SHOPPING.md) for the purchasa
 
 ## Fabric: local sources beat shipping
 
-| Source                              | Weight         |          Price | Notes                                            |
-| ----------------------------------- | -------------- | -------------: | ------------------------------------------------ |
-| Into The Wind, 1408 Pearl St, Boulder | 0.75 oz       | $14.50/yd      | 54 in wide, 1 yd minimum per color, made in USA   |
-| Ripstop by the Roll (online)        | 0.66–1.0 oz    | varies         | MEMBRANE 10 taffeta 0.66 oz; HyperD 1.0 oz        |
-| Rockywoods Fabrics, Loveland        | 1.9 oz coated  | varies         | Local, but heavier than the commercial thin-mil   |
+| Source                                | Weight        |     Price | Notes                                           |
+| ------------------------------------- | ------------- | --------: | ----------------------------------------------- |
+| Into The Wind, 1408 Pearl St, Boulder | 0.75 oz       | $14.50/yd | 54 in wide, 1 yd minimum per color, made in USA |
+| Ripstop by the Roll (online)          | 0.66–1.0 oz   |    varies | MEMBRANE 10 taffeta 0.66 oz; HyperD 1.0 oz      |
+| Rockywoods Fabrics, Loveland          | 1.9 oz coated |    varies | Local, but heavier than the commercial thin-mil |
 
 Into The Wind is the practical pick: 0.75 oz undercuts the 1.1 oz thin-mil, Boulder is a no-shipping errand, and the
 fabric is described as coated, windproof, with little stretch, and cutting without fraying. It ships folded rather than
@@ -44,15 +44,15 @@ builders report lines pulling straight through paper disks on first deployment. 
 and duct-tape V-tabs cut parallel to the tape's fiber direction are used as repairs, but neither is the primary method.
 
 - **Sewn attachment is the standard.** Run the shroud line about an inch in from the edge, turn, and stitch back, so
-  roughly two inches is anchored per line. The doubled-back stitch spreads load into the canopy instead of
-  concentrating it at a point.
+  roughly two inches is anchored per line. The doubled-back stitch spreads load into the canopy instead of concentrating
+  it at a point.
 - **No sewing machine:** grommets set over a backing layer beat adhesive tabs. Expect to need a grommet plier and hole
   punch, and to thicken the grommet area with backing material or the grommet seats loose.
 - **Edge treatment:** cut with a low-wattage soldering iron or a wood burner over a template. Searing the edge prevents
   fray propagation into the attachment points.
 - **Line material:** braided nylon. A little stretch protects the canopy from ejection shock. Avoid Kevlar and Spectra
-  here — inelastic line into a reinforced tab is the classic tear-out combination, and Kevlar's flame resistance is
-  moot because the nylon canopy melts first.
+  here — inelastic line into a reinforced tab is the classic tear-out combination, and Kevlar's flame resistance is moot
+  because the nylon canopy melts first.
 
 Match the Apogee geometry if a starting point is wanted: hexagonal, 24 in flat-to-flat, 24 in shroud lines.
 
@@ -65,8 +65,8 @@ Match the Apogee geometry if a starting point is wanted: hexagonal, 24 in flat-t
 3. **Ejection-gas protection is unresolved at this diameter.** Commercial parachute protectors are commonly sized for
    2–3 inch tubes; this airframe is 1.6 inch. Wadding or a suitably sized blanket needs to be chosen and its volume
    counted against the same 13.6 mm packing margin.
-4. Sewn seams and grommets add bulk at the canopy edge. Whatever is built has to be packed and measured, not assumed
-   to match the modeled envelope.
+4. Sewn seams and grommets add bulk at the canopy edge. Whatever is built has to be packed and measured, not assumed to
+   match the modeled envelope.
 
 ## Sources checked 2026-09-19
 

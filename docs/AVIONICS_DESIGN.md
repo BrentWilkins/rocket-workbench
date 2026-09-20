@@ -1,46 +1,45 @@
 # XIAO camera flight-logger specification and packaging model
 
-> **2026-09-19 packaging update:** The battery and LPS28 keepouts no longer overlap in the provisional layout,
-> and pairwise component collision checks now run with the shell check. The updated payload CG and the current
-> D12-5/E12-6 simulation results are in the [geometry sweep](DE_GEOMETRY_SWEEP.md). Earlier motor/fin results
-> farther down this page are historical; the delivered boards, camera view, wiring, and battery retention still
-> require a physical fit check.
+> **2026-09-19 packaging update:** The battery and LPS28 keepouts no longer overlap in the provisional layout, and
+> pairwise component collision checks now run with the shell check. The updated payload CG and the current D12-5/E12-6
+> simulation results are in the [geometry sweep](DE_GEOMETRY_SWEEP.md). Earlier motor/fin results farther down this page
+> are historical; the delivered boards, camera view, wiring, and battery retention still require a physical fit check.
 
-> **2026-09-19 baseline update:** use the owned Seeed XIAO ESP32-S3 Sense camera and
-> microSD for video/sensor logging. The baseline sensors are the Adafruit LIS331HH
-> ±24 g accelerometer and LPS28 barometer. GPS is optional and is intentionally
-> excluded from the current mass, power, and fit budget. Use an Adafruit 3898
-> protected 400 mAh LiPo; solder a mating JST-PH pigtail to the XIAO BAT+/BAT− pads.
-> The earlier nRF52840/L76K/150 mAh configuration remains historical evidence only.
+> **2026-09-19 baseline update:** use the owned Seeed XIAO ESP32-S3 Sense camera and microSD for video/sensor logging.
+> The baseline sensors are the Adafruit LIS331HH ±24 g accelerometer and LPS28 barometer. GPS is optional and is
+> intentionally excluded from the current mass, power, and fit budget. Use an Adafruit 3898 protected 400 mAh LiPo;
+> solder a mating JST-PH pigtail to the XIAO BAT+/BAT− pads. The earlier nRF52840/L76K/150 mAh configuration remains
+> historical evidence only.
 
 > **Current hardware specification.** See [current designs](CURRENT_DESIGN.md) for the corrected geometry search,
 > performance/stability tradeoffs, uncertainty results and matching V5 print project. The flights linked here include
 > the recovery-wadding CG correction and the performance option's 45 mm fins.
 
 This is a concrete **provisional hardware specification**, not measured hardware, a crash rating, or flight clearance.
-The stability screen now uses 55 mm-span fins for the 24 mm C11/D12/E12 motor envelope; the prior 45 mm option is retained as a comparison, not the selected geometry.
-The selected baseline is the owned **Seeed XIAO ESP32-S3 Sense**, using its camera and microSD for synchronized video
-and sensor logging. GPS is deliberately optional and excluded from the baseline mass/power model. Firmware is specified
-below but has not been implemented or bench-tested.
+The stability screen now uses 55 mm-span fins for the 24 mm C11/D12/E12 motor envelope; the prior 45 mm option is
+retained as a comparison, not the selected geometry. The selected baseline is the owned **Seeed XIAO ESP32-S3 Sense**,
+using its camera and microSD for synchronized video and sensor logging. GPS is deliberately optional and excluded from
+the baseline mass/power model. Firmware is specified below but has not been implemented or bench-tested.
 
 ## Parts and mass budget
 
-| Part                                                      | Nominal mass g | Upper allowance g | Geometry evidence                                                                |
-| --------------------------------------------------------- | -------------: | ----------------: | -------------------------------------------------------------------------------- |
-| XIAO ESP32-S3 Sense camera + microSD                     |           6.00 |              6.50 | User-weighed raw board, camera, and WiFi antenna: 6 g; installed wiring remains estimated                      |
-| Adafruit LIS331HH ±24 g accelerometer                    |           2.00 |              3.00 | STEMMA QT board envelope; ±24 g setting required for boost                       |
-| Optional GPS module/antenna                               |           0.00 |              0.00 | Deferred; excluded from current fit and power model                              |
-| Adafruit 3898 protected 400 mAh LiPo                      |           8.20 |             10.50 | Approx. 37 × 17.5 × 8.2 mm; verify delivered mass and thickness                  |
-| Adafruit LPS28 breakout 6067                              |           1.80 |              2.30 | Published 25.4 × 17.8 × 4.8 mm, 1.8 g; ported board                         |
-| JST-PH 2-pin solder pigtail, Adafruit 261                 |           0.50 |              0.80 | Soldered to XIAO BAT+/BAT− pads; verify mating gender and polarity                |
-| Sensor wires, camera/SD loop and strain relief            |           1.50 |              2.50 | No GNSS coax in baseline; optional GPS reserve retained                          |
-| Insulating pads, ties, strain relief and seal consumables |           1.50 |              2.50 | Estimated; printed sled is accounted separately                                  |
-| **Total removable payload**                               |      **21.50** |         **28.10** | XIAO raw mass measured; other masses and installed allowance provisional             |
+| Part                                                      | Nominal mass g | Upper allowance g | Geometry evidence                                                                         |
+| --------------------------------------------------------- | -------------: | ----------------: | ----------------------------------------------------------------------------------------- |
+| XIAO ESP32-S3 Sense camera + microSD                      |           6.00 |              6.50 | User-weighed raw board, camera, and WiFi antenna: 6 g; installed wiring remains estimated |
+| Adafruit LIS331HH ±24 g accelerometer                     |           2.00 |              3.00 | STEMMA QT board envelope; ±24 g setting required for boost                                |
+| Optional GPS module/antenna                               |           0.00 |              0.00 | Deferred; excluded from current fit and power model                                       |
+| Adafruit 3898 protected 400 mAh LiPo                      |           8.20 |             10.50 | Approx. 37 × 17.5 × 8.2 mm; verify delivered mass and thickness                           |
+| Adafruit LPS28 breakout 6067                              |           1.80 |              2.30 | Published 25.4 × 17.8 × 4.8 mm, 1.8 g; ported board                                       |
+| JST-PH 2-pin solder pigtail, Adafruit 261                 |           0.50 |              0.80 | Soldered to XIAO BAT+/BAT− pads; verify mating gender and polarity                        |
+| Sensor wires, camera/SD loop and strain relief            |           1.50 |              2.50 | No GNSS coax in baseline; optional GPS reserve retained                                   |
+| Insulating pads, ties, strain relief and seal consumables |           1.50 |              2.50 | Estimated; printed sled is accounted separately                                           |
+| **Total removable payload**                               |      **21.50** |         **28.10** | XIAO raw mass measured; other masses and installed allowance provisional                  |
 
 Nominal payload CG is 92.95 mm aft of the 50 mm nose tip; upper-mass CG is 93.21 mm. These are packaging estimates after
-moving the battery clear of the LPS28 board; the delivered hardware and assembled CG must be measured. The two budgets change individual
-component masses rather than scaling a single lump. Dummy/actual remain equivalent mass/CG cases until hardware is
-measured. CAD plastics and the existing recovery hardware ledger are added separately, not counted as PCB material.
+moving the battery clear of the LPS28 board; the delivered hardware and assembled CG must be measured. The two budgets
+change individual component masses rather than scaling a single lump. Dummy/actual remain equivalent mass/CG cases until
+hardware is measured. CAD plastics and the existing recovery hardware ledger are added separately, not counted as PCB
+material.
 
 Sources checked 2026-09-19:
 
@@ -58,15 +57,15 @@ These are component prices, not a complete installed-cost estimate.
 
 The user estimates a **5 mm diameter clearance hole** for the camera lens. The preferred packaging direction is a
 slightly recessed lens with a chamfered opening; a tiny rounded guard is optional. The final aperture must be checked
-with live video because a hole that fits the lens barrel can still clip the field of view when recessed. The current
-CAD defines the pressure ports but does not yet define the camera window, lens pose, or optical clearance.
+with live video because a hole that fits the lens barrel can still clip the field of view when recessed. The current CAD
+defines the pressure ports but does not yet define the camera window, lens pose, or optical clearance.
 
-Keep the camera opening separate from the barometer's pressure path. The current provisional vent model uses three
-1 mm ports equally spaced around the straight body, 125 mm behind the nose shoulder. An unsealed camera opening into
-that same compartment changes the vent system; use a sealed lens surround or an isolated barometer pressure path,
-then check leakage and pressure response. A lip or guard near the lens is not a characterized static-pressure port.
-The [Missile Works venting guidance](https://www.missileworks.com/quickrrc4) likewise calls for equally spaced ports
-around the avionics bay. A small camera opening is a packaging detail, not an active control surface; the
+Keep the camera opening separate from the barometer's pressure path. The current provisional vent model uses three 1 mm
+ports equally spaced around the straight body, 125 mm behind the nose shoulder. An unsealed camera opening into that
+same compartment changes the vent system; use a sealed lens surround or an isolated barometer pressure path, then check
+leakage and pressure response. A lip or guard near the lens is not a characterized static-pressure port. The
+[Missile Works venting guidance](https://www.missileworks.com/quickrrc4) likewise calls for equally spaced ports around
+the avionics bay. A small camera opening is a packaging detail, not an active control surface; the
 [payload sweep](PAYLOAD_SWEEP.md) treats forward guard surfaces only as aerodynamic sensitivity cases.
 
 ## Electrical and logging specification
@@ -82,11 +81,9 @@ flowchart LR
     XIAO -. optional UART/I2C .-> GPS[GNSS later]
 ```
 
-The LIS331 is the authoritative powered-flight accelerometer; configure its ±24 g
-range and record the launch-pad noise/gravity initialization block. The LPS28
-provides the primary altitude trace through its ported static-pressure interface.
-GPS is an optional later addition and is not
-needed for the first camera/altimeter flight.
+The LIS331 is the authoritative powered-flight accelerometer; configure its ±24 g range and record the launch-pad
+noise/gravity initialization block. The LPS28 provides the primary altitude trace through its ported static-pressure
+interface. GPS is an optional later addition and is not needed for the first camera/altimeter flight.
 
 ```mermaid
 flowchart LR
@@ -98,8 +95,8 @@ flowchart LR
     Flash --> USB[Postflight USB download]
 ```
 
-Use the XIAO's 3.3 V rail and common ground for the LPS28 breakout VIN. Do not feed raw LiPo voltage to sensor
-logic pins. UART is crossed: XIAO D6/TX to GNSS RX, GNSS TX to D7/RX. Reserve the GNSS control pins D0/D2 pending the
+Use the XIAO's 3.3 V rail and common ground for the LPS28 breakout VIN. Do not feed raw LiPo voltage to sensor logic
+pins. UART is crossed: XIAO D6/TX to GNSS RX, GNSS TX to D7/RX. Reserve the GNSS control pins D0/D2 pending the
 delivered board's schematic review; do not use the obsolete L76-L D2/D3 UART example.
 [L76K wiring/example](https://wiki.seeedstudio.com/get_start_l76k_gnss/).
 
@@ -190,7 +187,9 @@ controlled airflow/flight comparison must assess port bias.
 Use vendor geometry where it materially improves the fit model:
 
 - Seeed publishes an official XIAO ESP32-S3 Sense STEP archive and separate top/bottom housing STEP files.
-- Adafruit publishes the exact [LPS28 6067 STEP](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/6067%20LPS28%20Pressure%20Sensor), now stored under `docs/assets/avionics/vendor/`.
+- Adafruit publishes the exact
+  [LPS28 6067 STEP](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/6067%20LPS28%20Pressure%20Sensor), now
+  stored under `docs/assets/avionics/vendor/`.
 - The LIS331 breakout has official Eagle board files; use those to generate the board outline, then retain simple
   component-height envelopes for the connectors and sensor package.
 - The 400 mAh pouch and JST cable should remain measured flexible envelopes rather than pretending a rigid STEP model

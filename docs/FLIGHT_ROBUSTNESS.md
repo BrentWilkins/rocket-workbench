@@ -257,3 +257,11 @@ while a run is active. [Per-flight metrics](assets/flight-robustness/flights.csv
 [summary statistics](assets/flight-robustness/summary.json), and
 [source/output hashes](assets/flight-robustness/provenance.json) retain scope and provenance; full models, samples,
 events and available time histories remain in the run directory.
+
+## Future launch-pad note
+
+A compact 1010-rail pad concept worth revisiting is a **well-braced photo-tripod head that tilts nearly horizontal for
+loading**, then returns the rail to the selected launch angle. The reference design uses a two-brace clamp around the
+tripod plate, a ceramic-tile blast deflector, and a movable rail stop; its author reports use through mid-power F
+motors, not high-power use. Treat it as an ergonomic loading idea, not a structural recipe or flight authorization. See
+[Apogee Peak of Flight #566](https://www.apogeerockets.com/Peak-of-Flight/Newsletter566).

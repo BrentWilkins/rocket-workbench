@@ -32,12 +32,12 @@ their previous CAD geometry, and the `organic-v2` fin remains available.
 - [Nose STEP](assets/tip-refinement-v3/cad/nose-bay.step) and
   [print-oriented STL](assets/tip-refinement-v3/cad/nose-bay.stl)
 - [Assembly STEP for fit review only](assets/tip-refinement-v3/cad/assembly.step), plus the separate, unchanged
-  [bulkhead](assets/tip-refinement-v3/cad/bay-bulkhead.stl),
-  [sled](assets/tip-refinement-v3/cad/payload-sled.stl), and
-  [lug sleeves](assets/tip-refinement-v3/cad/lug-sleeve-1.stl)
-  ([second](assets/tip-refinement-v3/cad/lug-sleeve-2.stl)) as STLs
+  [bulkhead](assets/tip-refinement-v3/cad/bay-bulkhead.stl), [sled](assets/tip-refinement-v3/cad/payload-sled.stl), and
+  [lug sleeves](assets/tip-refinement-v3/cad/lug-sleeve-1.stl) ([second](assets/tip-refinement-v3/cad/lug-sleeve-2.stl))
+  as STLs
 - [Unsliced X1C review project](assets/tip-refinement-v3/tip-refinement-X1C-review.3mf) and
-  [sliced X1C preview project](assets/tip-refinement-v3/sliced-tip-refinement-X1C.3mf) for the revised nose and fin collar
+  [sliced X1C preview project](assets/tip-refinement-v3/sliced-tip-refinement-X1C.3mf) for the revised nose and fin
+  collar
 
 The assembly STEP places components together to check fit. It is **not a single print**. Print the six STL parts
 separately, fit the purchased tube and hardware, and assemble the bulkhead and sled after printing. The two-part X1C
@@ -66,12 +66,12 @@ measured mass and balance. The
 [NAR safety inspection guidance](https://www.nar.org/content.aspx?club_id=114127&module_id=673715&page_id=22) likewise
 calls for checking fin movement, deflection, warping and root damage.
 
-Bambu Studio 02.08.02.61 sliced the two revised parts with the X1C 0.4 mm nozzle, 0.20 mm Standard profile,
-Generic PLA, Textured PEI, three walls, 100% infill, build-plate-only supports and a 5 mm brim. The slicer returned
-success with no warning message. Its G-code assigns support features to the nose, and none to the fin collar. The
-76.58 g two-part filament estimate includes supports and brim; it is not installed flight mass. Inspect the preview
-around the thin fin edge, root coves and nose cap before printing. Successful slicing does not establish layer bonding
-or removable supports.
+Bambu Studio 02.08.02.61 sliced the two revised parts with the X1C 0.4 mm nozzle, 0.20 mm Standard profile, Generic PLA,
+Textured PEI, three walls, 100% infill, build-plate-only supports and a 5 mm brim. The slicer returned success with no
+warning message. Its G-code assigns support features to the nose, and none to the fin collar. The 76.58 g two-part
+filament estimate includes supports and brim; it is not installed flight mass. Inspect the preview around the thin fin
+edge, root coves and nose cap before printing. Successful slicing does not establish layer bonding or removable
+supports.
 
 OpenRocket uses a nominal conical nose and square fin cross section here, so it does not resolve these small surface
 changes aerodynamically. The CAD-derived mass and center of gravity are passed to the flight model. Existing rocket CFD
@@ -80,41 +80,31 @@ results do not establish a drag benefit for this revision.
 ## Fin leading edge and root clearance review
 
 The [v4 fin STL](assets/fin-root-review-v4/fin-collar.stl) and
-[Bambu Studio project](assets/fin-root-review-v4/fin-collar-review.3mf) are a
-separate review candidate. The [STEP](assets/fin-root-review-v4/fin-collar.step)
-retains assembly coordinates; the [sliced project](assets/fin-root-review-v4/fin-collar-sliced.3mf)
-contains local toolpaths for inspection. This candidate adds a 4 mm leading edge
-bevel that leaves a 0.8 mm land, and relieves the fin root near the two collar
-rim ends so the cove stops short of each end. The eight millimeter outer tip
-taper and seven millimeter trailing edge taper remain. The CAD result is one
-valid fin collar solid; Bambu Studio 02.08.02.61 completed a local X1C slice.
-The v4 toolpaths include support features, so inspect and adjust orientation
-and support placement before printing. The v3 files above remain the current
-matched flight study until this variant is inspected and selected.
+[Bambu Studio project](assets/fin-root-review-v4/fin-collar-review.3mf) are a separate review candidate. The
+[STEP](assets/fin-root-review-v4/fin-collar.step) retains assembly coordinates; the
+[sliced project](assets/fin-root-review-v4/fin-collar-sliced.3mf) contains local toolpaths for inspection. This
+candidate adds a 4 mm leading edge bevel that leaves a 0.8 mm land, and relieves the fin root near the two collar rim
+ends so the cove stops short of each end. The eight millimeter outer tip taper and seven millimeter trailing edge taper
+remain. The CAD result is one valid fin collar solid; Bambu Studio 02.08.02.61 completed a local X1C slice. The v4
+toolpaths include support features, so inspect and adjust orientation and support placement before printing. The v3
+files above remain the current matched flight study until this variant is inspected and selected.
 
 ## Print oriented fin review
 
-The [v5 preview](assets/fin-print-review-v5/fin-collar-review.png),
-[STL](assets/fin-print-review-v5/fin-collar.stl), and
-[Bambu Studio project](assets/fin-print-review-v5/fin-collar-review.3mf)
-show the simpler print review candidate. The [sliced project](assets/fin-print-review-v5/fin-collar-sliced.3mf)
-and [STEP](assets/fin-print-review-v5/fin-collar.step) are available for toolpath
-and fit inspection. The [review summary](assets/fin-print-review-v5/review-summary.json)
-and [SHA manifest](assets/fin-print-review-v5/manifest.json) record the exact files.
+The [v5 preview](assets/fin-print-review-v5/fin-collar-review.png), [STL](assets/fin-print-review-v5/fin-collar.stl),
+and [Bambu Studio project](assets/fin-print-review-v5/fin-collar-review.3mf) show the simpler print review candidate.
+The [sliced project](assets/fin-print-review-v5/fin-collar-sliced.3mf) and
+[STEP](assets/fin-print-review-v5/fin-collar.step) are available for toolpath and fit inspection. The
+[review summary](assets/fin-print-review-v5/review-summary.json) and
+[SHA manifest](assets/fin-print-review-v5/manifest.json) record the exact files.
 
-This variant sets the fin attachment edge 2 mm inside each collar rim as part of
-the outline, with no separately cut triangular root notch. The 1.7 mm root
-cove stays constant along its middle and eases down to a small radius within
-0.1 mm of each fin end. A 4 mm leading bevel starts outside the 2 mm root
-zone; the outer tip and trailing edge stay at the full 2 mm thickness. These
-choices simplify printing. No measured drag comparison supports the removed
-tapers.
+This variant sets the fin attachment edge 2 mm inside each collar rim as part of the outline, with no separately cut
+triangular root notch. The 1.7 mm root cove stays constant along its middle and eases down to a small radius within 0.1
+mm of each fin end. A 4 mm leading bevel starts outside the 2 mm root zone; the outer tip and trailing edge stay at the
+full 2 mm thickness. These choices simplify printing. No measured drag comparison supports the removed tapers.
 
-The v5 STL and project place the collar **aft end down**, following the
-[orientation comparison](PRINT_ORIENTATION.md). Bambu Studio 02.08.02.61
-sliced this orientation with X1C 0.4 mm, 0.20 mm Standard, Generic PLA,
-Textured PEI, three walls, 100% infill, build-plate-only supports, and a 5 mm
-brim. Its estimate was 27.86 g including print consumables and 68.6 minutes.
-The same geometry in forward-down orientation failed the local CLI slice. The
-v5 result is a print review candidate; the v3 flight cases above have not been
-recomputed for this geometry or a measured printed mass.
+The v5 STL and project place the collar **aft end down**, following the [orientation comparison](PRINT_ORIENTATION.md).
+Bambu Studio 02.08.02.61 sliced this orientation with X1C 0.4 mm, 0.20 mm Standard, Generic PLA, Textured PEI, three
+walls, 100% infill, build-plate-only supports, and a 5 mm brim. Its estimate was 27.86 g including print consumables and
+68.6 minutes. The same geometry in forward-down orientation failed the local CLI slice. The v5 result is a print review
+candidate; the v3 flight cases above have not been recomputed for this geometry or a measured printed mass.
