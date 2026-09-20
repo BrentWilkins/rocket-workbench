@@ -129,14 +129,19 @@ class Engine:
                     source='OpenRocket 24.12 bundled motor database; identified by engine JAR SHA256 and curve digest',
                     description=str(motor.getDescription()), time_s=list(motor.getTimePoints()),
                     thrust_n=list(motor.getThrustPoints()),
-                    mass_g=[p.weight*1000 for p in motor.getCGPoints()])
+                    mass_g=[p.weight*1000 for p in motor.getCGPoints()],
+                    cg_from_front_mm=[p.x*1000 for p in motor.getCGPoints()])
 
     def mass(self, sim):
         calc = self.core.masscalc.MassCalculator
         config = sim.getActiveConfiguration()
         dry, launch = calc.calculateStructure(config), calc.calculateLaunch(config)
         return dict(dry_mass_g=dry.getMass()*1000, dry_cg_x_mm=dry.getCM().x*1000,
-                    launch_mass_g=launch.getMass()*1000, launch_cg_x_mm=launch.getCM().x*1000)
+                    launch_mass_g=launch.getMass()*1000, launch_cg_x_mm=launch.getCM().x*1000,
+                    dry_pitch_inertia_kg_m2=dry.getLongitudinalInertia(),
+                    dry_roll_inertia_kg_m2=dry.getRotationalInertia(),
+                    launch_pitch_inertia_kg_m2=launch.getLongitudinalInertia(),
+                    launch_roll_inertia_kg_m2=launch.getRotationalInertia())
 
     def run(self, sim):
         import jpype
@@ -166,7 +171,12 @@ class Engine:
                      mass_kg='TYPE_MASS', mach='TYPE_MACH_NUMBER', sound_speed_m_s='TYPE_SPEED_OF_SOUND',
                      angle_of_attack_rad='TYPE_AOA', acceleration_m_s2='TYPE_ACCELERATION_TOTAL',
                      acceleration_z_m_s2='TYPE_ACCELERATION_Z', acceleration_xy_m_s2='TYPE_ACCELERATION_XY',
-                     gravity_m_s2='TYPE_GRAVITY', thrust_n='TYPE_THRUST_FORCE')
+                     gravity_m_s2='TYPE_GRAVITY', thrust_n='TYPE_THRUST_FORCE',
+                     orientation_theta_rad='TYPE_ORIENTATION_THETA',
+                     orientation_phi_rad='TYPE_ORIENTATION_PHI',
+                     pitch_rate_rad_s='TYPE_PITCH_RATE', yaw_rate_rad_s='TYPE_YAW_RATE',
+                     roll_rate_rad_s='TYPE_ROLL_RATE', drag_coefficient='TYPE_DRAG_COEFF',
+                     wind_speed_m_s='TYPE_WIND_VELOCITY', wind_direction_rad='TYPE_WIND_DIRECTION')
         raw = self.helper.get_timeseries(sim, names.values())
         time = np.asarray(raw['TYPE_TIME'], dtype=float)
         if time.ndim != 1 or not len(time):

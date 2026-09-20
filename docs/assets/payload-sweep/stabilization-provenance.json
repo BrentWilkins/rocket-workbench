@@ -1,0 +1,26 @@
+{
+  "inputs": [
+    {
+      "path": "runs/stabilization-fins-20260919/comparison.json",
+      "rows": 144,
+      "sha256": "d5134e63df7f3ec8d04b895cd9c0c180c364ec41f3a6e29f7c01f5ae76c2ca0a"
+    },
+    {
+      "path": "runs/stabilization-forward-20260919/comparison.json",
+      "rows": 198,
+      "sha256": "8fd98b8bb879de190d0d526fd4e59b190c4ffa6019d86a4b67c8f3ee9fec699a"
+    },
+    {
+      "path": "runs/stabilization-references-20260919/comparison.json",
+      "rows": 18,
+      "sha256": "b8b815f1bfd339ddf03e5c4dee87ae216100a8b6049efc143d6cbedc9ce3faf2"
+    },
+    {
+      "path": "runs/stabilization-small-guard-20260919/comparison.json",
+      "rows": 72,
+      "sha256": "4f370b4ca338a96da4a8f48f72370688e81934f81ef6b2937f1e1922a249a574"
+    }
+  ],
+  "cases": 432,
+  "assumptions": "Nominal logger mass; calibrated CAD mass for 3/4 fins; fixed zero-cant forward surface proxies; no controller"
+}

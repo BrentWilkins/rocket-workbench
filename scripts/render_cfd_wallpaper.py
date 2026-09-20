@@ -86,6 +86,7 @@ def traced_speed(
     else:
         stream.SetIntegrationDirectionToForward()
     stream.SetIntegratorTypeToRungeKutta45()
+    stream.SetInterpolatorTypeToCellLocator()
     stream.SetIntegrationStepUnit(vtk.vtkStreamTracer.LENGTH_UNIT)
     stream.SetMaximumPropagation(3.0)
     stream.SetInitialIntegrationStep(0.0012)
@@ -136,11 +137,20 @@ def main() -> None:
     parser.add_argument("--height", type=int, default=720)
     parser.add_argument("--seeds", type=int, default=220)
     parser.add_argument("--time", type=float, default=600.0)
+    parser.add_argument("--length", type=float, help="Actual nose-to-tail length in metres for matched framing")
+    parser.add_argument("--multisamples", type=int, default=0,
+                        help="MSAA samples; zero avoids black frames on headless EGL")
+    parser.add_argument("--caption", help="Optional provenance/caveat text burned into the image")
+    parser.add_argument("--no-lic", action="store_true", help="Use pressure surface without optional wall-shear texture")
+    parser.add_argument("--stream-radius-scale", type=float, default=1., help="Visualization-only streamline tube thickness")
     args = parser.parse_args()
 
     reader = vtk.vtkOpenFOAMReader()
     reader.SetFileName(str(args.foam))
     reader.UpdateInformation()
+    times = reader.GetTimeValues()
+    if times is None or not any(abs(times.GetValue(i) - args.time) < 1e-9 for i in range(times.GetNumberOfValues())):
+        raise ValueError(f'Requested solved field time {args.time:g} is not available; refusing nearest-time substitution')
     reader.SetPatchArrayStatus("patch/rocket", 1)
     reader.SetTimeValue(args.time)
     reader.EnableAllCellArrays()
@@ -149,6 +159,13 @@ def main() -> None:
     output = reader.GetOutput()
     volume = output.GetBlock(0)
     rocket = output.GetBlock(1).GetBlock(0)
+    # Linear tetrahedral interpolation avoids spurious velocity overshoots in
+    # VTK's native polyhedral stream-tracing weights near the fin wake.
+    triangles = vtk.vtkDataSetTriangleFilter()
+    triangles.SetInputData(volume)
+    triangles.TetrahedraOnlyOn()
+    triangles.Update()
+    volume = triangles.GetOutput()
 
     nose_speed = traced_speed(
         volume,
@@ -161,18 +178,26 @@ def main() -> None:
     wake_speed = traced_speed(
         volume,
         seed_rings(
-            0.49,
+            args.length + 0.04 if args.length else 0.49,
+            (0.006, 0.012, 0.020, 0.030, 0.045, 0.065, 0.085) if args.length else
             (0.024, 0.030, 0.037, 0.045, 0.054, 0.064, 0.075, 0.088),
             args.seeds,
         ),
         both_directions=True,
     )
+    source_max = volume.GetPointData().GetArray('U').GetRange(-1)[1]
+    for traces in (nose_speed, wake_speed):
+        traces.Update()
+        speed_array = traces.GetOutput().GetPointData().GetArray('speed')
+        if speed_array is None or speed_array.GetRange()[1] > source_max * 1.00001:
+            raise ValueError('Trace velocity exceeds source point-field bound; refusing misleading render')
 
     renderer = vtk.vtkRenderer()
     renderer.GradientBackgroundOn()
     renderer.SetBackground(0.0, 0.0, 0.0)
     renderer.SetBackground2(0.003, 0.006, 0.016)
     renderer.SetUseDepthPeeling(False)
+    renderer.SetUseFXAA(True)
 
     camera = renderer.GetActiveCamera()
     camera.SetPosition(0.02, 1.08, 0.50)
@@ -181,6 +206,9 @@ def main() -> None:
     camera.ParallelProjectionOn()
     camera.SetParallelScale(0.090)
     camera.Roll(10.0)
+    if args.length:
+        camera.SetFocalPoint(args.length / 2 + .05, 0.0, 0.0)
+        camera.SetParallelScale(max(.12, args.length / (args.width / args.height) * .76))
 
     rocket_mapper = vtk.vtkSurfaceLICMapper()
     rocket_mapper.SetInputData(rocket)
@@ -197,7 +225,12 @@ def main() -> None:
     )
 
     lic = rocket_mapper.GetLICInterface()
-    lic.EnableOn()
+    if args.no_lic:
+        lic.EnableOff()
+    else:
+        if rocket.GetPointData().GetArray('wallShearStress') is None:
+            raise ValueError('wallShearStress is absent; use --no-lic for an honest pressure/velocity view')
+        lic.EnableOn()
     lic.SetNormalizeVectors(True)
     lic.SetNumberOfSteps(42)
     lic.SetStepSize(0.38)
@@ -213,7 +246,7 @@ def main() -> None:
     rocket_property = rocket_actor.GetProperty()
     rocket_property.SetColor(1.0, 1.0, 1.0)
     rocket_property.SetInterpolationToPhong()
-    rocket_property.SetAmbient(0.76)
+    rocket_property.SetAmbient(0.38)
     rocket_property.SetDiffuse(0.36)
     rocket_property.SetSpecular(0.55)
     rocket_property.SetSpecularPower(80)
@@ -232,8 +265,8 @@ def main() -> None:
     silhouette_actor.GetProperty().SetLineWidth(max(1.2, args.width / 3200.0))
     renderer.AddActor(silhouette_actor)
 
-    renderer.AddActor(streamline_actor(nose_speed, 0.000085))
-    renderer.AddActor(streamline_actor(wake_speed, 0.00015))
+    renderer.AddActor(streamline_actor(nose_speed, 0.000085 * args.stream_radius_scale))
+    renderer.AddActor(streamline_actor(wake_speed, 0.00015 * args.stream_radius_scale))
 
     key = vtk.vtkLight()
     key.SetPosition(-0.10, 0.55, 0.48)
@@ -248,11 +281,39 @@ def main() -> None:
     rim.SetColor(0.15, 0.55, 1.0)
     rim.SetIntensity(0.85)
     renderer.AddLight(rim)
+    if args.caption:
+        title = vtk.vtkTextActor()
+        title.SetInput(args.caption)
+        title.SetPosition(30, 25)
+        title.GetTextProperty().SetFontSize(max(18, args.width // 125))
+        title.GetTextProperty().SetColor(.75, .84, .93)
+        title.GetTextProperty().SetBackgroundColor(0., 0., 0.)
+        title.GetTextProperty().SetBackgroundOpacity(.8)
+        renderer.AddViewProp(title)
+        legend = vtk.vtkScalarBarActor()
+        legend.SetLookupTable(speed_lut())
+        legend.SetTitle('Streamline speed (m/s)')
+        legend.SetOrientationToHorizontal()
+        legend.SetPosition(.73, .86)
+        legend.SetWidth(.23)
+        legend.SetHeight(.10)
+        legend.SetNumberOfLabels(4)
+        legend.SetLabelFormat('%.0f')
+        legend.GetTitleTextProperty().SetColor(.82, .9, 1.)
+        legend.GetLabelTextProperty().SetColor(.82, .9, 1.)
+        legend.GetTitleTextProperty().SetFontFamilyToArial()
+        legend.GetLabelTextProperty().SetFontFamilyToArial()
+        legend.GetTitleTextProperty().ItalicOff()
+        legend.GetLabelTextProperty().ItalicOff()
+        legend.DrawBackgroundOn()
+        legend.GetBackgroundProperty().SetColor(.005, .01, .02)
+        legend.GetBackgroundProperty().SetOpacity(.9)
+        renderer.AddViewProp(legend)
 
     window = vtk.vtkRenderWindow()
     window.SetOffScreenRendering(1)
     window.SetAlphaBitPlanes(1)
-    window.SetMultiSamples(8)
+    window.SetMultiSamples(args.multisamples)
     window.SetSize(args.width, args.height)
     window.AddRenderer(renderer)
     window.Render()
@@ -262,6 +323,8 @@ def main() -> None:
     capture.SetInputBufferTypeToRGB()
     capture.ReadFrontBufferOff()
     capture.Update()
+    if max(capture.GetOutput().GetPointData().GetScalars().GetRange(i)[1] for i in range(3)) < 2:
+        raise RuntimeError("Renderer produced a black frame; check EGL and --multisamples 0")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     writer = vtk.vtkPNGWriter()

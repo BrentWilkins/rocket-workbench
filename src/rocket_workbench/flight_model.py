@@ -74,14 +74,14 @@ def generate(config: Config, parts: dict, loading: str, out: Path):
                        length=mm('collar_length')/1000, radius=collar_radius/1000, thickness=mm('wall')/1000)
     collar_sub = element(collar, 'subcomponents')
     if config.fin_shape == 'trapezoidal':
-        component(collar_sub, 'trapezoidfinset', 'Three fins (mass included in collar)', 0,
-                  fincount=3, rootchord=mm('fin_root')/1000, tipchord=mm('fin_tip')/1000,
+        component(collar_sub, 'trapezoidfinset', f'{config.fin_count} fins (mass included in collar)', 0,
+                  fincount=config.fin_count, rootchord=mm('fin_root')/1000, tipchord=mm('fin_tip')/1000,
                   height=mm('fin_span')/1000, sweeplength=mm('fin_sweep')/1000,
                   thickness=mm('fin_thickness')/1000, crosssection='square')
     else:
         from .fins import outline
-        fins = component(collar_sub, 'freeformfinset', 'Three fins (mass included in collar)', 0,
-                         fincount=3, thickness=mm('fin_thickness')/1000, crosssection='square')
+        fins = component(collar_sub, 'freeformfinset', f'{config.fin_count} fins (mass included in collar)', 0,
+                         fincount=config.fin_count, thickness=mm('fin_thickness')/1000, crosssection='square')
         points = element(fins, 'finpoints')
         for x, y in outline(config):
             element(points, 'point', x=str(x/1000), y=str(y/1000))

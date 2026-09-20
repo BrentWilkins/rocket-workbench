@@ -1,0 +1,37 @@
+{
+  "inputs": [
+    {
+      "path": "runs/payload-grid-conical-20260919T/comparison.json",
+      "sha256": "8e21c7af03a4a8944a00a7bba4698d1cad328735b000afb147547bc62980f180"
+    },
+    {
+      "path": "runs/payload-grid-curved-20260919T/comparison.json",
+      "sha256": "31d00b221568b3be9b0521e3606b112ced5ebe5ee68fd5d26bcc60f25fc52284"
+    },
+    {
+      "path": "runs/payload-grid-curved-long-20260919T/comparison.json",
+      "sha256": "a577c2c1f5460a474f14a394e80a4ee7c04d5a3a5b8f51d84802bff7cfe83b64"
+    },
+    {
+      "path": "runs/payload-grid-upper-20260919T/comparison.json",
+      "sha256": "bebb9bb1d5f95eca85c4ce05cf97f18f5d1f24dc85676c8eb9a5f297f5c36175"
+    },
+    {
+      "path": "runs/payload-grid-finish5-20260919T/comparison.json",
+      "sha256": "4724f11110721cd5a5572ded26afce675a7d81c4f876b4532b6d32f4520b47e9"
+    },
+    {
+      "path": "runs/payload-grid-c11-min-20260919T/comparison.json",
+      "sha256": "a2fce795cc9dafebea6bb8dd2fde166ddc20add912ad0218e10eebce94b97ccf"
+    },
+    {
+      "path": "runs/payload-grid-root-20260919T/comparison.json",
+      "sha256": "500d90fe7ce24846bd9cd794cce79cf3828a1f4bba29649c5e69d327e4318c90"
+    }
+  ],
+  "rows": 360,
+  "wind_m_s": 4,
+  "c11_mass_delta_method": "D12-5 model mass minus direct C11-3 model mass at identical geometry and dry mass",
+  "minimum_inferred_c11_launch_mass_g": 208.3635441493899,
+  "interpretation": "Nominal actual-logger OpenRocket screen; not flight clearance"
+}

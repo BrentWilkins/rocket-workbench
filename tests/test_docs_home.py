@@ -70,6 +70,20 @@ def test_home_points_to_current_d12_build_not_old_c5_leader():
     assert 'ARCHIVE.md' in text
 
 
+def test_entry_points_lead_with_latest_recommendation_and_limits():
+    root = Path(__file__).resolve().parents[1]
+    for name in ('README.md', 'docs/HOME.md', 'docs/CURRENT_DESIGN.md', 'docs/PROGRESS.md'):
+        text = (root/name).read_text()
+        assert '530 mm' in text and '40 mm ogive' in text, name
+        assert 'FLIGHT_ROBUSTNESS' in text, name
+        assert '36-inch' in text and 'deployment' in text, name
+        assert 'Both motors pass the current numerical screen' not in text, name
+    home = (root/'docs/HOME.md').read_text()
+    assert '500-ogive-streamlines.png' in home
+    assert '192/192' not in (root/'docs/PROGRESS.md').read_text()
+    assert 'not the latest manufacturing release' in (root/'docs/BUILD.md').read_text()
+
+
 def test_staging_removes_unlinked_stale_pages(tmp_path, monkeypatch):
     import prepare_docs
 

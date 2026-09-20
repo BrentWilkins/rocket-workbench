@@ -1,0 +1,174 @@
+{
+  "design": "de-b500-n40-s53p6538-d12-nominal-cd053-calibrated-ogive",
+  "solver_completed": false,
+  "requested_iterations_completed": true,
+  "last_iteration": 1000.0,
+  "tail_samples": 100,
+  "coefficient_statistics": {
+    "Cd": {
+      "mean": 0.6456622156899999,
+      "peak_to_peak": 4.562999999957462e-06
+    },
+    "Cd(f)": {
+      "mean": 0.34628970258,
+      "peak_to_peak": 4.675999999981251e-06
+    },
+    "Cd(r)": {
+      "mean": 0.29937251314,
+      "peak_to_peak": 2.0500000003087493e-07
+    },
+    "Cl": {
+      "mean": 1.3087961988999999,
+      "peak_to_peak": 3.3200000000288554e-06
+    },
+    "Cl(f)": {
+      "mean": -3.778685131799999,
+      "peak_to_peak": 1.4600000000086766e-06
+    },
+    "Cl(r)": {
+      "mean": 5.087481330099999,
+      "peak_to_peak": 4.10999999989059e-06
+    },
+    "CmPitch": {
+      "mean": -4.4330832310999995,
+      "peak_to_peak": 2.4500000002092293e-06
+    },
+    "CmRoll": {
+      "mean": 0.023458594692,
+      "peak_to_peak": 2.403000000001515e-06
+    },
+    "CmYaw": {
+      "mean": 0.056190471923,
+      "peak_to_peak": 7.928599999998398e-06
+    },
+    "Cs": {
+      "mean": 0.0094738322272,
+      "peak_to_peak": 1.1907400000003843e-06
+    },
+    "Cs(f)": {
+      "mean": 0.060927388041999986,
+      "peak_to_peak": 8.524000000002807e-06
+    },
+    "Cs(r)": {
+      "mean": -0.05145355581,
+      "peak_to_peak": 7.385299999995709e-06
+    }
+  },
+  "tail_settled_screen": true,
+  "zero_angle_symmetry_screen": null,
+  "reported_axes": {
+    "dragDir": "(9.96194698e-01 8.71557427e-02 0.00000000e+00)",
+    "sideDir": "(0.00000000e+00 0.00000000e+00 -1.00000000e+00)",
+    "liftDir": "(-8.71557427e-02 9.96194698e-01 0.00000000e+00)",
+    "rollAxis": "(9.96194698e-01 8.71557427e-02 0.00000000e+00)",
+    "pitchAxis": "(0.00000000e+00 0.00000000e+00 -1.00000000e+00)",
+    "yawAxis": "(-8.71557427e-02 9.96194698e-01 0.00000000e+00)",
+    "magUInf": "4.00000000e+01",
+    "lRef": "4.16000000e-02",
+    "Aref": "1.35917865e-03",
+    "CofR": "(3.00000000e-01 0.00000000e+00 0.00000000e+00)"
+  },
+  "thresholds": "Tail peak-to-peak <= max(0.001, 1% of mean); zero-angle lateral/moment magnitudes <=0.01. Provisional diagnostic thresholds, not uncertainty bounds or certification.",
+  "accepted_for_design": false,
+  "remaining": [
+    "Grid convergence",
+    "Domain and wall-resolution sensitivity",
+    "Benchmark comparison",
+    "Resolve zero-angle asymmetry when flagged",
+    "Angle-of-attack/speed coverage",
+    "Physical validation remains separate"
+  ],
+  "serialized_surface": {
+    "triangles": 426014,
+    "degenerate_triangles": 0,
+    "stored_normal_winding_mismatches": 60,
+    "negative_normal_winding_count": 4,
+    "mismatch_triangle_area_m2": 2.907667143549006e-10,
+    "total_triangle_area_m2": 0.08368224683371889,
+    "signed_volume_m3": 0.0007362872254771699,
+    "normal_winding_screen_passed": false
+  },
+  "solver_log_not_in_execution_ledger": true,
+  "equation_initial_residuals": {
+    "Ux": {
+      "last_logged": 6.4128795e-06,
+      "last_100_solve_records_max": 6.8139472e-06
+    },
+    "Uy": {
+      "last_logged": 3.2569633e-06,
+      "last_100_solve_records_max": 3.2739343e-06
+    },
+    "Uz": {
+      "last_logged": 3.6801485e-05,
+      "last_100_solve_records_max": 4.0062316e-05
+    },
+    "p": {
+      "last_logged": 0.00053190998,
+      "last_100_solve_records_max": 0.00053977772
+    },
+    "omega": {
+      "last_logged": 1.1997731e-06,
+      "last_100_solve_records_max": 1.2489512e-06
+    },
+    "k": {
+      "last_logged": 0.00012224302,
+      "last_100_solve_records_max": 0.00012224302
+    }
+  },
+  "yplus_records": [
+    {
+      "iteration": 1000.0,
+      "patch": "rocket",
+      "minimum": 5.89388499,
+      "maximum": 70.065617,
+      "average": 34.7103884
+    }
+  ],
+  "scope": "Exploratory visualization; no coefficient acceptance or port delta",
+  "not_tested": [
+    "Full CAD/STL symmetry",
+    "Mesh/domain independence",
+    "Near-wall adequacy",
+    "Ports/cavities",
+    "Benchmark acceptance"
+  ],
+  "case_provenance": {
+    "source_step_sha256": "bee320f0773189e148ccfb008d409f47425ab12d26f0602b55a16c3f8b25cfc6",
+    "external_adapter_sha256": "e25d3a4523c7ce1a1ceb6dadc9e129e55ed8ce41e2642bd7c6506fa1690e64f0",
+    "speed_m_s": 40,
+    "alpha_deg": 5,
+    "cell_mm": 15,
+    "moment_origin_m": [
+      0.3,
+      0,
+      0
+    ],
+    "image_id": "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267"
+  },
+  "mesh_cells": 1095261,
+  "manifest_note": "Unused zero-ring template metadata block retained; actual supplied STEP and its SHA-256 define geometry. CofR is the fixed geometric reference, not a CG claim.",
+  "source_case": "runs/cfd-500-ogive-a5-20260919-reconstructed-v1",
+  "reconstruction": {
+    "source_case": "/home/brent/code/rocket-workbench/runs/cfd-500-ogive-a5-20260919-v1",
+    "time": 1000,
+    "ranks": 8,
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network=none",
+      "--cpus",
+      "4",
+      "--memory",
+      "16g",
+      "--mount",
+      "type=bind,src=/home/brent/code/rocket-workbench/runs/cfd-500-ogive-a5-20260919-reconstructed-v1,dst=/case",
+      "sha256:02a68093f2f25f07137cc5aafc20c96a0f26cb0f91aefb879ad1911a75ce6267",
+      "source /usr/lib/openfoam/openfoam2512/etc/bashrc && reconstructPar -time 1000"
+    ],
+    "returncode": 0,
+    "reconstruction_passed": true,
+    "source_execution_status_unchanged": true,
+    "limitation": "Original solver completion was not fully logged; retained fields only"
+  }
+}

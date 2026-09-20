@@ -15,9 +15,13 @@ dependencies = [
 cad = [
     "cadquery",
 ]
+analysis = [
+    "rocketpy>=1.13.0",
+]
 
 [dependency-groups]
 dev = [
+    "matplotlib>=3.11.2",
     "pytest",
 ]
 docs = [

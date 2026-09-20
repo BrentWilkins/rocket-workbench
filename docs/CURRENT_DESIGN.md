@@ -1,16 +1,26 @@
 # Current design
 
-The leading build is a **500 mm BT-60 rocket** with a 24 mm Estes D/E motor mount, 50 mm nose, removable camera/logger bay, and the [one-piece integrated fin collar](INTEGRATED_FIN_COLLAR.md). The user-printed raw collar weighs **27 g**; the raw XIAO ESP32-S3 Sense with camera and antenna weighs **6 g**. Finish, remaining hardware, and assembled CG have not been measured. This is a development candidate, **not flight-cleared**.
+The **recommended study candidate is a 530 mm BT-60 body with a 40 mm ogive**, 24 mm Estes D/E motor mount, removable camera/logger bay, and the existing [one-piece integrated fin collar](INTEGRATED_FIN_COLLAR.md). The [final robustness report](FLIGHT_ROBUSTNESS.md) finds more modeled stability margin for only **2.35 m less D12 altitude / 4.02 m less E12 altitude** than the 500 mm ogive. Better real-world wind handling is not established. This is **not flight-cleared**.
+
+The existing build baseline and manufacturing artifacts remain **500 mm body / 50 mm conical nose**; the recommendation is not an as-built claim or an updated print release. The raw collar weighs **27 g** and the raw XIAO ESP32-S3 Sense with camera and antenna weighs **6 g**. Finish, remaining hardware and assembled CG still need measurement.
 
 | Item | Current choice | Still to verify |
 | --- | --- | --- |
-| Airframe | Two roughly 250 mm sections from Estes BT-60 18-inch tubes, joined with a 3-inch BT-60 coupler | Delivered dimensions, straightness, adhesive mass, bay and chute clearance |
+| Airframe | Recommended 530 mm joined BT-60 body and 40 mm ogive; existing baseline is 500 mm | Update build configuration/CAD before cutting or printing; verify delivered dimensions, joint, bay and chute clearance |
 | Motors | **D12-5** first; **E12-6** also modeled | Finished mass/CG, recovery deployment speed, guide departure, launch-field conditions |
 | Recovery | 24-inch parachute; Estes EST2271 plastic is a local trial part | Actual packed fit, extraction, mass, descent and drift; earlier runs used a different characterized canopy |
-| Launch guide | 3/16-inch Maxi rod | Print or install matching 3/16-inch guides; older sleeves fit 1/8 inch |
+| Launch guide | Investigate a compatible 60-inch guide; 36-inch cases miss the departure-speed screen | Actual diameter, stiffness, usable travel and friction; older sleeves fit 1/8 inch, not the planned 3/16 inch |
 | Avionics | XIAO ESP32-S3 Sense camera/SD logger, LIS331 ±24 g accelerometer, LPS28 barometer, protected 400 mAh LiPo | Physical board/battery fit, camera window, pressure ports, wiring and complete installed mass/CG |
 
-The [weighed-part D12/E12 simulation screen](DE_GEOMETRY_SWEEP.md) predicts the nominal D12-5 and E12-6 cases meet the configured stability and deployment-speed checks. In the upper-mass sensitivity case, **E12-6 is close to the 10 m/s deployment-speed screen**, so small finishing or packing changes matter. OpenRocket results are conditional on the input geometry, masses, motor curves, wind and chute assumptions; they are not structural or recovery-system proof. See [what OpenRocket calculates](OPENROCKET.md).
+The [paired flight-robustness study](FLIGHT_ROBUSTNESS.md) finds that corrected **36-inch guide-exit speeds fall below
+the configured 12 m/s planning screen**. A 60-inch guide improves the heavier-construction cases to **15.84–16.65 m/s**,
+but their 6 m/s crosswind deployment speeds still exceed the **10 m/s screen**. The rocket is **not flight-cleared**:
+guide fit, finished mass/CG, recovery timing and actual field conditions remain consequential.
+
+The study compares this physical baseline with 500 mm and 530 mm ogive candidates, correcting usable guide travel
+for the aft-lug offset and separating powered-flight attitude from apogee. The [geometry sweep](PAYLOAD_SWEEP.md)
+remains useful preliminary design context, not current launch-clearance evidence. See [what OpenRocket calculates](OPENROCKET.md)
+for the model boundaries; simulation does not prove structural strength or recovery-system reliability.
 
 ## Build and verification
 

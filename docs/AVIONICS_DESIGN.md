@@ -54,6 +54,21 @@ Sources checked 2026-09-19:
 No purchase has been made. The L76K was listed at $11.99; XIAO cost depends on whether the user already owns the Sense.
 These are component prices, not a complete installed-cost estimate.
 
+## Camera opening and lens protection
+
+The user estimates a **5 mm diameter clearance hole** for the camera lens. The preferred packaging direction is a
+slightly recessed lens with a chamfered opening; a tiny rounded guard is optional. The final aperture must be checked
+with live video because a hole that fits the lens barrel can still clip the field of view when recessed. The current
+CAD defines the pressure ports but does not yet define the camera window, lens pose, or optical clearance.
+
+Keep the camera opening separate from the barometer's pressure path. The current provisional vent model uses three
+1 mm ports equally spaced around the straight body, 125 mm behind the nose shoulder. An unsealed camera opening into
+that same compartment changes the vent system; use a sealed lens surround or an isolated barometer pressure path,
+then check leakage and pressure response. A lip or guard near the lens is not a characterized static-pressure port.
+The [Missile Works venting guidance](https://www.missileworks.com/quickrrc4) likewise calls for equally spaced ports
+around the avionics bay. A small camera opening is a packaging detail, not an active control surface; the
+[payload sweep](PAYLOAD_SWEEP.md) treats forward guard surfaces only as aerodynamic sensitivity cases.
+
 ## Electrical and logging specification
 
 The current wiring is intentionally camera-first:

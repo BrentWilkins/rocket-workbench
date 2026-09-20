@@ -1,0 +1,138 @@
+{
+  "runtime": {
+    "rocketpy": "1.13.0",
+    "source_sha256": "f1b9a7b1c398470e93d0bf6ecf3ac145c4bb67dff9f60b7bfc1335f4377316f2",
+    "drag": "shared calm OR Cd(M), separate powered/coast curves; endpoint held",
+    "independent": "motion integration and native RocketPy nose/fin/tail normal-force models",
+    "turbulence": "no RocketPy equivalent imposed; turbulent OR cases excluded",
+    "scope": "ascent_only; recovery disabled; terminate_on_apogee=True",
+    "limitation": "Nearly axial reversed flow makes native Barrowman lift direction singular; conical D12 calm stalled at t~6.57556s before ejection",
+    "diagnostic_evidence": "runs/robustness-20260919-v2 retained failed full-flight cross-checks; a +/-1e-7 m/s lateral-velocity perturbation changed pitch acceleration from -1.205 to +1.957 rad/s^2",
+    "guide": "OR effective travel passed directly, no additional button offsets"
+  },
+  "expected": 108,
+  "recorded": 108,
+  "failed": 0,
+  "warned": 0,
+  "not_recorded": 0,
+  "metrics": {
+    "apogee_m": {
+      "valid": 86,
+      "missing": 22,
+      "median_delta": -0.09356503204541866,
+      "max_abs_delta": 4.970505383391298,
+      "excluded_not_comparable": 22
+    },
+    "guide_departure_m_s": {
+      "valid": 108,
+      "missing": 0,
+      "median_delta": -0.0949691023440975,
+      "max_abs_delta": 0.22159415147289963,
+      "excluded_not_comparable": 0
+    },
+    "powered_max_aoa_deg": {
+      "valid": 108,
+      "missing": 0,
+      "median_delta": 0.1306653251522123,
+      "max_abs_delta": 0.6523739430201019,
+      "excluded_not_comparable": 0
+    },
+    "burnout_tilt_deg": {
+      "valid": 108,
+      "missing": 0,
+      "median_delta": 0.112051283870362,
+      "max_abs_delta": 2.274796982051594,
+      "excluded_not_comparable": 0
+    }
+  },
+  "apogee_not_directly_comparable": [
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod0.9144-wind0-heading0"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod0.9144-wind2-heading0"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod0.9144-wind2-heading90"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod0.9144-shear"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod0.9144-veer"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-wind0-heading0"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-wind2-heading0"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-wind2-heading90"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-wind4-heading0"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-wind4-heading90"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-shear"
+    },
+    {
+      "design": "b500-n40-ogive-E12",
+      "scenario": "rod1.524-veer"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod0.9144-wind0-heading0"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod0.9144-wind2-heading0"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod0.9144-wind2-heading90"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod0.9144-shear"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod0.9144-veer"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod1.524-wind0-heading0"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod1.524-wind2-heading0"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod1.524-wind2-heading90"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod1.524-shear"
+    },
+    {
+      "design": "b530-n40-ogive-E12",
+      "scenario": "rod1.524-veer"
+    }
+  ]
+}

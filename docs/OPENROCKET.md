@@ -23,15 +23,18 @@ the GUI later.
 For every loading, motor/delay, and wind case, OpenRocket combines the entered mass distribution, motor curve,
 atmosphere, guide, and recovery assumptions into a six-degree-of-freedom trajectory. The useful outputs are:
 
-- **Guide-departure speed:** speed built before leaving the 36-inch rod.
+- **Guide-departure speed:** speed built during usable travel along the launch guide.
 - **CG, CP, and stability margin:** the mass balance and extended-Barrowman restoring estimate during ascent.
 - **Altitude, velocity, acceleration, and Mach history:** powered-flight performance for the selected motor.
 - **Apogee and deployment state:** recovery timing, speed, altitude, and warnings.
 - **Descent rate and downrange displacement:** consequences of the entered chute diameter, drag coefficient, mass, and
   wind; these are scenarios, not landing guarantees.
 
-The project evaluates minimum stability over the usable ascent and preserves every engine warning. Its uncertainty runs
-vary bounded mass/CG, chute drag coefficient, and wind corners; a pass count is not a probability of success.
+The earlier screens evaluate minimum stability over the usable ascent and preserve every engine warning.
+The [paired robustness study](FLIGHT_ROBUSTNESS.md) additionally isolates free powered flight, measures nose tilt,
+angle of attack and angular motion, and samples bounded mass/CG, finish, launcher and weather assumptions.
+Its recovery coefficient and motor curve are fixed; the older bounded-recovery screens are separate experiments.
+A pass count under assumed bounds is not a measured probability of success.
 
 ## What is entered versus what is assumed
 
@@ -41,11 +44,25 @@ vary bounded mass/CG, chute drag coefficient, and wind corners; a pass count is 
 | D12 motor                             | Exact bundled OpenRocket thrust/mass curve and selected delay | The curve is not a measurement of a purchased specimen.                      |
 | Three clipped-delta fins              | Native flat-fin aerodynamic model                             | Collar fillets and small edge refinements are not resolved.                  |
 | Thin-mil parachute                    | Measured mass/CG required; drag coefficient remains bounded   | Packing, extraction, heat, and attachment strength are outside the model.    |
-| Wind and atmosphere                   | Constant-wind ISA demonstration inputs                        | Gusts, shear, field setup, and weather mismatch remain physical uncertainty. |
+| Wind and atmosphere                   | ISA baseline; robustness study adds altitude-dependent wind and turbulence | Synthetic profiles are not launch-day forecasts or resolved local gusts. |
 
 OpenRocket supports conventional components well enough for this screen, but it does not turn a detailed STEP solid into
 a CFD surface. Do not use it to claim a root-fillet drag benefit, prove a coupler joint, or validate the custom fin
 assembly.
+
+### Guide travel and flight-phase comparisons
+
+The robustness runner explicitly supplies **physical rod length minus the tail-to-aft-lug-bottom distance**
+as the departure threshold. OpenRocket 24.12 calculates this effective length internally, but the event path used
+here otherwise compares travel against the configured full rod length. In this model the native clearance
+approximation gives 0.7644 m on a 0.9144 m rod. It does not measure actual two-lug guidance, friction or rod flex.
+Earlier geometry-sweep guide speeds used the full length and should not be used for current launch clearance.
+
+Angle of attack is relative to airflow; nose tilt and trajectory tilt are relative to vertical and are distinct.
+The new powered minimum stability is evaluated **after guide exit, before burnout, with positive thrust**;
+it excludes constrained guide motion and low-speed behavior near apogee. Compare like metrics and flight phases,
+not that number against the earlier whole-ascent minimum. The [robustness report](FLIGHT_ROBUSTNESS.md) includes
+an interactive viewer, matched-wind comparisons and paired uncertainty distributions.
 
 ## Stability margin: calibers versus diameter
 
@@ -63,6 +80,20 @@ also uses one body diameter as its check. The **1.5-caliber line is our advisory
 OpenRocket requirement, NAR rule, or pass/fail condition. An older NAR beginner booklet has described 1.5
 diameters as ideal, but that does not make it a universal threshold. Near-threshold values should not be read
 to hundredths of a caliber while part mass, CG, and aerodynamics are still estimates.
+
+The **CG is the balance point**; the **CP is the effective location of the combined aerodynamic side force**.
+When the rocket tilts relative to the airflow, a CP behind the CG gives that force leverage to turn the nose
+back toward the airflow, like the feathers on a dart. A CP ahead of the CG instead tends to amplify the
+disturbance. More separation gives more restoring leverage for the same aerodynamic side force; it does
+not directly specify how quickly oscillations settle.
+
+Extra margin provides a cushion against uncertain component placement and changes in CP with angle of
+attack. It is **not a percentage safety rating or a wind rating**. In wind, the restoring tendency points
+the nose into the relative airflow, not necessarily vertically: stronger weathercocking can reduce altitude.
+See [NASA's explanation of weathercocking](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/rocket-weather-cocking/).
+Comparing wind tolerance also requires guide-exit speed, angle of attack, stability throughout powered
+flight, and departure from vertical under matched wind conditions; a minimum-margin/apogee plot alone
+does not establish an allowable wind speed.
 
 More margin is not automatically better: larger fins or a longer body can move the predicted CP aft, while
 also adding drag and mass and potentially increasing weathercocking. The tradeoff plot shows those *design
@@ -87,20 +118,11 @@ Sources: [OpenRocket features](https://openrocket.info/features.html),
 
 ## Current motor scope
 
-> **2026-09-19 correction:** See the [D12-5/E12-6 geometry and current-collar screen](DE_GEOMETRY_SWEEP.md),
-> including the [3D tradeoff plot](../plots/de-geometry-surface.png). The current fin collar has about
-> 53.65 mm fin span; the 55 mm selection described below was an earlier parametric screen, not a decision to
-> replace the polished collar. The current hardware screen uses its STEP-derived mass and CG. The motor curves
-> include loaded mass and propellant mass loss during burn; mount and D-motor spacer are separate mass entries.
-> The older C11/18 mm comparisons do not establish a viable fallback at the current launch mass.
+The current validation cases are **D12-5 and E12-6** in the 24 mm mount, with the printed 53.65 mm-span collar
+weighed at 27 g before finish. Motor curves include loaded mass and propellant loss; mount hardware and the
+D-motor spacer are separate mass entries. Installed payload, coupler/adhesive, recovery and finished mass/CG
+remain estimates requiring physical checks.
 
-The current airframe is designed around 24 mm C11/D12/E12 motors. D12-5 and
-E12-6 are the primary validation cases; A8/B4/C5/C6 are low-power fallback
-comparisons only. The latest motor-envelope run is preserved in
-`runs/motor24-avionics-20260919T2000Z/`, and the fin-span stability screen is
-in `runs/stability-fin-span-20260919T/`.
-
-The selected 55 mm fin-span screen improves the loaded worst-wind stability
-margin over the earlier 45 mm option, but the result remains provisional until
-the installed payload, coupler/adhesive, recovery hardware, and finished fin
-assembly have measured mass and CG.
+The [payload sweep](PAYLOAD_SWEEP.md) excludes C11-3 at this launch mass. Earlier 18 mm motor comparisons do
+not establish a fallback for this build. Use the [flight-robustness report](FLIGHT_ROBUSTNESS.md) for current
+guide-travel, powered-flight and uncertain-condition comparisons.

@@ -290,7 +290,7 @@ def shapes(config: Config, *, cap_insert_angles=None):
                 wires, config.fin_profile == 'organic-v5'))
 
         fin = fin.union(root_cove(-1)).union(root_cove(1))
-    for angle in [0, 120, 240]:
+    for angle in [index * 360 / config.fin_count for index in range(config.fin_count)]:
         collar = collar.union(fin.rotate((0, 0, 0), (0, 0, 1), angle))
     parts = {'nose-bay': nose, 'bay-bulkhead': cap, 'payload-sled': sled, 'fin-collar': collar}
     guide = launch_guide(config)

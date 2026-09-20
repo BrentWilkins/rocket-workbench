@@ -10,6 +10,14 @@ Start with [current designs, simulations and downloads](docs/CURRENT_DESIGN.md),
 [old-news archive](docs/ARCHIVE.md) contains superseded results; all physical fit, strength, pressure and flight checks
 remain pending.
 
+## Current recommendation
+
+The [flight robustness report](docs/FLIGHT_ROBUSTNESS.md) favors a **530 mm BT-60 body, 40 mm ogive and the existing 27 g fin collar**, with D12-5 and E12-6. Compared with the 500 mm ogive, the median altitude cost is only **2.35 m / 4.02 m** for more modeled stability margin—not demonstrated better wind handling.
+
+**Not flight-cleared:** all sampled 36-inch-guide cases miss the project's departure-speed screen; a longer guide helps, but windy upper-mass cases still exceed the deployment-speed screen. Measure assembled mass/CG and verify launcher compatibility and recovery before flight. Existing 500 mm manufacturing artifacts are not an updated release of the recommendation.
+
+See the [interactive flight viewer](docs/assets/flight-robustness/flight-viewer.html) and [current-design renders](docs/CFD_LATEST_DESIGN.md).
+
 ## Setup
 
 Tested platform: macOS ARM, Python 3.14.6, Java 21.0.3+7-LTS-152. Install

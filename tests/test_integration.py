@@ -25,6 +25,29 @@ def engine():
         yield engine
 
 
+def test_multilevel_wind_seed_and_vector_conventions(engine):
+    from rocket_workbench.robustness import configure_wind, scenarios
+    from types import SimpleNamespace
+
+    case = scenarios()[-1]
+    def wind(seed):
+        options = engine.core.simulation.SimulationOptions()
+        sim = SimpleNamespace(getOptions=lambda: options)
+        configure_wind(engine, sim, dict(case, seed=seed))
+        return options.getMultiLevelWindModel().clone()
+
+    first, repeated, different = wind(123), wind(123), wind(456)
+    def velocities(model):
+        return np.array([[v.x,v.y] for t,h in [(0,0),(.2,15),(1,87),(2,180)]
+                         for v in [model.getWindVelocity(t,1600+h,h)]])
+    a, b, c = map(velocities, (first,repeated,different))
+    assert a == pytest.approx(b, abs=1e-12)
+    assert not np.allclose(a,c,atol=1e-5)
+    # Native vector is opposing air velocity, not physical wind-TOWARD.
+    assert np.all(a[:,0]<0)
+    assert np.all(np.abs(a[:,1])<1e-10)
+
+
 @pytest.mark.parametrize('platform', ['24-cd', '24-e'])
 def test_native_24mm_motor_identity_mass_and_saved_model(engine, tmp_path, platform):
     import sys
@@ -180,7 +203,7 @@ def test_changed_geometry_mass_and_reload(engine, tmp_path):
             mass = engine.mass(sim)
             assert mass['dry_mass_g'] == pytest.approx(expected['dry_mass_g'], abs=.05)
             assert mass['dry_cg_x_mm'] == pytest.approx(expected['dry_cg_x_mm'], abs=.05)
-            fin = engine.helper.get_component_named(doc.getRocket(), 'Three fins (mass included in collar)')
+            fin = engine.helper.get_component_named(doc.getRocket(), f'{config.fin_count} fins (mass included in collar)')
             assert fin.getHeight()*1000 == pytest.approx(config.geometry.fin_span.value)
             guide = launch_guide(config)
             lug = engine.helper.get_component_named(doc.getRocket(), 'Launch lug and printed sleeve 1')

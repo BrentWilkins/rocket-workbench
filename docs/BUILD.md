@@ -1,5 +1,7 @@
 # D12 / BT-60 provisional build guide
 
+**Existing 500 mm baseline, not the latest manufacturing release.** The [current study recommendation](CURRENT_DESIGN.md) is a 530 mm body with a 40 mm ogive. Update and verify the selected configuration/CAD before using these cut lengths or print files; launch-guide and recovery checks remain open.
+
 This guide covers the provisional **500 mm BT-60 airframe**, assembled from two tube sections and a
 3-inch coupler with the [integrated fin collar](INTEGRATED_FIN_COLLAR.md). It is a development
 build, not a flight-qualified kit. Dry-fit all purchased hardware before cutting or bonding.

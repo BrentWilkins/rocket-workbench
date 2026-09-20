@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "image": "500-ogive-streamlines.png",
+  "image_size_px": [
+    3200,
+    1100
+  ],
+  "source_case": "runs/cfd-500-ogive-a5-20260919-reconstructed-v1",
+  "field_time": 1000,
+  "solver": "OpenFOAM v2512 steady RANS",
+  "flow_speed_m_s": 40,
+  "angle_of_attack_deg": 5,
+  "geometry": "500 mm body, 40 mm ogive, authoritative printed collar; sealed exterior; guides, camera and pressure ports omitted",
+  "solver_status": "Saved iteration1000 fields reconstructed successfully after original process interruption; no claim of clean original solver completion or aerodynamic validation; see cfd-audit.json",
+  "interpolation": "vtkOpenFOAMReader cell-to-point U, vtkDataSetTriangleFilter tetrahedra, vtkStreamTracer cell locator and RungeKutta45",
+  "raw_cell_speed_m_s": {
+    "minimum": 0.459999,
+    "median": 40.019619,
+    "p99": 44.598731,
+    "p999": 46.821121,
+    "maximum": 69.263657
+  },
+  "input_point_speed_max_m_s": 49.905457,
+  "wake_trace_speed_range_m_s": [
+    0.007097420640401681,
+    45.955492253416246
+  ],
+  "nose_trace_count": 24,
+  "wake_trace_count": 120,
+  "excluded_traces": 0,
+  "velocity_clipping": false,
+  "quality_check": "Both streamline families must remain within source point-vector maximum × 1.00001; invalid traces fail the render, not silently clip",
+  "surface": "Qualitative tint of native incompressible kinematic p; not a calibrated pressure legend or wall-shear texture",
+  "limitations": [
+    "Single mesh; no established numerical or experimental aerodynamic validation.",
+    "Tetrahedralization addresses visualization interpolation only; it does not improve the CFD solution.",
+    "Streamline locations and tube thickness are visualization choices, not particle density or boundary-layer thickness.",
+    "No camera- or pressure-port performance delta is simulated."
+  ],
+  "files_sha256": {
+    "docs/assets/500-ogive-review/500-ogive-streamlines.png": "a78d7de681825dd6da5b3bdbe07411fda1a9039c116f5fdf8e44511e2efbaaaa",
+    "scripts/render_cfd_wallpaper.py": "3020dd833344bea1fbfa0388a49182423fb2d1b2bb6b253d29953adff2464451",
+    "runs/cfd-500-ogive-a5-20260919-reconstructed-v1/1000/U": "2decaaf545df21b122599ba51cebea75e7c63fc7f38fa666414951ee122b975b",
+    "runs/cfd-500-ogive-a5-20260919-reconstructed-v1/1000/p": "9a6a1b89973112ccfb31c0cd54b9a84db3f29d31d1f4ec789a0a1225368f8702"
+  }
+}

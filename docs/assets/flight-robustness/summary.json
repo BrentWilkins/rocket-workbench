@@ -1,0 +1,7196 @@
+{
+  "scope": "conditional engineering robustness, not measured failure probability",
+  "groups": [
+    {
+      "phase": "deterministic",
+      "design": "b500-n50-conical-D12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 2,
+          "fraction_of_valid": 0.1
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            167.22927651457712,
+            177.2561123181959,
+            181.83361906732725
+          ],
+          "ci95": [
+            [
+              167.22410012661595,
+              173.0443521188436
+            ],
+            [
+              174.07926480487032,
+              179.81096932633454
+            ],
+            [
+              179.90805557565812,
+              181.8336239950077
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.368649383393597,
+            11.372284164929432,
+            16.697276997648313
+          ],
+          "ci95": [
+            [
+              11.36864893430218,
+              11.369632927225025
+            ],
+            [
+              11.369638639962988,
+              16.690994341238717
+            ],
+            [
+              16.696806448053625,
+              16.70470395892044
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.4075778805438726,
+            1.9856336456741142,
+            2.7733186015226052
+          ],
+          "ci95": [
+            [
+              1.4075776240336777,
+              1.6420433304703355
+            ],
+            [
+              1.6465724143402296,
+              2.1649411209440865
+            ],
+            [
+              2.2755093597790346,
+              2.805971197187035
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.4075778805438726,
+            1.7413470274329825,
+            2.1001882135306675
+          ],
+          "ci95": [
+            [
+              1.4075776240336777,
+              1.6420432573907038
+            ],
+            [
+              1.6465724143402296,
+              1.909100824750796
+            ],
+            [
+              1.9247910585854948,
+              2.272375971749087
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009472383631032379,
+            11.714275482562163,
+            27.577855002968533
+          ],
+          "ci95": [
+            [
+              0.0008336486516154741,
+              6.858176913314086
+            ],
+            [
+              8.429034402910325,
+              19.432830677737574
+            ],
+            [
+              19.978064585734224,
+              27.577865952313978
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.010109220806291681,
+            11.823853052544496,
+            21.261135941206536
+          ],
+          "ci95": [
+            [
+              0.009241122840617696,
+              7.710015797171516
+            ],
+            [
+              8.05183946923599,
+              15.091944921128817
+            ],
+            [
+              15.783103526498072,
+              21.26855357930149
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0,
+            57.03988756245585,
+            108.31073268654755
+          ],
+          "ci95": [
+            [
+              0.0,
+              38.58235397456595
+            ],
+            [
+              38.84048887293487,
+              77.77251042098703
+            ],
+            [
+              82.33209427437961,
+              108.31581455604889
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            2.237817197997838,
+            5.055878928647763,
+            9.30492890126181
+          ],
+          "ci95": [
+            [
+              2.237816991666905,
+              3.518798883672489
+            ],
+            [
+              3.6591260069236657,
+              6.990582933350694
+            ],
+            [
+              7.4924036351241465,
+              9.315217532390998
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.08386497011779306,
+            95.08371379589892,
+            145.11030737327
+          ],
+          "ci95": [
+            [
+              0.08261574730950562,
+              50.62657404754756
+            ],
+            [
+              70.07569103796295,
+              101.74972067798032
+            ],
+            [
+              105.55226660977797,
+              145.17329605469283
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "deterministic",
+      "design": "b500-n50-conical-E12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 4,
+          "fraction_of_valid": 0.2
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 8,
+          "fraction_of_valid": 0.4
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            299.62016593714003,
+            315.2111130238187,
+            323.000139953833
+          ],
+          "ci95": [
+            [
+              299.6187853766699,
+              309.04552718297606
+            ],
+            [
+              310.71661751273564,
+              319.5740907752164
+            ],
+            [
+              319.92307668073204,
+              323.0001513401103
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.698437675980923,
+            11.701977724375777,
+            17.076572843075763
+          ],
+          "ci95": [
+            [
+              11.698437275321874,
+              11.699510633146168
+            ],
+            [
+              11.699523757523325,
+              17.070516160499622
+            ],
+            [
+              17.076135047056113,
+              17.083473981592384
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.1629546653045777,
+            1.7387813335191478,
+            2.513268054354213
+          ],
+          "ci95": [
+            [
+              1.1629544096467246,
+              1.3989988931644217
+            ],
+            [
+              1.404117812936732,
+              1.9163737404877805
+            ],
+            [
+              2.023212129457009,
+              2.5440575899885727
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.1629546653045777,
+            1.7387813335191478,
+            2.0202662461151766
+          ],
+          "ci95": [
+            [
+              1.1629544096467246,
+              1.3989988931644217
+            ],
+            [
+              1.404117812936732,
+              1.8286544735816235
+            ],
+            [
+              1.850754887640634,
+              2.0230605292382706
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009321865477323676,
+            11.436950560290908,
+            26.93376663504165
+          ],
+          "ci95": [
+            [
+              0.0008107114643170409,
+              6.708906926882824
+            ],
+            [
+              8.217452736960048,
+              18.992132507630664
+            ],
+            [
+              19.57977264750561,
+              26.93377720961682
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.016013279142706154,
+            11.361087551181301,
+            19.794709667365314
+          ],
+          "ci95": [
+            [
+              0.015531080259413976,
+              7.123461712927289
+            ],
+            [
+              7.734934174796816,
+              13.848566303079796
+            ],
+            [
+              14.122837757735669,
+              19.808456389478923
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.021523504491671362,
+            52.859409508548964,
+            100.07674675230366
+          ],
+          "ci95": [
+            [
+              0.011910706126615652,
+              35.814291216612396
+            ],
+            [
+              36.04646173041762,
+              71.61620579576899
+            ],
+            [
+              75.46890248720378,
+              100.08172440825537
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.518863372512381,
+            5.887725293061127,
+            10.615261141697841
+          ],
+          "ci95": [
+            [
+              1.5188621576846482,
+              3.8070289913528934
+            ],
+            [
+              4.065755082318747,
+              7.885930140843834
+            ],
+            [
+              8.476915337742524,
+              10.634290358331285
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.19024813339797356,
+            177.21155472844862,
+            263.1043785145414
+          ],
+          "ci95": [
+            [
+              0.18972260704657037,
+              91.29818097246904
+            ],
+            [
+              130.87277690175364,
+              202.06911763426484
+            ],
+            [
+              218.94776973099147,
+              263.25634118881663
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "deterministic",
+      "design": "b500-n40-ogive-D12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 2,
+          "fraction_of_valid": 0.1
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            172.76401698556222,
+            183.35604955935233,
+            188.1639601764659
+          ],
+          "ci95": [
+            [
+              172.75738084720678,
+              178.8977110709695
+            ],
+            [
+              179.98314125960357,
+              186.04848753814156
+            ],
+            [
+              186.14337942708232,
+              188.16396065363483
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.246553843250814,
+            11.249671095274003,
+            16.524855711548778
+          ],
+          "ci95": [
+            [
+              11.246553396565435,
+              11.247282038182638
+            ],
+            [
+              11.24728668582889,
+              16.519752356284656
+            ],
+            [
+              16.52446302574513,
+              16.53107291345973
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.4321194966597166,
+            2.012394197487847,
+            2.8112838216966383
+          ],
+          "ci95": [
+            [
+              1.4321192258844362,
+              1.6665306479070925
+            ],
+            [
+              1.67107656248671,
+              2.193504892285545
+            ],
+            [
+              2.3053188499528345,
+              2.8440567077575705
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.4321194966597166,
+            1.9299115495125094,
+            2.2653832241717713
+          ],
+          "ci95": [
+            [
+              1.4321192258844362,
+              1.6665306479070925
+            ],
+            [
+              1.67107656248671,
+              2.049760991164995
+            ],
+            [
+              2.0827347323395777,
+              2.3021813419097805
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009496545923025489,
+            11.833999812817733,
+            27.832077131447438
+          ],
+          "ci95": [
+            [
+              0.0008346112303908607,
+              6.928411204157677
+            ],
+            [
+              8.517090887129667,
+              19.62281647862056
+            ],
+            [
+              20.167994518010726,
+              27.832088805127523
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.010067001887300111,
+            11.944444616648088,
+            21.51795995172792
+          ],
+          "ci95": [
+            [
+              0.009774750055919806,
+              7.800439474008052
+            ],
+            [
+              8.13341762513634,
+              15.33336097760558
+            ],
+            [
+              16.072518100855643,
+              21.525457239263204
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0,
+            56.99841179735545,
+            108.37164749388918
+          ],
+          "ci95": [
+            [
+              0.0,
+              38.49798767749882
+            ],
+            [
+              38.76284327138818,
+              77.79743041636476
+            ],
+            [
+              82.43401913240535,
+              108.37628306633601
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.7242326619658328,
+            4.890187909321866,
+            9.504031783781205
+          ],
+          "ci95": [
+            [
+              0.7242302178410839,
+              3.1323491577508196
+            ],
+            [
+              3.338186016819055,
+              7.001408613562997
+            ],
+            [
+              7.523940182488338,
+              9.516804525553855
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.09246027783918903,
+            96.50215364018555,
+            148.0138036257092
+          ],
+          "ci95": [
+            [
+              0.09160861303211826,
+              51.46817614476533
+            ],
+            [
+              71.91532837248148,
+              104.50333551878451
+            ],
+            [
+              109.0772273031171,
+              148.07789326582903
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "deterministic",
+      "design": "b500-n40-ogive-E12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 4,
+          "fraction_of_valid": 0.2
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 8,
+          "fraction_of_valid": 0.4
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            316.57282559300063,
+            333.5161622462694,
+            341.9672892730169
+          ],
+          "ci95": [
+            [
+              316.5688114226689,
+              326.8473470273349
+            ],
+            [
+              328.6348860662056,
+              338.2506156379226
+            ],
+            [
+              338.61803878345086,
+              341.96730221470915
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.58218026185922,
+            11.585227072483313,
+            16.913048976323033
+          ],
+          "ci95": [
+            [
+              11.582179864152268,
+              11.583016476570682
+            ],
+            [
+              11.583021071677605,
+              16.90810952707028
+            ],
+            [
+              16.91268305364265,
+              16.918833851051094
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.185762541423394,
+            1.7640300062350225,
+            2.5491551709260567
+          ],
+          "ci95": [
+            [
+              1.1857622898809443,
+              1.4219281310377652
+            ],
+            [
+              1.4270684711627997,
+              1.9433851341450439
+            ],
+            [
+              2.051428158461295,
+              2.5801162688484163
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.185762541423394,
+            1.7640300062350225,
+            2.5491551709260567
+          ],
+          "ci95": [
+            [
+              1.1857622898809443,
+              1.4219281310377652
+            ],
+            [
+              1.4270684711627997,
+              1.9433851341450439
+            ],
+            [
+              2.051428158461295,
+              2.5801162688484163
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009312290820336652,
+            11.545815648725483,
+            27.16723094174258
+          ],
+          "ci95": [
+            [
+              0.000779724412212691,
+              6.772823219293844
+            ],
+            [
+              8.297239071838677,
+              19.16590111260905
+            ],
+            [
+              19.754482833817306,
+              27.167241437368165
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.016009337740980435,
+            11.41006143047175,
+            19.905174113949524
+          ],
+          "ci95": [
+            [
+              0.015511453862185498,
+              7.165040947189438
+            ],
+            [
+              7.769978820549763,
+              13.935972630138783
+            ],
+            [
+              14.21134019621039,
+              19.917982224315264
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.013208642954769586,
+            52.79307804386767,
+            100.06703339854741
+          ],
+          "ci95": [
+            [
+              0.0,
+              35.73538823171886
+            ],
+            [
+              35.958190816950605,
+              71.61522147900747
+            ],
+            [
+              75.49230228928367,
+              100.07193255057042
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.4955915592172258,
+            6.2092244143925015,
+            11.088964627178566
+          ],
+          "ci95": [
+            [
+              1.4955900517558403,
+              4.079234848880441
+            ],
+            [
+              4.366370695612373,
+              8.299363838645837
+            ],
+            [
+              8.937599782638767,
+              11.112450523734282
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.21133065425722694,
+            184.81112632749267,
+            274.9962347157979
+          ],
+          "ci95": [
+            [
+              0.2111232010849718,
+              95.21245420081456
+            ],
+            [
+              132.38169905815954,
+              215.83001374909523
+            ],
+            [
+              233.38717402974945,
+              275.15624235260816
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "deterministic",
+      "design": "b530-n40-ogive-D12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            170.415113408242,
+            180.81601350861376,
+            185.55088843634664
+          ],
+          "ci95": [
+            [
+              170.40926777474473,
+              176.45413348494785
+            ],
+            [
+              177.51923091591806,
+              183.46784326204846
+            ],
+            [
+              183.56346375677686,
+              185.55088909692034
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.15547607309331,
+            11.158580764581213,
+            16.394269507914043
+          ],
+          "ci95": [
+            [
+              11.155475625642339,
+              11.156166884319314
+            ],
+            [
+              11.1561714616645,
+              16.389216045923444
+            ],
+            [
+              16.393876020123184,
+              16.40050989372788
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.5564608448601112,
+            2.1890832513047194,
+            3.08485303146643
+          ],
+          "ci95": [
+            [
+              1.5564605553296145,
+              1.8102161790498383
+            ],
+            [
+              1.8151609607688766,
+              2.389597523535344
+            ],
+            [
+              2.51325441296397,
+              3.120061488662732
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.5564608448601112,
+            2.0832416568250975,
+            2.5761937709632905
+          ],
+          "ci95": [
+            [
+              1.5564605553296145,
+              1.8102161790498383
+            ],
+            [
+              1.8151609607688766,
+              2.2063063896045905
+            ],
+            [
+              2.267112382039219,
+              2.581709348801155
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009527837634147772,
+            11.926069292243804,
+            28.02245724577103
+          ],
+          "ci95": [
+            [
+              0.0008781193731607924,
+              6.982759680908781
+            ],
+            [
+              8.584536565019619,
+              19.767796909522904
+            ],
+            [
+              20.313580358572782,
+              28.022468887686728
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.00993230279017862,
+            11.874601111155322,
+            21.58227782697314
+          ],
+          "ci95": [
+            [
+              0.00965232881488763,
+              7.77530270732133
+            ],
+            [
+              8.08154906545794,
+              15.530924517152165
+            ],
+            [
+              16.44049953674621,
+              21.59054343635601
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0,
+            55.4997910275121,
+            105.43953919581293
+          ],
+          "ci95": [
+            [
+              0.0,
+              37.530661796295384
+            ],
+            [
+              37.7732746779651,
+              75.74200418858958
+            ],
+            [
+              80.2043408736156,
+              105.44281961808932
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.1035783484604107,
+            4.92956249050865,
+            9.50861522536524
+          ],
+          "ci95": [
+            [
+              1.1035757272367586,
+              3.2080700141516423
+            ],
+            [
+              3.3866878222435672,
+              7.009082549913843
+            ],
+            [
+              7.522057686294951,
+              9.521037520794495
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.09034255475270025,
+            94.70245173295373,
+            144.88154171791274
+          ],
+          "ci95": [
+            [
+              0.08916478704972947,
+              50.38248210385339
+            ],
+            [
+              70.33005086551162,
+              102.14058307632148
+            ],
+            [
+              106.52273922040871,
+              144.93800792868674
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "deterministic",
+      "design": "b530-n40-ogive-E12",
+      "expected": 20,
+      "recorded": 20,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 11,
+          "fraction_of_valid": 0.55
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 4,
+          "fraction_of_valid": 0.2
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "beyond": 4,
+          "fraction_of_valid": 0.2
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            312.6044149147138,
+            329.31023364384316,
+            337.65497394171865
+          ],
+          "ci95": [
+            [
+              312.600274792758,
+              322.855898498939
+            ],
+            [
+              324.5609217769326,
+              333.989629090107
+            ],
+            [
+              334.35862260864167,
+              337.6549861831279
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            11.495278502510384,
+            11.498317594446284,
+            16.78903078086488
+          ],
+          "ci95": [
+            [
+              11.495278108598274,
+              11.49608295087004
+            ],
+            [
+              11.496087491696137,
+              16.784126380791157
+            ],
+            [
+              16.788663490617413,
+              16.794846772750294
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.2864149975592827,
+            1.9173894579852022,
+            2.7975222526607757
+          ],
+          "ci95": [
+            [
+              1.286414728879952,
+              1.5423330713041976
+            ],
+            [
+              1.5479277815804002,
+              2.11601386405649
+            ],
+            [
+              2.2356140057300298,
+              2.830947103798844
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.2864149975592827,
+            1.9173894579852022,
+            2.7975222526607757
+          ],
+          "ci95": [
+            [
+              1.286414728879952,
+              1.5423330713041976
+            ],
+            [
+              1.5479277815804002,
+              2.11601386405649
+            ],
+            [
+              2.2356140057300298,
+              2.830947103798844
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.0009343487968854235,
+            11.629598512050087,
+            27.34284116267427
+          ],
+          "ci95": [
+            [
+              0.0008236292015940976,
+              6.822255549013148
+            ],
+            [
+              8.358337141858764,
+              19.29888458856742
+            ],
+            [
+              19.888892801458027,
+              27.342851606482995
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.016348932412645473,
+            11.476894606776877,
+            19.924756727258103
+          ],
+          "ci95": [
+            [
+              0.016266617990570664,
+              7.1462794488953065
+            ],
+            [
+              7.759555556749118,
+              13.920668699396272
+            ],
+            [
+              14.195820294368106,
+              19.937845969265485
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.013197957165217012,
+            51.35053261429365,
+            97.26650933191567
+          ],
+          "ci95": [
+            [
+              0.0,
+              34.72978151910573
+            ],
+            [
+              34.98744903339174,
+              69.58676495553735
+            ],
+            [
+              73.37089788393372,
+              97.27163585794848
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            1.059249316674503,
+            6.104842121134534,
+            11.031253586153824
+          ],
+          "ci95": [
+            [
+              1.0592484322582183,
+              3.9239079461909427
+            ],
+            [
+              4.232637223535717,
+              8.217636057791154
+            ],
+            [
+              8.857448186272425,
+              11.054033039846132
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 20,
+          "valid": 20,
+          "missing": 0,
+          "quantiles": [
+            0.20889065603241555,
+            181.2745741434142,
+            269.7127440912532
+          ],
+          "ci95": [
+            [
+              0.20868986496700836,
+              93.34813422307691
+            ],
+            [
+              131.02509626702016,
+              211.18502237295607
+            ],
+            [
+              228.427658502618,
+              269.8706660568162
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b500-n50-conical-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 64,
+          "fraction_of_valid": 0.064
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 115,
+          "fraction_of_valid": 0.115
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            157.33027290165327,
+            167.56675512712917,
+            174.95838809098896
+          ],
+          "ci95": [
+            [
+              156.29987978071784,
+              158.18220079302637
+            ],
+            [
+              167.0944507194503,
+              167.8729219811666
+            ],
+            [
+              174.49642806968242,
+              175.48826570169192
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.086174625174104,
+            11.21255249753844,
+            11.33755966189776
+          ],
+          "ci95": [
+            [
+              11.080338227118926,
+              11.095087721615561
+            ],
+            [
+              11.206092450923837,
+              11.218431232655941
+            ],
+            [
+              11.33280104729298,
+              11.343348170127912
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.442956229191423,
+            1.8428252708554091,
+            2.6806465757980904
+          ],
+          "ci95": [
+            [
+              1.4249687442807506,
+              1.44951767631914
+            ],
+            [
+              1.7931705715622106,
+              1.8730639295942793
+            ],
+            [
+              2.6466472896462694,
+              2.713384039777855
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.442956229191423,
+            1.6382335534443895,
+            2.0170666139728035
+          ],
+          "ci95": [
+            [
+              1.4249687442807506,
+              1.44951767631914
+            ],
+            [
+              1.6246440018672028,
+              1.6488595383998073
+            ],
+            [
+              2.002693235199137,
+              2.046669703402796
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4242930425021827,
+            14.973139648553708,
+            26.625789586531795
+          ],
+          "ci95": [
+            [
+              1.194509189811284,
+              1.7732794955973272
+            ],
+            [
+              14.084726979561369,
+              15.958764832101911
+            ],
+            [
+              26.192373691341874,
+              26.97769903886064
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6383255745825356,
+            11.65520154989295,
+            21.092022983719396
+          ],
+          "ci95": [
+            [
+              1.3260855267705238,
+              1.7805405109090582
+            ],
+            [
+              11.071026079992885,
+              12.31687080615946
+            ],
+            [
+              20.648508400421683,
+              21.50723732461492
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.383774017227001,
+            55.37294868904961,
+            100.876506037704
+          ],
+          "ci95": [
+            [
+              9.872989897850687,
+              13.094689310263002
+            ],
+            [
+              52.69018621377445,
+              59.84374670197965
+            ],
+            [
+              99.0875032919342,
+              102.46612591616562
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            3.3350299282354383,
+            6.171367344057744,
+            10.221803409409233
+          ],
+          "ci95": [
+            [
+              3.244722004841001,
+              3.4040659301599234
+            ],
+            [
+              5.954396938967113,
+              6.503663459216789
+            ],
+            [
+              10.002339756367991,
+              10.362817436271229
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            8.458994789172996,
+            62.973294199774344,
+            116.12207205228923
+          ],
+          "ci95": [
+            [
+              7.46264790114545,
+              9.597781936345989
+            ],
+            [
+              59.719280327571305,
+              65.97335361210821
+            ],
+            [
+              113.84978618322768,
+              119.04357631158551
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b500-n50-conical-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 184,
+          "fraction_of_valid": 0.184
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 407,
+          "fraction_of_valid": 0.407
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            288.5497537941607,
+            304.7650927286379,
+            314.90443824695706
+          ],
+          "ci95": [
+            [
+              286.3228993802595,
+              289.4618318375188
+            ],
+            [
+              303.87688558520114,
+              305.5175549970091
+            ],
+            [
+              314.2728124898775,
+              315.4222554156627
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.329620718935649,
+            11.450809035337864,
+            11.58683538197127
+          ],
+          "ci95": [
+            [
+              11.327101295778823,
+              11.33326408551012
+            ],
+            [
+              11.445461850181276,
+              11.457158234181152
+            ],
+            [
+              11.575971901444603,
+              11.594909360349213
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.1978409403838364,
+            1.603983542089979,
+            2.43072881946628
+          ],
+          "ci95": [
+            [
+              1.1874097593910538,
+              1.2119474205982785
+            ],
+            [
+              1.5564078234482657,
+              1.6381920457812196
+            ],
+            [
+              2.393753250679131,
+              2.46387146893166
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.1978409403838364,
+            1.5360133307304031,
+            1.8991491294810277
+          ],
+          "ci95": [
+            [
+              1.1874097593910538,
+              1.2119474205982785
+            ],
+            [
+              1.5204364667643824,
+              1.5524713829740284
+            ],
+            [
+              1.8685132326668823,
+              1.9224355629324004
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3654671321754017,
+            14.614033598267763,
+            26.204394888596628
+          ],
+          "ci95": [
+            [
+              1.1862510806467808,
+              1.6466376369631543
+            ],
+            [
+              13.761335728552174,
+              15.733729846879815
+            ],
+            [
+              25.756204872102845,
+              26.46672077206751
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.671506423845597,
+            11.101330524426022,
+            19.819705310496328
+          ],
+          "ci95": [
+            [
+              1.4313570345319715,
+              1.8686262333070065
+            ],
+            [
+              10.3620157170767,
+              11.649632793732446
+            ],
+            [
+              19.524396942892366,
+              20.243276808976873
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            12.419883886558585,
+            51.56740739134169,
+            93.44316677984592
+          ],
+          "ci95": [
+            [
+              10.850868035186604,
+              13.973820732385066
+            ],
+            [
+              49.04732257406767,
+              55.50431091604168
+            ],
+            [
+              91.68889710769854,
+              94.62213191621835
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.3070059897322013,
+            6.681041748033824,
+            11.54581687748494
+          ],
+          "ci95": [
+            [
+              2.2488462402202005,
+              2.381880781357189
+            ],
+            [
+              6.363741308138887,
+              7.030471028833124
+            ],
+            [
+              11.297923536407744,
+              11.759428568312996
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            14.200925229967382,
+            118.49074615657636,
+            220.6320000830712
+          ],
+          "ci95": [
+            [
+              12.144868186805772,
+              16.572678101282882
+            ],
+            [
+              111.72294172084277,
+              123.9221849813992
+            ],
+            [
+              216.81451985954442,
+              230.37672950288015
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b500-n40-ogive-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 68,
+          "fraction_of_valid": 0.068
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 89,
+          "fraction_of_valid": 0.089
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            161.85307170929156,
+            172.5594856573576,
+            180.57659400811838
+          ],
+          "ci95": [
+            [
+              160.7207072215207,
+              162.77402340373874
+            ],
+            [
+              172.12197718762988,
+              172.96875696771875
+            ],
+            [
+              180.10509260097703,
+              181.22979231496555
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.065830963554664,
+            11.187297557652482,
+            11.321718909492763
+          ],
+          "ci95": [
+            [
+              11.06186384275021,
+              11.069267623190907
+            ],
+            [
+              11.181405544576496,
+              11.193970485272077
+            ],
+            [
+              11.311310805181078,
+              11.329614032822754
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4677758458269274,
+            1.8687640400587184,
+            2.717391871695615
+          ],
+          "ci95": [
+            [
+              1.454431873310567,
+              1.4752860300537742
+            ],
+            [
+              1.8209562563599437,
+              1.902508066628722
+            ],
+            [
+              2.679109925996496,
+              2.7471939912519314
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4677758458269274,
+            1.6678474643208958,
+            2.0689371711464437
+          ],
+          "ci95": [
+            [
+              1.454431873310567,
+              1.4752860300537742
+            ],
+            [
+              1.6533035552248532,
+              1.6767963659978933
+            ],
+            [
+              2.0379485440214475,
+              2.0857989306479667
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4313177174765277,
+            14.923213213059693,
+            26.694668206464378
+          ],
+          "ci95": [
+            [
+              1.1787670596470452,
+              1.752892081518111
+            ],
+            [
+              14.150974807532652,
+              16.01668465051301
+            ],
+            [
+              26.23540466891517,
+              26.97671762575384
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6471738564098037,
+            11.665042575686261,
+            21.108276988900357
+          ],
+          "ci95": [
+            [
+              1.323541678102668,
+              1.7875785219534939
+            ],
+            [
+              11.023667746280404,
+              12.312533650054798
+            ],
+            [
+              20.714510083680754,
+              21.588884376313803
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.348108317040973,
+            55.5485541698676,
+            100.88959327829616
+          ],
+          "ci95": [
+            [
+              9.763543971351867,
+              13.070422396937884
+            ],
+            [
+              52.59840166358824,
+              59.77756239955913
+            ],
+            [
+              99.18273793670646,
+              102.57468080086689
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.198947851349067,
+            5.910972828328294,
+            10.299517023585176
+          ],
+          "ci95": [
+            [
+              2.0895696506171917,
+              2.2677731576263884
+            ],
+            [
+              5.640615106469331,
+              6.234659131047671
+            ],
+            [
+              10.059699435798384,
+              10.424256668906601
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            8.781793349387431,
+            64.10874795359922,
+            118.32204012787717
+          ],
+          "ci95": [
+            [
+              7.598295889285351,
+              9.725096554189713
+            ],
+            [
+              60.391432323394724,
+              66.74465055033977
+            ],
+            [
+              115.3337763498311,
+              121.33159118074137
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b500-n40-ogive-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 217,
+          "fraction_of_valid": 0.217
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 391,
+          "fraction_of_valid": 0.391
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            303.61586848765364,
+            321.395437307311,
+            332.7363060960282
+          ],
+          "ci95": [
+            [
+              301.500364049867,
+              304.76501972843766
+            ],
+            [
+              320.3353959945088,
+              322.02168335042205
+            ],
+            [
+              331.9232617633233,
+              333.2262020742477
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.29174276302248,
+            11.425946932393554,
+            11.545952835717086
+          ],
+          "ci95": [
+            [
+              11.276395293862281,
+              11.301448514663774
+            ],
+            [
+              11.420751611231564,
+              11.432009446819023
+            ],
+            [
+              11.539496063063494,
+              11.557387981112491
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.226531907670263,
+            1.6322745584500695,
+            2.463370174146598
+          ],
+          "ci95": [
+            [
+              1.2126427212647188,
+              1.2400002356597748
+            ],
+            [
+              1.5825092612334006,
+              1.6619614765320763
+            ],
+            [
+              2.428917566949262,
+              2.4962063311046507
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.226531907670263,
+            1.5969061821148847,
+            1.9895447392726575
+          ],
+          "ci95": [
+            [
+              1.2126427212647188,
+              1.2400002356597748
+            ],
+            [
+              1.5674217660070413,
+              1.6169446001955825
+            ],
+            [
+              1.9545697411421776,
+              2.021884185587118
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.382821859014323,
+            14.644384343159032,
+            26.135638390873034
+          ],
+          "ci95": [
+            [
+              1.20449489472091,
+              1.6614753870331296
+            ],
+            [
+              13.790863128900858,
+              15.670596963512667
+            ],
+            [
+              25.714168933091933,
+              26.638356771965665
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6674742400368896,
+            11.170845486476907,
+            19.941146606973927
+          ],
+          "ci95": [
+            [
+              1.4517112235711833,
+              1.8592925829704223
+            ],
+            [
+              10.44045493744197,
+              11.69948202123014
+            ],
+            [
+              19.668413896553492,
+              20.361440725624707
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            12.464881509012173,
+            51.462190194419094,
+            93.49287698100564
+          ],
+          "ci95": [
+            [
+              10.792055087112672,
+              13.887894868694515
+            ],
+            [
+              48.93802308244812,
+              55.43911766994299
+            ],
+            [
+              91.69138387454491,
+              94.66105855824345
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4085194613088712,
+            6.7363319807829765,
+            11.902941257420458
+          ],
+          "ci95": [
+            [
+              1.25662246974471,
+              1.5022110256834955
+            ],
+            [
+              6.436326433267323,
+              7.133123452858229
+            ],
+            [
+              11.657051356365027,
+              12.157577753203826
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            14.893153099831485,
+            122.51559488465476,
+            230.82802798669
+          ],
+          "ci95": [
+            [
+              12.36003252482816,
+              16.848858592022413
+            ],
+            [
+              115.64067315592655,
+              128.78579305810547
+            ],
+            [
+              226.04716000222848,
+              237.90417988358305
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b530-n40-ogive-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 73,
+          "fraction_of_valid": 0.073
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 6,
+          "fraction_of_valid": 0.006
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            159.65473752460895,
+            170.20272936726911,
+            178.09474030385925
+          ],
+          "ci95": [
+            [
+              158.5391652785449,
+              160.585823669764
+            ],
+            [
+              169.78113231783306,
+              170.62555545171037
+            ],
+            [
+              177.66078400937798,
+              178.68393072084174
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            10.936961946912584,
+            11.050444860415467,
+            11.184841798875285
+          ],
+          "ci95": [
+            [
+              10.930881512771878,
+              10.940930115922304
+            ],
+            [
+              11.045939758371034,
+              11.061988115152088
+            ],
+            [
+              11.176744558439536,
+              11.191169811347693
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.5966483096887554,
+            2.0320639798018396,
+            2.976571146851363
+          ],
+          "ci95": [
+            [
+              1.5756734224854505,
+              1.6031272834157029
+            ],
+            [
+              1.9807494295950594,
+              2.0678918078846653
+            ],
+            [
+              2.9336402133694786,
+              3.009736831315472
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.5966483096887554,
+            1.8102312654128072,
+            2.23261925109911
+          ],
+          "ci95": [
+            [
+              1.5756734224854505,
+              1.6031272834157029
+            ],
+            [
+              1.797475097160492,
+              1.8217800639202701
+            ],
+            [
+              2.215506677508883,
+              2.2598038041546022
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4481733861175476,
+            15.174378311816916,
+            26.985046662606443
+          ],
+          "ci95": [
+            [
+              1.2127160035484623,
+              1.7667911377274923
+            ],
+            [
+              14.31506612746759,
+              16.160942924433698
+            ],
+            [
+              26.540662972146414,
+              27.278144860744696
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6230846400075474,
+            11.333154715087083,
+            20.448859932758143
+          ],
+          "ci95": [
+            [
+              1.2852917417328096,
+              1.7873948858160085
+            ],
+            [
+              10.658651977965146,
+              11.8618917019221
+            ],
+            [
+              20.18642791994162,
+              20.917699829521492
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.07113811752376,
+            54.21711082464081,
+            98.27979148062171
+          ],
+          "ci95": [
+            [
+              9.454710409452879,
+              12.897356359131937
+            ],
+            [
+              51.23517725785124,
+              58.296999194150075
+            ],
+            [
+              96.4596255791204,
+              99.9746037080876
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.487857963968206,
+            5.9837460947509715,
+            10.366623409953615
+          ],
+          "ci95": [
+            [
+              2.3514339356863707,
+              2.580386691690482
+            ],
+            [
+              5.735729028307723,
+              6.323719689114934
+            ],
+            [
+              10.112535436867976,
+              10.475388430603608
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            8.518849146549162,
+            62.50902231827928,
+            115.28905687302104
+          ],
+          "ci95": [
+            [
+              7.191069534072563,
+              9.706565634640427
+            ],
+            [
+              58.96593582047692,
+              65.24871197343286
+            ],
+            [
+              112.70693837651291,
+              118.78276510668313
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260919",
+      "design": "b530-n40-ogive-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 214,
+          "fraction_of_valid": 0.214
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 245,
+          "fraction_of_valid": 0.245
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            299.8194288940245,
+            317.39205918976285,
+            328.55231697270335
+          ],
+          "ci95": [
+            [
+              297.7582294904398,
+              300.93409349986143
+            ],
+            [
+              316.35410555129766,
+              317.9985537126803
+            ],
+            [
+              327.7424025309214,
+              329.001307618046
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.179627073576514,
+            11.298865763721757,
+            11.422464540127562
+          ],
+          "ci95": [
+            [
+              11.172678894794187,
+              11.18353731230548
+            ],
+            [
+              11.291754060653341,
+              11.307628808536109
+            ],
+            [
+              11.404307499270285,
+              11.437467402267272
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3293518986482165,
+            1.7700550348020163,
+            2.6972009563903128
+          ],
+          "ci95": [
+            [
+              1.3106605919651848,
+              1.3415854105238263
+            ],
+            [
+              1.7183450019218127,
+              1.8067411581439348
+            ],
+            [
+              2.6567443787144946,
+              2.7347050021007893
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3293518986482165,
+            1.7082196224682458,
+            2.1291042857096123
+          ],
+          "ci95": [
+            [
+              1.3106605919651848,
+              1.3415854105238263
+            ],
+            [
+              1.6886907057533254,
+              1.7297719146121533
+            ],
+            [
+              2.1101159417118662,
+              2.159172432268062
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4294133190700882,
+            14.844563971013143,
+            26.404244597353426
+          ],
+          "ci95": [
+            [
+              1.220066879833456,
+              1.6739704562067805
+            ],
+            [
+              13.911586665155877,
+              15.95787381700157
+            ],
+            [
+              26.042659069193512,
+              26.813828597293934
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.7079799887256255,
+            11.160049088834905,
+            19.92073485863593
+          ],
+          "ci95": [
+            [
+              1.3462369739928828,
+              1.8660750973736695
+            ],
+            [
+              10.32730768592491,
+              11.71900268911868
+            ],
+            [
+              19.57307145897507,
+              20.37061312026793
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            12.069688056189788,
+            50.20034297090791,
+            90.91063883262389
+          ],
+          "ci95": [
+            [
+              10.781110356179965,
+              13.156893260179512
+            ],
+            [
+              47.539934275397215,
+              53.9192773356086
+            ],
+            [
+              89.17003987260227,
+              91.95782172549254
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.2233863585086127,
+            6.691466031355136,
+            11.846988161319972
+          ],
+          "ci95": [
+            [
+              1.010360828441694,
+              1.3107556345778
+            ],
+            [
+              6.364841972953664,
+              7.083602629129604
+            ],
+            [
+              11.616416186856124,
+              12.126085753183702
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            14.912985252243114,
+            119.84409897612208,
+            225.84272104136733
+          ],
+          "ci95": [
+            [
+              13.013065158537561,
+              16.258461138963327
+            ],
+            [
+              114.15743531892595,
+              126.96536006578953
+            ],
+            [
+              221.3614074596221,
+              233.70039608905006
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b500-n50-conical-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 77,
+          "fraction_of_valid": 0.077
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 138,
+          "fraction_of_valid": 0.138
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            157.01548404058144,
+            167.40462928261547,
+            174.8120743265893
+          ],
+          "ci95": [
+            [
+              156.1190817902425,
+              157.6911336593404
+            ],
+            [
+              166.847033745499,
+              167.80935504150324
+            ],
+            [
+              174.15390552715354,
+              175.17006652293654
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.084471563646519,
+            11.213708548854122,
+            11.336623615628831
+          ],
+          "ci95": [
+            [
+              11.076241562025135,
+              11.094529990131097
+            ],
+            [
+              11.207910483763989,
+              11.217708360454392
+            ],
+            [
+              11.332407914288336,
+              11.339262645387521
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4283377767350827,
+            1.8343742853564673,
+            2.677561470426442
+          ],
+          "ci95": [
+            [
+              1.4063489917629954,
+              1.4387871207922245
+            ],
+            [
+              1.8080068127064253,
+              1.8826080671368344
+            ],
+            [
+              2.644766386485718,
+              2.72108064055429
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4283377767350827,
+            1.6396469615627174,
+            2.0005681366370327
+          ],
+          "ci95": [
+            [
+              1.4063489917629954,
+              1.4387871207922245
+            ],
+            [
+              1.6259667391105204,
+              1.649042806312009
+            ],
+            [
+              1.9820373821530404,
+              2.0350368989581376
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3808607640090445,
+            15.063515189827726,
+            26.685360431469118
+          ],
+          "ci95": [
+            [
+              1.1553077582330522,
+              1.822013637204193
+            ],
+            [
+              14.362472122945228,
+              16.177713729867246
+            ],
+            [
+              26.511173283332298,
+              27.025412496008684
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.610547711483994,
+            11.733957472396114,
+            21.475327955377306
+          ],
+          "ci95": [
+            [
+              1.3531508502904945,
+              1.912087754267567
+            ],
+            [
+              11.248811522257792,
+              12.570427152130012
+            ],
+            [
+              21.051565582617783,
+              21.727644598285313
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            9.622664175543493,
+            56.819592724306546,
+            101.22791163304393
+          ],
+          "ci95": [
+            [
+              7.725456558273918,
+              11.562752296323618
+            ],
+            [
+              54.14783051997592,
+              60.23802380792624
+            ],
+            [
+              99.97623066059704,
+              102.47734247687198
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            3.3480541620434083,
+            6.297622769679398,
+            10.26270513952786
+          ],
+          "ci95": [
+            [
+              3.271204331983844,
+              3.4205487800133296
+            ],
+            [
+              5.933005063456812,
+              6.611386390978692
+            ],
+            [
+              10.154936517905094,
+              10.445840187512248
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            8.528441752542074,
+            62.09647814341547,
+            118.7977882761414
+          ],
+          "ci95": [
+            [
+              6.505006498605165,
+              11.121448047298378
+            ],
+            [
+              58.69683832337248,
+              66.05418893708772
+            ],
+            [
+              114.79177244414979,
+              120.78547277546339
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b500-n50-conical-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 192,
+          "fraction_of_valid": 0.192
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 413,
+          "fraction_of_valid": 0.413
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            287.47302625411794,
+            304.4848711578045,
+            314.58084061033287
+          ],
+          "ci95": [
+            [
+              286.44041045797513,
+              288.4836930584989
+            ],
+            [
+              303.5342991951398,
+              305.4457605548476
+            ],
+            [
+              313.8783010725199,
+              315.0302503578888
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.3298235128347,
+            11.450300322933963,
+            11.591352386685614
+          ],
+          "ci95": [
+            [
+              11.325546942295734,
+              11.334741878537438
+            ],
+            [
+              11.444775319730994,
+              11.459088306345597
+            ],
+            [
+              11.578480200085021,
+              11.598144716908736
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.1878138950958452,
+            1.5977164461761295,
+            2.432068844677661
+          ],
+          "ci95": [
+            [
+              1.1773155046185926,
+              1.1978458001973231
+            ],
+            [
+              1.5699788619757766,
+              1.637254252175315
+            ],
+            [
+              2.3924072533386833,
+              2.4720375437650004
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.1878138950958452,
+            1.5439243909767308,
+            1.8766090330907184
+          ],
+          "ci95": [
+            [
+              1.1773155046185926,
+              1.1978458001973231
+            ],
+            [
+              1.5199077973615758,
+              1.5611756299830168
+            ],
+            [
+              1.8484727491503308,
+              1.900941035674968
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4362004151167187,
+            14.810220695874555,
+            26.279409550065058
+          ],
+          "ci95": [
+            [
+              1.1231369968317015,
+              1.813616933735094
+            ],
+            [
+              14.006541875904126,
+              15.723029440834923
+            ],
+            [
+              26.02464202636356,
+              26.631641859641334
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6095953816028734,
+            11.093296118801142,
+            20.013595402897625
+          ],
+          "ci95": [
+            [
+              1.2365892241090382,
+              1.910965352367747
+            ],
+            [
+              10.450839645174488,
+              11.762425997148455
+            ],
+            [
+              19.768026999364054,
+              20.31516715657139
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.303322722016983,
+            52.803237643724955,
+            93.84449950643062
+          ],
+          "ci95": [
+            [
+              10.16452802070912,
+              13.49262967762559
+            ],
+            [
+              50.28187949835745,
+              56.02325710373966
+            ],
+            [
+              92.57498486379009,
+              94.78473830442563
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.3064432595740687,
+            6.81149500185458,
+            11.653816298524449
+          ],
+          "ci95": [
+            [
+              2.2437794321946782,
+              2.387162230808182
+            ],
+            [
+              6.495883684479843,
+              7.13043547246383
+            ],
+            [
+              11.408409907555077,
+              11.847802580039994
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            15.325548366552638,
+            116.78995552836815,
+            224.73471240575
+          ],
+          "ci95": [
+            [
+              12.945746207868046,
+              17.681321185109496
+            ],
+            [
+              111.11956046415213,
+              124.21400881019892
+            ],
+            [
+              221.79607371752067,
+              228.77197676498255
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b500-n40-ogive-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 81,
+          "fraction_of_valid": 0.081
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 99,
+          "fraction_of_valid": 0.099
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            161.5259191671016,
+            172.40947839719027,
+            180.44464344617433
+          ],
+          "ci95": [
+            [
+              160.65322005285952,
+              162.23309326733929
+            ],
+            [
+              171.97856016098373,
+              172.91846758257398
+            ],
+            [
+              179.74046880762174,
+              180.843564469428
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.065036580949421,
+            11.181834826347812,
+            11.30676000139748
+          ],
+          "ci95": [
+            [
+              11.06153814620456,
+              11.072942269964772
+            ],
+            [
+              11.17426536618955,
+              11.189698999896931
+            ],
+            [
+              11.300120418128135,
+              11.316901586388568
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4522380398464945,
+            1.8670295522725815,
+            2.7135942925728105
+          ],
+          "ci95": [
+            [
+              1.4392600145452192,
+              1.4655830883674295
+            ],
+            [
+              1.8374041531433531,
+              1.912375426459261
+            ],
+            [
+              2.678812817132966,
+              2.7565560625922414
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4522380398464945,
+            1.6701406268053003,
+            2.053760625059736
+          ],
+          "ci95": [
+            [
+              1.4392600145452192,
+              1.4655830883674295
+            ],
+            [
+              1.656430501561155,
+              1.6840720096730708
+            ],
+            [
+              2.028264935087262,
+              2.082658036324329
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3830513239994775,
+            15.163435668656767,
+            26.833105368275106
+          ],
+          "ci95": [
+            [
+              1.1582144954078555,
+              1.813872132340024
+            ],
+            [
+              14.315293783355914,
+              16.09499277432592
+            ],
+            [
+              26.52977540573338,
+              27.14165496040467
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6131939640186046,
+            11.797020572190199,
+            21.482893605969338
+          ],
+          "ci95": [
+            [
+              1.3098144128115308,
+              1.912348216248299
+            ],
+            [
+              11.212922757538285,
+              12.581813572196545
+            ],
+            [
+              21.195591679023572,
+              21.722614879997444
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            9.624872033382447,
+            56.755373918813085,
+            101.30131087389852
+          ],
+          "ci95": [
+            [
+              7.730748873164493,
+              11.562767969200605
+            ],
+            [
+              54.052999771369116,
+              60.242942060826785
+            ],
+            [
+              100.11624153695494,
+              102.55413987643556
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.1711987042121974,
+            6.035945252609392,
+            10.38454410161633
+          ],
+          "ci95": [
+            [
+              2.06957322728316,
+              2.2471549354989486
+            ],
+            [
+              5.6646239901490985,
+              6.326500383346991
+            ],
+            [
+              10.207196939683753,
+              10.530219236715538
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            9.389257972912919,
+            62.937765608393555,
+            120.90631681181087
+          ],
+          "ci95": [
+            [
+              6.898567982655945,
+              10.916657984732776
+            ],
+            [
+              59.3438365005676,
+              66.75094790148798
+            ],
+            [
+              116.97427777151155,
+              122.55713619725377
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b500-n40-ogive-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 216,
+          "fraction_of_valid": 0.216
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 392,
+          "fraction_of_valid": 0.392
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            302.5646744981328,
+            321.02055399998255,
+            332.30981967321213
+          ],
+          "ci95": [
+            [
+              301.4577173299593,
+              303.67590712963533
+            ],
+            [
+              319.95212301361335,
+              321.9851951553902
+            ],
+            [
+              331.62362781493164,
+              332.7892249637526
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.294308103757281,
+            11.419412461286615,
+            11.540272035585296
+          ],
+          "ci95": [
+            [
+              11.28642297420377,
+              11.305930687783775
+            ],
+            [
+              11.4139503288988,
+              11.42497275934389
+            ],
+            [
+              11.534487852895417,
+              11.545809952541953
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.216387854461889,
+            1.6261467729705936,
+            2.465672555995868
+          ],
+          "ci95": [
+            [
+              1.1999100094651445,
+              1.2217193227349044
+            ],
+            [
+              1.5948524732356129,
+              1.6630166527463446
+            ],
+            [
+              2.423974103079362,
+              2.5033377270618433
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.216387854461889,
+            1.5992755125984375,
+            1.9988478761835455
+          ],
+          "ci95": [
+            [
+              1.1999100094651445,
+              1.2217193227349044
+            ],
+            [
+              1.5730232588635318,
+              1.6132965354985347
+            ],
+            [
+              1.9595303652871634,
+              2.0329266408017554
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4220878601543616,
+            14.917834149897448,
+            26.423573259757564
+          ],
+          "ci95": [
+            [
+              1.1247103932692961,
+              1.8315655340816241
+            ],
+            [
+              14.131832997457737,
+              15.7385818758617
+            ],
+            [
+              26.012793175954652,
+              26.611101088040492
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.6153442860048326,
+            11.12658112413472,
+            20.152363816115823
+          ],
+          "ci95": [
+            [
+              1.2623684391017602,
+              1.9156215221929036
+            ],
+            [
+              10.484367732432355,
+              11.849406675071625
+            ],
+            [
+              19.936195989523192,
+              20.400706694303352
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.233993188317106,
+            52.760610016059864,
+            93.91796198347433
+          ],
+          "ci95": [
+            [
+              10.13865131591966,
+              13.37545077552401
+            ],
+            [
+              50.21069833798733,
+              55.956160640457995
+            ],
+            [
+              92.57818736585169,
+              94.82761047793899
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4034347155984006,
+            6.891498435498038,
+            12.028730584773442
+          ],
+          "ci95": [
+            [
+              1.2453538939821474,
+              1.636288476379027
+            ],
+            [
+              6.554804489065766,
+              7.268899841259739
+            ],
+            [
+              11.78346260291393,
+              12.231820538685383
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            16.246026324913405,
+            121.93021181538434,
+            235.3490335598242
+          ],
+          "ci95": [
+            [
+              14.408471925842761,
+              18.809819469363408
+            ],
+            [
+              116.27613408410801,
+              129.8933895234479
+            ],
+            [
+              232.0254439648814,
+              240.9598112672477
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b530-n40-ogive-D12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 87,
+          "fraction_of_valid": 0.087
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 5,
+          "fraction_of_valid": 0.005
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            159.34187041683296,
+            170.0618848799106,
+            177.94468933268539
+          ],
+          "ci95": [
+            [
+              158.4623223077134,
+              159.97649073061828
+            ],
+            [
+              169.62835323417997,
+              170.56415737363812
+            ],
+            [
+              177.2666979250299,
+              178.35883862389304
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            10.93561857163742,
+            11.057582059598587,
+            11.18284314775881
+          ],
+          "ci95": [
+            [
+              10.930206644530475,
+              10.938441498362716
+            ],
+            [
+              11.051659141760615,
+              11.065705419226909
+            ],
+            [
+              11.17639645631057,
+              11.1890562419214
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.579632514688584,
+            2.0241735699471457,
+            2.9809581312194426
+          ],
+          "ci95": [
+            [
+              1.5651024089841707,
+              1.590047360918087
+            ],
+            [
+              1.9911413100701139,
+              2.0759756972933627
+            ],
+            [
+              2.938247549328309,
+              3.0215723749774694
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.579632514688584,
+            1.8154238609522546,
+            2.230293151741348
+          ],
+          "ci95": [
+            [
+              1.5651024089841707,
+              1.590047360918087
+            ],
+            [
+              1.801549178924774,
+              1.829761396641478
+            ],
+            [
+              2.188481540954328,
+              2.251352501339485
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.3799850819211814,
+            15.321675384276197,
+            27.056846731800565
+          ],
+          "ci95": [
+            [
+              1.1782202642034598,
+              1.8281141398592808
+            ],
+            [
+              14.5705975807839,
+              16.296416670099788
+            ],
+            [
+              26.82025178877855,
+              27.40034534828221
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.573833334508933,
+            11.341842917966833,
+            20.89221259139169
+          ],
+          "ci95": [
+            [
+              1.269721588004207,
+              1.9151357135812996
+            ],
+            [
+              10.826396685243015,
+              12.136302273562825
+            ],
+            [
+              20.54397947010935,
+              21.066095673936974
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            9.344625694255937,
+            55.309877112449236,
+            98.60788259357255
+          ],
+          "ci95": [
+            [
+              7.665498065891206,
+              11.12737813488404
+            ],
+            [
+              52.7029695269868,
+              58.663521558666474
+            ],
+            [
+              97.4497988693984,
+              99.91110649370667
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            2.47588388819893,
+            6.137009420490839,
+            10.418530618474882
+          ],
+          "ci95": [
+            [
+              2.3824223303646757,
+              2.5621285799546496
+            ],
+            [
+              5.7660142211290255,
+              6.4311148637456625
+            ],
+            [
+              10.284125963141284,
+              10.571736549399972
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            8.776000473663904,
+            61.54106696235283,
+            117.91593695991268
+          ],
+          "ci95": [
+            [
+              6.740548735196758,
+              10.779965312277294
+            ],
+            [
+              58.08660258841867,
+              65.22176821010086
+            ],
+            [
+              113.9942436533874,
+              119.94786810883392
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "phase": "ensemble-20260920",
+      "design": "b530-n40-ogive-E12",
+      "expected": 1000,
+      "recorded": 1000,
+      "failed": 0,
+      "incomplete_powered_data": 0,
+      "warned": 0,
+      "not_recorded": 0,
+      "screens": {
+        "guide_departure_m_s_below_configured": {
+          "metric": "guide_departure_m_s",
+          "threshold": 12.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 1000,
+          "fraction_of_valid": 1.0
+        },
+        "minimum_ascent_stability_cal_below_configured": {
+          "metric": "minimum_ascent_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "deployment_speed_m_s_above_configured": {
+          "metric": "deployment_speed_m_s",
+          "threshold": 10.0,
+          "side": "above",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 215,
+          "fraction_of_valid": 0.215
+        },
+        "powered_stability_below_1": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.0,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 0,
+          "fraction_of_valid": 0.0
+        },
+        "powered_stability_below_1.5": {
+          "metric": "powered_min_stability_cal",
+          "threshold": 1.5,
+          "side": "below",
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "beyond": 262,
+          "fraction_of_valid": 0.262
+        }
+      },
+      "metrics": {
+        "apogee_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            298.8044808969308,
+            317.00389837333455,
+            328.14526242053273
+          ],
+          "ci95": [
+            [
+              297.7354541478669,
+              299.9941786101189
+            ],
+            [
+              315.92215636046785,
+              317.9297078113091
+            ],
+            [
+              327.34882121353155,
+              328.60645243562266
+            ]
+          ]
+        },
+        "guide_departure_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.178109643248776,
+            11.292616279082058,
+            11.428133221367274
+          ],
+          "ci95": [
+            [
+              11.175055861654299,
+              11.182374221631559
+            ],
+            [
+              11.286083590668815,
+              11.302914204616092
+            ],
+            [
+              11.414521809114568,
+              11.437474295453551
+            ]
+          ]
+        },
+        "powered_min_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.315996699161658,
+            1.7613298951224352,
+            2.702735083132326
+          ],
+          "ci95": [
+            [
+              1.304135341780925,
+              1.3254510011773215
+            ],
+            [
+              1.7311170987792057,
+              1.8023153998617114
+            ],
+            [
+              2.6577618203303777,
+              2.7408596167037507
+            ]
+          ]
+        },
+        "minimum_ascent_stability_cal": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.315996699161658,
+            1.7131389789002394,
+            2.115907274325359
+          ],
+          "ci95": [
+            [
+              1.304135341780925,
+              1.3254510011773215
+            ],
+            [
+              1.686033653629495,
+              1.7330328080574613
+            ],
+            [
+              2.0793249917302545,
+              2.147022920347501
+            ]
+          ]
+        },
+        "powered_max_aoa_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.4571478118415926,
+            15.047658592120811,
+            26.644258031146006
+          ],
+          "ci95": [
+            [
+              1.1419726628902487,
+              1.8450000176371137
+            ],
+            [
+              14.232282914470353,
+              15.961948739564116
+            ],
+            [
+              26.320841798009535,
+              26.90017920956926
+            ]
+          ]
+        },
+        "burnout_tilt_deg": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.5463768816715833,
+            11.095538508261008,
+            20.150961259473352
+          ],
+          "ci95": [
+            [
+              1.2252662830757122,
+              1.9026983593051237
+            ],
+            [
+              10.49038898258086,
+              11.842929844034204
+            ],
+            [
+              19.844793433838827,
+              20.375886691867933
+            ]
+          ]
+        },
+        "powered_max_pitch_yaw_rate_deg_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            11.032704132670531,
+            51.33842465387769,
+            91.25541616959585
+          ],
+          "ci95": [
+            [
+              9.833764827842655,
+              12.969308315048034
+            ],
+            [
+              48.83165195613635,
+              54.432403009777325
+            ],
+            [
+              90.06926357611549,
+              92.14041011689184
+            ]
+          ]
+        },
+        "deployment_speed_m_s": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            1.1381128185386786,
+            6.844254913307541,
+            11.991683989799103
+          ],
+          "ci95": [
+            [
+              0.9927140173832196,
+              1.4911390543989957
+            ],
+            [
+              6.48367012219323,
+              7.212980408891385
+            ],
+            [
+              11.723024906146684,
+              12.18535126451012
+            ]
+          ]
+        },
+        "landing_displacement_m": {
+          "expected": 1000,
+          "valid": 1000,
+          "missing": 0,
+          "quantiles": [
+            15.779958544160133,
+            119.03665315620404,
+            230.64222306220364
+          ],
+          "ci95": [
+            [
+              13.695360655461998,
+              18.57256220101213
+            ],
+            [
+              113.78069014612952,
+              127.7743317736923
+            ],
+            [
+              227.58845046378397,
+              235.91088936268514
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "paired": {
+    "D12": {
+      "apogee_m": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          -2.4894906049857495,
+          -2.3540543183295455,
+          -2.1803867138123976
+        ],
+        "ci95": [
+          [
+            -2.4974353380571315,
+            -2.4840544629187544
+          ],
+          [
+            -2.3602214566755038,
+            -2.349142805854579
+          ],
+          [
+            -2.190780031348165,
+            -2.171167857792245
+          ]
+        ]
+      },
+      "powered_min_stability_cal": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          0.12510759294846416,
+          0.16067680818915087,
+          0.2601085497093806
+        ],
+        "ci95": [
+          [
+            0.123824450301452,
+            0.12616831342180776
+          ],
+          [
+            0.15836759462434863,
+            0.1638185937290076
+          ],
+          [
+            0.2573005358767476,
+            0.26332996490699556
+          ]
+        ]
+      },
+      "burnout_tilt_deg": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          -0.7167044097245009,
+          -0.37633960708755865,
+          0.004446481691496058
+        ],
+        "ci95": [
+          [
+            -0.7261716020954091,
+            -0.6979960035518686
+          ],
+          [
+            -0.39220736549496227,
+            -0.3598891499770942
+          ],
+          [
+            -0.004271857161689398,
+            0.018802412879400432
+          ]
+        ]
+      }
+    },
+    "E12": {
+      "apogee_m": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          -4.191121625414996,
+          -4.024200280057471,
+          -3.7492498217370382
+        ],
+        "ci95": [
+          [
+            -4.197186429904847,
+            -4.185084395773515
+          ],
+          [
+            -4.0310125763328415,
+            -4.0155986276847955
+          ],
+          [
+            -3.76003231226224,
+            -3.731647532463364
+          ]
+        ]
+      },
+      "powered_min_stability_cal": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          0.09982626217334054,
+          0.13851772550067287,
+          0.23523116017638057
+        ],
+        "ci95": [
+          [
+            0.098514238726549,
+            0.10134480003931731
+          ],
+          [
+            0.13565427886560438,
+            0.14110957508316643
+          ],
+          [
+            0.23314016558925896,
+            0.23891212178407792
+          ]
+        ]
+      },
+      "burnout_tilt_deg": {
+        "expected": 2000,
+        "valid": 2000,
+        "missing": 0,
+        "quantiles": [
+          -0.3212496458758213,
+          -0.020441642204471755,
+          0.2846385773133135
+        ],
+        "ci95": [
+          [
+            -0.3385398477892633,
+            -0.30203445572995335
+          ],
+          [
+            -0.030272715607085266,
+            -0.011333724475040354
+          ],
+          [
+            0.26956650421909006,
+            0.30565437497539705
+          ]
+        ]
+      }
+    }
+  },
+  "convergence": [
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -2.4749299710151105,
+        -2.3353065862652045,
+        -2.1997634988181742
+      ],
+      "ci95": [
+        [
+          -2.507216461847109,
+          -2.4459657682135716
+        ],
+        [
+          -2.3864256034842835,
+          -2.3087490767787813
+        ],
+        [
+          -2.2305384376521418,
+          -2.156332615365413
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -2.4846328055683555,
+        -2.354510248396892,
+        -2.1877210121617097
+      ],
+      "ci95": [
+        [
+          -2.502166268634298,
+          -2.475626142131285
+        ],
+        [
+          -2.368259541597253,
+          -2.341290136110697
+        ],
+        [
+          -2.2003033161284344,
+          -2.166884463368297
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -2.492466618231204,
+        -2.3553338993940685,
+        -2.187323741035134
+      ],
+      "ci95": [
+        [
+          -2.500829350696176,
+          -2.4815284393527697
+        ],
+        [
+          -2.362860713124263,
+          -2.347385806154705
+        ],
+        [
+          -2.199095329095678,
+          -2.1668855689264674
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -2.4885518258902453,
+        -2.360746716319156,
+        -2.1729024380540354
+      ],
+      "ci95": [
+        [
+          -2.5050907323463347,
+          -2.4529276077890048
+        ],
+        [
+          -2.3961407716255394,
+          -2.333235320598817
+        ],
+        [
+          -2.1985469547050016,
+          -2.119823797713478
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -2.493352409738199,
+        -2.3556346808245365,
+        -2.17909262168447
+      ],
+      "ci95": [
+        [
+          -2.5001519539199153,
+          -2.482996332017109
+        ],
+        [
+          -2.366508332616192,
+          -2.347813146199229
+        ],
+        [
+          -2.1966247784143462,
+          -2.1612471559141557
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -2.4885069469689185,
+        -2.3533293018509056,
+        -2.1768005457292916
+      ],
+      "ci95": [
+        [
+          -2.4954171298048253,
+          -2.4775575968187216
+        ],
+        [
+          -2.3604313892199635,
+          -2.3460010862234952
+        ],
+        [
+          -2.1891745011080963,
+          -2.166989132693298
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        0.12221261786976491,
+        0.16034390910346707,
+        0.24232058575808382
+      ],
+      "ci95": [
+        [
+          0.11752157227317188,
+          0.12694990041485746
+        ],
+        [
+          0.14622706773696126,
+          0.17433369222960104
+        ],
+        [
+          0.22708562903990331,
+          0.25574608395143666
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        0.1243766193253504,
+        0.15733890527874272,
+        0.2592588725098841
+      ],
+      "ci95": [
+        [
+          0.12158853387973378,
+          0.12696565666538043
+        ],
+        [
+          0.15344298345916052,
+          0.1656835978875898
+        ],
+        [
+          0.25416924801406043,
+          0.2637865926778873
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        0.1252651944085541,
+        0.16034963091344578,
+        0.2598796537218057
+      ],
+      "ci95": [
+        [
+          0.12265939955969185,
+          0.12659331895960896
+        ],
+        [
+          0.1570602811096247,
+          0.1646220332293984
+        ],
+        [
+          0.2556008637397683,
+          0.2636901698683446
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        0.12448727369439064,
+        0.15822817603742267,
+        0.26174477240032157
+      ],
+      "ci95": [
+        [
+          0.12039057206554526,
+          0.12847355177972908
+        ],
+        [
+          0.149068079284591,
+          0.17639887339316984
+        ],
+        [
+          0.24850153168400999,
+          0.27337768127198236
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        0.12496358782762201,
+        0.16221994295150177,
+        0.25984514365641864
+      ],
+      "ci95": [
+        [
+          0.12330045637618912,
+          0.12673008634578173
+        ],
+        [
+          0.1582693938848205,
+          0.16614331083742143
+        ],
+        [
+          0.2522612446921108,
+          0.2647722424234446
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        0.12510759294846416,
+        0.16076014287421747,
+        0.26024027248440446
+      ],
+      "ci95": [
+        [
+          0.12386482656989423,
+          0.1265814880505849
+        ],
+        [
+          0.15715364820047897,
+          0.16425391360292285
+        ],
+        [
+          0.25465013941035114,
+          0.26502488033589766
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -0.7338959797355653,
+        -0.35691678166308893,
+        -0.008501745223455627
+      ],
+      "ci95": [
+        [
+          -0.848750084727395,
+          -0.686385684618996
+        ],
+        [
+          -0.4369787771387113,
+          -0.2845236492797403
+        ],
+        [
+          -0.0918853745367864,
+          0.05493896870627977
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -0.7325737825125517,
+        -0.36310262571567353,
+        0.010513838688443643
+      ],
+      "ci95": [
+        [
+          -0.747299399495491,
+          -0.7036282098352913
+        ],
+        [
+          -0.389784861915885,
+          -0.33859212886495815
+        ],
+        [
+          -0.007786190562689265,
+          0.03535588162574044
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -0.7237432111686793,
+        -0.3621982607084311,
+        0.010513838688443643
+      ],
+      "ci95": [
+        [
+          -0.7358502627816854,
+          -0.7097736649750834
+        ],
+        [
+          -0.38249567067817924,
+          -0.339338774284413
+        ],
+        [
+          -0.0037714171249660154,
+          0.03504748646209283
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -0.6945314947512828,
+        -0.4037612481180344,
+        0.05200467684563896
+      ],
+      "ci95": [
+        [
+          -0.8189164037170791,
+          -0.639362292781461
+        ],
+        [
+          -0.46264746114392236,
+          -0.3147156969628089
+        ],
+        [
+          -0.010194543552010799,
+          0.14243422680259893
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -0.6880686961168424,
+        -0.3940598183483299,
+        -0.0002717355504660829
+      ],
+      "ci95": [
+        [
+          -0.7105034550925415,
+          -0.6757257799511273
+        ],
+        [
+          -0.41506225170435634,
+          -0.3683752430794209
+        ],
+        [
+          -0.009250173415388849,
+          0.028266877800979633
+        ]
+      ]
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -0.6967230997097206,
+        -0.38732108683660993,
+        -0.0012819662122939353
+      ],
+      "ci95": [
+        [
+          -0.7224590436845929,
+          -0.6826187568267534
+        ],
+        [
+          -0.4083655003848603,
+          -0.36744319421848565
+        ],
+        [
+          -0.010683876854171048,
+          0.011027095676453373
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -4.174190166655333,
+        -3.9999048211341233,
+        -3.7816578439595134
+      ],
+      "ci95": [
+        [
+          -4.197577143142951,
+          -4.143533726531817
+        ],
+        [
+          -4.0581949186647535,
+          -3.941144692384512
+        ],
+        [
+          -3.805503307475716,
+          -3.7421322864476934
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -4.1853995282315255,
+        -4.019094365502895,
+        -3.7551110739848044
+      ],
+      "ci95": [
+        [
+          -4.197342485952976,
+          -4.174783705132578
+        ],
+        [
+          -4.0377691930236494,
+          -4.000685241949451
+        ],
+        [
+          -3.782281677735268,
+          -3.7253117992367493
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -4.190270133500169,
+        -4.024200280057471,
+        -3.756563529659573
+      ],
+      "ci95": [
+        [
+          -4.203078084638454,
+          -4.183848708181529
+        ],
+        [
+          -4.034392773577727,
+          -4.012278822190957
+        ],
+        [
+          -3.7701997363356328,
+          -3.7300039563116036
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -4.19135785525973,
+        -4.0290738221656,
+        -3.721897762873985
+      ],
+      "ci95": [
+        [
+          -4.206541829612149,
+          -4.169701765394654
+        ],
+        [
+          -4.0569878376815325,
+          -3.9768270546403968
+        ],
+        [
+          -3.7718874341342885,
+          -3.696849551742099
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -4.193883677659829,
+        -4.027504814343473,
+        -3.74664080006867
+      ],
+      "ci95": [
+        [
+          -4.205933555394997,
+          -4.1795837543405
+        ],
+        [
+          -4.039015288050919,
+          -4.014647446659808
+        ],
+        [
+          -3.766187576933058,
+          -3.7185192594123104
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -4.191193594825077,
+        -4.02418755303637,
+        -3.7419113624136684
+      ],
+      "ci95": [
+        [
+          -4.19732125126161,
+          -4.181140407876311
+        ],
+        [
+          -4.0315302580480115,
+          -4.011747696554743
+        ],
+        [
+          -3.7610884170649594,
+          -3.7220546848327585
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        0.09768612215465809,
+        0.13753659483688918,
+        0.21926764221651732
+      ],
+      "ci95": [
+        [
+          0.09170714971366666,
+          0.10442721460377584
+        ],
+        [
+          0.12722255800438706,
+          0.1495443265289433
+        ],
+        [
+          0.2026722251009722,
+          0.23223782589749667
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        0.10133734606764731,
+        0.13588681486671728,
+        0.23442742357416455
+      ],
+      "ci95": [
+        [
+          0.09892322113001462,
+          0.10319698057629156
+        ],
+        [
+          0.13133864408511495,
+          0.1433591001487855
+        ],
+        [
+          0.22947547637329133,
+          0.23925865096226862
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        0.10059969696392676,
+        0.13907602777848904,
+        0.23511699317452356
+      ],
+      "ci95": [
+        [
+          0.09859986249250015,
+          0.10220849090319839
+        ],
+        [
+          0.13463921549276564,
+          0.1425267698985756
+        ],
+        [
+          0.2317387776249558,
+          0.23985316528617145
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        0.09608686957678829,
+        0.13872901528355497,
+        0.23756388900480988
+      ],
+      "ci95": [
+        [
+          0.08724357054297989,
+          0.10390158603877206
+        ],
+        [
+          0.12621280029000181,
+          0.1544715743702719
+        ],
+        [
+          0.22587490703018942,
+          0.24866815956206778
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        0.09850177860058548,
+        0.1397147222100774,
+        0.2351213983649373
+      ],
+      "ci95": [
+        [
+          0.09376622475328134,
+          0.10035744748465146
+        ],
+        [
+          0.13402811980039464,
+          0.14252723322262711
+        ],
+        [
+          0.22595677969483538,
+          0.24248302743757089
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        0.09954892408209212,
+        0.13828714568079903,
+        0.23523177811652174
+      ],
+      "ci95": [
+        [
+          0.09753089658782621,
+          0.1010776663938822
+        ],
+        [
+          0.1351069182306167,
+          0.14079871700739566
+        ],
+        [
+          0.23062661496547232,
+          0.24028550047395258
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -0.3158498998869316,
+        -0.0030889540532375026,
+        0.3541145540716663
+      ],
+      "ci95": [
+        [
+          -0.3706861368593094,
+          -0.21523384381657346
+        ],
+        [
+          -0.03928321411581859,
+          0.03396090683338571
+        ],
+        [
+          0.2327175925243202,
+          0.4262434523573049
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -0.32219730995663876,
+        -0.019779087643468696,
+        0.27301332821050805
+      ],
+      "ci95": [
+        [
+          -0.357322431894709,
+          -0.2846035793692077
+        ],
+        [
+          -0.03752316708877319,
+          -0.0034378268476517176
+        ],
+        [
+          0.2358249983646523,
+          0.32485104684410715
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260919,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -0.3158863519122079,
+        -0.019710659081586424,
+        0.2890998972334518
+      ],
+      "ci95": [
+        [
+          -0.33515991885859364,
+          -0.28471123327672826
+        ],
+        [
+          -0.035569886524868144,
+          -0.005066185833438983
+        ],
+        [
+          0.2672194625327869,
+          0.3267150172144031
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 100,
+      "expected": 100,
+      "valid": 100,
+      "missing": 0,
+      "quantiles": [
+        -0.32651196494751417,
+        -0.05910156457897242,
+        0.24040876511574244
+      ],
+      "ci95": [
+        [
+          -0.3733134422260739,
+          -0.2503536405543476
+        ],
+        [
+          -0.09957180273188637,
+          -0.03163973456384461
+        ],
+        [
+          0.1675051008471837,
+          0.35464980213211
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 500,
+      "expected": 500,
+      "valid": 500,
+      "missing": 0,
+      "quantiles": [
+        -0.35405649634652964,
+        -0.03365996902130863,
+        0.24455633377989575
+      ],
+      "ci95": [
+        [
+          -0.3887294202904307,
+          -0.30670875584521173
+        ],
+        [
+          -0.055759353089939546,
+          -0.015235742049188428
+        ],
+        [
+          0.21503284665818634,
+          0.2641858996777451
+        ]
+      ]
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "seed": 20260920,
+      "prefix": 1000,
+      "expected": 1000,
+      "valid": 1000,
+      "missing": 0,
+      "quantiles": [
+        -0.3313516647548925,
+        -0.0216261824645958,
+        0.28150244260318175
+      ],
+      "ci95": [
+        [
+          -0.3604012423477342,
+          -0.2970683732873303
+        ],
+        [
+          -0.033740642216837945,
+          -0.009421969941536101
+        ],
+        [
+          0.2629278172553064,
+          0.30900894491025793
+        ]
+      ]
+    }
+  ],
+  "sensitivity": [
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "finish_g",
+      "rho": 0.034822061705515425,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:airframe_joint",
+      "rho": 0.027859617964904486,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:bay_hardware",
+      "rho": -0.021314222328555583,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:body",
+      "rho": -0.013624558906139726,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:chute",
+      "rho": 0.0024141651035412756,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:collar_adhesive",
+      "rho": 0.016380011595002898,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:harness",
+      "rho": 0.0021474665368666343,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:lugs",
+      "rho": -0.006718173179543295,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:mount",
+      "rho": -0.011913968978492244,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:payload",
+      "rho": -0.019806175951543985,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:thermal",
+      "rho": -0.0001969215492303873,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:wadding",
+      "rho": 0.011394529348632337,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "shear_m_s",
+      "rho": 0.00903852375963094,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "tilt_deg",
+      "rho": -0.025711036927759234,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "turbulence_m_s",
+      "rho": -0.0048729972182493045,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "veer_deg",
+      "rho": -0.03321495530373882,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "design": "b530-n40-ogive-D12",
+      "metric": "powered_max_aoa_deg",
+      "input": "wind_speed_m_s",
+      "rho": 0.9891591057897765,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "finish_g",
+      "rho": 0.03559452589863148,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:airframe_joint",
+      "rho": 0.028380292095073024,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:bay_hardware",
+      "rho": -0.0199725499931375,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:body",
+      "rho": -0.01434406408601602,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:chute",
+      "rho": 0.002402747100686775,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:collar_adhesive",
+      "rho": 0.016589369647342412,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:harness",
+      "rho": 0.002049570512392628,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:lugs",
+      "rho": -0.006932107733026933,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:mount",
+      "rho": -0.01135394083848521,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:payload",
+      "rho": -0.019844043461010867,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:thermal",
+      "rho": -0.0002134110533527633,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "mass:wadding",
+      "rho": 0.0108135672033918,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "shear_m_s",
+      "rho": 0.009022919255729813,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "tilt_deg",
+      "rho": -0.02626497656624414,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "turbulence_m_s",
+      "rho": -0.004712869178217294,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "veer_deg",
+      "rho": -0.033039381759845436,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "design": "b530-n40-ogive-E12",
+      "metric": "powered_max_aoa_deg",
+      "input": "wind_speed_m_s",
+      "rho": 0.9892007428001857,
+      "valid": 2000
+    }
+  ],
+  "paired_sensitivity": [
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "finish_g",
+      "rho": 0.2818694564673641,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:airframe_joint",
+      "rho": 0.20477818369454592,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:bay_hardware",
+      "rho": 0.031136922284230574,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:body",
+      "rho": -0.0011988362997090748,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:chute",
+      "rho": 0.16342205135551283,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:collar_adhesive",
+      "rho": -0.005155304788826197,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:harness",
+      "rho": -0.012141420035355007,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:lugs",
+      "rho": -0.008765982691495672,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:mount",
+      "rho": -0.020533935633483907,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:payload",
+      "rho": 0.38932887133221783,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:thermal",
+      "rho": -0.040435628608907155,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "mass:wadding",
+      "rho": 0.03861993815498454,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "shear_m_s",
+      "rho": 0.04700324825081206,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "tilt_deg",
+      "rho": -0.006652122163030541,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "turbulence_m_s",
+      "rho": -0.018016020004005002,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "veer_deg",
+      "rho": 0.00012538203134550784,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "apogee_m",
+      "input": "wind_speed_m_s",
+      "rho": 0.7525971636492909,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "finish_g",
+      "rho": -0.09845513911378478,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:airframe_joint",
+      "rho": -0.0323972135993034,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:bay_hardware",
+      "rho": 0.03020603705150926,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:body",
+      "rho": 0.011828087957021989,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:chute",
+      "rho": 0.03466948616737154,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:collar_adhesive",
+      "rho": -0.007846398461599614,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:harness",
+      "rho": -0.011029726257431564,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:lugs",
+      "rho": 0.005515783378945845,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:mount",
+      "rho": 0.020466611116652777,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:payload",
+      "rho": 0.09383395595848898,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:thermal",
+      "rho": 0.0026565456641364157,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:wadding",
+      "rho": -0.007420423855105962,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "shear_m_s",
+      "rho": 0.004837262709315677,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "tilt_deg",
+      "rho": 0.021164061791015445,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "turbulence_m_s",
+      "rho": 0.01626870256717564,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "veer_deg",
+      "rho": 0.035424814356203586,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "powered_min_stability_cal",
+      "input": "wind_speed_m_s",
+      "rho": -0.9658072289518072,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "finish_g",
+      "rho": -0.11635974958993739,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:airframe_joint",
+      "rho": -0.09738471484617872,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:bay_hardware",
+      "rho": -0.019628869907217475,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:body",
+      "rho": 0.014655678663919664,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:chute",
+      "rho": -0.004407139101784775,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:collar_adhesive",
+      "rho": -0.01472224568056142,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:harness",
+      "rho": 0.007127881781970445,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:lugs",
+      "rho": 0.011617586904396725,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:mount",
+      "rho": -0.003915996978999244,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:payload",
+      "rho": -0.07796209949052486,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:thermal",
+      "rho": 0.01486500071625018,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:wadding",
+      "rho": -0.0045630941407735345,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "shear_m_s",
+      "rho": -0.008988372747093187,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "tilt_deg",
+      "rho": 0.03434511858627965,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "turbulence_m_s",
+      "rho": -0.00043316260829065207,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "veer_deg",
+      "rho": 0.011608718902179726,
+      "valid": 2000
+    },
+    {
+      "motor": "D12",
+      "metric": "burnout_tilt_deg",
+      "input": "wind_speed_m_s",
+      "rho": -0.8320157080039269,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "finish_g",
+      "rho": 0.25418860854715214,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:airframe_joint",
+      "rho": 0.16449961112490277,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:bay_hardware",
+      "rho": 0.017762306940576733,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:body",
+      "rho": 0.0032711543177885794,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:chute",
+      "rho": 0.12588847497211875,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:collar_adhesive",
+      "rho": 0.0012410523102630777,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:harness",
+      "rho": -0.0027316221829055457,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:lugs",
+      "rho": -0.022087786021946505,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:mount",
+      "rho": -0.034001972500493124,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:payload",
+      "rho": 0.3129678152419538,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:thermal",
+      "rho": -0.03258457264614316,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "mass:wadding",
+      "rho": 0.041683583920895974,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "shear_m_s",
+      "rho": 0.060403141600785394,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "tilt_deg",
+      "rho": -0.013282189820547456,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "turbulence_m_s",
+      "rho": -0.013807590451897613,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "veer_deg",
+      "rho": 0.00813598703399676,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "apogee_m",
+      "input": "wind_speed_m_s",
+      "rho": 0.8136520869130217,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "finish_g",
+      "rho": -0.0930191812547953,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:airframe_joint",
+      "rho": -0.030380172095043022,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:bay_hardware",
+      "rho": 0.019955893988973496,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:body",
+      "rho": 0.014873994718498679,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:chute",
+      "rho": 0.03108647727161931,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:collar_adhesive",
+      "rho": -0.013169268292317071,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:harness",
+      "rho": -0.008634792658698166,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:lugs",
+      "rho": 0.0029052832263208065,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:mount",
+      "rho": 0.002122023530505883,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:payload",
+      "rho": 0.09172686493171622,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:thermal",
+      "rho": -0.000994074248518562,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "mass:wadding",
+      "rho": -0.0056686079171519785,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "shear_m_s",
+      "rho": -0.004130648532662133,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "tilt_deg",
+      "rho": 0.030225223556305882,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "turbulence_m_s",
+      "rho": 0.007857480464370115,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "veer_deg",
+      "rho": 0.03818663904665976,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "powered_min_stability_cal",
+      "input": "wind_speed_m_s",
+      "rho": -0.9676479109119778,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "finish_g",
+      "rho": 0.5415193038798259,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:airframe_joint",
+      "rho": 0.10347613386903347,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:bay_hardware",
+      "rho": 0.026022825505706376,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:body",
+      "rho": 0.04412032253008063,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:chute",
+      "rho": 0.14689200222300056,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:collar_adhesive",
+      "rho": -0.013140168285042072,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:harness",
+      "rho": -0.007958272989568247,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:lugs",
+      "rho": 0.022342439585609896,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:mount",
+      "rho": 0.0007884421971105493,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:payload",
+      "rho": 0.19598566749641688,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:thermal",
+      "rho": -0.020478126619531654,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "mass:wadding",
+      "rho": 0.030255210063802516,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "shear_m_s",
+      "rho": -0.021431616857904214,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "tilt_deg",
+      "rho": 0.0018999259749814936,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "turbulence_m_s",
+      "rho": 0.008437137609284402,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "veer_deg",
+      "rho": 0.03141006335251584,
+      "valid": 2000
+    },
+    {
+      "motor": "E12",
+      "metric": "burnout_tilt_deg",
+      "input": "wind_speed_m_s",
+      "rho": -0.11786698746674687,
+      "valid": 2000
+    }
+  ],
+  "incomplete_lines": []
+}

@@ -1,0 +1,109 @@
+{
+  "description": "Geometry-faithful render of 500 mm body / 40 mm ogive candidate",
+  "collar_source": "docs/assets/integrated-fin-collar-v1/collar-fins.step",
+  "collar_sha256": "a1fc93c193f123b44e9a2af93dde9b313282bef3d04ac5c5e5a9fb23651c0859",
+  "collar_translation_mm": [
+    0,
+    0,
+    -10
+  ],
+  "parts": {
+    "nose": {
+      "volume_mm3": 26277.582039392077,
+      "bounds_mm": [
+        -20.800000100000005,
+        20.800000100000005,
+        -20.800000100000005,
+        20.800000100000005,
+        -1e-07,
+        182.0000001
+      ]
+    },
+    "tube": {
+      "volume_mm3": 35464.654068211705,
+      "bounds_mm": [
+        -20.8,
+        20.8,
+        -20.8,
+        20.8,
+        40.0,
+        540.0
+      ]
+    },
+    "printed-collar": {
+      "volume_mm3": 23760.391119875334,
+      "bounds_mm": [
+        -38.0589970915301,
+        75.853846253846,
+        -65.72893561954369,
+        65.72893561954369,
+        468.14285704285,
+        540.0000001
+      ]
+    },
+    "lug-sleeve-1": {
+      "volume_mm3": 1038.2141179507407,
+      "bounds_mm": [
+        4.84006324855109,
+        16.400000000000006,
+        14.383235458337392,
+        25.47743001385408,
+        190.0,
+        215.0
+      ]
+    },
+    "lug-sleeve-2": {
+      "volume_mm3": 1038.2141179507405,
+      "bounds_mm": [
+        4.84006324855109,
+        16.400000000000006,
+        14.383235458337392,
+        25.47743001385408,
+        365.0,
+        390.0
+      ]
+    },
+    "mount-tube-envelope": {
+      "volume_mm3": 2553.9970176439865,
+      "bounds_mm": [
+        -12.4,
+        12.4,
+        -12.4,
+        12.4,
+        441.8,
+        536.8
+      ]
+    },
+    "mount-centering-ring-envelope-0": {
+      "volume_mm3": 1610.396102193396,
+      "bounds_mm": [
+        -20.25,
+        20.25,
+        -20.25,
+        20.25,
+        448.8,
+        450.8
+      ]
+    },
+    "mount-centering-ring-envelope-1": {
+      "volume_mm3": 1610.396102193396,
+      "bounds_mm": [
+        -20.25,
+        20.25,
+        -20.25,
+        20.25,
+        531.8,
+        533.8
+      ]
+    }
+  },
+  "cfd_exterior_note": "Separate sealed external-no-guides STEP uses a 21.05 mm radius internal fill at Z469..540 mm to close the under-collar clearance; guides, apertures and motor cavity omitted.",
+  "limitations": [
+    "Red finish is a visualization, not measured surface roughness.",
+    "Guide sleeves retain existing old guide geometry, not the proposed 3/16 inch revision.",
+    "No camera aperture has been added: camera pose, recess, and field of view remain unresolved.",
+    "No inferred external pressure ports are drilled through the purchased tube.",
+    "Exterior review only; visible aft mount tube/rings are purchased-part envelopes; motor, retainer and wiring are not rendered or fit-validated.",
+    "This is the 40 mm ogive study candidate, not the 50 mm conical baseline."
+  ]
+}

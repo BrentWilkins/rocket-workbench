@@ -27,14 +27,17 @@ def quantity(value, unit, source, provenance="estimate"):
 
 def configuration(body_mm, nose_mm, span_mm, motor_name, *, upper=False, chute_cd=0.53,
                   integrated_collar=False, fin_collar_mass_g=None, finish_allowance_g=0.0,
-                  collar_calibration_g=None):
+                  collar_calibration_g=None, fin_root_mm=None, fin_count=3):
     base = sourced_configuration(upper, chute_cd, insert_trial=True)
     data = base.model_dump()
-    source = "Bounded D12/E12 geometry screen; nominal dimensions and masses require measurement"
+    data['fin_count'] = fin_count
+    source = "Bounded C11/D12/E12 geometry screen; nominal dimensions and masses require measurement"
     span_tag = f"{span_mm:.4f}".rstrip("0").rstrip(".").replace(".", "p")
     data["name"] = f"de-b{body_mm:g}-n{nose_mm:g}-s{span_tag}-{motor_name.lower()}-{'upper' if upper else 'nominal'}-cd{round(chute_cd*100):03d}"
     data["avionics_profile"] = "xiao-sensor-logger-v2"
     if integrated_collar:
+        if fin_count != 3:
+            raise ValueError('The measured integrated collar has three fins')
         if abs(span_mm - 53.65384615384615) > 1e-3:
             raise ValueError("Integrated collar mass override requires its original 53.65 mm fin span")
         data["name"] += "-integrated"
@@ -54,6 +57,12 @@ def configuration(body_mm, nose_mm, span_mm, motor_name, *, upper=False, chute_c
                      "integrated-collar STEP center of volume translated to aft body end; printed CG unmeasured"),
         )
     geometry = data["geometry"]
+    if fin_root_mm is not None:
+        if integrated_collar:
+            raise ValueError("Printed integrated collar cannot take a different root chord")
+        geometry["fin_root"].update(value=fin_root_mm, provenance="estimate",
+                                    source="Hypothetical clipped-delta root-chord sweep; tip is 20% of root")
+        data["name"] += f"-root{fin_root_mm:g}"
     old_body = base.geometry.mm("body_length")
     old_nose = base.geometry.mm("nose_length")
     body_delta = body_mm - old_body
@@ -84,8 +93,7 @@ def configuration(body_mm, nose_mm, span_mm, motor_name, *, upper=False, chute_c
         x=quantity(nose_mm + body_mm / 2, "mm", "Provisional central splice station; verify clearance from packed recovery"),
     ))
 
-    # Both motors use the same 95 mm tube. The D12 needs a short-motor spacer;
-    # the E12 uses the long mount without it.
+    # C11/D12 use the removable short-motor spacer; E12 uses the long mount.
     mount = next(item for item in data["purchased_masses"] if item["role"] == "mount")
     if motor_name == "E12":
         mount_start = nose_mm + body_mm - geometry["motor_mount_length"]["value"] - geometry["motor_overhang"]["value"]
@@ -98,7 +106,7 @@ def configuration(body_mm, nose_mm, span_mm, motor_name, *, upper=False, chute_c
         mount_mass, mount_cg = mass_cg([(12.0, mount_start + 47.5), (1.0, spacer_end - 12.5)])
         mount["mass"].update(value=mount_mass, provenance="estimate", source="Provisional 24 mm mount and removable D12 spacer")
         mount["x"].update(value=mount_cg, provenance="estimate", source="Mount and spacer mass balance")
-        delay = 5
+        delay = 3 if motor_name == "C11" else 5
     data["motors"] = [dict(
         designation=motor_name, delay_s=delay, digest=DIGESTS[motor_name],
         max_liftoff_mass=quantity(
@@ -134,6 +142,8 @@ def main():
     parser.add_argument("--body", type=float, nargs="+", default=[500, 530, 560])
     parser.add_argument("--nose", type=float, nargs="+", default=[40, 50])
     parser.add_argument("--span", type=float, nargs="+", default=[50, 55, 65])
+    parser.add_argument("--motor", nargs="+", choices=("C11", "D12", "E12"), default=["D12", "E12"],
+                        help="Motor families to screen at their primary delays: C11-3, D12-5, E12-6")
     parser.add_argument("--candidate", type=float, nargs=3, action="append", metavar=("BODY", "NOSE", "SPAN"),
                         help="Screen only this body/nose/span tuple; may be repeated")
     parser.add_argument("--upper", action="store_true")
@@ -156,11 +166,11 @@ def main():
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
     geometry_cases = args.candidate or list(itertools.product(args.body, args.nose, args.span))
-    designs = [(body, nose, span, motor) for body, nose, span in geometry_cases for motor in ("D12", "E12")]
+    designs = [(body, nose, span, motor) for body, nose, span in geometry_cases for motor in args.motor]
     save_json(out / "search-spec.json", dict(
         bodies_mm=args.body, noses_mm=args.nose, fin_spans_mm=args.span,
         selected_geometry_cases=geometry_cases,
-        motors=["D12-5", "E12-6"], winds_m_s=[0, 2, 4],
+        motors=[{"C11": "C11-3", "D12": "D12-5", "E12": "E12-6"}[motor] for motor in args.motor], winds_m_s=[0, 2, 4],
         upper_mass=args.upper, chute_cd=args.chute_cd,
         integrated_collar_mass_override=args.integrated_collar,
         measured_fin_collar_g=args.measured_fin_collar_g,

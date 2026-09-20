@@ -145,6 +145,7 @@ class Config(Model):
     geometry: Geometry
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
     fin_shape: Literal['trapezoidal', 'elliptical', 'clipped-delta', 'swept'] = 'trapezoidal'
+    fin_count: Literal[3, 4] = 3
     fin_profile: Literal['square', 'organic-v2', 'organic-v3', 'organic-v4', 'organic-v5'] = 'square'
     avionics_profile: Literal['xiao-gnss-baro-v1', 'xiao-sensor-logger-v2'] | None = None
     bay_retention: Literal['printed-pilots', 'm2-insert-trial-v1'] = 'printed-pilots'

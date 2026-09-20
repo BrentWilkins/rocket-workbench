@@ -1,0 +1,6 @@
+# Preserve hash-sealed generated evidence. Matplotlib emits spaces inside SVG
+# path data; csv.DictWriter emits CRLF. Neither should require rewriting assets.
+docs/assets/flight-robustness/*.svg -text whitespace=-blank-at-eol
+docs/assets/payload-sweep/*.svg -text whitespace=-blank-at-eol
+docs/assets/flight-robustness/*.csv -text whitespace=cr-at-eol
+docs/assets/payload-sweep/*.csv -text whitespace=cr-at-eol

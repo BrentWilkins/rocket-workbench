@@ -8,10 +8,10 @@ hide:
   <section class="rw-hero" aria-labelledby="rw-hero-title">
     <img
       class="rw-hero__image"
-      src="docs/assets/cfd/swept-fin-desktop-hero.webp"
-      alt="Swept-fin rocket surrounded by velocity-colored OpenFOAM streamlines"
-      width="2560"
-      height="1120"
+      src="docs/assets/500-ogive-review/500-ogive-streamlines.png"
+      alt="500 mm ogive candidate surrounded by computed OpenFOAM streamlines"
+      width="3200"
+      height="1100"
       fetchpriority="high"
     >
     <div class="rw-hero__shade" aria-hidden="true"></div>
@@ -32,35 +32,36 @@ hide:
         <a class="rw-button" href="docs/BUILD/">Build hardware</a>
       </div>
     </div>
-    <p class="rw-hero__caption">Velocity-colored streamlines from the retained swept-fin OpenFOAM case</p>
+  <p class="rw-hero__caption">500 mm ogive comparison candidate · exploratory CFD · guides and ports omitted</p>
   </section>
 
 <section class="rw-summary" aria-label="Current engineering status">
   <article class="rw-card">
     <p class="rw-card__label">Current platform</p>
     <p class="rw-card__value">D12-5 / E12-6 · BT-60</p>
-    <p>500 mm body, integrated fin collar, removable camera/logger bay. The raw collar print weighs 27 g.</p>
+    <p>Recommended: 530 mm body, 40 mm ogive, existing 27 g fin collar and camera/logger payload. Not yet an as-built configuration.</p>
   </article>
   <article class="rw-card">
     <p class="rw-card__label">Launch guide</p>
-    <p class="rw-card__value">3/16-inch Maxi rod</p>
-    <p>Matching rocket guides still need to be built and checked on the actual rod.</p>
+    <p class="rw-card__value">Longer usable guide</p>
+    <p>The 36-inch cases miss our 12 m/s departure screen. A 60-inch guide improves exit speed; diameter, stiffness, fit and friction still need checking.</p>
   </article>
   <article class="rw-card">
     <p class="rw-card__label">Flight-model status</p>
-    <p class="rw-card__value">Provisional</p>
-    <p>Both motors pass the current numerical screen, but finished mass, CG and recovery must be verified.</p>
+    <p class="rw-card__value">12,120 flights studied</p>
+    <p>More stability margin for little altitude cost—not an all-pass result. Windy, heavier cases still exceed the deployment-speed screen.</p>
   </article>
 </section>
 
 <section class="rw-copy">
   <div>
-    <p class="rw-eyebrow">CURRENT BUILD</p>
-    <h2>The printed collar is real; the assembled rocket is not yet measured.</h2>
+    <p class="rw-eyebrow">LATEST RESULTS</p>
+    <h2>Keep the collar. Buy margin with length. Verify launch and recovery.</h2>
   </div>
   <div>
-    <p>The next gates are a dry fit of the two-tube airframe and coupler, a 3/16-inch guide interface, recovery packing and extraction, then measured mass and CG in a fresh D12-5/E12-6 simulation.</p>
+    <p>The 530 mm ogive gains about 0.16 caliber on D12 and 0.14 on E12, costing only 2.35 m and 4.02 m of altitude versus the 500 mm ogive. Better wind handling is not established. Next: measured mass/CG, a compatible longer guide, and recovery verification.</p>
     <p class="rw-links">
+      <a href="docs/FLIGHT_ROBUSTNESS/">Final robustness report →</a>
       <a href="docs/CURRENT_DESIGN/">Current configuration →</a>
       <a href="docs/MEASUREMENTS/">Measurement checklist →</a>
       <a href="docs/SHOPPING/">Hardware sourcing →</a>

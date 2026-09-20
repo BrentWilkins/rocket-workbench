@@ -13,10 +13,11 @@ nav = [
   ] },
 { "Analysis" = [
 { "OpenRocket primer" = "docs/OPENROCKET.md" },
+{ "Payload design sweep" = "docs/PAYLOAD_SWEEP.md" },
+{ "Flight robustness and wind" = "docs/FLIGHT_ROBUSTNESS.md" },
 { "24 mm motor comparison" = "docs/MOTOR24.md" },
     { "Fin and recovery comparison" = "docs/FIN_SHAPES.md" },
     { "Exploratory CFD fin ranking" = "docs/CFD_FIN_RANKING.md" },
-    { "Next platform decision" = "docs/NEXT_PLATFORM.md" },
     { "Modeling and integration" = "docs/MODELING.md" },
     { "Architecture" = "docs/ARCHITECTURE.md" },
   ] },
