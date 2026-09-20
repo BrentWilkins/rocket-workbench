@@ -53,6 +53,19 @@ def test_unsupported_geometry_and_ledger(base):
             Config.model_validate(data)
 
 
+def test_spliced_airframe_joint_is_an_optional_distinct_ledger_item(base):
+    data = base.model_dump()
+    data['purchased_masses'].append({
+        'role': 'airframe_joint',
+        'name': 'Measured BT-60 coupler and joint adhesive',
+        'mass': {'value': 3.2, 'unit': 'g', 'provenance': 'measured', 'source': 'scale'},
+        'x': {'value': 300, 'unit': 'mm', 'provenance': 'measured', 'source': 'nose-tip datum'},
+    })
+
+    candidate = Config.model_validate(data)
+    assert candidate.mass_item('airframe_joint').mass.value == pytest.approx(3.2)
+
+
 def test_sweep_updates_masses_and_positions(base):
     candidate = variant(base, {'body_length': 340, 'chute_diameter': 381}, 'test')
     assert candidate.mass_item('body').mass.value == pytest.approx(17)

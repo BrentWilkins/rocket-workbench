@@ -26,7 +26,7 @@ def test_stress_mass_accounting_keeps_geometry_and_motor(upper,mount):
     assert config.geometry==base.geometry
     assert config.motors==base.motors
     assert config.mass_item('mount').mass.value==pytest.approx(13*mount)
-    assert config.payload.mass.value==pytest.approx(29.2 if upper else 20.65)
+    assert config.payload.mass.value==pytest.approx(28.1 if upper else 21.5)
     assert config.criteria==base.criteria
 
 

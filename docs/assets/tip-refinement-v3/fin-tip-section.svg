@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" role="img" aria-label="Fin section: full 2 mm thickness, symmetric 8 mm taper to 0.8 mm at the outer tip">
+<rect width="800" height="350" fill="#f5f8fc"/>
+<text x="42" y="48" font-family="sans-serif" font-size="25" fill="#17324d">Outboard fin section (schematic)</text>
+<path d="M 90 120 L 310 120 L 710 156 L 710 194 L 310 230 L 90 230 Z" fill="#1467a7" stroke="#0b3556" stroke-width="3"/>
+<line x1="310" y1="98" x2="710" y2="98" stroke="#17324d" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="447" y="88" font-family="sans-serif" font-size="19" fill="#17324d">8 mm taper</text>
+<line x1="65" y1="120" x2="65" y2="230" stroke="#17324d" stroke-width="2"/>
+<text x="30" y="277" font-family="sans-serif" font-size="18" fill="#17324d">2.0 mm</text>
+<line x1="735" y1="156" x2="735" y2="194" stroke="#17324d" stroke-width="2"/>
+<text x="686" y="278" font-family="sans-serif" font-size="18" fill="#17324d">0.8 mm</text>
+<text x="90" y="318" font-family="sans-serif" font-size="17" fill="#435b6e">Fin root and most of span stay full thickness</text>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M 0 4 L 8 0 L 8 8 Z" fill="#17324d"/></marker></defs>
+</svg>

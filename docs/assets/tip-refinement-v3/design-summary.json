@@ -1,0 +1,18 @@
+{
+  "configuration": "d12-conical-n50-b500-tip-refinement-v3",
+  "nose_tip_radius_mm": 1.0,
+  "nose_shoulder_chamfer_mm": 0.3,
+  "fin_tip_taper_length_mm": 8.0,
+  "fin_tip_land_mm": 0.8,
+  "mass_g_solid_density_estimate": {
+    "nose-bay": 31.47726696527507,
+    "fin-collar": 28.745002501151646
+  },
+  "structural_screen": {
+    "model": "Euler-Bernoulli cantilever, unit lateral tip load, rectangular local section",
+    "tip_load_compliance_ratio_v3_to_full_thickness": 1.0086741650387556,
+    "root_thickness_mm": 2.0,
+    "limits": "Geometry-only comparison; excludes printed layer bonds, root cove, impact and flutter. Not a strength rating."
+  },
+  "print_status": "CAD review; inspect actual slice and bend-test a printed collar"
+}

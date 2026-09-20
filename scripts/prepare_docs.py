@@ -34,6 +34,9 @@ CURRENT_RUNS = {
     "d12-nose-length-screen-20260916",
 }
 ARCHIVE_PAGES = {
+    "docs/TIP_REFINEMENT.md",
+    "docs/SEPARATE_FIN_COLLAR.md",
+    "docs/FIN_COLLAR_V2.md",
     "docs/BUILD_18MM.md",
     "docs/REVIEW_18MM.md",
     "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md",

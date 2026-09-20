@@ -1,0 +1,34 @@
+{
+  "application": "Bambu Studio 02.08.02.61 Ubuntu 24.04 AppImage",
+  "profile": {
+    "machine": "Bambu Lab X1 Carbon 0.4 nozzle",
+    "process": "0.20mm Standard @BBL X1C",
+    "filament": "Generic PLA",
+    "plate": "Textured PEI Plate",
+    "wall_loops": 3,
+    "infill_percent": 100,
+    "supports": "automatic, build plate only",
+    "brim_mm": 5
+  },
+  "slice_return_code": 0,
+  "warning_message": "",
+  "layer_height_mm": 0.20000000298023224,
+  "estimated_total_filament_g_including_supports_and_brim": 76.57779693603516,
+  "estimated_total_time_s": 11033.3046875,
+  "object_feature_blocks": {
+    "nose_bay": {
+      "support": 509,
+      "support_interface": 6,
+      "support_transition": 3
+    },
+    "fin_collar": {
+      "support": 0,
+      "support_interface": 0,
+      "support_transition": 0
+    }
+  },
+  "review_3mf_sha256": "396d0ae87aec8b56f9fb0cb9eb899e9e8d61e3bbe4f3870e96f56766c4cb455b",
+  "sliced_3mf_sha256": "ec6428f286ff1e6ba4aa742c31f7ced328cfb2ae8f3e6e4edc51d5c210eb3156",
+  "gcode_sha256": "8c038180efa02a11f41da8ddc7248c1ff73f4807958c714f816d22f7a47293b1",
+  "limits": "Successful slice and no slicer warning do not measure PLA layer strength, finished-part mass or support removability. Inspect preview before printing."
+}

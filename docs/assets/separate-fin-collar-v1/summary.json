@@ -1,0 +1,25 @@
+{
+  "status": "separate print and manual assembly review; no flight qualification",
+  "print_quantities": {
+    "round-collar.stl": 1,
+    "single-fin.stl": 3
+  },
+  "print_orientation": {
+    "round-collar": "aft end down",
+    "single-fin": "flat on broad side"
+  },
+  "manual_root_fillets": true,
+  "modeled_root_fillets": false,
+  "geometry_mm": {
+    "collar_outer_diameter": 44.4,
+    "collar_inner_diameter": 42.0,
+    "collar_length": 65.0,
+    "fin_thickness": 2.0,
+    "fin_span": 53.65384615384615,
+    "fin_root_length": 63.0
+  },
+  "cad_volume_mm3": {
+    "round-collar": 11139.118,
+    "single-fin": 4077.692
+  }
+}

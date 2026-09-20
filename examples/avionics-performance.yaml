@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "conical-n50-b410-f45",
+ "name": "conical-n50-b410-f55",
   "mode": "baseline",
   "reference_file": null,
   "geometry": {
@@ -58,8 +58,8 @@
       "provenance": "demonstration assumption",
       "source": "Provisional design choice; must be checked against selected parts"
     },
-    "fin_span": {
-      "value": 45.0,
+ "fin_span": {
+ "value": 55.0,
       "unit": "mm",
       "provenance": "estimate",
       "source": "Bounded current-avionics geometry study"

@@ -1,6 +1,8 @@
 # Organic fin-collar v2
 
-This is the current standalone fin-collar candidate for the D12-5 / BT-60 design. It supersedes the 1.6 mm square-edge
+The [v3 tip refinement](TIP_REFINEMENT.md) supersedes this review for the current D12 configuration.
+
+This is the previous standalone fin-collar candidate for the D12-5 / BT-60 design. It supersedes the 1.6 mm square-edge
 collar embedded in the older six-part X1C projects; it does not update the separate launch-lug sleeves.
 
 ![Organic fin-collar v2 CAD review](assets/fin-collar-v2/fin-collar-v2-review.png)

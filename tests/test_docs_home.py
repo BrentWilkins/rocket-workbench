@@ -62,10 +62,10 @@ def test_current_build_uses_current_body_lengths():
     assert '410 mm' in archived and '440 mm' in archived
 
 
-def test_home_uses_d12_evidence_not_old_c5_leader():
+def test_home_points_to_current_d12_build_not_old_c5_leader():
     root = Path(__file__).resolve().parents[1]
     text = (root/'docs/HOME.md').read_text()
-    assert 'D12' in text and '192' in text
+    assert 'D12' in text and 'Not flight-cleared' in text
     assert '58–60' not in text and 'no design clears' not in text
     assert 'ARCHIVE.md' in text
 

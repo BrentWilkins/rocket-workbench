@@ -1,0 +1,114 @@
+{
+  "source_run": "20260919T032145Z-d12-conical-n50-b500-tip-refinement-v3-12f60a0b",
+  "results_sha256": "1c4bdb75b66bb99287838149c52a2b5530161e6fd0842dfc6785f74b2002a282",
+  "configuration_sha256": "7f86e84e655e9c3469c08f2420448fb8d3a23dc2c76bc41a9d5810b55df3b55a",
+  "completed_cases": 9,
+  "configured_criteria_passed": 9,
+  "missing_inputs": [
+    "Measured mass and balance: BT-60 cardboard airframe",
+    "Measured mass and balance: Provisional commercial 24 mm mount assembly plus CD spacer",
+    "Measured mass and balance: Apogee 29093 24-inch nylon chute; literature specimen, not weighed hardware",
+    "Measured mass and balance: Kevlar leader, elastic harness, swivel and knots",
+    "Measured mass and balance: Recovery wadding",
+    "Measured mass and balance: Two paper launch lugs and adhesive",
+    "Measured mass and balance: Bulkhead eye bolt, washers, nuts, sled screws and cable ties",
+    "Measured mass and balance: Fin collar adhesive and tapered lip fillet",
+    "Measured mass and balance: Flame-resistant bay shield and perimeter seal allowance",
+    "Assembled mass/CG, print fit, attachment strength and recovery separation checks",
+    "V2 saddle bond strength and adhesive mass require physical checks; saddle-specific aerodynamic drag is unresolved",
+    "Avionics board/antenna/battery masses, stack clearances, retention, wiring and power must be measured; vendor CAD is not physical validation",
+    "Static-port drilling/alignment, bulkhead and screw seals, pressure lag and aerodynamic pressure bias require bench/flight validation"
+  ],
+  "cases": [
+    {
+      "id": "empty-D12-5-wind0",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 13.141844304562486,
+      "minimum_ascent_stability_cal": 1.468373641338982,
+      "apogee_m": 202.41210354549705,
+      "landing_descent_m_s": 4.60518635005389
+    },
+    {
+      "id": "empty-D12-5-wind2",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 13.135784000930098,
+      "minimum_ascent_stability_cal": 1.0708342340139803,
+      "apogee_m": 200.77954136346756,
+      "landing_descent_m_s": 4.605133807809851
+    },
+    {
+      "id": "empty-D12-5-wind4",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 13.133307787319989,
+      "minimum_ascent_stability_cal": 1.1293617039967399,
+      "apogee_m": 196.41463542356166,
+      "landing_descent_m_s": 4.605081303348515
+    },
+    {
+      "id": "dummy-D12-5-wind0",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.865304355095759,
+      "minimum_ascent_stability_cal": 1.7633791539504593,
+      "apogee_m": 181.0424252275164,
+      "landing_descent_m_s": 4.868726532229277
+    },
+    {
+      "id": "dummy-D12-5-wind2",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.85974189871185,
+      "minimum_ascent_stability_cal": 1.7921415195297603,
+      "apogee_m": 179.20507981218057,
+      "landing_descent_m_s": 4.868671022359302
+    },
+    {
+      "id": "dummy-D12-5-wind4",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.85761559423094,
+      "minimum_ascent_stability_cal": 1.6885738447644583,
+      "apogee_m": 174.14905335959722,
+      "landing_descent_m_s": 4.868615543604935
+    },
+    {
+      "id": "actual-D12-5-wind0",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.865304355095759,
+      "minimum_ascent_stability_cal": 1.763379153950458,
+      "apogee_m": 181.0424252275164,
+      "landing_descent_m_s": 4.868726532229277
+    },
+    {
+      "id": "actual-D12-5-wind2",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.85974189871185,
+      "minimum_ascent_stability_cal": 1.79214151952993,
+      "apogee_m": 179.2050798121805,
+      "landing_descent_m_s": 4.868671022359302
+    },
+    {
+      "id": "actual-D12-5-wind4",
+      "execution": "completed",
+      "status": "incomplete inputs",
+      "criteria_passed": true,
+      "guide_departure_m_s": 12.85761559423094,
+      "minimum_ascent_stability_cal": 1.688573844764461,
+      "apogee_m": 174.14905335959696,
+      "landing_descent_m_s": 4.868615543604935
+    }
+  ]
+}

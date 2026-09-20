@@ -29,14 +29,26 @@ def shapes(config: Config, *, cap_insert_angles=None):
     n, b, w = g.mm('nose_length'), g.mm('bay_length'), g.mm('wall')
     r, ri = g.mm('body_od') / 2, g.mm('body_id') / 2 - g.mm('clearance')
     if config.nose_shape == 'conical':
-        nose = cq.Workplane(obj=cq.Solid.makeCone(0.01, r, n))
+        if g.nose_tip_radius is None:
+            nose = cq.Workplane(obj=cq.Solid.makeCone(0.01, r, n))
+        else:
+            from .nose import rounded_cone
+            nose = rounded_cone(n, r, g.mm('nose_tip_radius'))
         inner = cq.Solid.makeCone(0.01, r - w, n - 2 * w, cq.Vector(0, 0, 2 * w))
     else:
         from .nose import solid
         nose = solid(config.nose_shape, n, r)
         inner = solid(config.nose_shape, n-2*w, r-w).translate((0, 0, 2*w))
     nose = nose.cut(inner)
-    sleeve = cq.Workplane('XY', origin=(0, 0, n)).circle(ri).circle(ri - w).extrude(b - 3)
+    if g.nose_shoulder_chamfer is None:
+        sleeve = cq.Workplane('XY', origin=(0, 0, n)).circle(ri).circle(ri - w).extrude(b - 3)
+    else:
+        chamfer = g.mm('nose_shoulder_chamfer')
+        end = n + b - 3
+        sleeve = (cq.Workplane('XZ')
+                  .polyline([(ri - w, n), (ri, n), (ri, end - chamfer),
+                             (ri - chamfer, end), (ri - w, end)])
+                  .close().revolve(360, (0, 0), (0, 1)))
     nose = nose.union(sleeve)
     boss_points = []
     for deg in ([30, 150, 270] if cap_insert_angles is None else cap_insert_angles):
@@ -109,14 +121,25 @@ def shapes(config: Config, *, cap_insert_angles=None):
     from .fins import outline
     points = outline(config)
     # Add hidden root overlap without changing the exposed aerodynamic outline.
-    polygon = [(collar_outer-.3, collar_start)]
-    polygon += [(collar_outer+y, collar_start+x) for x, y in points]
-    polygon += [(collar_outer-.3, collar_start+g.mm('fin_root'))]
+    if config.fin_profile == 'organic-v5':
+        # Set the attachment edge inside the collar rims as part of the
+        # outline; avoid a separate triangular notch at either corner.
+        root_front = collar_start + 2.0
+        root_aft = collar_start + g.mm('fin_root')
+        polygon = [(collar_outer - .3, root_front)]
+        polygon += [(collar_outer + span, root_front if chord == 0 and span == 0
+                     else root_aft if chord == g.mm('fin_root') and span == 0
+                     else collar_start + chord) for chord, span in points]
+        polygon += [(collar_outer - .3, root_aft)]
+    else:
+        polygon = [(collar_outer-.3, collar_start)]
+        polygon += [(collar_outer+y, collar_start+x) for x, y in points]
+        polygon += [(collar_outer-.3, collar_start+g.mm('fin_root'))]
     if config.fin_shape == 'trapezoidal':
         # Preserve the historical trapezoid root-union construction and mass.
         polygon = [(collar_outer+y-(.3 if y == 0 else 0), collar_start+x) for x,y in points]
     fin = cq.Workplane('XZ').polyline(polygon).close().extrude(g.mm('fin_thickness')/2, both=True)
-    if config.fin_profile == 'organic-v2':
+    if config.fin_profile in {'organic-v2', 'organic-v3', 'organic-v4', 'organic-v5'}:
         # Round the exposed leading and tip edges without softening the hidden
         # root. The aft edge is tapered separately instead of made half-round.
         exposed_edges = [
@@ -125,9 +148,50 @@ def shapes(config: Config, *, cap_insert_angles=None):
             and edge.Center().x > collar_outer + .5
             and edge.Center().z < collar_start + g.mm('fin_root') - .5
         ]
-        fin = fin.newObject(exposed_edges).fillet(g.mm('fin_thickness') / 2 - .1)
+        edge_radius = .3 if config.fin_profile in {'organic-v4', 'organic-v5'} else g.mm('fin_thickness') / 2 - .1
+        fin = fin.newObject(exposed_edges).fillet(edge_radius)
 
-        # Taper the final 7 mm of chord to a printable 0.7 mm trailing edge.
+        if config.fin_profile in {'organic-v4', 'organic-v5'}:
+            # A short, symmetric chordwise bevel leaves a printable 0.8 mm
+            # leading land. Keep the clipped-delta outline and full root core.
+            leading_root = 2.0 if config.fin_profile == 'organic-v5' else 0.0
+            leading_slope = (.8 * g.mm('fin_root') - leading_root) / g.mm('fin_span')
+            half = g.mm('fin_thickness') / 2
+
+            def leading_cut_wire(side, radial):
+                leading_z = collar_start + leading_root + leading_slope * (radial - collar_outer)
+                return (cq.Workplane('YZ', origin=(radial, 0, 0))
+                        .polyline([(side * .4, leading_z),
+                                   (side * half, leading_z + 4),
+                                   (side * (half + 1), leading_z + 4),
+                                   (side * (half + 1), leading_z - 2),
+                                   (side * .4, leading_z - 2)])
+                        .close().wire().val())
+
+            for side in (-1, 1):
+                stations = (collar_outer + 2 if config.fin_profile == 'organic-v5'
+                            else collar_outer - .3,
+                            collar_outer + g.mm('fin_span') + 1)
+                cut = cq.Solid.makeLoft([leading_cut_wire(side, station) for station in stations], True)
+                fin = fin.cut(cut)
+
+        if config.fin_profile in {'organic-v3', 'organic-v4'}:
+            # Preserve full root thickness and taper just the outer 8 mm.
+            # The 0.8 mm land survives primer and light sanding.
+            tip_x = collar_outer + g.mm('fin_span')
+            start_x = tip_x - 8.0
+            half = g.mm('fin_thickness') / 2
+            tip_half = .4
+            for side in (-1, 1):
+                cut = (cq.Workplane('XY', origin=(0, 0, collar_start - 1))
+                       .polyline([(start_x, side * half), (tip_x, side * tip_half),
+                                  (tip_x + 2, side * tip_half),
+                                  (tip_x + 2, side * (half + 1)),
+                                  (start_x, side * (half + 1))])
+                       .close().extrude(g.mm('fin_root') + 2))
+                fin = fin.cut(cut)
+
+        # Earlier profiles taper the trailing edge; V5 keeps full thickness.
         # These cuts are made before union with the collar, so its wall remains
         # intact behind the hidden fin root.
         trailing_z = collar_start + g.mm('fin_root')
@@ -136,25 +200,50 @@ def shapes(config: Config, *, cap_insert_angles=None):
         full_half = g.mm('fin_thickness') / 2
         radial_start = collar_outer - 1
         radial_length = g.mm('fin_span') + 3
-        for side in (-1, 1):
-            cut = (cq.Workplane('YZ', origin=(radial_start, 0, 0))
-                   .moveTo(side * edge_half, trailing_z)
-                   .lineTo(side * full_half, trailing_z - taper_length)
-                   .lineTo(side * (full_half + 1), trailing_z - taper_length)
-                   .lineTo(side * (full_half + 1), trailing_z)
-                   .close().extrude(radial_length))
-            fin = fin.cut(cut)
+        if config.fin_profile != 'organic-v5':
+            for side in (-1, 1):
+                cut = (cq.Workplane('YZ', origin=(radial_start, 0, 0))
+                       .moveTo(side * edge_half, trailing_z)
+                       .lineTo(side * full_half, trailing_z - taper_length)
+                       .lineTo(side * (full_half + 1), trailing_z - taper_length)
+                       .lineTo(side * (full_half + 1), trailing_z)
+                       .close().extrude(radial_length))
+                fin = fin.cut(cut)
 
-        # A variable-radius cove grows through the load-bearing middle of the
-        # root and relaxes near both ends. It leaves the selected planform,
-        # span, and sweep unchanged.
+        if config.fin_profile == 'organic-v4':
+            # V4 retains its local rim cutouts for comparison.
+            root_x = collar_outer
+            front, aft = collar_start, trailing_z
+            clearance = 2.0
+            for notch in (
+                [(root_x - 1, front - 1), (root_x + clearance, front - 1),
+                 (root_x + clearance, front), (root_x, front + clearance),
+                 (root_x - 1, front + clearance)],
+                [(root_x - 1, aft - clearance), (root_x, aft - clearance),
+                 (root_x + clearance, aft), (root_x + clearance, aft + 1),
+                 (root_x - 1, aft + 1)],
+            ):
+                relief = cq.Workplane('XZ').polyline(notch).close().extrude(full_half + 2, both=True)
+                fin = fin.cut(relief)
+
+        # V5 keeps one cove radius through the middle and eases each end.
+        # Earlier profiles keep their original shaped cove.
         def root_cove(side):
             wires = []
-            stations = ((0, .8), (.12, 2.4), (.38, 3.0),
-                        (.68, 3.0), (.88, 2.4), (1, .8))
-            y0 = side * g.mm('fin_thickness') / 2
-            for fraction, radius in stations:
-                z = collar_start + fraction * g.mm('fin_root')
+            root_length = g.mm('fin_root')
+            if config.fin_profile == 'organic-v4':
+                stations = ((4, .4), (.12 * root_length, 2.4), (.38 * root_length, 3.0),
+                        (.68 * root_length, 3.0), (.82 * root_length, 2.4),
+                            (root_length - 7, .4))
+            elif config.fin_profile == 'organic-v5':
+                stations = ((2.1, .05), (8, 1.7), (root_length, 1.7))
+            else:
+                stations = ((0, .8), (.12 * root_length, 2.4),
+                            (.38 * root_length, 3.0), (.68 * root_length, 3.0),
+                            (.88 * root_length, 2.4), (root_length, .8))
+            for offset, radius in stations:
+                z = collar_start + offset
+                y0 = side * g.mm('fin_thickness') / 2
                 # Solve the fillet circle tangent to both the cylindrical
                 # collar and the planar fin side. The earlier tangent-plane
                 # approximation touched the collar only at one line and left
@@ -197,7 +286,8 @@ def shapes(config: Config, *, cap_insert_angles=None):
                            .threePointArc(body_inner_mid, (root_inner_x, y0))
                            .close())
                 wires.append(section.wire().val())
-            return cq.Workplane(obj=cq.Solid.makeLoft(wires, False))
+            return cq.Workplane(obj=cq.Solid.makeLoft(
+                wires, config.fin_profile == 'organic-v5'))
 
         fin = fin.union(root_cove(-1)).union(root_cove(1))
     for angle in [0, 120, 240]:

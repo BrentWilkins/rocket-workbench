@@ -7,22 +7,28 @@ site_dir = "site"
 extra_css = ["docs/stylesheets/extra.css"]
 nav = [
   { "Home" = "index.md" },
-  { "Current designs" = "docs/CURRENT_DESIGN.md" },
-  { "Fin collar v2" = "docs/FIN_COLLAR_V2.md" },
-  { "24 mm motor comparison" = "docs/MOTOR24.md" },
-  { "Fin and recovery comparison" = "docs/FIN_SHAPES.md" },
-  { "Exploratory CFD fin ranking" = "docs/CFD_FIN_RANKING.md" },
-  { "Next platform decision" = "docs/NEXT_PLATFORM.md" },
-  { "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
-  { "Engineering" = ["docs/MODELING.md", "docs/ARCHITECTURE.md"] },
+{ "Current design" = [
+{ "Overview" = "docs/CURRENT_DESIGN.md" },
+{ "Integrated fin collar print candidate" = "docs/INTEGRATED_FIN_COLLAR.md" },
+  ] },
+{ "Analysis" = [
+{ "OpenRocket primer" = "docs/OPENROCKET.md" },
+{ "24 mm motor comparison" = "docs/MOTOR24.md" },
+    { "Fin and recovery comparison" = "docs/FIN_SHAPES.md" },
+    { "Exploratory CFD fin ranking" = "docs/CFD_FIN_RANKING.md" },
+    { "Next platform decision" = "docs/NEXT_PLATFORM.md" },
+    { "Modeling and integration" = "docs/MODELING.md" },
+    { "Architecture" = "docs/ARCHITECTURE.md" },
+  ] },
+{ "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/REVERIFICATION.md", "docs/DIY_RECOVERY.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
   { "Project" = ["README.md", "docs/DOCUMENTATION.md", "docs/PROGRESS.md", "docs/THIRD_PARTY.md"] },
-  { "Archive — old news, not current designs" = ["docs/ARCHIVE.md", "docs/REVIEW_18MM.md", "docs/BUILD_18MM.md", "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md", "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md", "ROCKET_PROJECT_BRIEF.md"] },
+  { "Archive" = ["docs/ARCHIVE.md", "docs/TIP_REFINEMENT.md", "docs/SEPARATE_FIN_COLLAR.md", "docs/FIN_COLLAR_V2.md", "docs/REVIEW_18MM.md", "docs/BUILD_18MM.md", "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md", "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md", "ROCKET_PROJECT_BRIEF.md"] },
 ]
 
 [project.theme]
 font = false
 favicon = "docs/assets/favicon.svg"
-features = ["navigation.sections", "navigation.top", "content.code.copy"]
+features = ["navigation.tabs", "navigation.top", "content.code.copy"]
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme)"

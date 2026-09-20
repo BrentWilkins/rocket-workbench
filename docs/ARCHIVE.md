@@ -15,6 +15,7 @@ the [next-platform decision](NEXT_PLATFORM.md) instead.
 | Earlier material                                     | Why it is archived                                                       |
 | ---------------------------------------------------- | ------------------------------------------------------------------------ |
 | [Original MVP review](REVIEW.md)                     | Generic payload, earlier geometry and recovery pass counts               |
+| [Fin and nose tip v3](TIP_REFINEMENT.md), [separate fins](SEPARATE_FIN_COLLAR.md), [fin collar v2](FIN_COLLAR_V2.md) | Superseded by the printed integrated collar; retained as CAD provenance |
 | [18 mm avionics review](REVIEW_18MM.md)              | C5-3 geometry, historical altitude gates and V5 downloads                |
 | [18 mm build guide](BUILD_18MM.md)                   | Old tube cut lengths, 18 mm mount and recovery instructions              |
 | [Old flight plots](PLOTS.md)                         | Earlier shortlist, not component-level avionics                          |

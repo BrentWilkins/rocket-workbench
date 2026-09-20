@@ -40,7 +40,7 @@ def render(config: Config, destination: Path) -> None:
     window.SetMultiSamples(8)
 
     views = (
-        ((0.0, 0.0, 0.68, 1.0), (175, -225, 625), 92, "ORGANIC FIN COLLAR V2"),
+        ((0.0, 0.0, 0.68, 1.0), (175, -225, 625), 92, f"FIN COLLAR {config.fin_profile.upper()}"),
         ((0.68, 0.0, 1.0, 1.0), (115, -85, 530), 37, "ROOT BLEND"),
     )
     for viewport, camera_position, scale, title in views:
@@ -61,8 +61,18 @@ def render(config: Config, destination: Path) -> None:
         window.AddRenderer(renderer)
 
     first = window.GetRenderers().GetFirstRenderer()
-    label(first, "2.0 mm clipped-delta fins / flowing 1-3-1 mm root cove", 34, 52, 22)
-    label(first, "rounded leading + tip edges / 0.7 mm tapered trailing edge", 34, 22, 19)
+    root_label = ("uniform 1.7 mm root cove" if config.fin_profile == 'organic-v5'
+                  else "flowing 1-3-1 mm root cove")
+    label(first, f"2.0 mm clipped-delta fins / {root_label}", 34, 52, 22)
+    if config.fin_profile == 'organic-v5':
+        detail = "4 mm outer leading bevel / uniform 1.7 mm root cove / 2 mm trailing edge"
+    elif config.fin_profile == 'organic-v4':
+        detail = "4 mm leading bevel / 8 mm radial taper / 0.7 mm trailing edge"
+    elif config.fin_profile == 'organic-v3':
+        detail = "8 mm radial tip taper / 0.8 mm land / 0.7 mm trailing edge"
+    else:
+        detail = "rounded leading + tip edges / 0.7 mm tapered trailing edge"
+    label(first, detail, 34, 22, 19)
     label(first, "CAD REVIEW - NOT PHYSICAL STRENGTH VALIDATION", 1185, 22, 17)
     window.Render()
     capture = vtk.vtkWindowToImageFilter()

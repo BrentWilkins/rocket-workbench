@@ -1,0 +1,23 @@
+{
+  "status": "print review candidate, not flight qualified",
+  "geometry": {
+    "fin_root_inset_mm": 2.0,
+    "root_cove_middle_radius_mm": 1.7,
+    "cove_end_radius_mm": 0.05,
+    "leading_bevel_mm": 4.0,
+    "leading_land_mm": 0.8,
+    "fin_tip_thickness_mm": 2.0,
+    "trailing_edge_thickness_mm": 2.0
+  },
+  "print": {
+    "orientation": "collar aft end down",
+    "slicer": "Bambu Studio 02.08.02.61",
+    "printer": "X1C 0.4 mm",
+    "filament": "Generic PLA",
+    "layer_height_mm": 0.2,
+    "filament_estimate_g_including_support": 27.86,
+    "time_estimate_s": 4115,
+    "support_feature_sections": 65,
+    "forward_down_cli_slice": "failed for same geometry; aft-down succeeded"
+  }
+}

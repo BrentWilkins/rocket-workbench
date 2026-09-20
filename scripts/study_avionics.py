@@ -32,7 +32,7 @@ def avionics_config(upper=False):
     base = candidate(load_config(ROOT/'examples/candidate-recovery.yaml'), 'conical', 50)
     data = base.model_dump()
     data['name'] = 'avionics-upper-mass' if upper else 'avionics-nominal'
-    data['avionics_profile'] = 'xiao-gnss-baro-v1'
+    data['avionics_profile'] = 'xiao-sensor-logger-v2'
     source = 'Provisional avionics packaging/pressure-port variant; verify physical fit and pressure response'
     def setq(q, value):
         q.update(value=value, provenance='estimate', source=source)
@@ -40,8 +40,8 @@ def avionics_config(upper=False):
     setq(data['geometry']['body_length'], 410)
     mass, cg = payload_budget(50, upper)
     p = data['payload']
-    p.update(identity='XIAO nRF52840 Sense + L76K + BMP581; provisional component budget',
-             battery_identity='Adafruit 1317 150 mAh 1S LiPo; not yet purchased or measured')
+    p.update(identity='XIAO ESP32-S3 Sense camera/SD + LIS331 ±24 g + LPS28; optional GPS later',
+             battery_identity='Adafruit 3898 protected 400 mAh 1S LiPo; not yet purchased or measured')
     for key, value in dict(length=110, width=34, height=26, mass=mass, cg_x=cg).items():
         setq(p[key], value)
     # Move recovery pack aft of the extended bay; motor stays at the aft end.
@@ -79,6 +79,7 @@ def main():
             if args.base_config:
                 data = load_config(args.base_config).model_dump()
                 data['name'] = config.name
+                data['avionics_profile'] = config.avionics_profile
                 mass, cg = payload_budget(data['geometry']['nose_length']['value'], upper)
                 data['payload']['mass']['value'] = mass
                 data['payload']['cg_x']['value'] = cg

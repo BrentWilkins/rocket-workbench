@@ -35,44 +35,39 @@ hide:
     <p class="rw-hero__caption">Velocity-colored streamlines from the retained swept-fin OpenFOAM case</p>
   </section>
 
-  <section class="rw-summary" aria-label="Current engineering status">
-    <article class="rw-card">
-      <p class="rw-card__label">Current platform</p>
-      <p class="rw-card__value">D12-5 / BT-60</p>
-      <p>Passive clipped-delta configuration, 500 mm body, removable avionics bay, and organic fin-collar v2.</p>
-    </article>
-    <article class="rw-card">
-      <p class="rw-card__label">Selected launch guide</p>
-      <p class="rw-card__value">36 × 3/16 inches</p>
-      <p>Estes’ two-piece <a href="https://estesrockets.com/products/3-16-two-piece-maxi-launch-rod">Maxi rod</a> fits the existing <a href="https://estesrockets.com/products/porta-pad-ii-launch-pad">Porta-Pad II</a> and provides a longer, stiffer guide.</p>
-    </article>
-    <article class="rw-card">
-      <p class="rw-card__label">Modeled guide departure</p>
-      <p class="rw-card__value">12.91–12.92 m/s</p>
-      <p>The current loaded cases clear the project’s 12 m/s screen on the 36-inch guide.</p>
-    </article>
-  </section>
+<section class="rw-summary" aria-label="Current engineering status">
+  <article class="rw-card">
+    <p class="rw-card__label">Current platform</p>
+    <p class="rw-card__value">D12-5 / E12-6 · BT-60</p>
+    <p>500 mm body, integrated fin collar, removable camera/logger bay. The raw collar print weighs 27 g.</p>
+  </article>
+  <article class="rw-card">
+    <p class="rw-card__label">Launch guide</p>
+    <p class="rw-card__value">3/16-inch Maxi rod</p>
+    <p>Matching rocket guides still need to be built and checked on the actual rod.</p>
+  </article>
+  <article class="rw-card">
+    <p class="rw-card__label">Flight-model status</p>
+    <p class="rw-card__value">Provisional</p>
+    <p>Both motors pass the current numerical screen, but finished mass, CG and recovery must be verified.</p>
+  </article>
+</section>
 
-  <section class="rw-copy">
-    <div>
-      <p class="rw-eyebrow">CURRENT LAUNCH SETUP</p>
-      <h2>The pad stays. The guide gets longer and stiffer.</h2>
-    </div>
-    <div>
-      <p>
-        The stock 1/8-inch rod lifts out of the Porta-Pad II and the two-piece 3/16-inch Maxi rod installs in the same pad. Two aligned launch lugs keep the rocket pointed on the selected path while the D12 builds enough airspeed for the fins to take over.
-      </p>
-      <p>
-        The current simulation predicts 12.91–12.92 m/s at guide departure. That is a useful modeled margin, not flight clearance: the printed lug sleeves still need to be resized from 1/8 inch, and the assembled rocket must slide freely over the straight, clean rod with both lugs coaxial. Actual usable guide travel, loaded mass, balance, wind, and pad setup remain physical checks.
-      </p>
-      <p class="rw-links">
-        <a href="docs/CURRENT_DESIGN/">Current configuration →</a>
-        <a href="docs/MEASUREMENTS/">Measurement checklist →</a>
-        <a href="docs/SHOPPING/">Hardware sourcing →</a>
-        <a href="docs/FIN_COLLAR_V2/">Fin-collar v2 →</a>
-      </p>
-    </div>
-  </section>
+<section class="rw-copy">
+  <div>
+    <p class="rw-eyebrow">CURRENT BUILD</p>
+    <h2>The printed collar is real; the assembled rocket is not yet measured.</h2>
+  </div>
+  <div>
+    <p>The next gates are a dry fit of the two-tube airframe and coupler, a 3/16-inch guide interface, recovery packing and extraction, then measured mass and CG in a fresh D12-5/E12-6 simulation.</p>
+    <p class="rw-links">
+      <a href="docs/CURRENT_DESIGN/">Current configuration →</a>
+      <a href="docs/MEASUREMENTS/">Measurement checklist →</a>
+      <a href="docs/SHOPPING/">Hardware sourcing →</a>
+      <a href="docs/INTEGRATED_FIN_COLLAR/">Fin collar →</a>
+    </p>
+  </div>
+</section>
 </div>
 
 ## Evidence loop

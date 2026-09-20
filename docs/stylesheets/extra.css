@@ -9,15 +9,19 @@
   padding-top: 0;
 }
 
+.md-main__inner:has(.rw-home) > .md-sidebar--primary {
+  display: none;
+}
+
 .rw-hero {
   position: relative;
   display: grid;
+  width: 100vw;
   min-height: clamp(24rem, 48vh, 28rem);
-  margin: 0 0 2.5rem;
+  margin: 0 0 2.5rem calc(50% - 50vw);
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 0.8rem;
+  border-block: 1px solid var(--md-default-fg-color--lightest);
   background: #02050c;
 }
 

@@ -1,70 +1,96 @@
-# XIAO flight-logger specification and packaging model
+# XIAO camera flight-logger specification and packaging model
+
+> **2026-09-19 packaging update:** The battery and LPS28 keepouts no longer overlap in the provisional layout,
+> and pairwise component collision checks now run with the shell check. The updated payload CG and the current
+> D12-5/E12-6 simulation results are in the [geometry sweep](DE_GEOMETRY_SWEEP.md). Earlier motor/fin results
+> farther down this page are historical; the delivered boards, camera view, wiring, and battery retention still
+> require a physical fit check.
+
+> **2026-09-19 baseline update:** use the owned Seeed XIAO ESP32-S3 Sense camera and
+> microSD for video/sensor logging. The baseline sensors are the Adafruit LIS331HH
+> ±24 g accelerometer and LPS28 barometer. GPS is optional and is intentionally
+> excluded from the current mass, power, and fit budget. Use an Adafruit 3898
+> protected 400 mAh LiPo; solder a mating JST-PH pigtail to the XIAO BAT+/BAT− pads.
+> The earlier nRF52840/L76K/150 mAh configuration remains historical evidence only.
 
 > **Current hardware specification.** See [current designs](CURRENT_DESIGN.md) for the corrected geometry search,
 > performance/stability tradeoffs, uncertainty results and matching V5 print project. The flights linked here include
 > the recovery-wadding CG correction and the performance option's 45 mm fins.
 
 This is a concrete **provisional hardware specification**, not measured hardware, a crash rating, or flight clearance.
-The user has several unspecified XIAO boards and no battery. The selected baseline is the original **XIAO nRF52840
-Sense**, not a plain nRF52840, ESP32 camera Sense, or Plus variant. Confirm the owned board before ordering anything. No
-OLED, Grove Base, radio add-on, camera, active guidance or electronic deployment is included. Firmware is specified
+The stability screen now uses 55 mm-span fins for the 24 mm C11/D12/E12 motor envelope; the prior 45 mm option is retained as a comparison, not the selected geometry.
+The selected baseline is the owned **Seeed XIAO ESP32-S3 Sense**, using its camera and microSD for synchronized video
+and sensor logging. GPS is deliberately optional and excluded from the baseline mass/power model. Firmware is specified
 below but has not been implemented or bench-tested.
 
 ## Parts and mass budget
 
 | Part                                                      | Nominal mass g | Upper allowance g | Geometry evidence                                                                |
 | --------------------------------------------------------- | -------------: | ----------------: | -------------------------------------------------------------------------------- |
-| XIAO nRF52840 Sense                                       |           2.50 |              3.20 | 18 × 5 × 24.5 mm keepout, aligned by PCB/header datum; mass estimated            |
-| L76K GNSS module, Seeed 109100021                         |           3.00 |              4.00 | Published PCB 18 × 21 mm; 5 mm populated height estimated                        |
-| Included active GPS antenna                               |           5.00 |              8.00 | **26 × 26 × 8 mm supported envelope**, not a verified supplied antenna dimension |
-| Adafruit 1317 protected 150 mAh LiPo                      |           4.65 |              5.50 | Published 19.75 × 26.02 × 3.8 mm; 20.75 × 28.02 × 5.8 mm packaging keepout       |
-| Adafruit BMP581 breakout 6407 rev B                       |           1.50 |              2.00 | Official PCB outline 25.4 × 17.78 mm; 5 mm populated height estimated            |
-| Mated battery connector                                   |           0.70 |              1.00 | Explicit 8 × 6 × 10 mm disconnect/service envelope                               |
-| Headers, wiring, antenna coax                             |           1.80 |              3.00 | Routing allowance; connector accounted separately                                |
+| XIAO ESP32-S3 Sense camera + microSD                     |           6.00 |              6.50 | User-weighed raw board, camera, and WiFi antenna: 6 g; installed wiring remains estimated                      |
+| Adafruit LIS331HH ±24 g accelerometer                    |           2.00 |              3.00 | STEMMA QT board envelope; ±24 g setting required for boost                       |
+| Optional GPS module/antenna                               |           0.00 |              0.00 | Deferred; excluded from current fit and power model                              |
+| Adafruit 3898 protected 400 mAh LiPo                      |           8.20 |             10.50 | Approx. 37 × 17.5 × 8.2 mm; verify delivered mass and thickness                  |
+| Adafruit LPS28 breakout 6067                              |           1.80 |              2.30 | Published 25.4 × 17.8 × 4.8 mm, 1.8 g; ported board                         |
+| JST-PH 2-pin solder pigtail, Adafruit 261                 |           0.50 |              0.80 | Soldered to XIAO BAT+/BAT− pads; verify mating gender and polarity                |
+| Sensor wires, camera/SD loop and strain relief            |           1.50 |              2.50 | No GNSS coax in baseline; optional GPS reserve retained                          |
 | Insulating pads, ties, strain relief and seal consumables |           1.50 |              2.50 | Estimated; printed sled is accounted separately                                  |
-| **Total removable payload**                               |      **20.65** |         **29.20** | All masses except the battery's published value are estimates                    |
+| **Total removable payload**                               |      **21.50** |         **28.10** | XIAO raw mass measured; other masses and installed allowance provisional             |
 
-Nominal payload CG is 97.74 mm aft of the 50 mm nose tip; upper-mass CG is 96.09 mm. The two budgets change individual
+Nominal payload CG is 92.95 mm aft of the 50 mm nose tip; upper-mass CG is 93.21 mm. These are packaging estimates after
+moving the battery clear of the LPS28 board; the delivered hardware and assembled CG must be measured. The two budgets change individual
 component masses rather than scaling a single lump. Dummy/actual remain equivalent mass/CG cases until hardware is
 measured. CAD plastics and the existing recovery hardware ledger are added separately, not counted as PCB material.
 
-Sources checked 2026-09-12:
+Sources checked 2026-09-19:
 
 - [XIAO board, IMU, flash and charging documentation](https://wiki.seeedstudio.com/XIAO_BLE/).
-- [L76K specifications](https://wiki.seeedstudio.com/get_start_l76k_gnss/): active antenna and 100 mm U.FL coax
-  included; module tracking/acquisition current is listed as 41 mA including the antenna. Listed 1 Hz default / 5 Hz
-  maximum is not a promise of maintaining a fix during rocket flight.
-- [BMP581 product 6407](https://www.adafruit.com/product/6407), listed $9.95 and in stock;
-  [official PCB CAD](https://github.com/adafruit/Adafruit-BMP5xx-Temperature-and-Pressure-Sensor-PCB). The initially
-  considered BMP390 was out of stock at Adafruit; this specification selects BMP581 instead.
-- [Battery 1317](https://www.adafruit.com/product/1317), listed $5.95, 150 mAh and 4.65 g. Its long supplied lead is
-  retained in the mass allowance; verify connector polarity, protection and charging limits against the delivered item.
+- GPS is intentionally deferred; add its mass, antenna keepout and power only after the camera/altimeter logger works.
+- [LPS28 product 6067](https://www.adafruit.com/product/6067), listed $12.50 and in stock; its ported package is useful
+  for a controlled static-pressure tube.
+- [Battery 3898](https://www.adafruit.com/product/3898), protected 400 mAh 1S LiPo; verify connector polarity,
+  protection, dimensions and charging limits against the delivered item.
 
 No purchase has been made. The L76K was listed at $11.99; XIAO cost depends on whether the user already owns the Sense.
 These are component prices, not a complete installed-cost estimate.
 
 ## Electrical and logging specification
 
+The current wiring is intentionally camera-first:
+
 ```mermaid
 flowchart LR
-    Battery[Protected 1S LiPo] --> XIAO[XIAO nRF52840 Sense]
-    XIAO -->|UART D6 TX / D7 RX| GPS[L76K]
-    GPS --- Antenna[Retained active antenna]
-    XIAO -->|I2C D4 SDA / D5 SCL| Baro[BMP581]
+    Battery[Protected 1S 400 mAh LiPo] --> XIAO[XIAO ESP32-S3 Sense]
+    XIAO --> SD[microSD video + sensor log]
+    XIAO -->|I2C STEMMA QT| LIS[LIS331 ±24 g]
+    XIAO -->|I2C STEMMA QT| LPS[LPS28 barometer]
+    XIAO -. optional UART/I2C .-> GPS[GNSS later]
+```
+
+The LIS331 is the authoritative powered-flight accelerometer; configure its ±24 g
+range and record the launch-pad noise/gravity initialization block. The LPS28
+provides the primary altitude trace through its ported static-pressure interface.
+GPS is an optional later addition and is not
+needed for the first camera/altimeter flight.
+
+```mermaid
+flowchart LR
+    Battery[Protected 1S LiPo] --> XIAO[XIAO ESP32-S3 Sense]
+    XIAO -. optional UART/I2C .-> GPS[GNSS later]
+    XIAO -->|I2C SDA/SCL| Baro[LPS28]
     XIAO --- IMU[Onboard accelerometer + gyro]
     XIAO --> Flash[Onboard flash flight log]
     Flash --> USB[Postflight USB download]
 ```
 
-Use the XIAO's 3.3 V rail and common ground for the L76K and BMP581 breakout VIN. Do not feed raw LiPo voltage to sensor
+Use the XIAO's 3.3 V rail and common ground for the LPS28 breakout VIN. Do not feed raw LiPo voltage to sensor
 logic pins. UART is crossed: XIAO D6/TX to GNSS RX, GNSS TX to D7/RX. Reserve the GNSS control pins D0/D2 pending the
 delivered board's schematic review; do not use the obsolete L76-L D2/D3 UART example.
 [L76K wiring/example](https://wiki.seeedstudio.com/get_start_l76k_gnss/).
 
-BMP581 default I2C address is 0x47; leave its CS disconnected for I2C as documented. Use short soldered wires for the
-flight layout, not bulky Grove adapters. Leave STEMMA connectors on the board and include their clearance; removal is
-not required.
-[BMP581 pinout](https://learn.adafruit.com/adafruit-bmp580-bmp581-and-bmp585-temperature-and-pressure-sensor/pinouts).
+LPS28 default I2C address is 0x5C; leave its SA0 jumper open unless another device collides. Use short soldered wires
+for the flight layout, not bulky Grove adapters. Keep the metal pressure port accessible and avoid side load on it.
+[LPS28 pinout](https://learn.adafruit.com/adafruit-lps28-pressure-sensor/pinouts).
 
 Use a removable polarized battery connector; unplug to isolate power, with access after withdrawing the bay. Charge
 outside the closed rocket, attended, using a verified 1S charger/current setting. The XIAO documentation describes
@@ -85,7 +111,7 @@ itself.
 
 ## Mechanical arrangement
 
-The proposed bay is 145 mm long in a 410 mm BT-60 body, with a 50 mm cone, 45 mm-span fins and 18-inch chute. This is a
+The proposed bay is 145 mm long in a 410 mm BT-60 body, with a 50 mm cone, 55 mm-span fins and 18-inch chute. This is a
 new variant, not an overwrite of the earlier fit-check project. The longer bay is primarily a static-port placement
 choice, not a claim that the circuit boards alone need that length. It reduces performance and adds long-sleeve
 extraction/friction risks that must be evaluated.
@@ -145,6 +171,19 @@ printed holes, ejection leakage and sensor filtering can dominate. Pressure-cham
 controlled airflow/flight comparison must assess port bias.
 
 ## Vendor model availability
+
+Use vendor geometry where it materially improves the fit model:
+
+- Seeed publishes an official XIAO ESP32-S3 Sense STEP archive and separate top/bottom housing STEP files.
+- Adafruit publishes the exact [LPS28 6067 STEP](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/6067%20LPS28%20Pressure%20Sensor), now stored under `docs/assets/avionics/vendor/`.
+- The LIS331 breakout has official Eagle board files; use those to generate the board outline, then retain simple
+  component-height envelopes for the connectors and sensor package.
+- The 400 mAh pouch and JST cable should remain measured flexible envelopes rather than pretending a rigid STEP model
+  captures bend radius, swelling, or strain relief.
+
+The XIAO STEP is the highest-value import because the camera/SD stack and lens position affect the sled and nose view.
+The Adafruit boards are flat enough that vendor board outlines plus measured populated height are faster and safer than
+building a detailed component-by-component assembly.
 
 - Seeed supplies a
   [XIAO STEP archive](https://files.seeedstudio.com/wiki/XIAO-BLE/seeed-studio-xiao-nrf52840-3d-model.zip) linked from

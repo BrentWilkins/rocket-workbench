@@ -1,0 +1,74 @@
+{
+  "nose-bay": {
+    "volume_mm3": 25384.89271393151,
+    "mass_g": 31.47726696527507,
+    "cg_x_mm": 107.42282195867479,
+    "bbox_mm": [
+      41.6,
+      41.6,
+      192.00000010000045
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  },
+  "bay-bulkhead": {
+    "volume_mm3": 3716.7601489979934,
+    "mass_g": 4.6087825847575115,
+    "cg_x_mm": 193.50220914619993,
+    "bbox_mm": [
+      40.1,
+      40.1,
+      3.0
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  },
+  "payload-sled": {
+    "volume_mm3": 11627.67504561361,
+    "mass_g": 14.418317056560877,
+    "cg_x_mm": 121.2203069949319,
+    "bbox_mm": [
+      28.0,
+      26.0,
+      125.0
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  },
+  "fin-collar": {
+    "volume_mm3": 23181.453629961004,
+    "mass_g": 28.745002501151646,
+    "cg_x_mm": 521.0600376866282,
+    "bbox_mm": [
+      114.10417223730803,
+      131.69508317882355,
+      71.8571429571432
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  },
+  "lug-sleeve-1": {
+    "volume_mm3": 1038.2141179507407,
+    "mass_g": 1.2873855062589186,
+    "cg_x_mm": 212.50000000000003,
+    "bbox_mm": [
+      11.559936751448916,
+      11.094194555516687,
+      25.0
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  },
+  "lug-sleeve-2": {
+    "volume_mm3": 1038.2141179507405,
+    "mass_g": 1.2873855062589181,
+    "cg_x_mm": 387.5,
+    "bbox_mm": [
+      11.559936751448916,
+      11.094194555516687,
+      25.0
+    ],
+    "provenance": "estimate",
+    "source": "CAD solid volume \u00d7 configured density; verify print mass"
+  }
+}

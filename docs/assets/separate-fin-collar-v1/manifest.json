@@ -1,0 +1,13 @@
+{
+  "assembled-fit-reference.step": "47477eaab4ed3b1c13eb0b74ed04fefafb833596dd330bcd3fdbd1df3c2bd8b1",
+  "config.json": "27295bd56da4954ebca3318c3f6de74477909ced52aca6d45a60e43ae576ef7e",
+  "plate_1.gcode": "e69d89323672c89c79a1fed1bdec7fff65128c0f0d45e1c62ddfe460eb32dce1",
+  "result.json": "941f4a7928a4774a7367f4446913d2d4b969062183bd6d7cbdb14732857e2803",
+  "round-collar.step": "b3de03fef17377a2656299edecfbb3bcb3121821f0d23467ae419e891da89d27",
+  "round-collar.stl": "d5a3c1e43185d39b012a5f915c665d752f04563cdb74c4d97bd275036c4d1a04",
+  "separate-collar-three-fins-sliced.3mf": "41ff85fa9ff2842cd3f0b1ee916ca0c7b0a33a13eb5f5edcb0f3ed8f4804f083",
+  "separate-collar-three-fins.3mf": "9b7e0737d912eed59b5c098ba2a2b5c3976b19ca62d9d2d12b915d98d7f96d95",
+  "single-fin.step": "95b42f89ae9b88d3e22c2e8fade3138568f95173e023aef29421d9fa89bdb872",
+  "single-fin.stl": "4b953d459b6c83f4f2fff670ae21d09f466297bf9643bfb2655cc1d2ba5d68a9",
+  "summary.json": "4b7d8377426dcdaba08b4a5fa8d56354bf2944c3e5935584afc83a78b14c69c7"
+}

@@ -13,6 +13,34 @@ def test_component_budget():
     assert all(p['source'] and p['provenance'] for p in parts)
 
 
+def test_legacy_and_current_avionics_profiles_keep_distinct_hardware():
+    from pathlib import Path
+    from rocket_workbench.config import load_config
+
+    root = Path(__file__).resolve().parents[1]
+    legacy = load_config(root / 'examples/avionics-performance.yaml')
+    assert legacy.avionics_profile == 'xiao-gnss-baro-v1'
+    old_parts = components(legacy)
+    assert {part['id'] for part in old_parts} >= {'l76k', 'antenna', 'barometer'}
+    assert 'nRF52840' in old_parts[0]['identity']
+    assert '150 mAh' in next(part['identity'] for part in old_parts if part['id'] == 'battery')
+    old_mass, _ = payload_budget(legacy.geometry.mm('nose_length'), config=legacy)
+    assert old_mass == pytest.approx(20.65)
+    assert old_mass == pytest.approx(sum(part['mass_g'] for part in old_parts))
+
+    from copy import deepcopy
+    from rocket_workbench.config import Config
+    current_data = deepcopy(legacy.model_dump())
+    current_data['avionics_profile'] = 'xiao-sensor-logger-v2'
+    current = Config.model_validate(current_data)
+    new_parts = components(current)
+    assert {part['id'] for part in new_parts} >= {'lis331', 'barometer'}
+    assert not {part['id'] for part in new_parts} & {'l76k', 'antenna'}
+    assert 'ESP32-S3' in new_parts[0]['identity']
+    assert payload_budget(current.geometry.mm('nose_length'), config=current)[0] == pytest.approx(
+        sum(part['mass_g'] for part in new_parts))
+
+
 @pytest.mark.integration
 def test_avionics_fit_and_ports():
     import sys
@@ -28,7 +56,8 @@ def test_avionics_fit_and_ports():
     assert proof['sled_insertion_intersection_mm3'] < 1e-5
     assert proof['sled_outside_sweep_mm3'] < 1e-5
     assert proof['sleeve_tube_intersection_mm3'] < 1e-5
-    assert proof['minimum_component_radial_clearance_mm'] == pytest.approx(.46522368915)
+    assert proof['minimum_component_radial_clearance_mm'] == pytest.approx(1.12995485333)
+    assert proof['component_intersections'] == []
     hardware = keepouts(config)
     for name, detail in detail_models(config).items():
         a, b = detail.toCompound().BoundingBox(), hardware[name].val().BoundingBox()

@@ -34,6 +34,8 @@ class Geometry(Model):
     body_id: Quantity
     body_length: Quantity
     nose_length: Quantity
+    nose_tip_radius: Quantity | None = None
+    nose_shoulder_chamfer: Quantity | None = None
     wall: Quantity
     clearance: Quantity
     bay_length: Quantity
@@ -57,7 +59,7 @@ class Geometry(Model):
 
 
 class MassItem(Model):
-    role: Literal['body', 'mount', 'chute', 'harness', 'wadding', 'lugs', 'bay_hardware', 'collar_adhesive', 'thermal']
+    role: Literal['body', 'mount', 'chute', 'harness', 'wadding', 'lugs', 'bay_hardware', 'collar_adhesive', 'thermal', 'airframe_joint']
     name: str
     mass: Quantity
     x: Quantity
@@ -143,8 +145,8 @@ class Config(Model):
     geometry: Geometry
     nose_shape: Literal['conical', 'ogive', 'ellipsoid'] = 'conical'
     fin_shape: Literal['trapezoidal', 'elliptical', 'clipped-delta', 'swept'] = 'trapezoidal'
-    fin_profile: Literal['square', 'organic-v2'] = 'square'
-    avionics_profile: Literal['xiao-gnss-baro-v1'] | None = None
+    fin_profile: Literal['square', 'organic-v2', 'organic-v3', 'organic-v4', 'organic-v5'] = 'square'
+    avionics_profile: Literal['xiao-gnss-baro-v1', 'xiao-sensor-logger-v2'] | None = None
     bay_retention: Literal['printed-pilots', 'm2-insert-trial-v1'] = 'printed-pilots'
     material: Literal['PLA', 'PETG']
     density: Quantity
@@ -160,11 +162,21 @@ class Config(Model):
     def feasible(self):
         if self.bay_retention != 'printed-pilots' and not self.avionics_profile:
             raise ValueError('Insert trial requires the specified avionics layout')
-        if self.fin_profile == 'organic-v2' and self.fin_shape != 'clipped-delta':
-            raise ValueError('Organic fin profile v2 is defined only for clipped-delta fins')
+        if self.fin_profile in {'organic-v2', 'organic-v3', 'organic-v4', 'organic-v5'} and self.fin_shape != 'clipped-delta':
+            raise ValueError('Organic fin profiles are defined only for clipped-delta fins')
         g = self.geometry
         for name in Geometry.model_fields:
-            g.mm(name)
+            if getattr(g, name) is not None:
+                g.mm(name)
+        if g.nose_tip_radius is not None:
+            if self.nose_shape != 'conical' or g.mm('nose_tip_radius') >= g.mm('nose_length') / 10:
+                raise ValueError('Nose tip radius requires a conical nose and must be under 10% of its length')
+        if g.nose_shoulder_chamfer is not None and g.mm('nose_shoulder_chamfer') >= g.mm('wall'):
+            raise ValueError('Nose shoulder chamfer must be smaller than wall thickness')
+        if self.fin_profile in {'organic-v3', 'organic-v4'} and (
+            g.mm('fin_thickness') <= .8 or g.mm('fin_span') <= 8
+        ):
+            raise ValueError('Organic fin tip taper needs thickness above 0.8 mm and span above 8 mm')
         od, bore, wall = g.mm('body_od'), g.mm('body_id'), g.mm('wall')
         if bore >= od:
             raise ValueError('Body ID must be smaller than OD')
@@ -225,8 +237,9 @@ class Config(Model):
         self.chute_cd.require('1', True)
         roles = [i.role for i in self.purchased_masses]
         required = {'body', 'mount', 'chute', 'harness', 'wadding', 'lugs', 'bay_hardware', 'collar_adhesive', 'thermal'}
-        if set(roles) != required or len(roles) != len(required):
-            raise ValueError(f'Purchased mass ledger must contain exactly one of each role: {sorted(required)}')
+        optional = {'airframe_joint'}
+        if not required.issubset(roles) or not set(roles).issubset(required | optional) or len(roles) != len(set(roles)):
+            raise ValueError(f'Purchased mass ledger must contain each required role once: {sorted(required)}; optional: {sorted(optional)}')
         if len({c.metric for c in self.criteria}) != len(self.criteria):
             raise ValueError('Duplicate evaluation criteria')
         for part, (mass, cg) in self.printed_measurements.items():
