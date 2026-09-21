@@ -7,10 +7,10 @@ import math
 from html import escape
 
 XIAO = 'https://wiki.seeedstudio.com/xiao_esp32s3_sense/'
-ACCEL = 'https://www.adafruit.com/product/4626'
+ACCEL = 'https://www.adafruit.com/product/4464'
 BARO = 'https://www.adafruit.com/product/6067'
 BATTERY = 'https://www.adafruit.com/product/3898'
-CABLE = 'https://www.adafruit.com/product/261'
+CABLE = 'https://www.adafruit.com/product/1131'
 LEGACY_XIAO = 'https://wiki.seeedstudio.com/XIAO_BLE/'
 LEGACY_GPS = 'https://wiki.seeedstudio.com/get_start_l76k_gnss/'
 LEGACY_BARO = 'https://github.com/adafruit/Adafruit-BMP5xx-Temperature-and-Pressure-Sensor-PCB'
@@ -22,14 +22,14 @@ def components(config=None):
     rows = [
         ('xiao-sense', 'Seeed XIAO ESP32-S3 Sense camera + microSD recorder', [18, 7, 21], [0, -5, 39], 6.0, 6.5, XIAO,
          'User-weighed raw XIAO Sense with camera and WiFi antenna: 6 g; verify lens clearance and attachment mass'),
-        ('lis331', 'Adafruit LIS331HH ±24 g accelerometer breakout', [25.6, 5, 22.7], [0, -5, 0], 2.0, 3.0, ACCEL,
-         'STEMMA QT board envelope and populated height are provisional; use ±24 g range for powered flight'),
+        ('imu', 'Adafruit ICM-20649 ±30 g / ±4000 dps IMU breakout', [17.8, 5, 25.4], [0, -5, 0], 2.0, 3.0, ACCEL,
+         'Replaces the EOL LIS331HH; envelope, height and mass are unmeasured allowances. Use ±30 g for powered flight'),
         ('barometer', 'Adafruit LPS28 breakout 6067', [17.8, 4.8, 25.4], [0, 3, 85], 1.8, 2.3, BARO,
          'Published 25.4 x 17.8 x 4.8 mm, 1.8 g; port and populated height still need fit measurement'),
         ('battery', 'Adafruit protected 3.7 V 400 mAh LiPo #3898', [17.5, 8.2, 37], [0, 5, 40], 8.2, 10.5, BATTERY,
          'Published battery choice is approximately 37 x 17.5 x 8.2 mm; opposite XIAO face, provisional clearance and retention'),
-        ('battery-connector', 'JST-PH 2-pin mating pigtail, Adafruit #261', [8, 6, 10], [0, 5, 66], .5, .8, CABLE,
-         'Solder the pigtail to XIAO BAT+/BAT− pads; verify mating gender and polarity before connection'),
+        ('battery-connector', 'JST-PH 2-pin male pigtail cut from Adafruit #1131', [8, 6, 10], [0, 5, 66], .5, .8, CABLE,
+         'Male half of the #1131 extension solders to XIAO BAT pads; #261 is female and will not mate with the battery. XIAO BAT− is the pad nearest USB'),
         ('harness', 'Short sensor wires, camera/SD service loop and strain relief', [4, 10, 90], [15, 0, 65], 1.5, 2.5, 'Engineering allowance',
          'No GNSS coax in baseline; retain routing reserve for optional GPS'),
         ('retention', 'Insulating pads, ties, strain relief and sealing consumables', [4, 10, 60], [-15, 0, 52], 1.5, 2.5, 'Engineering allowance',

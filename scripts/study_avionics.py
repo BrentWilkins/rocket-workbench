@@ -40,7 +40,7 @@ def avionics_config(upper=False):
     setq(data['geometry']['body_length'], 410)
     mass, cg = payload_budget(50, upper)
     p = data['payload']
-    p.update(identity='XIAO ESP32-S3 Sense camera/SD + LIS331 ±24 g + LPS28; optional GPS later',
+    p.update(identity='XIAO ESP32-S3 Sense camera/SD + ICM-20649 ±30 g + LPS28; optional GPS later',
              battery_identity='Adafruit 3898 protected 400 mAh 1S LiPo; not yet purchased or measured')
     for key, value in dict(length=110, width=34, height=26, mass=mass, cg_x=cg).items():
         setq(p[key], value)

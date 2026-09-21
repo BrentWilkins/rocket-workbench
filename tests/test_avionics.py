@@ -34,7 +34,7 @@ def test_legacy_and_current_avionics_profiles_keep_distinct_hardware():
     current_data['avionics_profile'] = 'xiao-sensor-logger-v2'
     current = Config.model_validate(current_data)
     new_parts = components(current)
-    assert {part['id'] for part in new_parts} >= {'lis331', 'barometer'}
+    assert {part['id'] for part in new_parts} >= {'imu', 'barometer'}
     assert not {part['id'] for part in new_parts} & {'l76k', 'antenna'}
     assert 'ESP32-S3' in new_parts[0]['identity']
     assert payload_budget(current.geometry.mm('nose_length'), config=current)[0] == pytest.approx(

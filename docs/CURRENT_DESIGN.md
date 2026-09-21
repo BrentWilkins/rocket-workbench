@@ -10,13 +10,13 @@ The existing build baseline and manufacturing artifacts remain **500 mm body / 5
 is not an as-built claim or an updated print release. The raw collar weighs **27 g** and the raw XIAO ESP32-S3 Sense
 with camera and antenna weighs **6 g**. Finish, remaining hardware and assembled CG still need measurement.
 
-| Item         | Current choice                                                                                            | Still to verify                                                                                                        |
-| ------------ | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Airframe     | Recommended 530 mm joined BT-60 body and 40 mm ogive; existing baseline is 500 mm                         | Update build configuration/CAD before cutting or printing; verify delivered dimensions, joint, bay and chute clearance |
-| Motors       | **D12-5** first; **E12-6** also modeled                                                                   | Finished mass/CG, recovery deployment speed, guide departure, launch-field conditions                                  |
-| Recovery     | 24-inch parachute; Estes EST2271 plastic is a local trial part                                            | Actual packed fit, extraction, mass, descent and drift; earlier runs used a different characterized canopy             |
-| Launch guide | Investigate a compatible 60-inch guide; 36-inch cases miss the departure-speed screen                     | Actual diameter, stiffness, usable travel and friction; older sleeves fit 1/8 inch, not the planned 3/16 inch          |
-| Avionics     | XIAO ESP32-S3 Sense camera/SD logger, LIS331 ±24 g accelerometer, LPS28 barometer, protected 400 mAh LiPo | Physical board/battery fit, camera window, pressure ports, wiring and complete installed mass/CG                       |
+| Item         | Current choice                                                                                                 | Still to verify                                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Airframe     | Recommended 530 mm joined BT-60 body and 40 mm ogive; existing baseline is 500 mm                              | Update build configuration/CAD before cutting or printing; verify delivered dimensions, joint, bay and chute clearance |
+| Motors       | **D12-5** first; **E12-6** also modeled                                                                        | Finished mass/CG, recovery deployment speed, guide departure, launch-field conditions                                  |
+| Recovery     | 24-inch parachute; Estes EST2271 plastic is a local trial part                                                 | Actual packed fit, extraction, mass, descent and drift; earlier runs used a different characterized canopy             |
+| Launch guide | Investigate a compatible 60-inch guide; 36-inch cases miss the departure-speed screen                          | Actual diameter, stiffness, usable travel and friction; older sleeves fit 1/8 inch, not the planned 3/16 inch          |
+| Avionics     | XIAO ESP32-S3 Sense camera/SD logger, ICM-20649 ±30 g / ±4000 dps IMU, LPS28 barometer, protected 400 mAh LiPo | Physical board/battery fit, camera window, pressure ports, wiring and complete installed mass/CG                       |
 
 The [paired flight-robustness study](FLIGHT_ROBUSTNESS.md) finds that corrected **36-inch guide-exit speeds fall below
 the configured 12 m/s planning screen**. A 60-inch guide improves the heavier-construction cases to **15.84–16.65 m/s**,

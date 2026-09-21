@@ -6,10 +6,10 @@
 > are historical; the delivered boards, camera view, wiring, and battery retention still require a physical fit check.
 
 > **2026-09-19 baseline update:** use the owned Seeed XIAO ESP32-S3 Sense camera and microSD for video/sensor logging.
-> The baseline sensors are the Adafruit LIS331HH ±24 g accelerometer and LPS28 barometer. GPS is optional and is
+> The baseline sensors are the Adafruit ICM-20649 ±30 g / ±4000 dps IMU and LPS28 barometer. GPS is optional and is
 > intentionally excluded from the current mass, power, and fit budget. Use an Adafruit 3898 protected 400 mAh LiPo;
-> solder a mating JST-PH pigtail to the XIAO BAT+/BAT− pads. The earlier nRF52840/L76K/150 mAh configuration remains
-> historical evidence only.
+> solder the male half of an Adafruit 1131 JST-PH extension to the XIAO BAT+/BAT− pads; BAT− is the pad nearest the USB
+> connector. The earlier nRF52840/L76K/150 mAh configuration remains historical evidence only.
 
 > **Current hardware specification.** See [current designs](CURRENT_DESIGN.md) for the corrected geometry search,
 > performance/stability tradeoffs, uncertainty results and matching V5 print project. The flights linked here include
@@ -26,11 +26,12 @@ the baseline mass/power model. Firmware is specified below but has not been impl
 | Part                                                      | Nominal mass g | Upper allowance g | Geometry evidence                                                                         |
 | --------------------------------------------------------- | -------------: | ----------------: | ----------------------------------------------------------------------------------------- |
 | XIAO ESP32-S3 Sense camera + microSD                      |           6.00 |              6.50 | User-weighed raw board, camera, and WiFi antenna: 6 g; installed wiring remains estimated |
-| Adafruit LIS331HH ±24 g accelerometer                     |           2.00 |              3.00 | STEMMA QT board envelope; ±24 g setting required for boost                                |
+| Adafruit ICM-20649 ±30 g / ±4000 dps IMU                  |           2.00 |              3.00 | Replaces the EOL LIS331HH; envelope and mass are unmeasured allowances, weigh on arrival  |
+| Adafruit LIS3MDL magnetometer 4479                        |           0.00 |              0.00 | Purchased for ground rail-aiming use; excluded from the flight fit and power budget       |
 | Optional GPS module/antenna                               |           0.00 |              0.00 | Deferred; excluded from current fit and power model                                       |
 | Adafruit 3898 protected 400 mAh LiPo                      |           8.20 |             10.50 | Approx. 37 × 17.5 × 8.2 mm; verify delivered mass and thickness                           |
 | Adafruit LPS28 breakout 6067                              |           1.80 |              2.30 | Published 25.4 × 17.8 × 4.8 mm, 1.8 g; ported board                                       |
-| JST-PH 2-pin solder pigtail, Adafruit 261                 |           0.50 |              0.80 | Soldered to XIAO BAT+/BAT− pads; verify mating gender and polarity                        |
+| JST-PH 2-pin male pigtail, cut from Adafruit 1131         |           0.50 |              0.80 | Male end solders to XIAO BAT pads; 261 is female and will not mate with the 3898 battery  |
 | Sensor wires, camera/SD loop and strain relief            |           1.50 |              2.50 | No GNSS coax in baseline; optional GPS reserve retained                                   |
 | Insulating pads, ties, strain relief and seal consumables |           1.50 |              2.50 | Estimated; printed sled is accounted separately                                           |
 | **Total removable payload**                               |      **21.50** |         **28.10** | XIAO raw mass measured; other masses and installed allowance provisional                  |
@@ -76,14 +77,16 @@ The current wiring is intentionally camera-first:
 flowchart LR
     Battery[Protected 1S 400 mAh LiPo] --> XIAO[XIAO ESP32-S3 Sense]
     XIAO --> SD[microSD video + sensor log]
-    XIAO -->|I2C STEMMA QT| LIS[LIS331 ±24 g]
+    XIAO -->|I2C STEMMA QT| IMU[ICM-20649 ±30 g / ±4000 dps]
     XIAO -->|I2C STEMMA QT| LPS[LPS28 barometer]
     XIAO -. optional UART/I2C .-> GPS[GNSS later]
 ```
 
-The LIS331 is the authoritative powered-flight accelerometer; configure its ±24 g range and record the launch-pad
-noise/gravity initialization block. The LPS28 provides the primary altitude trace through its ported static-pressure
-interface. GPS is an optional later addition and is not needed for the first camera/altimeter flight.
+The ICM-20649 is the authoritative powered-flight accelerometer; select its ±30 g range once at init and record the
+launch-pad noise/gravity initialization block. It reads 16-bit at about 0.98 mg/LSB, so the pad-range switching the
+LIS331HH needed is not required. Its gyro is logged raw for post-flight attitude reconstruction and drives nothing. The
+LPS28 provides the primary altitude trace through its ported static-pressure interface. GPS is an optional later
+addition and is not needed for the first camera/altimeter flight.
 
 ```mermaid
 flowchart LR
@@ -111,15 +114,16 @@ schematic and actual current before using onboard charging. Do not use the Grove
 not solder directly to a bare pouch, clamp its edges, or continue using a crushed/damaged cell.
 
 Provisional system budget: 80 mA average and 120 mA peak at the battery, **engineering allowances to be measured**. With
-only 70% of 150 mAh usable, estimated runtime is about 79 minutes at 80 mA; use a 30-minute powered-pad objective until
-tested. Verify rail dropout, startup/inrush and battery discharge rating. This budget is not measured endurance.
+only 70% of the selected 400 mAh cell usable, estimated runtime is about 3.5 hours at 80 mA; use a 30-minute powered-pad
+objective until tested. Verify rail dropout, startup/inrush and battery discharge rating. This budget is not measured
+endurance.
 
-Proposed firmware settings: IMU at 200 samples/s with ±16 g and ±2000 degrees/s ranges, pressure at 50 samples/s, GPS
-initially 1 Hz. Flag saturation, missing fixes, timestamps, battery voltage and resets rather than silently
-interpolating bad data. At roughly 4 kB/s, 1.5 MiB reserved logging space holds about 6.5 minutes: use a short prelaunch
-ring buffer, not unlimited high-rate logging while waiting on the pad. Verify actual flash availability, sensor ODR
-settings and power-loss-tolerant records before implementation. GPS does not provide remote recovery telemetry by
-itself.
+Proposed firmware settings: accelerometer at 400 samples/s at the ±24 g range, pressure at 50 samples/s, GPS initially 1
+Hz. Flag saturation, missing fixes, timestamps, battery voltage and resets rather than silently interpolating bad data.
+At roughly 4.5 kB/s the ESP32-S3's 8 MB PSRAM holds the whole flight in RAM, so the prelaunch ring buffer exists to
+bound PSRAM use and to keep SD writes off the boost timeline, not because storage is scarce. Verify actual PSRAM left
+after camera framebuffers, sensor ODR settings and power-loss-tolerant records before implementation. See the
+[firmware design](FIRMWARE.md). GPS does not provide remote recovery telemetry by itself.
 
 ## Mechanical arrangement
 
@@ -190,8 +194,8 @@ Use vendor geometry where it materially improves the fit model:
 - Adafruit publishes the exact
   [LPS28 6067 STEP](https://github.com/adafruit/Adafruit_CAD_Parts/tree/main/6067%20LPS28%20Pressure%20Sensor), now
   stored under `docs/assets/avionics/vendor/`.
-- The LIS331 breakout has official Eagle board files; use those to generate the board outline, then retain simple
-  component-height envelopes for the connectors and sensor package.
+- The ICM-20649 breakout outline is not yet modelled and no vendor STEP is held locally. Measure the delivered board
+  before the layout pass rather than assuming it matches the LIS331HH envelope it replaces.
 - The 400 mAh pouch and JST cable should remain measured flexible envelopes rather than pretending a rigid STEP model
   captures bend radius, swelling, or strain relief.
 
@@ -252,7 +256,8 @@ keepouts and vendor boards are never intended for printing.
 
 ### Hardware checks for the user, after review
 
-1. Confirm the owned XIAO is the original nRF52840 **Sense**, or supply a photo/name so its variant can be substituted.
+1. Confirm the owned XIAO is the **ESP32-S3 Sense** (the current baseline), or supply a photo/name so its variant can be
+   substituted. The retired nRF52840 profile is selected only by `avionics_profile: xiao-gnss-baro-v1`.
 2. Measure/weigh the delivered GPS antenna and populated stack. Antenna must fit the supported 26 × 26 × 8 mm envelope.
 3. Check battery polarity, delivered dimensions/current rating, assembled power draw and charger setting.
 4. Measure tube ID/roundness, print fit and mass; select/test seal material and separation friction before flight.

@@ -21,7 +21,7 @@ nav = [
     { "Modeling and integration" = "docs/MODELING.md" },
     { "Architecture" = "docs/ARCHITECTURE.md" },
   ] },
-{ "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/REVERIFICATION.md", "docs/DIY_RECOVERY.md", "docs/AVIONICS_DESIGN.md", "docs/MEASUREMENTS.md"] },
+{ "Build & hardware" = ["docs/BUILD.md", "docs/SHOPPING.md", "docs/REVERIFICATION.md", "docs/DIY_RECOVERY.md", "docs/AVIONICS_DESIGN.md", "docs/FIRMWARE.md", "docs/MEASUREMENTS.md"] },
   { "Project" = ["README.md", "docs/DOCUMENTATION.md", "docs/PROGRESS.md", "docs/THIRD_PARTY.md"] },
   { "Archive" = ["docs/ARCHIVE.md", "docs/TIP_REFINEMENT.md", "docs/SEPARATE_FIN_COLLAR.md", "docs/FIN_COLLAR_V2.md", "docs/REVIEW_18MM.md", "docs/BUILD_18MM.md", "docs/REVIEW.md", "docs/PLOTS.md", "docs/NOSE_STUDY.md", "docs/PRINT_ORIENTATION.md", "docs/POWERED_FLIGHT.md", "docs/LUG_SADDLES.md", "docs/AVIONICS.md", "docs/SHOPPING_LEGACY.md", "docs/PROGRESS_LEGACY.md", "ROCKET_PROJECT_BRIEF.md"] },
 ]
