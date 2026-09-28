@@ -80,6 +80,33 @@ Keep results and their input/configuration files together. `runs/` is ignored by
 archival storage by itself. Early development runs may predate schema/interface corrections; use the reviewed runs
 linked in the findings, not the earliest files. No automatic deletion or migration of historical evidence is performed.
 
+## Optional Rocket Aero Design Lab handoff
+
+Rocket Workbench remains useful and complete without either sister application.
+When Aero Lab is installed, Rocket Workbench remains the authority for the whole
+vehicle, mass properties, payload intent, and real motor records. Export two or
+more motor-specific project directories for the same geometry as one portable
+Aero Lab study:
+
+```sh
+uv run --offline --frozen rocket-workbench aero-export \
+  runs/current-d12 runs/current-e12 \
+  --output /tmp/current-aero-study \
+  --payload-kg 0.02065 --payload-position-mm 92.95
+```
+
+Each input directory must contain `nominal.json`, `ledger.json`, and `motor.json`.
+The adapter refuses mixed geometry, nose shape, fin shape, or fin count. It writes
+`study.json`, one traceable `.eng` curve per motor, and a manifest hashing the
+study, generated curves, and every source file. Open the resulting `study.json`
+in Rocket Aero Design Lab; its mission screen evaluates every motor case and
+reports the limiting motor instead of averaging them.
+
+This is an artifact adapter, not a private-library dependency. Rocket Workbench
+does not accept aerodynamic candidates back as authoritative vehicle designs;
+selected fins return through Fin Engineering Workbench for manufacturing and
+structural evidence before any deliberate vehicle update.
+
 ## Model boundaries
 
 See [MODELING](docs/MODELING.md) for metric definitions, corrected errors, independent engine comparison, geometry
