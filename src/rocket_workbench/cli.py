@@ -21,6 +21,18 @@ def save_json(path, data):
 
 
 def execute(args):
+    if args.command == 'aero-export':
+        from .aero_export import export_aero_study
+        manifest = export_aero_study(
+            [Path(path) for path in args.projects],
+            Path(args.output),
+            payload_mass_kg=args.payload_kg,
+            payload_position_mm=args.payload_position_mm,
+            launch_guide_m=args.launch_guide_m,
+            min_guide_exit_m_s=args.min_guide_exit_m_s,
+        )
+        print(json.dumps(manifest, indent=2))
+        return 0
     if args.command == 'report':
         print(write_report(Path(args.path)))
         from .provenance import seal_run
@@ -159,6 +171,13 @@ def main():
     stress.add_argument('--output', default='runs')
     proof = sub.add_parser('integration-proof')
     proof.add_argument('--output', default='runs')
+    aero = sub.add_parser('aero-export')
+    aero.add_argument('projects', nargs='+')
+    aero.add_argument('--output', required=True)
+    aero.add_argument('--payload-kg', required=True, type=float)
+    aero.add_argument('--payload-position-mm', required=True, type=float)
+    aero.add_argument('--launch-guide-m', type=float, default=1.374)
+    aero.add_argument('--min-guide-exit-m-s', type=float, default=12.0)
     for name in ['validate', 'build', 'simulate']:
         command = sub.add_parser(name)
         command.add_argument('path')
